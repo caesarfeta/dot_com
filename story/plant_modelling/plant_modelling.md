@@ -1,5 +1,3 @@
-
-
 L-Systems
 
 Plants are marvelous structures.
