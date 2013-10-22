@@ -1,0 +1,6 @@
+[submodule "third_party/three.js"]
+	path = third_party/three.js
+	url = https://github.com/mrdoob/three.js
+[submodule "third_party/raphael"]
+	path = third_party/raphael
+	url = https://github.com/DmitryBaranovskiy/raphael
