@@ -1,0 +1,25 @@
+<div class="row">
+	<div class="twelve columns story">
+		<div id="genre">
+		
+			<a href="#Non-Fiction">Non-Fiction</a>
+		
+			<a href="#Art">Art</a>
+		
+		</div>
+		<div class="row">
+			<div class="three columns">
+				<a href="story/sample"><img class="splash" src="http://placehold.it/205x205" /></a>
+			</div>
+			<div class="nine columns">
+				<div id="meta">
+					<a href="story/sample"><h1 class="title">Sample</h1></a>
+					<h2 class="subtitle">Mysteries of Markdown</h2>
+					<h3 class="author">by <span class="name">Adam Tavares</span></h3>
+					<h4 class="date">Published June 22, 2013</h4>
+				</div>
+				<p>Banksy sed Austin, gentrify meggings kale chips master cleanse. Adipisicing sartorial roof party, quis consectetur nulla ex. Synth sed assumenda freegan food truck chambray culpa actually drinking vinegar locavore, sustainable cupidatat mustache officia. Fanny pack squid artisan ullamco cred. Beard Blue Bottle four loko, meggings ...</p>
+			</div>
+		</div>
+	</div>
+</div>

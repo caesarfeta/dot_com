@@ -1,0 +1,31 @@
+<div class="row">
+	<div class="twelve columns story">
+		<div id="genre">
+		
+			<a href="#Art">Art</a>
+		
+			<a href="#Inspiration">Inspiration</a>
+		
+			<a href="#Plant">Plant</a>
+		
+		</div>
+		<div class="row">
+			<div class="three columns">
+				<a href="story/plant_modelling"><img class="splash" src="" /></a>
+			</div>
+			<div class="nine columns">
+				<div id="meta">
+					<a href="story/plant_modelling"><h1 class="title">Plant Modelling</h1></a>
+					<h2 class="subtitle">Building Weeds With Math</h2>
+					<h3 class="author">by <span class="name">Adam Tavares</span></h3>
+					<h4 class="date">Published June 22, 3000</h4>
+				</div>
+				<p>L-Systems
+Plants are marvelous structures.
+I'm not a religious man but I do believe that if anything should be deemed sacred and worthy of our worship it's the plant kingdom.
+Let me share with you my perspective.
+Plants convert radiant light into stored chemical energy to fuel their life ...</p>
+			</div>
+		</div>
+	</div>
+</div>

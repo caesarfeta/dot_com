@@ -1,0 +1,12 @@
+{
+	"title": "Sample",
+	"type": "story",
+	"subtitle": "Mysteries of Markdown",
+	"author": "Adam Tavares",
+	"keywords": [ "Non-Fiction", "Art" ],
+	"publish_date": "June 22, 2013",
+	"bg_img": "img/bg.jpg",
+	"home_img": null,
+	"quote_color": "#4444FF",
+	"link_color": "#4444FF"
+}

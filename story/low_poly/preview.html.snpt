@@ -1,0 +1,32 @@
+<div class="row">
+	<div class="twelve columns story">
+		<div id="genre">
+		
+			<a href="#Art">Art</a>
+		
+			<a href="#Inspiration">Inspiration</a>
+		
+			<a href="#Polygon">Polygon</a>
+		
+		</div>
+		<div class="row">
+			<div class="three columns">
+				<a href="story/low_poly"><img class="splash" src="story/low_poly/img/preview.jpg" /></a>
+			</div>
+			<div class="nine columns">
+				<div id="meta">
+					<a href="story/low_poly"><h1 class="title">Low Polygon Art</h1></a>
+					<h2 class="subtitle">Try angled triangles</h2>
+					<h3 class="author">by <span class="name">Adam Tavares</span></h3>
+					<h4 class="date">Published June 22, 3000</h4>
+				</div>
+				<p>I admire people who can capture the essence of an object or form.
+There's an art to abstraction.
+One has to know their audience.
+How much abstraction can they handle?
+Low polygon art requires a deep understanding of color and lighting.
+Otherwise the forms can be obscured in shadows or ...</p>
+			</div>
+		</div>
+	</div>
+</div>

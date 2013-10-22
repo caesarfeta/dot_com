@@ -1,0 +1,11 @@
+{
+	"title": "Low Polygon Art",
+	"type": "story",
+	"subtitle": "Try angled triangles",
+	"author": "Adam Tavares",
+	"keywords": [ "Art", "Inspiration", "Polygon" ],
+	"publish_date": "June 22, 3000",
+	"preview_img": "story/low_poly/img/preview.jpg",
+	"quote_color": null,
+	"story": "low_poly.md"
+}

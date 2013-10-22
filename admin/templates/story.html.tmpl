@@ -1,0 +1,111 @@
+<html>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0" />
+
+<head>	
+	<!-- CSS -->
+	<link href="../../third_party/foundation/stylesheets/foundation.min.css" rel="stylesheet" type="text/css" />
+	<link href="../../css/site.css" rel="stylesheet" type="text/css" />
+	
+	<!-- Page Specific CSS -->
+
+		<style type="text/css">
+			{% if bg_img is defined %}
+			/* Each page can have a custom background image */
+			html { 
+				-webkit-background-size: cover;
+				-moz-background-size: cover;
+				-o-background-size: cover;
+				background-size: cover;
+				background: url( "{{ bg_img }}" ) no-repeat center center fixed;
+			}
+			{% endif %}
+			
+			{% if quote_color is defined %}
+			/* Change the quote color for flavor */
+			#story .quote {
+				color: {{ quote_color }};
+			}
+			{% endif %}
+			
+			{%if link_color is defined %}
+			a,
+			a:hover {
+				color: {{ link_color }};
+			}
+			{% endif %}
+		</style>
+	
+	<!-- Title -->
+	<title>{{ title }} by {{ author }}</title>
+	
+</head>
+
+<body>
+	<!-- Navigation -->
+	<section id="extra-info">
+		<div id="panel">
+			<a id="home" class="link" href="../..">[ Home ]</a>
+		</div>
+	</section>
+	
+	<div id="story" class="container main">
+		<section id="header">
+		
+			<!-- Keywords -->
+			<div class="row">
+				<div class="twelve columns">
+					<div id="genre">
+					{% for keyword in keywords %}
+						<a href="../../#{{ keyword }}">{{ keyword }}</a>
+					{% endfor %}
+					</div>
+				</div>
+			</div>
+			
+			<!-- Title and Author -->
+			<div class="row">
+				<div id="meta" class="twelve columns">
+					<h1 id="title">{{ title }}</h1>
+					<h2 id="subtitle">{{ subtitle }}</h2>
+					<img id="avatar" src="http://placehold.it/75x75" alt="{{ author }}" />
+					<h3 id="author">by <span class="name">{{ author }}</span></h3>
+					<h4 id="date">Published {{ publish_date }}</h4>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Story -->
+		<section id="text">
+			<div class="row">
+				<div class="twelve columns">
+					{{ html }}
+				</div>
+			</div>
+		</section>
+		
+		<!-- Copyright -->
+		<section id="footer">
+			<div class="row">
+				<div class="twelve columns">
+					<div id="copyright">&copy; {{ author }} {{ year }}</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</body>
+
+<!-- jQuery & Foundation -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/modernizr.foundation.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/foundation.min.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/jquery.event.move.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/jquery.event.swipe.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/jquery.foundation.forms.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/jquery.foundation.mediaQueryToggle.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/app.js"></script>
+
+<!-- Custom Javascript -->
+<script type="text/javascript" src="../../javascript/site.js"></script>
+</html>

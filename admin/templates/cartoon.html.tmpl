@@ -1,0 +1,87 @@
+<html>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0" />
+
+<head>
+	<!-- CSS -->
+	<link href="../../third_party/foundation/stylesheets/foundation.min.css" rel="stylesheet" type="text/css" />
+	<link href="../../css/site.css" rel="stylesheet" type="text/css" />
+	
+	<!-- Title -->
+	<title>{{ title }} by {{ author }}</title>
+	
+	<!-- Each page can have a custom background image -->
+	{% if bg_img is defined %}
+		<style type="text/css">
+			html { 
+				background-color: #f9f9f9;
+				-webkit-background-size: cover;
+				-moz-background-size: cover;
+				-o-background-size: cover;
+				background-size: cover;
+				background: url( "{{ bg_img }}" ) no-repeat center center fixed;
+			}
+		</style>
+	{% endif %}
+</head>
+
+<body>
+	<!-- Navigation -->
+	<section id="extra-info">
+		<div id="panel">
+			<a id="home" class="link" href="../..">[ Home ]</a>
+		</div>
+	</section>
+	
+	<div id="img" class="container main">
+		<section id="header">
+			
+			<!-- Keywords -->
+			<div class="row">
+				<div class="twelve columns">
+					<div id="genre">
+					{% for keyword in keywords %}
+						<a href="../../#{{ keyword }}">{{ keyword }}</a>
+					{% endfor %}
+					</div>
+				</div>
+			</div>
+			
+			<!-- Cartoon -->
+			<div class="row">
+				<div id="meta" class="twelve columns">
+					<img id="cartoon" src="{{ src }}" alt="{{ alt }}" />
+					<p class="caption">{{ caption }}</p>
+					<img id="avatar" src="http://placehold.it/75x75" alt="{{ author }}" />
+					<h3 id="author">by <span class="name">{{ author }}</span></h3>
+					<h4 id="date">Published {{ publish_date }}</h4>
+				</div>
+			</div>
+			
+		</section>
+		
+		<!-- Copyright -->
+		<section id="footer">
+			<div class="row">
+				<div class="twelve columns">
+					<div id="copyright">&copy; {{ author }} {{ year }}</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</body>
+
+<!-- jQuery & Foundation -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/modernizr.foundation.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/foundation.min.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/jquery.event.move.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/jquery.event.swipe.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/jquery.foundation.forms.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/jquery.foundation.mediaQueryToggle.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/app.js"></script>
+
+<!-- Custom Javascript -->
+<script type="text/javascript" src="../../javascript/site.js"></script>
+</html>
