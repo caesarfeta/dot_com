@@ -7,7 +7,7 @@ import json
 import os
 
 def published():
-	f = open( "publish.conf", "r" )
+	f = open( "home.conf", "r" )
 	stories = f.read().splitlines()
 	f.close()
 	return stories
