@@ -7,10 +7,11 @@
 * Foundation 3.2.5 ( included )
 
 ### Submodules
-https://github.com/mrdoob/three.js > third\_party/three.js
-https://github.com/DmitryBaranovskiy/raphael > third\_party/raphael
-git submodule init
-git submodule update
+* https://github.com/mrdoob/three.js > third\_party/three.js
+* https://github.com/DmitryBaranovskiy/raphael > third\_party/raphael
+
+* git submodule init
+* git submodule update
 
 ### What it does.
 This project is my personal website.
