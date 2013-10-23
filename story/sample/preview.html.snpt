@@ -18,7 +18,7 @@
 					<h3 class="author">by <span class="name">Adam Tavares</span></h3>
 					<h4 class="date">Published June 22, 2013</h4>
 				</div>
-				<p>Banksy sed Austin, gentrify meggings kale chips master cleanse. Adipisicing sartorial roof party, quis consectetur nulla ex. Synth sed assumenda freegan food truck chambray culpa actually drinking vinegar locavore, sustainable cupidatat mustache officia. Fanny pack squid artisan ullamco cred. Beard Blue Bottle four loko, meggings ...</p>
+				<p class="preview">Banksy sed Austin, gentrify meggings kale chips master cleanse. Adipisicing sartorial roof party, quis consectetur nulla ex. Synth sed assumenda freegan food truck chambray culpa actually drinking vinegar locavore, sustainable cupidatat mustache officia. Fanny pack squid artisan ullamco cred. Beard Blue Bottle four loko, meggings ...</p>
 			</div>
 		</div>
 	</div>

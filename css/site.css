@@ -222,36 +222,6 @@ h1,h2,h3,h4,h5 {
 	opacity: .96;
 }
 /*===================================*/
-/*==			iPads			   ==*/
-/*===================================*/
-@media only screen and ( max-width: 760px ) {
-	#story #header #meta,
-	#story #text .columns {
-		padding: 0 85px;
-	}
-	#story #header #meta {
-		padding-top: 50px;
-	}
-}
-/*===================================*/
-/*==		Smartphones			   ==*/
-/*===================================*/
-@media only screen and ( max-width: 520px ) {
-	#story #header #meta,
-	#story #text .columns {
-		padding: 0 42px;
-	}
-	#story #header #title {
-		font-size: 30px;
-	}
-	#story #header #subtitle {
-		font-size: 18px;
-	}
-	#story #header #meta {
-		padding-top: 50px;
-	}
-}
-/*===================================*/
 /*==		  Home Page			   ==*/
 /*===================================*/
 #home #meta {
@@ -291,15 +261,16 @@ h1,h2,h3,h4,h5 {
 #home #meta .author {
 	margin-top: 20px;
 }
-#home .story p {
+#home .preview {
 	padding: 0 20px;
+	padding-right: 120px;
 }
 #home #list {
 	padding-top: 28px;
 }
 #home img.splash {
 	float: left;
-    margin: 20px 0 20px 15px;
+	margin: 20px 0 20px 15px;
 }
 #home #img#logo {
 	padding-top: 50px;
@@ -328,4 +299,37 @@ h1,h2,h3,h4,h5 {
 #about #story p {
 	padding-left: 20px;
 	padding-right: 20px;
+}
+/*===================================*/
+/*==			iPads			   ==*/
+/*===================================*/
+@media only screen and ( max-width: 760px ) {
+	#story #header #meta,
+	#story #text .columns {
+		padding: 0 85px;
+	}
+	#story #header #meta {
+		padding-top: 50px;
+	}
+}
+/*===================================*/
+/*==		Smartphones			   ==*/
+/*===================================*/
+@media only screen and ( max-width: 520px ) {
+	#story #header #meta,
+	#story #text .columns {
+		padding: 0 42px;
+	}
+	#story #header #title {
+		font-size: 30px;
+	}
+	#story #header #subtitle {
+		font-size: 18px;
+	}
+	#story #header #meta {
+		padding-top: 50px;
+	}
+	#home .preview {
+		padding-right: 30px;
+	}
 }
