@@ -7,7 +7,13 @@
 		</div>
 		<div class="row">
 			<div class="three columns">
-				<a href="{{ path }}"><img class="splash" src="{{ preview_img }}" /></a>
+				<a href="{{ path }}">
+				{% if id < 10 %}
+					<img id="cartoon" src="{{ preview_img }}" alt="{{ title }}" />
+				{% else %}
+					<a class="inf_img" href="{{ preview_img }}" rel="{{ title }}"></a>
+				{% endif %}
+				</a>
 			</div>
 			<div class="nine columns">
 				<div id="meta">

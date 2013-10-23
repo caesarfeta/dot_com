@@ -20,7 +20,7 @@ def inferData( _data, _file, _root ):
 	_data["path"] = _root.replace( "../", "" )
 	return _data
 
-def build( _path ):
+def build( _path, _id=-1 ):
 	# Get the json file path
 	root = _path
 	f = buildLib.getFilePrefix( _path )
@@ -32,15 +32,19 @@ def build( _path ):
 	# Infer certain pieces of data
 	data = inferData( data, json, root )
 	
+	# Get the id to build the preview
+	data["id"] = _id
+	
 	# Load the appropriate template
 	if data["type"] == "cartoon":
 		# Build the cartoon file
 		outputFile = root + "/index.html"
 		buildLib.parseTemplate( "cartoon", outputFile, data )
 		
-		# Build the preview for the hompage
-		outputFile = root + "/preview.html.snpt"
-		buildLib.parseTemplate( "cartoonPreview", outputFile, data )
+		if _id > -1:
+			# Build the preview for the hompage
+			outputFile = root + "/preview.html.snpt"
+			buildLib.parseTemplate( "cartoonPreview", outputFile, data )
 		
 	else:
 		# Get the markdown file
@@ -58,4 +62,4 @@ def build( _path ):
 
 # If a command line argument is passed
 if len( sys.argv ) > 1:
-	build( sys.argv[1] )
+	build( sys.argv[1], sys.argv[2] )

@@ -9,7 +9,11 @@
 		</div>
 		<div class="row">
 			<div class="three columns">
-				<a href="story/pixel_art"><img class="splash" src="" /></a>
+				<a href="story/pixel_art">
+			    
+			        <img id="cartoon" src="" alt="Pixel Art" />
+			    
+				</a>
 			</div>
 			<div class="nine columns">
 				<div id="meta">

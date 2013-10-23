@@ -7,7 +7,11 @@
 		</div>
 		<div class="row">
 			<div class="twelve columns toon">
-			    <a href="cartoon/friendly_fire"><img id="cartoon" src="http://placehold.it/1000x600" alt="" /></a>
+				<a href="cartoon/friendly_fire">
+				
+					<a id="cartoon" class="inf_img" href="http://placehold.it/1000x600" rel=""></a>
+				
+				</a>
 				<p class="caption">Friendly Fire caption yup yup</p>
 				<div id="meta" href="cartoon/friendly_fire">
 					<h3 class="author">by <span class="name">Adam Tavares</span></h3>

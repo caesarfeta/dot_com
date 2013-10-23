@@ -7,7 +7,13 @@
 		</div>
 		<div class="row">
 			<div class="twelve columns toon">
-			    <a href="{{ path }}"><img id="cartoon" src="{{ src }}" alt="{{ alt }}" /></a>
+				<a href="{{ path }}">
+				{% if id < 10 %}
+					<img id="cartoon" src="{{ src }}" alt="{{ caption }}" />
+				{% else %}
+					<a id="cartoon" class="inf_img" href="{{ src }}" rel="{{ caption }}"></a>
+				{% endif %}
+				</a>
 				<p class="caption">{{ caption }}</p>
 				<div id="meta" href="{{ path }}">
 					<h3 class="author">by <span class="name">{{ author }}</span></h3>

@@ -150,6 +150,10 @@ function homeHideKeyWordClear() {
 	$( 'a#keywordClear' ).hide();
 }
 
+function startInfImg() {
+	$( 'a.inf_img' ).inf_img({ fade_time: 1 });
+}
+
 $( document ).ready( function() {
 	//------------------------------------------------------------
 	//	Get the page ID
@@ -167,6 +171,7 @@ $( document ).ready( function() {
 		case 'home':
 			homeLoadHashFilter();
 			homeKeyWordClick();
+			startInfImg();
 			break;
 	}
 });

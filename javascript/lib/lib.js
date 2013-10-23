@@ -34,12 +34,11 @@
 	inf_img.prototype.init = function( elem, options ) {
 		var self = this;
 		
-		//---------------
+		//------------------------------------------------------------
 		//	User options 
-		//---------------
+		//------------------------------------------------------------
 		self.options = $.extend({
 			frequency: 1,	// How often to check?
-			replace: true,
 			fade_time: null,
 			wait_image: false,
 			waiting_image: 'img/loading.gif',
@@ -49,9 +48,9 @@
 		self.options['frequency'] *= 1000;
 		self.options['minimum_wait'] *= 1000;
 
-		//-----------------------------------
+		//------------------------------------------------------------
 		//	Shared instance method variables
-		//-----------------------------------
+		//------------------------------------------------------------
 		self.obj = {
 			timer_id: null
 		};
@@ -76,7 +75,7 @@
 					//	Load a wait image  
 					//---------------------
 					if ( self.options['wait_image'] ) {
-					    self.addToDom( img );
+						self.addToDom( img );
 						img.attr( 'src', self.options['waiting_image'] );
 						var time = setInterval( function(){
 							self.loadImage( img );
@@ -100,31 +99,31 @@
 	inf_img.prototype.loadImage = function( img ) {
 		var self = this;
 		
-		//--------------------------------------------
+		//------------------------------------------------------------
 		//	If fade_time is null don't fade in image  
-		//--------------------------------------------
+		//------------------------------------------------------------
 		if ( self.options['fade_time'] != null ) {
 			img.hide();
 			img.load( function(){
 				$(this).fadeIn( self.options['fade_time'] );
 			})
 		}
+		
+		//------------------------------------------------------------
+		//	Copy attributes
+		//------------------------------------------------------------
 		var href = $( self.elem ).attr('href');
+		var id = $( self.elem ).attr( 'id' );
+		var alt = $( self.elem ).attr( 'rel')
 		img.attr( 'src', href );
+		img.attr( 'id',	 id );
+		img.attr( 'alt',  alt );
 	}
 	
 	inf_img.prototype.addToDom = function( img ) {
-	    var self = this;
-	    
-	    //----------------------------------------------
-		//	Replace anchor tag or put image inside it.	
-		//----------------------------------------------
-		if ( self.options['replace'] == true ) {
-			$( self.elem ).replaceWith( img );
-		}
-		else {
-			$( self.elem ).append( img );
-		}
+		var self = this;
+		$( self.elem ).after( img );
+		$( self.elem ).remove();
 	}
 
 	//----------------
