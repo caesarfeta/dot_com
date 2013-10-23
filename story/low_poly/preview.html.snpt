@@ -12,9 +12,9 @@
 		<div class="row">
 			<div class="three columns">
 				<a href="story/low_poly">
-			    
-			        <img id="cartoon" src="story/low_poly/img/preview.jpg" alt="Low Polygon Art" />
-			    
+				
+					<img class="splash" src="story/low_poly/img/preview.jpg" alt="Low Polygon Art" />
+				
 				</a>
 			</div>
 			<div class="nine columns">

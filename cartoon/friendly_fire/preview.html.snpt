@@ -9,7 +9,7 @@
 			<div class="twelve columns toon">
 				<a href="cartoon/friendly_fire">
 				
-					<a id="cartoon" class="inf_img" href="http://placehold.it/1000x600" rel=""></a>
+					<img id="cartoon" src="http://placehold.it/1000x600" alt="Friendly Fire caption yup yup" />
 				
 				</a>
 				<p class="caption">Friendly Fire caption yup yup</p>

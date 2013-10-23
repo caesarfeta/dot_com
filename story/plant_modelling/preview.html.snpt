@@ -12,9 +12,9 @@
 		<div class="row">
 			<div class="three columns">
 				<a href="story/plant_modelling">
-			    
-			        <img id="cartoon" src="" alt="Plant Modelling" />
-			    
+				
+					<img class="splash" src="" alt="Plant Modelling" />
+				
 				</a>
 			</div>
 			<div class="nine columns">
