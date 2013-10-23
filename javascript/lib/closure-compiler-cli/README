@@ -1,0 +1,52 @@
+closure-compiler-cli
+--------------------
+
+by Daniel F. Martins <daniel.tritone at gmail dot com>
+
+
+Command-line tool written in Python to allow easy access to Closure Compiler
+API, a tool for making JavaScript download and run faster (by Google).
+
+
+Usage
+-----
+
+To see all supported options, run the following command line:
+
+    $ python closure_compiler_cli.py --help
+
+
+Examples
+--------
+
+1. Compile a JavaScript file accessible via HTTP (using the default options):
+
+    $ python closure_compiler_cli.py --url=http://url/to/file.js
+
+2. Compile a JavaScript file (using the default options):
+
+    $ python closure_compiler_cli.py --file=/path/to/file.js
+
+3. Choose the compilation optimization level:
+
+    $ python closure_compiler_cli.py --level=whitespace --file=/path/to/file.js
+    $ python closure_compiler_cli.py --level=simple --file=/path/to/file.js
+    $ python closure_compiler_cli.py --level=advanced --file=/path/to/file.js
+
+4. Get compilation statistics, warnings or errors:
+
+    $ python closure_compiler_cli.py --info=statistics --file=/path/to/file.js
+    $ python closure_compiler_cli.py --info=warnings --file=/path/to/file.js
+    $ python closure_compiler_cli.py --info=errors --file=/path/to/file.js
+
+5. Get the service output in text, xml or json format:
+
+    $ python closure_compiler_cli.py --format=text --file=/path/to/file.js
+    $ python closure_compiler_cli.py --format=xml --file=/path/to/file.js
+    $ python closure_compiler_cli.py --format=json --file=/path/to/file.js
+
+
+By default, all results are printed to the stdout. Do something like this if
+you want to redirect the output to a file:
+
+    $ python closure_compiler_cli.py --file=input.js > output.js

@@ -1,6 +1,7 @@
 #buildHome.py
 
 import buildLib
+from time import gmtime, strftime
 
 def build():
 	# Get the list of published stories
@@ -9,6 +10,7 @@ def build():
 	# Get the preview snippets
 	data = {}
 	data["previews"] = []
+	data["year"] = strftime( "%Y", gmtime() )
 	for page in pages:
 		page = "../" + page + "/preview.html.snpt"
 		f = open( page, "r" )
