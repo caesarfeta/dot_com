@@ -53,7 +53,7 @@
 				<div id="meta" class="twelve columns">
 					<img id="cartoon" src="{{ src }}" alt="{{ alt }}" />
 					<p class="caption">{{ caption }}</p>
-					<img id="avatar" src="http://placehold.it/75x75" alt="{{ author }}" />
+					<img id="avatar" src="{% if avatar is defined %}{{ avatar }}{% else %}../../img/avatar_default.jpg{% endif %}" alt="{{ author }}" />
 					<h3 id="author">by <span class="name">{{ author }}</span></h3>
 					<h4 id="date">Published {{ publish_date }}</h4>
 				</div>
