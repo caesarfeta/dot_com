@@ -9,7 +9,7 @@
 			<div class="three columns">
 				<a href="{{ path }}">
 				{% if id < 10 %}
-					<img class="splash" src="{{ preview_img }}" alt="{{ title }}" />
+					<img class="splash" src="{% if preview_img is defined %}{{ preview_img }}{% else %}img/story_default.jpg{% endif %}" alt="{{ title }}" />
 				{% else %}
 					<a class="inf_img splash" href="{{ preview_img }}" rel="{{ title }}"></a>
 				{% endif %}

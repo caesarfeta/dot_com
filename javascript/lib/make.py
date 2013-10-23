@@ -1,6 +1,7 @@
 import subprocess
 fs = [
-    "inf_img/inf_img.js"
+	"inf_img/inf_img.js",
+	"barfly/barfly.js"
 ];
 out = ''
 for f in fs:

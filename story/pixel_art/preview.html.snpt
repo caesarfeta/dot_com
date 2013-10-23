@@ -11,7 +11,7 @@
 			<div class="three columns">
 				<a href="story/pixel_art">
 				
-					<img class="splash" src="" alt="Pixel Art" />
+					<img class="splash" src="img/story_default.jpg" alt="Pixel Art" />
 				
 				</a>
 			</div>

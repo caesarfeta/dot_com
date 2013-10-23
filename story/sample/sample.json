@@ -8,5 +8,7 @@
 	"bg_img": "img/bg.jpg",
 	"home_img": null,
 	"quote_color": "#4444FF",
-	"link_color": "#4444FF"
+	"link_color": "#4444FF",
+	"page_js": [ "sample.js" ],
+	"third_party": [ "raphael/raphael.js" ]
 }

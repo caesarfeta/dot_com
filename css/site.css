@@ -178,6 +178,14 @@ h1,h2,h3,h4,h5 {
 	line-height: 50%;
 	font-width: bold;
 }
+#story #text .columns > div {
+	margin: 60px 20px;
+	text-align: center;
+}
+#story #text .columns > table {
+	margin: 40px auto; 
+	text-align: left;
+}
 .caption {
 	margin: 5px 10px;
 	font-style: italic;
@@ -211,11 +219,6 @@ h1,h2,h3,h4,h5 {
 #story .quote {
 	color: #666;
 	font-size: 25px;
-}
-#story .picture,
-#story .quote,
-#story .code {
-	padding: 85px 25px;
 }
 .columns { 
 	background-color: #f9f9f9; 
@@ -328,6 +331,9 @@ h1,h2,h3,h4,h5 {
 	}
 	#story #header #meta {
 		padding-top: 50px;
+	}
+	#story #text .columns > div {
+		margin: 60px 0;
 	}
 	#home .preview {
 		padding-right: 30px;

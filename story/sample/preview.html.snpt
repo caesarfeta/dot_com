@@ -11,7 +11,7 @@
 			<div class="three columns">
 				<a href="story/sample">
 				
-					<img class="splash" src="" alt="Sample" />
+					<img class="splash" src="img/story_default.jpg" alt="Sample" />
 				
 				</a>
 			</div>

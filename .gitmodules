@@ -7,3 +7,6 @@
 [submodule "javascript/lib/inf_img"]
 	path = javascript/lib/inf_img
 	url = https://github.com/caesarfeta/inf_img.git
+[submodule "javascript/lib/barfly"]
+	path = javascript/lib/barfly
+	url = https://github.com/caesarfeta/barfly.git
