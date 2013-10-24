@@ -70,4 +70,4 @@ def build( _path, _id=-1 ):
 
 # If a command line argument is passed
 if len( sys.argv ) > 1:
-	build( sys.argv[1], sys.argv[2] )
+	build( sys.argv[1] )
