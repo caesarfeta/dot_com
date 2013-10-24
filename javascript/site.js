@@ -25,7 +25,7 @@ function buildNav( _navData ) {
 	var lkup = null;
 	var i = segs.length;
 	while ( i >= 0 ) {
-		if ( segs[i] == "story" || segs[i] == "cartoon" ) {
+		if ( segs[i] == "story" || segs[i] == "cartoon" || segs[i] == "code" ) {
 			lkup = segs[i] + "/" + segs[i+1];
 			break;
 		}
@@ -158,7 +158,7 @@ $( document ).ready( function() {
 	//------------------------------------------------------------
 	//	Get the page ID
 	//------------------------------------------------------------
-	var id = $( '.container.main' ).attr('id');
+	var id = $( '.main' ).attr('id');
 	
 	//------------------------------------------------------------
 	//	Run page specific javascript
@@ -166,6 +166,7 @@ $( document ).ready( function() {
 	switch ( id ) {
 		case 'story':
 		case 'img':
+		case 'code':
 			getNav();
 			break;
 		case 'home':

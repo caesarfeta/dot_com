@@ -9,12 +9,12 @@
 	<link href="../../css/site.css" rel="stylesheet" type="text/css" />
 	
 	<!-- Title -->
-	<title>{{ title }} by {{ author }}</title>
+	<title>Test Code by Adam Tavares</title>
 	
 	<!-- Page Specific CSS -->
 	<style type="text/css">
 		html {
-			background: {% if bg_color is defined %}{{ bg_color }}{% else %}#111{% endif %};
+			background: #AAA;
 		}
 		#extra-info {
 			z-index: 0;
@@ -58,11 +58,13 @@
 <script type='text/javascript' src='../../javascript/site.js'></script>
 
 <!-- Page Specific -->
-{% for js in third_party %}
-<script type="text/javascript" src="../../third_party/{{ js }}"></script>
-{% endfor %}
 
-{% for js in page_js %}
-<script type="text/javascript" src="{{ js }}"></script>
-{% endfor %}
+<script type="text/javascript" src="../../third_party/three.js/build/three.min.js"></script>
+
+<script type="text/javascript" src="../../third_party/three.js/examples/js/libs/stats.min.js"></script>
+
+
+
+<script type="text/javascript" src="test_code.js"></script>
+
 </html>

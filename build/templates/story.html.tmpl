@@ -111,12 +111,13 @@
 <script type="text/javascript" src="../../javascript/lib/lib.min.js"></script>
 <script type='text/javascript' src='../../javascript/site.js'></script>
 
-{% for js in page_js %}
-<script type="text/javascript" src="{{ js }}"></script>
-{% endfor %}
-
+<!-- Page Specific -->
 {% for js in third_party %}
 <script type="text/javascript" src="../../third_party/{{ js }}"></script>
+{% endfor %}
+
+{% for js in page_js %}
+<script type="text/javascript" src="{{ js }}"></script>
 {% endfor %}
 
 </html>

@@ -1,0 +1,23 @@
+<div class="row">
+	<div class="twelve columns story">
+		<div id="genre">
+		
+			<a href="#Code">Code</a>
+		
+		</div>
+		<div class="row">
+			<div class="three columns">
+				<a href="code/test_code"><img class="splash" src="code/test_code/img/preview.jpg" /></a>
+			</div>
+			<div class="nine columns">
+				<div id="meta">
+					<a href="code/test_code"><h1 class="title">Test Code</h1></a>
+					<h2 class="subtitle">Code Testing Wanna Get It Full Screen</h2>
+					<h3 class="author">by <span class="name">Adam Tavares</span></h3>
+					<h4 class="date">Published June 22, 2013</h4>
+				</div>
+				<p class="preview">Just a simple test to make sure I can create Javascript all smoove like.</p>
+			</div>
+		</div>
+	</div>
+</div>

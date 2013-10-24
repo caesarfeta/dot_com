@@ -41,24 +41,32 @@ def build( _path, _id=-1 ):
 		outputFile = root + "/index.html"
 		buildLib.parseTemplate( "cartoon", outputFile, data )
 		
-		if _id > -1:
-			# Build the preview for the hompage
-			outputFile = root + "/preview.html.snpt"
-			buildLib.parseTemplate( "cartoonPreview", outputFile, data )
+		# Build the preview for the hompage
+		outputFile = root + "/preview.html.snpt"
+		buildLib.parseTemplate( "cartoonPreview", outputFile, data )
 		
-	else:
+	elif data["type"] == "story":
 		# Get the markdown file
 		mdFile = data["story"]
 		data["html"] = buildLib.mdFileToHtml( mdFile )
 		
 		# Build the story file
-		parsedFile = root + "/index.html"
-		buildLib.parseTemplate( "story", parsedFile, data )
+		outputFile = root + "/index.html"
+		buildLib.parseTemplate( "story", outputFile, data )
 		
 		# Build the preview for the homepage
-		parsedFile = root + "/preview.html.snpt"
+		outputFile = root + "/preview.html.snpt"
 		data["preview"] = buildLib.htmlToPreview( data["html"], 45 )
-		buildLib.parseTemplate( "storyPreview", parsedFile, data )
+		buildLib.parseTemplate( "storyPreview", outputFile, data )
+		
+	elif data["type"] == "code":
+		# Build the code file
+		outputFile = root + "/index.html"
+		buildLib.parseTemplate( "code", outputFile, data )
+		
+		# Build the preview for the homepage
+		outputFile = root + "/preview.html.snpt"
+		buildLib.parseTemplate( "codePreview", outputFile, data )
 
 # If a command line argument is passed
 if len( sys.argv ) > 1:
