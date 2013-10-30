@@ -10,3 +10,6 @@
 [submodule "javascript/lib/barfly"]
 	path = javascript/lib/barfly
 	url = https://github.com/caesarfeta/barfly.git
+[submodule "third_party/dat-gui"]
+	path = third_party/dat-gui
+	url = https://code.google.com/p/dat-gui/
