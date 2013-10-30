@@ -13,3 +13,6 @@
 [submodule "third_party/dat-gui"]
 	path = third_party/dat-gui
 	url = https://code.google.com/p/dat-gui/
+[submodule "javascript/lib/blok_js"]
+	path = javascript/lib/blok_js
+	url = https://github.com/caesarfeta/blok_js.git
