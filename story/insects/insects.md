@@ -187,8 +187,9 @@ http://www.reddit.com/r/Entomology/comments/1p1b7v/gold_flakes_more_in_comments/
 * Woodland Jumping Spider
 * Woolly Bear Caterpillar Moth
 * Yellow Jacket
+
+* German Wasp
 	* Latin: Vespula germanica
-	* German Wasp
 	
 <div class="picture">
 	<p class="credit">source <a href="http://eol.org/data_objects/25648719">eol.org</a></p>
@@ -200,6 +201,12 @@ http://www.reddit.com/r/Entomology/comments/1p1b7v/gold_flakes_more_in_comments/
 	<p class="credit">source <a href="http://eol.org/data_objects/25648717">eol.org</a></p>
 	<a href="img/yellow_jacket_isolated.jpg"><img src="img/yellow_jacket_isolated.jpg" alt="Yellow Jacket Isolated"/></a>
 	<p class="caption">Yellow Jacket Isolated</p>
+</div>
+
+<div class="picture">
+	<p class="credit">source <a href="http://eol.org/data_objects/25648749">eol.org</a></p>
+	<a href="img/yellow_jacket_flight.jpg"><img src="img/yellow_jacket_flight.jpg" alt="Yellow Jacket Flight"/></a>
+	<p class="caption">Yellow Jacket Flight</p>
 </div>
 
 Insects of Concern: Emerald Ash Borer, Asian Longhorned Beetle, Winter Moth, Hemlock Wooly adelgid
