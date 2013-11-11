@@ -6,6 +6,9 @@
 * Markdown-2.3.1 ( included )
 * Foundation 3.2.5 ( included )
 
+### Installation
+	./install.sh
+
 ### GIT Submodules
 * To see Submodules
 	* cat .gitmodules
