@@ -220,9 +220,11 @@ h1,h2,h3,h4,h5 {
 	color: #666;
 	font-size: 25px;
 }
-.columns { 
-	background-color: #f9f9f9; 
-	opacity: .96;
+.columns {
+	background-color: rgb( 249,249,249 );
+}
+#story .columns { 
+	background-color: rgba( 249,249,249,0.96 );
 }
 /*===================================*/
 /*==		  Home Page			   ==*/
