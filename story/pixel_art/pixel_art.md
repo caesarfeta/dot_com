@@ -34,3 +34,7 @@ Humans love putting blocks of colors together into groups.
 		* Surfaces
 	* Representational
 		* Best to go with cartoony and abstract
+		
+When designing pixel art limitations are your friends.  All representational abstract art requires the artist to see as their audience sees.  Representation abstract art is symbolic art.  Symbols are like language where unwanted details are omitted and what is left is an ideal.  A streamlined and simplified representation of an idea.  
+
+Pixel art and low-resolution pixel art only allows artists to use a grid.  Pixel art has existed in different forms for centuries but it has reached its peak in the mid-nineties on the Nintendo SNES console.

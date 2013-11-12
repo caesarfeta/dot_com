@@ -1,4 +1,14 @@
-L-Systems
+##L-Systems
+
+Full name Lindenmayer system.
+Named after a Hungarian theoretical biologist and botanist named Aristid Lindenmayer.
+
+### What are they?
+
+A way of modelling natural patterns using sequences of symbols.
+These symbols define shapes which are drawn a specified number of times in a way that simulate shapes and textures found in nature.
+
+The traditional L-System algorithm requires three parameters.
 
 Plants are marvelous structures.
 I'm not a religious man but I do believe that if anything should be deemed sacred and worthy of our worship it's the plant kingdom.
@@ -47,3 +57,5 @@ It is in our best interest as a species and as individuals to understand these s
 Their inherent mathematical and aesthetic beauty has been an inspiration for the greatest works of art and the most practical tools of day-to-day living.
 	Antonio Gaudi.
 	The textile industry.
+	
+Most  digital modelling of plants is done using L-Systems.  L-Systems
