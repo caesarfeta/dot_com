@@ -1,11 +1,21 @@
 <html>
 <head>
-	<script type="text/javascript" src="LSYS.js"></script>
-	<script type="text/javascript">
-		var lsys = LSYS.Sys( '2D', 4, 90, 'A', 'A=AB', 'B=A' );
-		lsys.go();
-	</script>
 </head>
 <body>
+	<canvas id="canvas" width="100%" height="100%"></canvas>
 </body>
+<script type="text/javascript" src="LSYS.js"></script>
+<script type="text/javascript">
+	var lsys = LSYS.Sys( 4, 90, 'A', 'A=AB', 'B=A' );
+	lsys.go();
+	console.log( lsys.drawing );
+	
+	var lsys2 = LSYS.Sys( 2, 45, '0', '1=11', '0=1[0]0' );
+	lsys2.go();
+	console.log( lsys2.drawing );
+
+//	
+//	var renderer = LSYS.TwoD( 'canvas' );
+//	lsys.draw( renderer );
+</script>
 </html>
