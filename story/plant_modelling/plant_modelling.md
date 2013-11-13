@@ -5,11 +5,41 @@ Named after a Hungarian theoretical biologist and botanist named Aristid Lindenm
 
 ### What are they?
 
-A way of modelling natural patterns using sequences of symbols.
-These symbols define shapes which are drawn a specified number of times in a way that simulate shapes and textures found in nature.
+They're a way of modelling natural patterns using sequences of symbols.
+These symbols define shapes which are drawn a specified number of times in a way that model growth patterns and therefore shapes and textures found in nature.
 
 The traditional L-System algorithm requires three parameters.
+1. an initial state
+2. change rules
+3. number of times the change rules are applied
 
+So let's look at an example first and then I'll explain what's happening.
+
+#### Algae
+	alphabet: AB
+	initial state: A
+	change rules: A>AB, B>A
+	number of times(n): 4
+	
+	n=0: A
+	n=1: AB
+	n=2: ABA
+	n=3: ABAAB
+	
+
+	Explain what's happening...
+
+### How do we build this in code?
+1. Retrieving Input (easy)
+2. L-System Algorithm (easy)
+3. L-System Renderer (difficult,subjective)
+
+An L-System Renderer is probably the most difficult piece.
+
+
+
+
+### Notes
 Plants are marvelous structures.
 I'm not a religious man but I do believe that if anything should be deemed sacred and worthy of our worship it's the plant kingdom.
 Let me share with you my perspective.
