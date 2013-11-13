@@ -64,7 +64,8 @@ LSYS.Sys = function( _iter, _angle, _start ) {
 		n: this.n,
 		rules: this.rules,
 		iter: this.iter,
-		output: this.output
+		output: this.output,
+		angle: this.angle
 	}
 }
 
@@ -79,16 +80,17 @@ LSYS.Renderer = function( _canvasId ) {
 		']': 1, // pop
 		'C': 1, // color
 	};
-	
-	this.toRad = function( _degrees ) {
-		return _degrees * Math.PI / 180;
-	};
-	
-	this.toCart = function( _radius, _angle ) {
-		return [ _radius * Math.cos( this.toRad(_angle) ), _radius * Math.sin( this.toRad(_angle) ) ];
-	};
-	
-	console.log( this.toCart( 1, 90 ) );
+}
+
+//------------------------------------------------------------
+//  Some handy math functions
+//------------------------------------------------------------
+Math.toRad = function( _degrees ) {
+	return _degrees*Math.PI / 180;
+}
+
+Math.toCart = function( _radius, _angle ) {
+	return [ _radius*Math.cos( _angle ), _radius * Math.sin( _angle ) ];
 }
 
 
@@ -102,18 +104,18 @@ LSYS.TwoD = function( _canvasId ){
 	
 	return {
 		draw: function( _input, _angle ) {
+			
+			//------------------------------------------------------------
+			//  Get the coordinates with unit distance
+			//------------------------------------------------------------
 			var angle = _angle;
 			var coords = [];
 			coords.push( [0,0] );
 			var chars = _input.split('');
 			for ( var i in chars ) {
-				
-				//------------------------------------------------------------
-				//  Draw LOGO style
-				//------------------------------------------------------------
 				if ( chars[i] in this.constants ) {
 					var last = coords[ coords.length-1 ];
-					var next = this.toCart( 1, this.toRad( angle ) );
+					var next = Math.toCart( 1, Math.toRad( angle ) );
 					var x = last[0] + next[0];
 					var y = last[1] + next[1];
 					coords.push( [x,y] );
@@ -123,16 +125,27 @@ LSYS.TwoD = function( _canvasId ){
 						case '+':
 							angle += angle;
 							break;
-							
 						case '-':
 							angle -= angle;
 							break;
 					}
 				}
 			}
-			console.log( coords );
+			
+			//------------------------------------------------------------
+			//  Draw the thing to the canvas
+			//------------------------------------------------------------
+			this.ctx.moveTo( coords[0][0], coords[0][1] );
+			var i = 0;
+			while ( i < coords.length ) {
+				this.ctx.lineTo( coords[i][0], coords[i][1] );
+				i++;
+			}
+			this.ctx.stroke();
+			
 		},
-		constants: this.constants
+		constants: this.constants,
+		ctx: this.ctx
 	}
 }
 LSYS.TwoD.prototype = Object.create( LSYS.Renderer.prototype );
