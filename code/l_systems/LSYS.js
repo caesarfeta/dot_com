@@ -74,11 +74,11 @@ LSYS.Sys = function( _iter, _angle, _start ) {
 LSYS.Renderer = function( _canvasId ) {
 	this.canvas = document.getElementById( _canvasId );
 	this.constants = {
-		'+': 1, // counter clockwise
-		'-': 1, // clockwise
-		'[': 1, // push
-		']': 1, // pop
-		'C': 1, // color
+		'+': 'COUNTERCLOCK',
+		'-': 'CLOCKWISE',
+		'[': 'PUSH',
+		']': 'POP',
+		'C': 'COLOR'
 	};
 }
 
@@ -90,7 +90,7 @@ Math.toRad = function( _degrees ) {
 }
 
 Math.toCart = function( _radius, _angle ) {
-	return [ _radius*Math.cos( _angle ), _radius * Math.sin( _angle ) ];
+	return [ _radius*Math.cos( _angle ), _radius*Math.sin( _angle ) ];
 }
 
 
@@ -110,39 +110,55 @@ LSYS.TwoD = function( _canvasId ){
 			//------------------------------------------------------------
 			var angle = _angle;
 			var coords = [];
-			coords.push( [0,0] );
+			var x = 0;
+			var y = 0;
+			var bigX = 0;
+			var bigY = 0;
+			coords.push( [x,y] );
+			
+			//------------------------------------------------------------
+			//  Loop through the LSys input string
+			//------------------------------------------------------------
 			var chars = _input.split('');
 			for ( var i in chars ) {
-				if ( chars[i] in this.constants ) {
-					var last = coords[ coords.length-1 ];
-					var next = Math.toCart( 1, Math.toRad( angle ) );
-					var x = last[0] + next[0];
-					var y = last[1] + next[1];
-					coords.push( [x,y] );
-				}
-				else {
-					switch ( chars[i] ) {
-						case '+':
-							angle += angle;
+				if ( chars[i] in this.constants ) {					
+					switch ( this.constants[ chars[i] ] ) {
+						case 'COUNTERCLOCK':
+							angle += _angle;
 							break;
-						case '-':
-							angle -= angle;
+						case 'CLOCKWISE':
+							angle -= _angle;
 							break;
 					}
+				}
+				else {
+					var vector = Math.toCart( 1, Math.toRad( angle ) );
+					x += vector[0];
+					y += vector[1];
+					coords.push( [x,y] );
+					
+					//------------------------------------------------------------
+					//  Keep track of the biggest coordinates so we can
+					//  determine the boundary box of the image
+					//------------------------------------------------------------
+					bigX = ( x > bigX ) ? x : bigX;
+					bigY = ( y > bigY ) ? y : bigY;
 				}
 			}
 			
 			//------------------------------------------------------------
 			//  Draw the thing to the canvas
 			//------------------------------------------------------------
-			this.ctx.moveTo( coords[0][0], coords[0][1] );
-			var i = 0;
+			var i = 1;
 			while ( i < coords.length ) {
-				this.ctx.lineTo( coords[i][0], coords[i][1] );
+				this.ctx.beginPath();
+				this.ctx.moveTo( coords[i-1][0], coords[i-1][1] );
+                this.ctx.lineTo( coords[i][0], coords[i][1] );
+				this.ctx.stroke();
+                this.ctx.closePath();
+                this.ctx.stroke();
 				i++;
 			}
-			this.ctx.stroke();
-			
 		},
 		constants: this.constants,
 		ctx: this.ctx
@@ -169,3 +185,132 @@ LSYS.ThreeD.prototype = Object.create( LSYS.Renderer.prototype );
 // Chomsky hierarchy
 // L-systems are now commonly known as parametric L systems.
 // G = ( V, w, P )
+
+/*
+      process: function process(cmds, draw)
+      {
+         this._stack = [];
+         
+         var angle = this._angle;
+         var distance = this._distance;
+         var lastX;
+         var lastY;
+         
+         if (draw)
+         {
+            var canvas = document.getElementById('canvas');
+            var ctx = canvas.getContext('2d');
+            
+            // clear the background 
+            ctx.save();
+            ctx.fillStyle = "rgb(255,255,255)";
+            ctx.fillRect(0, 0, WIDTH, HEIGHT);
+            
+            // offset as required
+            ctx.translate(this._xOffset, 0);
+            
+            // initial colour if specific colouring not used
+            ctx.strokeStyle = "rgb(0,0,0)";
+         }
+         
+         // start at grid 0,0 facing north with no colour index
+         var pos = new LSystems.Location(0.0, 0.0, 90.0, -1);
+         
+         // process each command in turn
+         var yOffset = this._yOffset, maxStackDepth = this._maxStackDepth;
+         var colourList = this._colourList, stack = this._stack;
+         var renderLineWidths = this._renderLineWidths;
+         var rad, width, colour, lastColour = null;
+         var c, len = cmds.length;
+         for (var i=0; i<len; i++)
+         {
+            c = cmds.charAt(i);
+            
+            switch (c)
+            {
+               case COLOUR:
+               {
+                  // get colour index from next character
+                  pos.colour = (cmds.charAt(++i) - '0');
+                  break;
+               }
+               
+               case ANTICLOCK:
+               {
+                  pos.heading += angle;
+                  break;
+               }
+               
+               case CLOCKWISE:
+               {
+                  pos.heading -= angle;
+                  break;
+               }
+               
+               case PUSH:
+               {
+                  stack.push(new LSystems.Location(pos.x, pos.y, pos.heading, pos.colour));
+                  break;
+               }
+               
+               case POP:
+               {
+                  pos = stack.pop();
+                  break;
+               }
+               
+               default:
+               {
+                  if (!this._constants[c])
+                  {
+                     lastX = pos.x;
+                     lastY = pos.y;
+                     
+                     // move the turtle
+                     rad = pos.heading * RAD;
+                     pos.x += distance * Math.cos(rad);
+                     pos.y += distance * Math.sin(rad);
+                     
+                     if (draw)
+                     {
+                        // render this element
+                        if (renderLineWidths)
+                        {
+                           width = (maxStackDepth - stack.length);
+                           ctx.lineWidth = width >= 1 ? width : 1;
+                        }
+                        colour = colourList[pos.colour];
+                        if (colour && lastColour !== colour)
+                        {
+                           ctx.strokeStyle = colour;
+                           lastColour = colour;
+                        }
+                        ctx.beginPath();
+                        ctx.moveTo(lastX, HEIGHT - (lastY + yOffset));
+                        ctx.lineTo(pos.x, HEIGHT - (pos.y + yOffset));
+                        ctx.closePath();
+                        ctx.stroke();
+                     }
+                     else
+                     {
+                        // remember min/max position
+                        if (pos.x < this._minx) this._minx = pos.x;
+                        else if (pos.x > this._maxx) this._maxx = pos.x;
+                        if (pos.y < this._miny) this._miny = pos.y;
+                        else if (pos.y > this._maxy) this._maxy = pos.y;
+                        if (stack.length > this._maxStackDepth) this._maxStackDepth = stack.length;
+                     }
+                  }
+                  break;
+               }
+            }
+         }
+         
+         // finalise rendering
+         if (draw)
+         {
+            ctx.restore();
+         }
+      }
+   };
+   */
