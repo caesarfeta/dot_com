@@ -2,7 +2,7 @@
 <head>
 </head>
 <body>
-	<canvas id="canvas" width="1000px" height="1000px"></canvas>
+	<canvas id="canvas" width="1000px" height="500px"></canvas>
 </body>
 <script type="text/javascript" src="LSYS.js"></script>
 <script type="text/javascript">
@@ -15,7 +15,7 @@
 	lsys2.go();
 	console.log( lsys2.output );
 */	
-	var lsys3 = LSYS.Sys( 6, 60, 'A', 'A=B-A-B', 'B=A+B+A' );
+	var lsys3 = LSYS.Sys( 8, 60, 'A', 'A=B-A-B', 'B=A+B+A' );
 	lsys3.go();
 	var renderer = LSYS.TwoD( 'canvas' );
 	lsys3.draw( renderer );
