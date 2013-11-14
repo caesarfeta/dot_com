@@ -1,13 +1,13 @@
 {
-	"title": "3D Dragon Curve",
+	"title": "L-Systems",
 	"type": "code",
-	"subtitle": "Building A 3D Dragon Curve",
+	"subtitle": "L-Systems",
 	"author": "Adam Tavares",
-	"keywords": [ "Code", "Fractal", "3D" ],
+	"keywords": [ "Code", "Fractal"],
 	"publish_date": "June 22, 3000",
-	"page_js": [ "3d_dragon_curve.js" ],
-	"third_party": [ "three.js/build/three.min.js", "three.js/examples/js/libs/stats.min.js" ],
-	"preview_img": "code/test_code/img/preview.jpg",
+	"page_js": [ "lsys.js" ],
+	"third_party": [ "../../javascript/lib/lsys_js/src/js/LSYS.js" ],
+	"preview_img": "img/avatar_default.jpg",
 	"bg_color": "#AAA",
-	"preview": "A dragon curve in three dimensions"
+	"preview": "L-Systems are a simple way of defining fractalish patterns"
 }
