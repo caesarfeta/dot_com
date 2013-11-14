@@ -16,3 +16,6 @@
 [submodule "javascript/lib/blok_js"]
 	path = javascript/lib/blok_js
 	url = https://github.com/caesarfeta/blok_js.git
+[submodule "javascript/lib/lsys_js"]
+	path = javascript/lib/lsys_js
+	url = https://github.com/caesarfeta/lsys_js.git
