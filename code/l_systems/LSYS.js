@@ -28,7 +28,7 @@ LSYS.Sys = function( _iter, _angle, _start ) {
 		/**
 		 *	Run the system the specified # of times i.e. this.iter
 		 */
-		go: function() {
+		run: function() {
 			while( this.n < this.iter ) {
 				this.next();
 				this.n++;
@@ -82,17 +82,6 @@ LSYS.Renderer = function( _canvasId ) {
 	};
 }
 
-//------------------------------------------------------------
-//	Some handy math functions
-//------------------------------------------------------------
-Math.toRad = function( _degrees ) {
-	return _degrees*Math.PI / 180;
-}
-
-Math.toCart = function( _radius, _angle ) {
-	return [ _radius*Math.cos( _angle ), _radius*Math.sin( _angle ) ];
-}
-
 
 
 //------------------------------------------------------------
@@ -103,19 +92,20 @@ LSYS.TwoD = function( _canvasId ){
 	this.ctx = this.canvas.getContext('2d');
 	
 	return {
+		
 		draw: function( _input, _angle ) {
 			
 			//------------------------------------------------------------
 			//	Get the coordinates with unit distance
 			//------------------------------------------------------------
 			var angle = _angle;
-			var coords = [];
 			var x = 0;
 			var y = 0;
 			var maxX = 0;
 			var maxY = 0;
 			var minX = 0;
 			var minY = 0;
+			coords = [];
 			coords.push( [x,y] );
 			
 			//------------------------------------------------------------
@@ -195,6 +185,40 @@ LSYS.ThreeD = function(){
 	}
 }
 LSYS.ThreeD.prototype = Object.create( LSYS.Renderer.prototype );
+
+
+
+//------------------------------------------------------------
+//  Library
+//------------------------------------------------------------
+LSYS.DragonCurve = function( _canvasId ) {
+	var sys = LSYS.Sys( 12, 90, 'FX', 'X=X+YF+', 'Y=-FX-Y' );
+	sys.run();
+	var renderer = LSYS.TwoD( _canvasId );
+	sys.draw( renderer );
+}
+
+LSYS.HexagonSierpinski = function( _canvasId ) {
+	var sys = LSYS.Sys( 8, 60, 'A', 'A=B-A-B', 'B=A+B+A' );
+	sys.run();
+	var renderer = LSYS.TwoD( _canvasId );
+	sys.draw( renderer );
+}
+
+
+
+//------------------------------------------------------------
+//	Some handy math functions
+//------------------------------------------------------------
+Math.toRad = function( _degrees ) {
+	return _degrees*Math.PI / 180;
+}
+
+Math.toCart = function( _radius, _angle ) {
+	return [ _radius*Math.cos( _angle ), _radius*Math.sin( _angle ) ];
+}
+
+
 
 //------------------------------------------------------------
 // Stuff to investigate.
