@@ -2,23 +2,11 @@
 <head>
 </head>
 <body>
-	<canvas id="canvas" width="1000px" height="1000px"></canvas>
+	<canvas id="canvas" width="1000px" height="500px"></canvas>
 </body>
 <script type="text/javascript" src="LSYS.js"></script>
 <script type="text/javascript">
-/*
-	var lsys = LSYS.Sys( 4, 90, 'A', 'A=AB', 'B=A' );
-	lsys.go();
-	console.log( lsys.output );
-	
-	var lsys2 = LSYS.Sys( 2, 45, '0', '1=11', '0=1[0]0' );
-	lsys2.go();
-	console.log( lsys2.output );
-*/	
-	var lsys3 = LSYS.Sys( 6, 60, 'A', 'A=B-A-B', 'B=A+B+A' );
-	lsys3.go();
-	var renderer = LSYS.TwoD( 'canvas' );
-	lsys3.draw( renderer );
-	
+	var dragon = LSYS.DragonCurve( 'canvas' );
+	var hexSierp = LSYS.HexagonSierpinski( 'canvas' );
 </script>
 </html>
