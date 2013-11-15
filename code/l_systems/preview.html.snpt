@@ -1,0 +1,25 @@
+<div class="row">
+	<div class="twelve columns story">
+		<div id="genre">
+		
+			<a href="#Code">Code</a>
+		
+			<a href="#Fractal">Fractal</a>
+		
+		</div>
+		<div class="row">
+			<div class="three columns">
+				<a href="code/l_systems"><img class="splash" src="img/avatar_default.jpg" /></a>
+			</div>
+			<div class="nine columns">
+				<div id="meta">
+					<a href="code/l_systems"><h1 class="title">L-Systems</h1></a>
+					<h2 class="subtitle">L-Systems</h2>
+					<h3 class="author">by <span class="name">Adam Tavares</span></h3>
+					<h4 class="date">Published June 22, 3000</h4>
+				</div>
+				<p class="preview">L-Systems are a simple way of defining fractalish patterns</p>
+			</div>
+		</div>
+	</div>
+</div>

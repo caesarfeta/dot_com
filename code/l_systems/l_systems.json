@@ -5,8 +5,8 @@
 	"author": "Adam Tavares",
 	"keywords": [ "Code", "Fractal"],
 	"publish_date": "June 22, 3000",
-	"page_js": [ "lsys.js" ],
-	"third_party": [ "../../javascript/lib/lsys_js/src/js/LSYS.js" ],
+	"page_js": [ "l_systems.js" ],
+	"third_party": [ "../javascript/lib/lsys_js/src/js/LSYS.js" ],
 	"preview_img": "img/avatar_default.jpg",
 	"bg_color": "#AAA",
 	"preview": "L-Systems are a simple way of defining fractalish patterns"
