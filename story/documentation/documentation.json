@@ -1,0 +1,12 @@
+{
+	"title": "Documentation Best Practices",
+	"type": "story",
+	"subtitle": "aka teaching people how to fish in your pond.",
+	"author": "Adam Tavares",
+	"keywords": [ "Collaboration" ],
+	"publish_date": "June 22, 3000",
+	"background_image": null,
+	"preview_image": null,
+	"quote_color": null,
+	"story": "documentation.md"
+}
