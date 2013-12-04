@@ -35,6 +35,13 @@ a:hover {
 h1,h2,h3,h4,h5 {
 	font-family: Georgia;
 }
+code {
+	background-color: rgba( 249,249,249,0.96 );
+	display: inline-block;
+	padding: 20px;
+	margin-bottom: 20px;
+	white-space: pre-wrap;
+}
 #extra-info {
 	width: 100%;
 	text-align: center;
@@ -164,6 +171,18 @@ h1,h2,h3,h4,h5 {
 #story #header #meta {
 	padding-top: 85px;
 }
+#story h1,
+#story h2 {
+	line-height: .9em;
+}
+#story #text h1,
+#story #text h2 { 
+	margin-top: 60px;
+	font-size: 38px;
+}
+#story #text h2 {
+	font-size: 30px;
+}
 #story #text .columns p {
 	font-size: 16px;
 }
@@ -215,6 +234,9 @@ h1,h2,h3,h4,h5 {
 #story #header #subtitle {
 	text-align: center;
 	font-weight: normal;
+}
+#story #header #title {
+	margin-bottom: 20px;
 }
 #story .quote {
 	color: #666;

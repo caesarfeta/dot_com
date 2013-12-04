@@ -1,5 +1,6 @@
-# Documentation
-## Tips
+I write a lot of documentation, so I've developed some 
+strong opinions/beliefs about how to do it.
+Here they are.
 
 * Remember your code is useless to other people 
 	if they can't install / use it.
