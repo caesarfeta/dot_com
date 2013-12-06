@@ -20,8 +20,9 @@
 					<h3 class="author">by <span class="name">Adam Tavares</span></h3>
 					<h4 class="date">Published June 22, 3000</h4>
 				</div>
-				<p class="preview">Documentation
-Tips
+				<p class="preview">I write a lot of documentation, so I've developed some 
+strong opinions/beliefs about how to do it.
+Here they are.
 
 
 Remember your code is useless to other people 
@@ -29,9 +30,7 @@ Remember your code is useless to other people
 
 
 Accept feedback humbly.
-    If a person found your documentation confusing 
-    don't assume they are too stupid to follow your directions.
- ...</p>
+    If a person ...</p>
 			</div>
 		</div>
 	</div>
