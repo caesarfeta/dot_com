@@ -19,3 +19,6 @@
 [submodule "javascript/lib/lsys_js"]
 	path = javascript/lib/lsys_js
 	url = https://github.com/caesarfeta/lsys_js.git
+[submodule "javascript/lib/jslib"]
+	path = javascript/lib/jslib
+	url = https://github.com/caesarfeta/jslib
