@@ -20,18 +20,27 @@
 
 ### What it does.
 This project is my personal website.
-It's a database free blogging system.
-It uses JSON and Markdown files to store content.
-A couple of Python scripts and Jinja2 templates take the JSON and Markdown and builds the HTML files that are "the site."
+Also, it's a database free blogging system.
+I got sick of using HTML forms hooked up to a relational database to publish my work.
+I felt they were big and sloppy and cumbersome.
+If you know Unix and aren't afraid of using the command line a system like this one is much more elegant and flexible than other "Content Management Systems" a lot of people use for one-to-many day-to-day publishing aka "blogging".
+
+It uses JSON and Markdown files to store content and configuration.
+A couple of Python scripts and Jinja2 templates take the JSON and Markdown and build the HTML files that are "the site."
+
 The site's visual aesthetic is simple and book-like.
-There are three types of content.
+Maximum accessibility and readability were design goals.
+It's not a great layout for generating ad revenue but it makes most content beautiful to look at on most devices.
 
-* Images with captions
-* Fullscreen Javascript demoes
-* And "Stories" which is text interspersed with static images and Javascript drawings and demoes.
+Speaking of content. I've defined 3 general types, which each get their own directory.
 
-Content is categorized by keyword.
-Home page previews can be filtered using these keywords.
+* cartoon -- Images with captions
+* code -- Fullscreen Javascript demoes
+* story -- "Stories" which is text interspersed with static images and Javascript drawings and demoes.
+
+Content is categorized by keyword and the home page previews can be filtered using these keywords.
+
+If you're like me and want a simple web publishing system you don't really have to grapple with and you don't want to forfeit control over layout and how your content will be used to make money for Google or Wordpress or whoever then "dot_com" might work for you.  All you have to do is delete my content in ./cartoon, ./story, and ./code, make your own, and run the build script in ./build.
 
 ### Important Files and Directories
 * build/ - Holds the Python build scripts.
