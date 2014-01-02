@@ -1,9 +1,9 @@
 {
-	"title": "Insects",
+	"title": "Insects and Spiders",
 	"type": "story",
-	"subtitle": "A Close Look At Our Six-Legged Friends",
+	"subtitle": "A Close Look At Our Six and Eight-Legged Friends",
 	"author": "Adam Tavares",
-	"keywords": [ "Nature", "Inspiration" ],
+	"keywords": [ "Nature", "Inspiration", "Insects", "Spiders" ],
 	"publish_date": "June 22, 3000",
 	"story": "insects.md"
 }

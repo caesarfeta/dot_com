@@ -16,6 +16,7 @@ rsync -avz \
 	--exclude '.git*' \
 	--exclude '*.conf' \
 	--exclude '*.py' \
+	--exclude '*.pyc' \
 	--exclude '*.md' \
 	--exclude 'javascript/lib/closure-compiler-cli' \
 	--exclude 'third_party/three.js/docs' \
