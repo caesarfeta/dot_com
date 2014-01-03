@@ -2,31 +2,31 @@
 	<div class="twelve columns story">
 		<div id="genre">
 		
-			<a href="#Nature">Nature</a>
+			<a href="#nature">nature</a>
 		
-			<a href="#Inspiration">Inspiration</a>
+			<a href="#inspiration">inspiration</a>
 		
-			<a href="#Insects">Insects</a>
+			<a href="#insects">insects</a>
 		
-			<a href="#Spiders">Spiders</a>
+			<a href="#spiders">spiders</a>
 		
 		</div>
 		<div class="row">
 			<div class="three columns">
 				<a href="story/insects">
 				
-					<img class="splash" src="img/story_default.jpg" alt="Insects and Spiders" />
+					<img class="splash" src="img/story_default.jpg" alt="Arthropodachusetts" />
 				
 				</a>
 			</div>
 			<div class="nine columns">
 				<div id="meta">
-					<a href="story/insects"><h1 class="title">Insects and Spiders</h1></a>
-					<h2 class="subtitle">A Close Look At Our Six and Eight-Legged Friends</h2>
+					<a href="story/insects"><h1 class="title">Arthropodachusetts</h1></a>
+					<h2 class="subtitle">The Bay State's Six, Eight, and N-Legged Friends</h2>
 					<h3 class="author">by <span class="name">Adam Tavares</span></h3>
 					<h4 class="date">Published June 22, 3000</h4>
 				</div>
-				<p class="preview">I decided to compile a list of insect and spider species that occur in the great state of Massachusetts, so I can better identitify them on my outdoor excursions and draw their interesting bits.  I'll be seeking out the best photographs of these species ...</p>
+				<p class="preview">I decided to compile a list of arthropod ( insects, spiders, millipedes and centipedes ) species that occur in the great state of Massachusetts, so I can better identify them on my outdoor excursions and draw their interesting bits.  I'll be compiling the best ...</p>
 			</div>
 		</div>
 	</div>

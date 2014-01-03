@@ -1,0 +1,9 @@
+{
+	"title": "Honey Bees",
+	"type": "story",
+	"subtitle": "Apis",
+	"author": "Adam Tavares",
+	"keywords": [ "nature", "insects", "bees" ],
+	"publish_date": "June 22, 3000",
+	"story": "honey_bees.md"
+}

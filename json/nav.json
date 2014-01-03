@@ -1,1 +1,1 @@
-{"story/insects": {"keywords": ["Nature", "Inspiration", "Insects", "Spiders"], "type": "story", "title": "Insects and Spiders"}, "order": ["story/insects"]}
+{"story/insects": {"keywords": ["nature", "inspiration", "insects", "spiders"], "type": "story", "title": "Arthropodachusetts"}, "order": ["story/insects", "story/honey_bee"], "story/honey_bee": {"keywords": ["nature", "insects", "bees"], "type": "story", "title": "Honey Bees"}}

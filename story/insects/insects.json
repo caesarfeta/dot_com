@@ -1,9 +1,9 @@
 {
-	"title": "Insects and Spiders",
+	"title": "Arthropodachusetts",
 	"type": "story",
-	"subtitle": "A Close Look At Our Six and Eight-Legged Friends",
+	"subtitle": "The Bay State's Six, Eight, and N-Legged Friends",
 	"author": "Adam Tavares",
-	"keywords": [ "Nature", "Inspiration", "Insects", "Spiders" ],
+	"keywords": [ "nature", "inspiration", "insects", "spiders" ],
 	"publish_date": "June 22, 3000",
 	"story": "insects.md"
 }
