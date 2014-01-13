@@ -69,6 +69,7 @@ What makes them truly amazing in my opinion is the homes they build.
 Honey bee hives are constructed out of hexagonal cells, and are very efficient structures.
 Perhaps the most efficient structures.
 
+### Hexagons
 Why hexagaons and not squares you may be wondering...
 Well checkout this video.
 
@@ -83,7 +84,7 @@ Are we so used to walking behind a plow in long straight lines that we decided t
 How do we connect all these rows of straight lines?
 Usually just with more straight lines.
 
-Hexagonal streets would be great for pedestrians.
+### Getting Off The Grid
 It's very unnatural to have structures reaching into the sky arranged on a perfect grid.
 That doesn't happen in nature unless humans have intervened.
 You'll see trees growing in long straight lines in orchards, which I suppose make them easier to maintain and harvest.
@@ -112,15 +113,18 @@ Imagine signing a mortgage contract on a circular piece of paper.
 That would probably be unsettling.
 How is one supposed to file a circle?
 
-Tree growth in Nature is probably best modeled as circles radiating outwards until blocked by some ecological barrier a river, a rival tree species, or changes in soil.
-
 There is something mechanical and lazy about using rectilinear grids.
 Its efficient for travel in an automobile.
 It also makes directions easier to follow, but there are draw backs certainly.
 There are places that buck this trend.
 I live just outside of Boston, Massachusetts.
 
+### City Planning
+Hexagonal streets would be great for pedestrians.
 Barcelona has a neighborhood nicknamed L'Example where the corners of intersecting streets are chamfered producing octagonal mini-plazas.
 It makes for more casual strolling.
 The chamfered areas usually are home to outdoor seating for restaurants, parking spaces for delivery vehicles, or the occasional park bench.
 Buildings on these corners are desired pieces of real-estate and are usually beautifully decorated in art-deco motifs.
+
+
+Tree growth in Nature is probably best modeled as circles radiating outwards until blocked by some ecological barrier a river, a rival tree species, or changes in soil.

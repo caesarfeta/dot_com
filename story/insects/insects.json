@@ -4,6 +4,8 @@
 	"subtitle": "The Bay State's Six, Eight, and N-Legged Friends",
 	"author": "Adam Tavares",
 	"keywords": [ "nature", "inspiration", "insects", "spiders" ],
+	"preview_img": "story/insects/img/massachusetts_seal.png",
+	"bg_img": "img/bg.jpg",
 	"publish_date": "June 22, 3000",
 	"story": "insects.md"
 }

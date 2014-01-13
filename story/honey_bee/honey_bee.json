@@ -5,5 +5,7 @@
 	"author": "Adam Tavares",
 	"keywords": [ "nature", "insects", "bees" ],
 	"publish_date": "June 22, 3000",
+	"preview_img": "story/honey_bee/img/side_angle.jpg",
+	"bg_img": "img/bg.jpg",
 	"story": "honey_bees.md"
 }

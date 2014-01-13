@@ -1,9 +1,9 @@
 html { 
 	background-color: #e9e9e9;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
+	-webkit-background-size: contain;
+	-moz-background-size: contain;
+	-o-background-size: contain;
+	background-size: contain;
 	background: url( "../img/sierpinski_pyramid.png" ) no-repeat center center fixed;
 }
 #footer #copyright {
@@ -242,7 +242,7 @@ code {
 	color: #666;
 	font-size: 25px;
 }
-#about .columns,
+#about .columns.top,
 #story .columns,
 #img .columns,
 #home .columns.story { 
@@ -319,6 +319,7 @@ code {
 
 #about #ego .top.columns {
 	padding-top: 80px;
+	padding-bottom: 20px;
 }
 #about #story {
 	padding-top: 40px;
