@@ -4,7 +4,7 @@ html {
 	-moz-background-size: contain;
 	-o-background-size: contain;
 	background-size: contain;
-	background: url( "../img/sierpinski_pyramid.png" ) no-repeat center center fixed;
+	background: url( "../img/color_blocks_landscape.png" ) no-repeat bottom left fixed;
 }
 #footer #copyright {
 	padding: 20px 0;
@@ -315,6 +315,9 @@ code {
 }
 #home #list .story.selected {
 	display: block;
+}
+body {
+	padding-bottom: 250px;
 }
 
 #about #ego .top.columns {
