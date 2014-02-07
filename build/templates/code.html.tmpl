@@ -11,6 +11,11 @@
 	<!-- Title -->
 	<title>{{ title }} by {{ author }}</title>
 	
+	<!-- Extra Page CSS -->
+	{% for css in page_css %}
+	<link href="{{ css }}" rel="stylesheet" type="text/css" />
+	{% endfor %}
+	
 	<!-- Page Specific CSS -->
 	<style type="text/css">
 		html {

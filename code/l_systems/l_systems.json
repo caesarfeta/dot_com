@@ -6,7 +6,15 @@
 	"keywords": [ "Code", "Fractal"],
 	"publish_date": "June 22, 3000",
 	"page_js": [ "l_systems.js" ],
-	"third_party": [ "../javascript/lib/lsys_js/src/js/LSYS.js", "../javascript/lib/jslib/src/js/AutoCanvas.js" ],
+	"page_css": [ "../../javascript/lib/jssh/src/css/jssh.css" ],
+	"third_party": [ 
+		"../javascript/lib/jslib/src/js/AutoCanvas.js",
+		"../javascript/lib/jslib/src/js/TimeStamp.js", 
+		"../javascript/lib/lsys_js/src/js/LSYS.js", 
+		"../javascript/lib/jssh/src/js/jssh.js",
+		"../javascript/lib/jslib/src/js/ObjectExt.js",
+		"../javascript/lib/jslib/src/js/StringExt.js"
+		],
 	"preview_img": "img/avatar_default.jpg",
 	"bg_color": "#AAA",
 	"preview": "L-Systems are a simple way of defining fractalish patterns"

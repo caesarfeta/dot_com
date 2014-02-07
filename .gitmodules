@@ -22,3 +22,6 @@
 [submodule "javascript/lib/jslib"]
 	path = javascript/lib/jslib
 	url = https://github.com/caesarfeta/jslib
+[submodule "javascript/lib/jssh"]
+	path = javascript/lib/jssh
+	url = http://github.com/caesarfeta/jssh
