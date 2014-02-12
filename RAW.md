@@ -186,23 +186,25 @@ Here's what your javascript page/code switcher looks like.
 		break;
 	}
 
-## Identifying users
+## Identifying certain users and closing the development loop... informal QA
 So here's a nice side-effect of this system, which can improve UI development especially for small projects.
+Let's do a little bit of reflection.
 Who's testing your UIs?
 Do you have a QA team?
-Do you have a testing environment with up-to-date data?
+Do you have a QA testing environment with up-to-date data?
+Many smaller software projects do not.
+And the time costs of maintaining a separate QA test environment seperate from a developer test can be significant.
+So if there isn't a dedicated QA team and environment how can you test new UI designs?
 
-Here's a better approach.
-Find a user and friend them up.
-A user you like who fits the profile of an 'early adopter', who can give it to you straight.
-Tell him in exchange for getting access to the latest and greatest UI he'll have to let you pick his brain.
-
-Now you can use him as your guinea pig.
-He becomes a group of one basically.
-You could do this with a small group of users too.
-Here's what your html would look like.
+Here's a small scale solution.
+Find a user and friend him up.
+A user you like who fits the profile of an 'early adopter'.
+And somebody who is representative of your user base.
+Now all you have to do is mark the root element as testing with a template like this.
 
 	<div id="store-shop" class="htmlRoot{% if user.id == '12345678' %} testing{% fi %}"></div>
+
+Then you can write CSS and javascript which will only run on testing group pages, i.e. this one user's pages.
 
 ## Pros  
 1. It's consistent.
@@ -227,7 +229,7 @@ Here's what your html would look like.
 
 	you have a problem.
 	
-5. You can easily close the development loop.
+5. You can easily close the development loop: design, test, implement, feedback, repeat...
 
 ## Cons
 1. Your CSS will be verbose.
