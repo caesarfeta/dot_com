@@ -1,0 +1,40 @@
+<div class="row">
+	<div class="twelve columns story">
+		<div id="genre">
+		
+			<a href="#Web">Web</a>
+		
+			<a href="#Development">Development</a>
+		
+			<a href="#Theory">Theory</a>
+		
+		</div>
+		<div class="row">
+			<div class="three columns">
+				<a href="story/client_side">
+				
+					<img class="splash" src="story/low_poly/img/preview.jpg" alt="Client-Side Web Development" />
+				
+				</a>
+			</div>
+			<div class="nine columns">
+				<div id="meta">
+					<a href="story/client_side"><h1 class="title">Client-Side Web Development</h1></a>
+					<h2 class="subtitle">How to structure your templates, CSS, and Javascript without making a huge flerkin' mess.</h2>
+					<h3 class="author">by <span class="name">Adam Tavares</span></h3>
+					<h4 class="date">Published June 22, 3000</h4>
+				</div>
+				<p class="preview">The template filesystem structure should mimic the URLs associated with them.
+http://greatsite.com/user/docs/edit
+/var/www/site/views/user/docs/edit.tmpl
+
+All templates should be wrapped in a tag pair which has a unique id, 
+and that unique id should mimic the URL and filesystem structure.
+&lt;div id="home" class="htmlRoot"&gt;&lt;/div&gt;
+
+CSS and Javascript should not be embedded in templates.
+If ...</p>
+			</div>
+		</div>
+	</div>
+</div>

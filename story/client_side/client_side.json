@@ -1,0 +1,11 @@
+{
+	"title": "Client-Side Web Development",
+	"type": "story",
+	"subtitle": "How to structure your templates, CSS, and Javascript without making a huge flerkin' mess.",
+	"author": "Adam Tavares",
+	"keywords": [ "Web", "Development", "Theory" ],
+	"publish_date": "June 22, 3000",
+	"preview_img": "story/low_poly/img/preview.jpg",
+	"quote_color": null,
+	"story": "client_side.md"
+}
