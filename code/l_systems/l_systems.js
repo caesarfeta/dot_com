@@ -7,6 +7,6 @@ $( document ).ready( function(){
 			train: 10
 		}
 	}).data('#code');
-//	var dragon = new LSYS.DragonCurve( sh.canvas );
-	var hexSierp = new LSYS.HexagonSierpinski( sh.canvas );
+	var dragon = new LSYS.DragonCurve( sh.canvas );
+//	var hexSierp = new LSYS.HexagonSierpinski( sh.canvas );
 });

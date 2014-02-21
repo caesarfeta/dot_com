@@ -14,11 +14,9 @@ Haml accelerates and simplifies template creation down to veritable haiku."
 
 ## HTML isn't beautiful.
 So HTML and it's big-brother XML have problems.
-They're tag based which means all of your content gets wrapped in opening and closing tags.
-These tags can get nested one inside of the other.
-There's not really a practical limit to how deep this nesting can go.
-So if somebody isn't careful they can easily make a mess for themselves by carelessly omitting a tag.
-Haml tries to remedy this situation by replacing tag-pairs with carefully crafted whitespace.
+They're tag based which means all of your content gets wrapped in opening and closing tag pairs.
+If somebody isn't careful they can easily make a mess for themselves by carelessly omitting a closing tag.
+Haml tries to remedy this situation by replacing tag-pairs with strictly enforced whitespace rules.
 
 ## See for yourself.
 Take a look at the haml project's homepage http://haml.info/
@@ -43,17 +41,18 @@ Not to get too side-tracked but I have to get this off of my chest... web-develo
 We aren't Lao-Tzu meditating on how to live harmoniously with the rest of the universe.
 Take pride in your work, certainly, but learn some humility.
 Your career will thank you, and I'll thank you because I won't have the tools of my trade sold to me by incessantly stroking my ego.
+I want practical tools not "creative feel-goodery".
 
 ## Marketing bullshit aside...
 Here's why Haml is ridiculous fundamentally.
 Web browsers render HTML.
-They don't render Haml.
+They don't render HAML.
 
 The time you save typing is negligible when you realize developers don't spend the majority of their time typing.
 The majority of our time is spent asking this question, 
 "Why is the computer doing this?"
 
-A front-end web-developer's primary question is a bit more specific, "Why is the browser rendering this page like this?"
+A front-end developer/designer's primary question is a bit more specific, "Why is the browser rendering this page like this?"
 Answering that question becomes much more complex with Haml.
 Why? 
 Because Haml has to be turned into HTML before it can be rendered by a browser.
@@ -64,17 +63,81 @@ But what happens when it doesn't?
 Well this happens.
 The developer looks at the page and its source in his browser, then he looks at the template in his text-editor and tries to figure out where things have gone wrong.
 
-Ever find yourself in a waiting room and you pick up a Hi-Lites magazine?
-I know their for children I don't care.
-Well they have these pages where two drawings are shown side-by-side and it's your job to figure out what's "wrong" in one of them.  You find the man with the mustache and the fish missing a fin and you feel good that you have such finely honed observational powers.
+Ever find yourself in a doctor's waiting room and you pick up a Hi-Lites magazine?
+I know they're for children I don't care.
+Well they have these pages where two drawings are shown side-by-side and it's your job to figure out what's "wrong" in one of them.
+You find the man with the mustache and the fish missing a fin and you feel good that you have such finely honed observational powers.
 
 Well that's not that different than troubleshooting template bugs.
-You're visually comparing two texts instead of two cartoon images.
+Instead of two cartoon images, you're visually comparing two texts.
 
-Actually there's another layer to this...
-a developer has to imagine how the template gets modified by the server.
-So you're really comparing three texts: the browser source, the template source, and the nebulous ideal yet to be realized in your head.
+## HAML is a solution looking for a problem
+I want to see HAML abandoned.  It's 
 
 ## HTML is here to stay.
 Until there is an alternative mark-up language rendered by the majority of web-browsers we have to live with HTML.
 And since we have to live with HTML people have to learn how to use it responsibly.
+Trying to abstract it away adds complexity to the whole process.
+You've saved a few seconds in typing but you've added minutes if not hours in troubleshooting.
+
+
+
+
+
+# Battle Asteroids
+All dances and martial-arts can be understood as a sequence of well-rehearsed movements.
+To become accomplished one has to repeat these movements thousands of times until they become automatic.
+The purpose of Battle Asteroids is to document the world's martial-arts movements in a universally understood visual cartoon language.
+
+## Scenes
+Scenes with cartoon characters in martial-arts poses are drawn.
+Each scene is an 'asteroid', which in our case is a free floating island composed of fantasy vegetation and architecture which frame or contextualize the martial-art action.
+Ideally each asteroid has a theme.
+By theme I mean a focus on a particular movement, a useful mental-state, or a well-defined visual aesthetic.
+
+## Character Classes
+Characters must belong to a character class.
+Great care must be made to design classes that...
+
+1. Are differentiated from all other classes.
+2. Are representative enough of the human form to be posed.
+3. Just large enough to express individual emotion.
+
+Here's a list of classes.
+
+## Physics
+Physics is important.
+The characters and environments must respond to forces ( gravity, strikes, environment ) in a way that is caricatured and amusing but still rooted in physical reality.
+Effort must be made to show how these forces are coped with by each character.
+One way to accomplish this is with tension and compression markers.
+
+[ Sample image here ]
+
+## Animation and subregion dispaly
+Scenes are stitched together into one master image.
+This master image I'll refer to as 'the poster'.
+imgspect is used to select subregions of the poster, sequence them, and caption them.
+imgbit is used to display subregions in the desired sequence.
+
+This duo allows for sequences that are animations or Ken Burns pan and scan style slideshows.
+
+[ Sample animation ]
+[ Sample slideshow ]
+
+## Color Use
+Images should be readable as black and white line drawings.
+
+[ Sample ]
+
+## How to contribute
+Read this document in full.
+Explore the poster. 
+Draw a scene of your own. 
+Submit the image.
+Our review board will see if it fits our standard of quality and if it does it will be stitched into the existing image at an aesthetically appealing and or logical position.
+
+## Delusions of Grandeur
+Hopefully it one day becomes the suprememe visual documention of our world martial-arts heritage.
+An image that is joyful, playful, and above all useful to the study of martial-arts.
+It's an exploration of time and space as well.
+I hope to have subregions printed on wallpaper and stuck to the walls of dojos and practice spaces around the world.

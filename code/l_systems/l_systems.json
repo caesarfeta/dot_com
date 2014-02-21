@@ -12,6 +12,7 @@
 		"../javascript/lib/jslib/src/js/TimeStamp.js", 
 		"../javascript/lib/lsys_js/src/js/LSYS.js", 
 		"../javascript/lib/jssh/src/js/jssh.js",
+		"../javascript/lib/jslib/src/js/jQueryPlus.js",
 		"../javascript/lib/jslib/src/js/ObjectExt.js",
 		"../javascript/lib/jslib/src/js/StringExt.js"
 		],
