@@ -9,16 +9,16 @@
 		</div>
 		<div class="row">
 			<div class="three columns">
-				<a href="code/l_systems"><img class="splash" src="img/avatar_default.jpg" /></a>
+				<a href="code/l_systems"><img class="splash" src="code/l_systems/img/dragon_curve.png" /></a>
 			</div>
 			<div class="nine columns">
 				<div id="meta">
 					<a href="code/l_systems"><h1 class="title">L-Systems</h1></a>
-					<h2 class="subtitle">L-Systems</h2>
+					<h2 class="subtitle">Dragon Curve</h2>
 					<h3 class="author">by <span class="name">Adam Tavares</span></h3>
-					<h4 class="date">Published June 22, 3000</h4>
+					<h4 class="date">Published 2 24, 2014</h4>
 				</div>
-				<p class="preview">L-Systems are a simple way of defining fractalish patterns</p>
+				<p class="preview">A beautiful dragon curve drawn right before your eyes... Etch-a-Sketch Style.<br/>  Drawn with <a href="https://github.com/caesarfeta/lsys_js">lsys_js</a></p>
 			</div>
 		</div>
 	</div>

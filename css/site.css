@@ -42,6 +42,7 @@ code {
 	padding: 20px;
 	margin-bottom: 20px;
 	white-space: pre-wrap;
+	line-height: 1.5em;
 }
 #extra-info {
 	width: 100%;
@@ -172,8 +173,7 @@ code {
 #story #header #meta {
 	padding-top: 85px;
 }
-#story h1,
-#story h2 {
+#story h1 {
 	line-height: .9em;
 }
 #story #text h1,
