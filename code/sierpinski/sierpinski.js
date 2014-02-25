@@ -1,4 +1,4 @@
 $( document ).ready( function(){
 	auto = new AutoCanvas( 'canvas', 100, '#AAA' );
-	var dragon = new LSYS.DragonCurve( auto.canvas );
+	var hexagon = new LSYS.HexagonSierpinski( auto.canvas );
 });
