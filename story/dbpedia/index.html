@@ -1,0 +1,265 @@
+<html>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0" />
+
+<head>	
+	<!-- CSS -->
+	<link href="../../third_party/foundation/stylesheets/foundation.min.css" rel="stylesheet" type="text/css" />
+	<link href="../../css/site.css" rel="stylesheet" type="text/css" />
+	
+	<!-- Page Specific CSS -->
+
+		<style type="text/css">
+			
+			/* Each page can have a custom background image */
+			html { 
+				-webkit-background-size: cover;
+				-moz-background-size: cover;
+				-o-background-size: cover;
+				background-size: cover;
+				background: url( "img/bg.jpg" ) no-repeat center center fixed;
+			}
+			
+			
+			
+			
+			
+		</style>
+	
+	<!-- Title -->
+	<title>How to play with DBPedia by Adam Tavares</title>
+	
+</head>
+
+<body>
+	<!-- Navigation -->
+	<section id="extra-info">
+		<div id="panel">
+			<a id="home" class="link" href="../..">[ Home ]</a>
+		</div>
+	</section>
+	
+	<div id="story" class="container main">
+		<section id="header">
+		
+			<!-- Keywords -->
+			<div class="row">
+				<div class="twelve columns">
+					<div id="genre">
+					
+						<a href="../../#programming">programming</a>
+					
+						<a href="../../#dbpedia">dbpedia</a>
+					
+						<a href="../../#sparql">sparql</a>
+					
+					</div>
+				</div>
+			</div>
+			
+			<!-- Title and Author -->
+			<div class="row">
+				<div id="meta" class="twelve columns">
+					<h1 id="title">How to play with DBPedia</h1>
+					<h2 id="subtitle">SPARQL, graph databases, and a bit of Javascript</h2>
+					<img id="avatar" src="../../img/avatar_default.jpg" alt="Adam Tavares" />
+					<h3 id="author">by <span class="name">Adam Tavares</span></h3>
+					<h4 id="date">Published February 25, 2014</h4>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Story -->
+		<section id="text">
+			<div class="row">
+				<div class="twelve columns">
+					<p>I don't know if you've heard of DBPedia.
+Well it's Wikipedia turned into a graph database.</p>
+<p>You may be wondering, "What's a graph database and how are they different from your typical database?"
+Very briefly, your typical database is a relational database.
+They are collections of tables, which are lists of similar data organized into columns and rows and connected to one another by unique numbers called keys.</p>
+<p>A graph database forgoes using tables.
+It's a big heap of data, where every individual chunk of data has a universally unique identifier, and connections are made between individual data chunks.</p>
+<p>I'm oversimplifying... greatly... but that's the basic difference.
+And it's a difference so basic that graph databases can't be queried with the same language that relational databases are.
+Most graph databases use a language called SPARQL, pronounced "sparkel".</p>
+<p>So let me show you how to explore DBPedia with SPARQL.</p>
+<h2>Let's write some SPARQL!</h2>
+<p>You can use <a href="http://dbpedia.org/snorql">SNORQL</a>, pronounced "snorkel", to run DBPedia SPARQL queries.
+It's easy.
+You can do it even when high on Nyquil.</p>
+<p>So a good way to begin your exploration of DBPedia is to find a Wikipedia page you're interested in.
+I'm interested in insects, especially social insects, so I'll start with my favorite social insect of all, the honey bee.</p>
+<pre><code>http://en.wikipedia.org/wiki/Honey_bee
+</code></pre>
+<p>I'm just going to see what connections with Honey_bee exist.</p>
+<pre><code>SELECT ?p ?o 
+WHERE {
+  :Honey_bee ?p ?o
+}
+</code></pre>
+<p>Now I have my foot in DBPedia's door.
+A line in the output catches my eye.</p>
+<pre><code>dbpedia2:genus [http]   "Apis"@en
+</code></pre>
+<p>Let's find all the species that have Wikipedia pages that share the honey bee's genus, Apis.</p>
+<pre><code>SELECT ?s
+WHERE {
+    ?s dbpedia2:genus "Apis"@en
+}
+</code></pre>
+<p>Here they are.</p>
+<pre><code>:Apis_nigrocincta [http]
+:Carniolan_honey_bee [http]
+:European_dark_bee [http]
+:Apis_cerana_nuluensis [http]
+:Apis_mellifera_capensis [http]
+:Buckfast_bee [http]
+:Caucasian_honey_bee [http]
+:African_bee [http]
+:Apis_florea [http]
+:Italian_bee [http]
+:Maltese_honey_bee [http]
+:Honey_bee [http]
+:Apis_cerana [http]
+:Apis_cerana_indica [http]
+:Apis_koschevnikovi [http]
+:Apis_nearctica [http]
+:Western_honey_bee [http]
+:Apis_cerana_japonica [http]
+:Apis_mellifera_iberiensis [http]
+:Apis_mellifera_intermissa [http]
+:Apis_mellifera_lamarckii [http]
+:Apis_mellifera_macedonica [http]
+:Africanized_bee [http]
+:Apis_andreniformis [http]
+:Apis_dorsata [http]
+:Apis_dorsata_laboriosa [http]
+:Apis_mellifera_cecropia [http]
+</code></pre>
+<p>Returning to my original Honey_bee query results I find this interesting item.</p>
+<pre><code>foaf:depiction [http]   &lt;http://upload.wikimedia.org/wikipedia/commons/9/99/Apis_mellifera_flying.jpg&gt;
+</code></pre>
+<p>That my friends is a link to an image.
+I love images!
+I want more of them!</p>
+<p>I'm thinking it would be really cool if I could query DBPedia and get URLs to images of all the species in the Apis genus, which I can do with this query.</p>
+<pre><code>SELECT ?s ?o
+WHERE {
+    ?s dbpedia2:genus "Apis"@en;
+        foaf:depiction ?o
+}
+</code></pre>
+<p>Which gives me this list.</p>
+<pre><code>:Apis_nigrocincta [http]    &lt;http://upload.wikimedia.org/wikipedia/commons/f/f0/Apis_nigrocincta_distribution_map.svg&gt; [http]
+:Carniolan_honey_bee [http] &lt;http://upload.wikimedia.org/wikipedia/commons/a/a1/Apis_mellifera_carnica_worker_hive_entrance_3.jpg&gt; [http]
+:European_dark_bee [http]   &lt;http://upload.wikimedia.org/wikipedia/commons/0/0d/Bee_October_2007-1.jpg&gt; [http]
+:Apis_cerana_nuluensis [http]   &lt;http://upload.wikimedia.org/wikipedia/commons/9/99/Borneo_blank_map.PNG&gt; [http]
+:Apis_mellifera_capensis [http] &lt;http://upload.wikimedia.org/wikipedia/commons/0/0a/Cape_Honeybee_gorging.jpg&gt; [http]
+:Buckfast_bee [http]    &lt;http://upload.wikimedia.org/wikipedia/commons/1/1e/Buckfast_bee.jpg&gt; [http]
+:African_bee [http] &lt;http://upload.wikimedia.org/wikipedia/commons/d/d0/Apis_mellifera_scutellata.jpg&gt; [http]
+:Apis_florea [http] &lt;http://upload.wikimedia.org/wikipedia/commons/7/73/Apis_florea_worker_1.jpg&gt; [http]
+:Italian_bee [http] &lt;http://upload.wikimedia.org/wikipedia/commons/c/cd/Honeybee-27527-1.jpg&gt; [http]
+:Maltese_honey_bee [http]   &lt;http://upload.wikimedia.org/wikipedia/commons/9/99/Maltese_honey_bee.JPG&gt; [http]
+:Honey_bee [http]   &lt;http://upload.wikimedia.org/wikipedia/commons/9/99/Apis_mellifera_flying.jpg&gt; [http]
+:Apis_cerana [http] &lt;http://upload.wikimedia.org/wikipedia/commons/e/ec/Cerana.jpg&gt; [http]
+:Apis_cerana_indica [http]  &lt;http://upload.wikimedia.org/wikipedia/commons/b/b6/Apiscerana.jpg&gt; [http]
+:Apis_koschevnikovi [http]  &lt;http://upload.wikimedia.org/wikipedia/commons/0/0f/Apis_koschevnikovi_distribution_map.svg&gt; [http]
+:Western_honey_bee [http]   &lt;http://upload.wikimedia.org/wikipedia/commons/d/d9/Apis_mellifera_Tanzania.jpg&gt; [http]
+:Apis_cerana_japonica [http]    &lt;http://upload.wikimedia.org/wikipedia/commons/3/31/Vespa_simillima_xanthoptera01.jpg&gt; [http]
+:Africanized_bee [http] &lt;http://upload.wikimedia.org/wikipedia/commons/a/a1/Africanizedbee.jpg&gt; [http]
+:Apis_andreniformis [http]  &lt;http://upload.wikimedia.org/wikipedia/commons/a/ae/Apis_andreniformis_distribution_map.svg&gt; [http]
+:Apis_dorsata [http]    &lt;http://upload.wikimedia.org/wikipedia/commons/4/4d/ApisDorsataHive.jpg&gt; [http]
+:Apis_dorsata_laboriosa [http]  &lt;http://upload.wikimedia.org/wikipedia/commons/7/76/ApisLaboriosa1.jpg&gt;
+</code></pre>
+<h2>Let's write some Javascript!</h2>
+<p>Now there's nothing special about SNORQL.
+It's just a textarea that takes your SPARQL query, connects to what's called a SPARQL endpoint, runs the query, and spits out the results.</p>
+<p>Here's a fun fact:  you can connect to a SPARQL endpoint and issue SPARQL queries through any HTTP client.
+So what I'd like to do now is issue a query with Javascript and do something fun with results.
+I'll use jQuery to make things a bit simpler.</p>
+<p>And here it is.
+Copy the code below into an HTML file and run it and see what happens!
+Or you could click <a href="example.html">this</a></p>
+<pre><code>&lt;html&gt;
+&lt;head&gt;
+&lt;script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"&gt;&lt;/script&gt;
+&lt;style type="text/css"&gt;
+img { 
+    width: 100%;
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;&lt;/body&gt;
+&lt;script type="text/javascript"&gt;
+    var url = "http://dbpedia.org/sparql";
+    var query = "\
+    PREFIX dbpedia2: &lt;http://dbpedia.org/property/&gt;\
+    PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;\
+    SELECT ?o\
+    WHERE {\
+        ?s dbpedia2:genus \"Apis\"@en;\
+            foaf:depiction ?o\
+    }";
+    var queryUrl = encodeURI( url+"?query="+query+"&amp;format=json" );
+    $.ajax({
+        dataType: "jsonp",  
+        url: queryUrl,
+        success: function( _data ) {
+            var results = _data.results.bindings;
+            for ( var i in results ) {
+                var src = results[i].o.value;
+                $( 'body' ).append( '&lt;img src="'+src+'"/&gt;' );
+            }
+        }
+    });
+&lt;/script&gt;
+&lt;/html&gt;
+</code></pre>
+<p>That's a lot of bees! And a couple of maps too! And a broken link!
+If you want to see a lot of images of skulls replace "Apis" with "Homo".</p>
+<h2>Next Steps...</h2>
+<p>With a little bit of work I could flesh this out and build a general purpose genus image search web app.
+I'm thinking it'll have an input box to accept a species name.
+In the output I can display some relevant textual data so users know a bit more about what they're looking at.</p>
+<p>Yes I decided I'm going to build it!
+Check back soon and see it.
+Hope you had fun and learned something.
+SPARQL on, you crazy diamonds.</p>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Copyright -->
+		<section id="footer">
+			<div class="row">
+				<div class="twelve columns">
+					<div id="copyright">&copy; Adam Tavares 2014</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</body>
+
+<!-- Javascript -->
+<!-- 3rd Party -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/modernizr.foundation.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/foundation.min.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/jquery.event.move.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/jquery.event.swipe.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/jquery.foundation.forms.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/jquery.foundation.mediaQueryToggle.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/app.js"></script>
+
+<!-- Custom -->
+<script type="text/javascript" src="../../javascript/lib/lib.min.js"></script>
+<script type='text/javascript' src='../../javascript/site.js'></script>
+
+<!-- Page Specific -->
+
+
+
+
+</html>

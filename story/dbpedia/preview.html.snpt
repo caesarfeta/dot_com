@@ -1,0 +1,35 @@
+<div class="row">
+	<div class="twelve columns story">
+		<div id="genre">
+		
+			<a href="#programming">programming</a>
+		
+			<a href="#dbpedia">dbpedia</a>
+		
+			<a href="#sparql">sparql</a>
+		
+		</div>
+		<div class="row">
+			<div class="three columns">
+				<a href="story/dbpedia">
+				
+					<img class="splash" src="story/honey_bee/img/side_angle.jpg" alt="How to play with DBPedia" />
+				
+				</a>
+			</div>
+			<div class="nine columns">
+				<div id="meta">
+					<a href="story/dbpedia"><h1 class="title">How to play with DBPedia</h1></a>
+					<h2 class="subtitle">SPARQL, graph databases, and a bit of Javascript</h2>
+					<h3 class="author">by <span class="name">Adam Tavares</span></h3>
+					<h4 class="date">Published February 25, 2014</h4>
+				</div>
+				<p class="preview">I don't know if you've heard of DBPedia.
+Well it's Wikipedia turned into a graph database.
+You may be wondering, "What's a graph database and how are they different from your typical database?"
+Very briefly, your typical database is a relational database.
+They are collections of tables, which are ...</p>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,10 +1,27 @@
-# How to play with DBPedia
-You can use SNORQL, pronounced "snorkel", to run SPARQL, pronounced "sparkel", queries against DBPedia.
-It's easy.  You can do it even when high on Nyquil or when you're annoyed by Steve Urkel.
-http://dbpedia.org/snorql
+I don't know if you've heard of DBPedia.
+Well it's Wikipedia turned into a graph database.
+
+You may be wondering, "What's a graph database and how are they different from your typical database?"
+Very briefly, your typical database is a relational database.
+They are collections of tables, which are lists of similar data organized into columns and rows and connected to one another by unique numbers called keys.
+
+A graph database forgoes using tables.
+It's a big heap of data, where every individual chunk of data has a universally unique identifier, and connections are made between individual data chunks.
+
+I'm oversimplifying... greatly... but that's the basic difference.
+And it's a difference so basic that graph databases can't be queried with the same language that relational databases are.
+Most graph databases use a language called SPARQL, pronounced "sparkel".
+
+So let me show you how to explore DBPedia with SPARQL.
+
+## Let's write some SPARQL!
+
+You can use <a href="http://dbpedia.org/snorql">SNORQL</a>, pronounced "snorkel", to run DBPedia SPARQL queries.
+It's easy.
+You can do it even when high on Nyquil.
 
 So a good way to begin your exploration of DBPedia is to find a Wikipedia page you're interested in.
-I'm interested in insects especially social insects, so I'll start with my favorite social insect of all, the honey bee.
+I'm interested in insects, especially social insects, so I'll start with my favorite social insect of all, the honey bee.
 
 	http://en.wikipedia.org/wiki/Honey_bee
 
@@ -15,18 +32,17 @@ I'm just going to see what connections with Honey_bee exist.
 	  :Honey_bee ?p ?o
 	}
 
-Now I have my foot in the door.  A line in the output catches my eye.
+Now I have my foot in DBPedia's door.
+A line in the output catches my eye.
 
 	dbpedia2:genus [http]	"Apis"@en
 
-Let's find all the species that share the honey bees genus, Apis.
+Let's find all the species that have Wikipedia pages that share the honey bee's genus, Apis.
 
 	SELECT ?s
 	WHERE {
 		?s dbpedia2:genus "Apis"@en
 	}
-
--- You can't just search for "Apis".  Here's why... [ TODO ]
 
 Here they are.
 
@@ -62,9 +78,11 @@ Returning to my original Honey_bee query results I find this interesting item.
 
 	foaf:depiction [http]	<http://upload.wikimedia.org/wikipedia/commons/9/99/Apis_mellifera_flying.jpg>
 
-I'm thinking it would be really cool if I could query DBPedia and get URLs to images of all the species in the Apis genus.
+That my friends is a link to an image.
+I love images!
+I want more of them!
 
-I can do that with this query.
+I'm thinking it would be really cool if I could query DBPedia and get URLs to images of all the species in the Apis genus, which I can do with this query.
 
 	SELECT ?s ?o
 	WHERE {
@@ -95,28 +113,63 @@ Which gives me this list.
 	:Apis_dorsata [http]	<http://upload.wikimedia.org/wikipedia/commons/4/4d/ApisDorsataHive.jpg> [http]
 	:Apis_dorsata_laboriosa [http]	<http://upload.wikimedia.org/wikipedia/commons/7/76/ApisLaboriosa1.jpg>
 
-Now there's nothing special about SNORQL really.
-You can issue SPARQL queries through any HTTP client.
-So what I'd like to do now is issue these queries through Javascript.
+## Let's write some Javascript!
+
+Now there's nothing special about SNORQL.
+It's just a textarea that takes your SPARQL query, connects to what's called a SPARQL endpoint, runs the query, and spits out the results.
+
+Here's a fun fact:  you can connect to a SPARQL endpoint and issue SPARQL queries through any HTTP client.
+So what I'd like to do now is issue a query with Javascript and do something fun with results.
 I'll use jQuery to make things a bit simpler.
 
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+And here it is.
+Copy the code below into an HTML file and run it and see what happens!
+Or you could click <a href="example.html">this</a>
+
+	<html>
+	<head>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<style type="text/css">
+	img { 
+		width: 100%;
+	}
+	</style>
+	</head>
+	<body></body>
 	<script type="text/javascript">
-		var url = http://dbpedia.org/sparql/query
-		var query = "
-		SELECT ?s ?o\
+		var url = "http://dbpedia.org/sparql";
+		var query = "\
+		PREFIX dbpedia2: <http://dbpedia.org/property/>\
+		PREFIX foaf: <http://xmlns.com/foaf/0.1/>\
+		SELECT ?o\
 		WHERE {\
-			?s dbpedia2:genus "Apis"@en;\
+			?s dbpedia2:genus \"Apis\"@en;\
 				foaf:depiction ?o\
 		}";
-		var queryUrl = url + "/query=" + encodeUri(query);
-		
+		var queryUrl = encodeURI( url+"?query="+query+"&format=json" );
 		$.ajax({
 			dataType: "jsonp",  
 			url: queryUrl,
 			success: function( _data ) {
-				console.log( _data )
+				var results = _data.results.bindings;
+				for ( var i in results ) {
+					var src = results[i].o.value;
+					$( 'body' ).append( '<img src="'+src+'"/>' );
+				}
 			}
 		});
 	</script>
-	
+	</html>
+
+That's a lot of bees! And a couple of maps too! And a broken link!
+If you want to see a lot of images of skulls replace "Apis" with "Homo".
+
+## Next Steps...
+With a little bit of work I could flesh this out and build a general purpose genus image search web app.
+I'm thinking it'll have an input box to accept a species name.
+In the output I can display some relevant textual data so users know a bit more about what they're looking at.
+
+Yes I decided I'm going to build it!
+Check back soon and see it.
+Hope you had fun and learned something.
+SPARQL on, you crazy diamonds.

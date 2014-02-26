@@ -1,27 +1,34 @@
 <html>
 <head>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<style type="text/css">
+img { 
+	width: 100%;
+}
+</style>
+</head>
+<body></body>
 <script type="text/javascript">
-	var url = "http://dbpedia.org/sparql?default-graph-uri=http%3A%2F%2Fdbpedia.org";
+	var url = "http://dbpedia.org/sparql";
 	var query = "\
 	PREFIX dbpedia2: <http://dbpedia.org/property/>\
 	PREFIX foaf: <http://xmlns.com/foaf/0.1/>\
-	SELECT ?s ?o\
+	SELECT ?o\
 	WHERE {\
 		?s dbpedia2:genus \"Apis\"@en;\
 			foaf:depiction ?o\
 	}";
-	query = query.replace( /[\s\n\r]+/g, ' ' );
-	var queryUrl = encodeURI( url+"&query="+query+"&format=json" );
-	console.log( queryUrl );
+	var queryUrl = encodeURI( url+"?query="+query+"&format=json" );
 	$.ajax({
 		dataType: "jsonp",  
 		url: queryUrl,
 		success: function( _data ) {
-			console.log( _data )
+			var results = _data.results.bindings;
+			for ( var i in results ) {
+				var src = results[i].o.value;
+				$( 'body' ).append( '<img src="'+src+'"/>' );
+			}
 		}
 	});
 </script>
-</head>
-<body></body>
 </html>
