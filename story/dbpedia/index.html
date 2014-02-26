@@ -6,6 +6,7 @@
 <head>	
 	<!-- CSS -->
 	<link href="../../third_party/foundation/stylesheets/foundation.min.css" rel="stylesheet" type="text/css" />
+	<link href="../../third_party/jquery_snippet/jquery.snippet.min.css" rel="stylesheet" type="text/css" />
 	<link href="../../css/site.css" rel="stylesheet" type="text/css" />
 	
 	<!-- Page Specific CSS -->
@@ -91,8 +92,10 @@ It's easy.
 You can do it even when high on Nyquil.</p>
 <p>So a good way to begin your exploration of DBPedia is to find a Wikipedia page you're interested in.
 I'm interested in insects, especially social insects, so I'll start with my favorite social insect of all, the honey bee.</p>
-<pre><code>http://en.wikipedia.org/wiki/Honey_bee
-</code></pre>
+<pre>
+http://en.wikipedia.org/wiki/Honey_bee
+</pre>
+
 <p>I'm just going to see what connections with Honey_bee exist.</p>
 <pre><code>SELECT ?p ?o 
 WHERE {
@@ -182,41 +185,43 @@ I'll use jQuery to make things a bit simpler.</p>
 <p>And here it is.
 Copy the code below into an HTML file and run it and see what happens!
 Or you could click <a href="example.html">this</a></p>
-<pre><code>&lt;html&gt;
+<pre class="javascript">
+&lt;html&gt;
 &lt;head&gt;
-&lt;script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"&gt;&lt;/script&gt;
-&lt;style type="text/css"&gt;
+&lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;style type=&quot;text/css&quot;&gt;
 img { 
     width: 100%;
 }
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;&lt;/body&gt;
-&lt;script type="text/javascript"&gt;
-    var url = "http://dbpedia.org/sparql";
-    var query = "\
+&lt;script type=&quot;text/javascript&quot;&gt;
+    var url = &quot;http://dbpedia.org/sparql&quot;;
+    var query = &quot;\
     PREFIX dbpedia2: &lt;http://dbpedia.org/property/&gt;\
     PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;\
     SELECT ?o\
     WHERE {\
-        ?s dbpedia2:genus \"Apis\"@en;\
+        ?s dbpedia2:genus \&quot;Apis\&quot;@en;\
             foaf:depiction ?o\
-    }";
-    var queryUrl = encodeURI( url+"?query="+query+"&amp;format=json" );
+    }&quot;;
+    var queryUrl = encodeURI( url+&quot;?query=&quot;+query+&quot;&amp;format=json&quot; );
     $.ajax({
-        dataType: "jsonp",  
+        dataType: &quot;jsonp&quot;,  
         url: queryUrl,
         success: function( _data ) {
             var results = _data.results.bindings;
             for ( var i in results ) {
                 var src = results[i].o.value;
-                $( 'body' ).append( '&lt;img src="'+src+'"/&gt;' );
+                $( &#x27;body&#x27; ).append( &#x27;&lt;img src=&quot;&#x27;+src+&#x27;&quot;/&gt;&#x27; );
             }
         }
     });
 &lt;/script&gt;
 &lt;/html&gt;
-</code></pre>
+</pre>
+
 <p>That's a lot of bees! And a couple of maps too! And a broken link!
 If you want to see a lot of images of skulls replace "Apis" with "Homo".</p>
 <h2>Next Steps...</h2>
@@ -252,6 +257,7 @@ SPARQL on, you crazy diamonds.</p>
 <script type="text/javascript" src="../../third_party/foundation/javascripts/jquery.foundation.forms.js"></script>
 <script type="text/javascript" src="../../third_party/foundation/javascripts/jquery.foundation.mediaQueryToggle.js"></script>
 <script type="text/javascript" src="../../third_party/foundation/javascripts/app.js"></script>
+<script type="text/javascript" src="../../third_party/jquery_snippet/jquery.snippet.min.js"></script>
 
 <!-- Custom -->
 <script type="text/javascript" src="../../javascript/lib/lib.min.js"></script>

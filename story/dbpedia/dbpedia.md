@@ -23,7 +23,9 @@ You can do it even when high on Nyquil.
 So a good way to begin your exploration of DBPedia is to find a Wikipedia page you're interested in.
 I'm interested in insects, especially social insects, so I'll start with my favorite social insect of all, the honey bee.
 
-	http://en.wikipedia.org/wiki/Honey_bee
+<pre>
+http://en.wikipedia.org/wiki/Honey_bee
+</pre>
 
 I'm just going to see what connections with Honey_bee exist.
 
@@ -38,6 +40,7 @@ A line in the output catches my eye.
 	dbpedia2:genus [http]	"Apis"@en
 
 Let's find all the species that have Wikipedia pages that share the honey bee's genus, Apis.
+
 
 	SELECT ?s
 	WHERE {
@@ -126,40 +129,42 @@ And here it is.
 Copy the code below into an HTML file and run it and see what happens!
 Or you could click <a href="example.html">this</a>
 
-	<html>
-	<head>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-	<style type="text/css">
-	img { 
-		width: 100%;
-	}
-	</style>
-	</head>
-	<body></body>
-	<script type="text/javascript">
-		var url = "http://dbpedia.org/sparql";
-		var query = "\
-		PREFIX dbpedia2: <http://dbpedia.org/property/>\
-		PREFIX foaf: <http://xmlns.com/foaf/0.1/>\
-		SELECT ?o\
-		WHERE {\
-			?s dbpedia2:genus \"Apis\"@en;\
-				foaf:depiction ?o\
-		}";
-		var queryUrl = encodeURI( url+"?query="+query+"&format=json" );
-		$.ajax({
-			dataType: "jsonp",  
-			url: queryUrl,
-			success: function( _data ) {
-				var results = _data.results.bindings;
-				for ( var i in results ) {
-					var src = results[i].o.value;
-					$( 'body' ).append( '<img src="'+src+'"/>' );
-				}
+<pre class="javascript">
+&lt;html&gt;
+&lt;head&gt;
+&lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+img { 
+	width: 100%;
+}
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;&lt;/body&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+	var url = &quot;http://dbpedia.org/sparql&quot;;
+	var query = &quot;\
+	PREFIX dbpedia2: &lt;http://dbpedia.org/property/&gt;\
+	PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;\
+	SELECT ?o\
+	WHERE {\
+		?s dbpedia2:genus \&quot;Apis\&quot;@en;\
+			foaf:depiction ?o\
+	}&quot;;
+	var queryUrl = encodeURI( url+&quot;?query=&quot;+query+&quot;&amp;format=json&quot; );
+	$.ajax({
+		dataType: &quot;jsonp&quot;,  
+		url: queryUrl,
+		success: function( _data ) {
+			var results = _data.results.bindings;
+			for ( var i in results ) {
+				var src = results[i].o.value;
+				$( &#x27;body&#x27; ).append( &#x27;&lt;img src=&quot;&#x27;+src+&#x27;&quot;/&gt;&#x27; );
 			}
-		});
-	</script>
-	</html>
+		}
+	});
+&lt;/script&gt;
+&lt;/html&gt;
+</pre>
 
 That's a lot of bees! And a couple of maps too! And a broken link!
 If you want to see a lot of images of skulls replace "Apis" with "Homo".

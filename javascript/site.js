@@ -165,6 +165,8 @@ $( document ).ready( function() {
 	//------------------------------------------------------------
 	switch ( id ) {
 		case 'story':
+			$('pre.javascript').snippet("javascript", {style:"darkblue", menu: false, showNum: false })
+			break;
 		case 'img':
 		case 'code':
 			getNav();
