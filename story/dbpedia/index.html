@@ -40,11 +40,11 @@
 				<div class="twelve columns">
 					<div id="genre">
 					
-						<a href="../../#programming">programming</a>
-					
 						<a href="../../#dbpedia">dbpedia</a>
 					
 						<a href="../../#sparql">sparql</a>
+					
+						<a href="../../#javascript">javascript</a>
 					
 					</div>
 				</div>
@@ -54,7 +54,7 @@
 			<div class="row">
 				<div id="meta" class="twelve columns">
 					<h1 id="title">How to play with DBPedia</h1>
-					<h2 id="subtitle">SPARQL, graph databases, and a bit of Javascript</h2>
+					<h2 id="subtitle">Bees, SPARQL, graph databases, and a bit of Javascript</h2>
 					<img id="avatar" src="../../img/avatar_default.jpg" alt="Adam Tavares" />
 					<h3 id="author">by <span class="name">Adam Tavares</span></h3>
 					<h4 id="date">Published February 25, 2014</h4>
@@ -87,23 +87,27 @@ I'm interested in insects, especially social insects, so I'll start with my favo
 http://en.wikipedia.org/wiki/Honey_bee
 </pre>
 
-<p>I'm just going to see what connections with Honey_bee exist.</p>
+<p>I'm just going to see what connections with Honey_bee exist.
+So I'll just run this query in SNORQL.</p>
 <pre><code>SELECT ?p ?o 
 WHERE {
   :Honey_bee ?p ?o
 }
 </code></pre>
-<p>Now I have my foot in DBPedia's door.
-A line in the output catches my eye.</p>
+<p>The query returns quite a bit of data.
+Now I have my foot in DBPedia's door...</p>
+<p>While browsing the data a line in the output catches my eye.</p>
 <pre><code>dbpedia2:genus [http]   "Apis"@en
 </code></pre>
-<p>Let's find all the species that have Wikipedia pages that share the honey bee's genus, Apis.</p>
+<p>So I'm guessing that plant and animal Wikipedia pages are going to include data about their genus.
+I can play with that...
+So let's find all the species that have Wikipedia pages that share the honey bee's genus, Apis.</p>
 <pre><code>SELECT ?s
 WHERE {
     ?s dbpedia2:genus "Apis"@en
 }
 </code></pre>
-<p>Here they are.</p>
+<p>Here they are...</p>
 <pre><code>:Apis_nigrocincta [http]
 :Carniolan_honey_bee [http]
 :European_dark_bee [http]
@@ -167,15 +171,15 @@ WHERE {
 :Apis_dorsata [http]    &lt;http://upload.wikimedia.org/wikipedia/commons/4/4d/ApisDorsataHive.jpg&gt; [http]
 :Apis_dorsata_laboriosa [http]  &lt;http://upload.wikimedia.org/wikipedia/commons/7/76/ApisLaboriosa1.jpg&gt;
 </code></pre>
-<h2>Let's write some Javascript!</h2>
+<p>I bet there are a few beautiful photographs on the other end of those links.  Let's have a look at them, eh?  To do that we have to...</p>
+<h2>Write some Javascript!</h2>
 <p>Now there's nothing special about SNORQL.
 It's just a textarea that takes your SPARQL query, connects to what's called a SPARQL endpoint, runs the query, and spits out the results.</p>
 <p>Here's a fun fact:  you can connect to a SPARQL endpoint and issue SPARQL queries through any HTTP client.
 So what I'd like to do now is issue a query with Javascript and do something fun with results.
 I'll use jQuery to make things a bit simpler.</p>
-<p>And here it is.
-Copy the code below into an HTML file and run it and see what happens!
-Or you could click <a href="example.html">this</a></p>
+<p>Copy the code below into an HTML file and run it and see what happens!
+Or you could just click <a href="example.html">this</a>...</p>
 <pre class="javascript">
 &lt;html&gt;
 &lt;head&gt;
@@ -221,8 +225,11 @@ I'm thinking it'll have an input box to accept a species name.
 In the output I can display some relevant textual data so users know a bit more about what they're looking at.</p>
 <p>Yes I decided I'm going to build it!
 Check back soon and see it.
-Hope you had fun and learned something.
-SPARQL on, you crazy diamonds.</p>
+Hope you had fun and you learned something.</p>
+<p>PS. I'm fairly confident that graph databases will be replacing relational ones for many applications.
+Get on the bandwagon or become irrelevant.
+You gotta keep up!</p>
+<p>SPARQL on, you crazy diamonds.</p>
 				</div>
 			</div>
 		</section>

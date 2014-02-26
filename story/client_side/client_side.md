@@ -13,7 +13,7 @@ and that unique id should mimic the URL and filesystem structure.
 CSS and Javascript should not be embedded in templates.
 If templates are wrapped in an id'd tag then page specific styles and actions can be set easily.
 
-Here's how in CSS
+Here's how it's done in CSS...
 
 <pre class="css">
 .htmlRoot#home h1 {}
@@ -22,7 +22,7 @@ Here's how in CSS
 </pre>
 
 
-In Javascript
+... and in Javascript
 
 <pre class="javascript">
 //------------------------------------------------------------
@@ -111,53 +111,29 @@ switch ( page ) {
 }
 </pre>
 
-## Identifying certain users and closing the development loop... informal QA
-
-So here's a nice side-effect of this system, which can improve UI development especially for small projects.
-Let's do a little bit of reflection.
-Who's testing your UIs?
-Do you have a QA team?
-Do you have a QA testing environment with up-to-date data?
-Many smaller software projects do not.
-And the time costs of maintaining a separate QA test environment seperate from a developer test can be significant.
-So if there isn't a dedicated QA team and environment how can you test new UI designs?
-
-Here's a small scale solution.
-Find a user and friend him up.
-A user you like who fits the profile of an 'early adopter'.
-And somebody who is representative of your user base.
-Now all you have to do is mark the root element as testing with a template like this.
-
-<pre class="html">
-&lt;div id=&quot;store-shop&quot; 
-	class=&quot;htmlRoot{% if user.id == &#x27;12345678&#x27; %} testing{% fi %}&quot;&gt;
-&lt;/div&gt;
-</pre>
-
-Then you can write CSS and javascript which will only run on testing group pages, i.e. this one user's pages.
-
 ### Pros 
  
-#### It's consistent.
+#### Consistency.
+
 Projects that are inconsistent are difficult to maintain, 
 and projects that are difficult to maintain eventually get replaced.
-
-#### You can isolate individual page styles and javascript while having a single stylesheet and javascript file.
-
-Having to worry about how and where your stylesheet rules will be applied
-or where javascript will run makes people very wary of change. 
-Being afraid of change is why once successful projects eventually get replaced.
-	
-#### It's easy to minify a single javascript file.
+Consistency means there's less new developers have to learn before they can contribute something useful to your project.  Consistency also means...
 
 #### It's easy to find errors.
 If somebody reports a bug on a specific page you know exactly where to begin.
 
-#### The alternative is doing this a lot...
+The alternative is doing this a lot...
 
 	grep -rilh "some unique string I found in the page source" /var/www/site
 
-### Cons
-#### Your CSS will be verbose.
+#### You can isolate an infinite amount of page styles and javascript with one css and one js file.
 
-Although performance doesn't necessarily have to take a hit... http://httpd.apache.org/docs/2.2/mod/mod_deflate.html
+Having to worry about how and where your stylesheet rules will be applied
+or where javascript will run makes people very wary of change. 
+Being afraid of change is why once successful projects stagnate and eventually get replaced.
+
+#### It's easy to minify a single javascript file and css file.
+
+### Cons
+#### Your CSS and HTML attributes will be verbose.
+Although performance doesn't necessarily have to take a hit if you use something like <a href="http://httpd.apache.org/docs/2.2/mod/mod_deflate.html">mod_deflate</a>

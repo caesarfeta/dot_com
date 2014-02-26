@@ -16,5 +16,5 @@
 		],
 	"preview_img": "code/sierpinski/img/sierpinski.png",
 	"bg_color": "#AAA",
-	"preview": "The world famous Sierpinski Triangle drawn with tiny hexagons<br/>  Drawn with <a href=\"https://github.com/caesarfeta/lsys_js\">lsys_js</a>"
+	"preview": "The world famous Sierpinski Triangle drawn with tiny hexagons.<br/>  Drawn with <a href=\"https://github.com/caesarfeta/lsys_js\">lsys_js</a>."
 }

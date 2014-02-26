@@ -2,11 +2,11 @@
 	<div class="twelve columns story">
 		<div id="genre">
 		
+			<a href="#best-practices">best-practices</a>
+		
 			<a href="#css">css</a>
 		
 			<a href="#javascript">javascript</a>
-		
-			<a href="#best-practices">best-practices</a>
 		
 		</div>
 		<div class="row">

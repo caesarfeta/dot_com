@@ -1,9 +1,9 @@
 {
 	"title": "How to play with DBPedia",
-	"subtitle": "SPARQL, graph databases, and a bit of Javascript",
+	"subtitle": "Bees, SPARQL, graph databases, and a bit of Javascript",
 	"type": "story",
 	"author": "Adam Tavares",
-	"keywords": [ "programming", "dbpedia", "sparql" ],
+	"keywords": [ "dbpedia", "sparql", "javascript" ],
 	"publish_date": "February 25, 2014",
 	"preview_img": "story/honey_bee/img/side_angle.jpg",
 	"story": "dbpedia.md"

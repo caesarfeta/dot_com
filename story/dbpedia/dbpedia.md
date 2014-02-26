@@ -28,18 +28,23 @@ http://en.wikipedia.org/wiki/Honey_bee
 </pre>
 
 I'm just going to see what connections with Honey_bee exist.
+So I'll just run this query in SNORQL.
 
 	SELECT ?p ?o 
 	WHERE {
 	  :Honey_bee ?p ?o
 	}
 
-Now I have my foot in DBPedia's door.
-A line in the output catches my eye.
+The query returns quite a bit of data.
+Now I have my foot in DBPedia's door...
+
+While browsing the data a line in the output catches my eye.
 
 	dbpedia2:genus [http]	"Apis"@en
 
-Let's find all the species that have Wikipedia pages that share the honey bee's genus, Apis.
+So I'm guessing that plant and animal Wikipedia pages are going to include data about their genus.
+I can play with that...
+So let's find all the species that have Wikipedia pages that share the honey bee's genus, Apis.
 
 
 	SELECT ?s
@@ -47,7 +52,7 @@ Let's find all the species that have Wikipedia pages that share the honey bee's 
 		?s dbpedia2:genus "Apis"@en
 	}
 
-Here they are.
+Here they are...
 
 	:Apis_nigrocincta [http]
 	:Carniolan_honey_bee [http]
@@ -116,7 +121,9 @@ Which gives me this list.
 	:Apis_dorsata [http]	<http://upload.wikimedia.org/wikipedia/commons/4/4d/ApisDorsataHive.jpg> [http]
 	:Apis_dorsata_laboriosa [http]	<http://upload.wikimedia.org/wikipedia/commons/7/76/ApisLaboriosa1.jpg>
 
-## Let's write some Javascript!
+I bet there are a few beautiful photographs on the other end of those links.  Let's have a look at them, eh?  To do that we have to...
+
+## Write some Javascript!
 
 Now there's nothing special about SNORQL.
 It's just a textarea that takes your SPARQL query, connects to what's called a SPARQL endpoint, runs the query, and spits out the results.
@@ -125,9 +132,8 @@ Here's a fun fact:  you can connect to a SPARQL endpoint and issue SPARQL querie
 So what I'd like to do now is issue a query with Javascript and do something fun with results.
 I'll use jQuery to make things a bit simpler.
 
-And here it is.
 Copy the code below into an HTML file and run it and see what happens!
-Or you could click <a href="example.html">this</a>
+Or you could just click <a href="example.html">this</a>...
 
 <pre class="javascript">
 &lt;html&gt;
@@ -176,5 +182,10 @@ In the output I can display some relevant textual data so users know a bit more 
 
 Yes I decided I'm going to build it!
 Check back soon and see it.
-Hope you had fun and learned something.
+Hope you had fun and you learned something.
+
+PS. I'm fairly confident that graph databases will be replacing relational ones for many applications.
+Get on the bandwagon or become irrelevant.
+You gotta keep up!
+
 SPARQL on, you crazy diamonds.

@@ -159,6 +159,7 @@ $( document ).ready( function() {
 	//	Get the page ID
 	//------------------------------------------------------------
 	var id = $( '.main' ).attr('id');
+	getNav();
 	
 	//------------------------------------------------------------
 	//	Run page specific javascript
@@ -172,7 +173,6 @@ $( document ).ready( function() {
 			break;
 		case 'img':
 		case 'code':
-			getNav();
 			break;
 		case 'home':
 			homeLoadHashFilter();
