@@ -3,8 +3,8 @@
 	"type": "code",
 	"subtitle": "Sierpinski Triangle",
 	"author": "Adam Tavares",
-	"keywords": [ "Code", "Fractal"],
-	"publish_date": "2 24, 2014",
+	"keywords": [ "code", "fractal"],
+	"publish_date": "February 24, 2014",
 	"page_js": [ "sierpinski.js" ],
 	"third_party": [ 
 		"../javascript/lib/jslib/src/js/AutoCanvas.js",

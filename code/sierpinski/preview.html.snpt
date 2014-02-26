@@ -2,9 +2,9 @@
 	<div class="twelve columns story">
 		<div id="genre">
 		
-			<a href="#Code">Code</a>
+			<a href="#code">code</a>
 		
-			<a href="#Fractal">Fractal</a>
+			<a href="#fractal">fractal</a>
 		
 		</div>
 		<div class="row">
@@ -16,7 +16,7 @@
 					<a href="code/sierpinski"><h1 class="title">L-Systems - 2</h1></a>
 					<h2 class="subtitle">Sierpinski Triangle</h2>
 					<h3 class="author">by <span class="name">Adam Tavares</span></h3>
-					<h4 class="date">Published 2 24, 2014</h4>
+					<h4 class="date">Published February 24, 2014</h4>
 				</div>
 				<p class="preview">The world famous Sierpinski Triangle drawn with tiny hexagons<br/>  Drawn with <a href="https://github.com/caesarfeta/lsys_js">lsys_js</a></p>
 			</div>
