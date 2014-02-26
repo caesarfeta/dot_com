@@ -36,13 +36,12 @@ a:hover {
 h1,h2,h3,h4,h5 {
 	font-family: Georgia;
 }
+h4 {
+	font-size: 18px;
+}
 code {
-	background-color: rgba( 249,249,249,0.96 );
-	display: inline-block;
-	padding: 20px;
-	margin-bottom: 20px;
-	white-space: pre-wrap;
-	line-height: 1.5em;
+	background: none;
+	font-weight: normal;
 }
 #extra-info {
 	width: 100%;
@@ -215,7 +214,7 @@ code {
 	-webkit-box-shadow: none;
 }
 .snippet-wrap .snippet-no-num li {
-	font-size: 11px;
+	font-size: 12px;
 }
 #story #text .columns > table {
 	margin: 40px auto; 

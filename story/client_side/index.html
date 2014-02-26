@@ -25,7 +25,7 @@
 		</style>
 	
 	<!-- Title -->
-	<title>Client-Side Web Development by Adam Tavares</title>
+	<title>Client-Side Web Development Best Practices by Adam Tavares</title>
 	
 </head>
 
@@ -45,11 +45,11 @@
 				<div class="twelve columns">
 					<div id="genre">
 					
-						<a href="../../#Web">Web</a>
+						<a href="../../#web">web</a>
 					
-						<a href="../../#Development">Development</a>
+						<a href="../../#development">development</a>
 					
-						<a href="../../#Theory">Theory</a>
+						<a href="../../#theory">theory</a>
 					
 					</div>
 				</div>
@@ -58,11 +58,11 @@
 			<!-- Title and Author -->
 			<div class="row">
 				<div id="meta" class="twelve columns">
-					<h1 id="title">Client-Side Web Development</h1>
-					<h2 id="subtitle">How to structure your templates, CSS, and Javascript without making a huge flerkin' mess.</h2>
+					<h1 id="title">Client-Side Web Development Best Practices</h1>
+					<h2 id="subtitle">How to structure your templates, CSS, and Javascript so you don't make a huge mess.</h2>
 					<img id="avatar" src="../../img/avatar_default.jpg" alt="Adam Tavares" />
 					<h3 id="author">by <span class="name">Adam Tavares</span></h3>
-					<h4 id="date">Published June 22, 3000</h4>
+					<h4 id="date">Published February 26, 2014</h4>
 				</div>
 			</div>
 		</section>
@@ -77,38 +77,44 @@
 </code></pre>
 <p>All templates should be wrapped in a tag pair which has a unique id, 
 and that unique id should mimic the URL and filesystem structure.</p>
-<pre><code>&lt;div id="home" class="htmlRoot"&gt;&lt;/div&gt;
-</code></pre>
+<pre class="html">
+&lt;div id=&quot;home&quot; class=&quot;htmlRoot&quot;&gt;&lt;/div&gt;
+</pre>
+
 <p>CSS and Javascript should not be embedded in templates.
 If templates are wrapped in an id'd tag then page specific styles and actions can be set easily.</p>
 <p>Here's how in CSS</p>
-<pre><code>.htmlRoot#home h1 {}
+<pre class="css">
+.htmlRoot#home h1 {}
 .htmlRoot#user h1 {}
 .htmlRoot#news h1 {}
-</code></pre>
+</pre>
+
 <p>In Javascript</p>
-<pre><code>//------------------------------------------------------------
+<pre class="javascript">
+//------------------------------------------------------------
 // site code
 //------------------------------------------------------------
 //------------------------------------------------------------
 // page code
 //------------------------------------------------------------
-var elem = document.getElementsByClassName('htmlRoot')[0];
+var elem = document.getElementsByClassName(&#x27;htmlRoot&#x27;)[0];
 var page = elem.id;
 switch ( page ) {
-    case 'home':
+    case &#x27;home&#x27;:
     // home page specific code goes here.
     break;
 
-    case 'user':
+    case &#x27;user&#x27;:
     // user page specific code goes here.
     break;
 
-    case 'news':
+    case &#x27;news&#x27;:
     // news page specific code goes here.
     break;
 }
-</code></pre>
+</pre>
+
 <h2>Page groups</h2>
 <p>If a page is one of a group of pages append the group name to the same class attribute as .htmlRoot
 So for example you could have multiple pages which collectively are the store.</p>
@@ -118,29 +124,34 @@ So for example you could have multiple pages which collectively are the store.</
 /var/www/site/views/store/checkout.tmpl
 </code></pre>
 <p>Here's what each "htmlRoot" wrapper element would look like.</p>
-<pre><code>&lt;div id="store-shop" class="htmlRoot store"&gt;&lt;/div&gt;
-&lt;div id="store-review" class="htmlRoot store"&gt;&lt;/div&gt;
-&lt;div id="store-shipping" class="htmlRoot store"&gt;&lt;/div&gt;
-&lt;div id="store-checkout" class="htmlRoot store"&gt;&lt;/div&gt;
-</code></pre>
+<pre class="html">
+&lt;div id=&quot;store-shop&quot; class=&quot;htmlRoot store&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;store-review&quot; class=&quot;htmlRoot store&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;store-shipping&quot; class=&quot;htmlRoot store&quot;&gt;&lt;/div&gt;
+&lt;div id=&quot;store-checkout&quot; class=&quot;htmlRoot store&quot;&gt;&lt;/div&gt;
+</pre>
+
 <p>Here's what your store group specific CSS would look like</p>
-<pre><code>.htmlRoot.store h1 {}
-</code></pre>
+<pre class="css">
+.htmlRoot.store h1 {}
+</pre>
+
 <p>Here's what your javascript page/code switcher looks like.</p>
-<pre><code>//------------------------------------------------------------
+<pre class="javascript">
+//------------------------------------------------------------
 // site code
 //------------------------------------------------------------
-var elem = document.getElementsByClassName('htmlRoot')[0];
+var elem = document.getElementsByClassName(&#x27;htmlRoot&#x27;)[0];
 //------------------------------------------------------------
 // group code
 //------------------------------------------------------------
 var groups = elem.className.split(/\s+/);
 for ( var group in groups ) {
-    if ( group == 'htmlRoot' ) {
+    if ( group == &#x27;htmlRoot&#x27; ) {
         continue;
     }
     switch ( group ) {
-        case 'store':
+        case &#x27;store&#x27;:
         break;
     }
 }
@@ -149,19 +160,20 @@ for ( var group in groups ) {
 //------------------------------------------------------------
 var page = elem.id;
 switch ( page ) {
-    case 'store-shop':
+    case &#x27;store-shop&#x27;:
     break;
 
-    case 'store-review':
+    case &#x27;store-review&#x27;:
     break;
 
-    case 'store-shipping':
+    case &#x27;store-shipping&#x27;:
     break;
 
-    case 'store-checkout':
+    case &#x27;store-checkout&#x27;:
     break;
 }
-</code></pre>
+</pre>
+
 <h2>Identifying certain users and closing the development loop... informal QA</h2>
 <p>So here's a nice side-effect of this system, which can improve UI development especially for small projects.
 Let's do a little bit of reflection.
@@ -176,54 +188,30 @@ Find a user and friend him up.
 A user you like who fits the profile of an 'early adopter'.
 And somebody who is representative of your user base.
 Now all you have to do is mark the root element as testing with a template like this.</p>
-<pre><code>&lt;div id="store-shop" class="htmlRoot{% if user.id == '12345678' %} testing{% fi %}"&gt;&lt;/div&gt;
-</code></pre>
+<pre class="html">
+&lt;div id=&quot;store-shop&quot; 
+    class=&quot;htmlRoot{% if user.id == &#x27;12345678&#x27; %} testing{% fi %}&quot;&gt;
+&lt;/div&gt;
+</pre>
+
 <p>Then you can write CSS and javascript which will only run on testing group pages, i.e. this one user's pages.</p>
-<h2>Pros</h2>
-<ol>
-<li>
-<p>It's consistent.</p>
-<ul>
-<li>Projects that are inconsistent are difficult to maintain, 
-and projects that are difficult to maintain eventually get replaced.</li>
-</ul>
-</li>
-<li>
-<p>You can isolate individual page styles and javascript while having a single stylesheet and javascript file.</p>
-<ul>
-<li>Having to worry about how and where your stylesheet rules will be applied
+<h3>Pros</h3>
+<h4>It's consistent.</h4>
+<p>Projects that are inconsistent are difficult to maintain, 
+and projects that are difficult to maintain eventually get replaced.</p>
+<h4>You can isolate individual page styles and javascript while having a single stylesheet and javascript file.</h4>
+<p>Having to worry about how and where your stylesheet rules will be applied
 or where javascript will run makes people very wary of change. 
-Being afraid of change is why once successful projects eventually get replaced.</li>
-</ul>
-</li>
-<li>
-<p>It's easy to minify a single javascript file.</p>
-</li>
-<li>
-<p>It's easy to find errors.</p>
-<ul>
-<li>If somebody reports a bug on a specific page you know exactly where to begin.</li>
-<li>
-<p>If you find yourself doing this a lot...</p>
-<pre><code>grep -rilh "some unique looking string I found in the page source" /var/www/site
+Being afraid of change is why once successful projects eventually get replaced.</p>
+<h4>It's easy to minify a single javascript file.</h4>
+<h4>It's easy to find errors.</h4>
+<p>If somebody reports a bug on a specific page you know exactly where to begin.</p>
+<h4>The alternative is doing this a lot...</h4>
+<pre><code>grep -rilh "some unique string I found in the page source" /var/www/site
 </code></pre>
-</li>
-</ul>
-<p>you have a problem.</p>
-</li>
-<li>
-<p>You can easily close the development loop: design, test, implement, feedback, repeat...</p>
-</li>
-</ol>
-<h2>Cons</h2>
-<ol>
-<li>
-<p>Your CSS will be verbose.</p>
-<ul>
-<li>Performance doesn't necessarily have to take a hit... http://httpd.apache.org/docs/2.2/mod/mod_deflate.html</li>
-</ul>
-</li>
-</ol>
+<h3>Cons</h3>
+<h4>Your CSS will be verbose.</h4>
+<p>Although performance doesn't necessarily have to take a hit... http://httpd.apache.org/docs/2.2/mod/mod_deflate.html</p>
 				</div>
 			</div>
 		</section>
@@ -232,7 +220,7 @@ Being afraid of change is why once successful projects eventually get replaced.<
 		<section id="footer">
 			<div class="row">
 				<div class="twelve columns">
-					<div id="copyright">&copy; Adam Tavares 3000</div>
+					<div id="copyright">&copy; Adam Tavares 2014</div>
 				</div>
 			</div>
 		</section>
@@ -249,7 +237,8 @@ Being afraid of change is why once successful projects eventually get replaced.<
 <script type="text/javascript" src="../../third_party/foundation/javascripts/jquery.foundation.forms.js"></script>
 <script type="text/javascript" src="../../third_party/foundation/javascripts/jquery.foundation.mediaQueryToggle.js"></script>
 <script type="text/javascript" src="../../third_party/foundation/javascripts/app.js"></script>
-<script type="text/javascript" src="../../third_party/jquery_snippet/jquery.snippet.min.js"></script>
+<script type="text/javascript" src="../../third_party/jquery_snippet/jquery.snippet.js"></script>
+<script type="text/javascript" src="../../third_party/jquery_snippet/sh_sh.js"></script>
 
 <!-- Custom -->
 <script type="text/javascript" src="../../javascript/lib/lib.min.js"></script>
