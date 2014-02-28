@@ -1,0 +1,34 @@
+<html>
+<head>
+<script type="text/javascript">
+
+function say( _story, _i ) {
+	_i = ( _i == undefined ) ? 0 : _i;
+	var words = _story[_i][0];
+	var wait = _story[_i][1];
+	setTimeout( function(){
+		var msg = new SpeechSynthesisUtterance( words );
+		window.speechSynthesis.speak( msg );
+		if ( _i < _story.length ) {
+			_i++
+			say( _story, _i )
+		}
+	}, wait*1000 );
+}
+var story = [
+	["Debra you can do this...", 0 ],
+	["Okay no more getting sidetracked", 3 ],
+	["This is bullshit.", 0 ],
+	["That's not him!", 1 ],
+	["Where's this freakin' scroll", 1 ],
+	["Arghghghghg", 1 ],
+	["Who is this Waldo guy anyway?", 1],
+	["And why do I care?", 3],
+	["Uhhhhhhhhhhhhhhhhhhhhhhhhhhhh", .25],
+	["Fffffffffffffuckin' hell.", 2]
+];
+say( story );
+
+</script>
+</head>
+</html>
