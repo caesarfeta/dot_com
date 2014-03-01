@@ -176,8 +176,11 @@ code {
 	line-height: .9em;
 }
 #story #text h1,
-#story #text h2 { 
+#story #text h2,
+#story #text h3 { 
 	margin-top: 60px;
+}
+#story #text h1 {
 	font-size: 38px;
 }
 #story #text h2 {

@@ -125,11 +125,15 @@ I bet there are a few beautiful photographs on the other end of those links.  Le
 
 ## Write some Javascript!
 
+Well it doesn't really have to be Javascript it could be almost any language.
+We'll just use Javascript because the barrier of entry is so low.
+Anybody who's reading this page has a Javascript interpreter, their web-browser.
+
 Now there's nothing special about SNORQL.
 It's just a textarea that takes your SPARQL query, connects to what's called a SPARQL endpoint, runs the query, and spits out the results.
 
 Here's a fun fact:  you can connect to a SPARQL endpoint and issue SPARQL queries through any HTTP client.
-So what I'd like to do now is issue a query with Javascript and do something fun with results.
+So what I'd like to do now is issue a query with Javascript and do something fun with the results.
 I'll use jQuery to make things a bit simpler.
 
 Copy the code below into an HTML file and run it and see what happens!
