@@ -4,6 +4,7 @@
 #    shell scripts, 
 #    content source markdown files, 
 #    and config files
+ErrorDocument 404 /404.html
 RedirectMatch 404 /build
 RewriteRule (^\.|/\.) - [R=404]
 RewriteRule \.md$ - [R=404]
