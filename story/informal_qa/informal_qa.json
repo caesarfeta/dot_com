@@ -1,0 +1,11 @@
+{
+	"title": "Informal... No! Semi-formal QA",
+	"type": "story",
+	"subtitle": "UI testing on the cheap",
+	"author": "Adam Tavares",
+	"keywords": [ "best-practices", "css", "javascript" ],
+	"publish_date": "February 26, 2014",
+	"preview_img": "../story/client_side/img/watermelon.jpg",
+	"quote_color": null,
+	"story": "informal_qa.md"
+}

@@ -169,6 +169,7 @@ $( document ).ready( function() {
 			$('pre.javascript').snippet("javascript", {style:"typical", menu: false, showNum: false });
 			$('pre.css').snippet("css", {style:"typical", menu: false, showNum: false });
 			$('pre.html').snippet("html", {style:"typical", menu: false, showNum: false });
+			$('pre.ruby').snippet("ruby", {style:"typical", menu: false, showNum: false });
 			$('pre').snippet("sh", {style:"typical", menu: false, showNum: false });
 			break;
 		case 'img':
