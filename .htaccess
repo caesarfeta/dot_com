@@ -1,0 +1,15 @@
+# No HTTP access to 
+#    the build directory, 
+#    "dot files and directories", 
+#    shell scripts, 
+#    content source markdown files, 
+#    and config files
+ErrorDocument 404 /404.html
+RedirectMatch 404 /build
+RewriteRule (^\.|/\.) - [R=404]
+RewriteRule \.md$ - [R=404]
+RewriteRule \.sh$ - [R=404]
+RewriteRule \.snpt$ - [R=404]
+RewriteRule \.conf$ - [R=404]
+RewriteRule \.py$ - [R=404]
+RewriteRule \.tmpl$ - [R=404]

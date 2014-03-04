@@ -1,0 +1,10 @@
+{
+	"title": "Bedtime",
+	"type": "story",
+	"subtitle": "Tuck yourself in.  Close your eyes.  Let your computer tell you a bedtime story.",
+	"author": "Adam Tavares",
+	"keywords": [ "story" ],
+	"publish_date": "February 26, 2014",
+	"page_js": [ "bedtime.js" ],
+	"story": "bedtime.md"
+}
