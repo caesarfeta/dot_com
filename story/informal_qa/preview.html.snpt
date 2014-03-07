@@ -13,20 +13,19 @@
 			<div class="three columns">
 				<a href="story/informal_qa">
 				
-					<img class="splash" src="../story/client_side/img/watermelon.jpg" alt="Informal... No! Semi-formal QA" />
+					<img class="splash" src="story/client_side/img/watermelon.jpg" alt="Semi-formal UI Testing" />
 				
 				</a>
 			</div>
 			<div class="nine columns">
 				<div id="meta">
-					<a href="story/informal_qa"><h1 class="title">Informal... No! Semi-formal QA</h1></a>
-					<h2 class="subtitle">UI testing on the cheap</h2>
+					<a href="story/informal_qa"><h1 class="title">Semi-formal UI Testing</h1></a>
+					<h2 class="subtitle">...on the cheap</h2>
 					<h3 class="author">by <span class="name">Adam Tavares</span></h3>
 					<h4 class="date">Published February 26, 2014</h4>
 				</div>
-				<p class="preview">Informal QA
-Wouldn't we all love to remove humans from testing our software.
-Let's get machines to do this for us!
+				<p class="preview">Wouldn't we all love to remove humans from testing our software.
+Let's get machines to do this for us... everywhere!
 Well we can't.
 Not everywhere anyway.
 There's one aspect of software testing that requires a human brain, preferably a poorly trained one... user-interfaces.

@@ -1,6 +1,5 @@
-## Informal QA
 Wouldn't we all love to remove humans from testing our software.
-Let's get machines to do this for us!
+Let's get machines to do this for us... everywhere!
 
 Well we can't.
 Not everywhere anyway.
@@ -27,7 +26,7 @@ Do you have a QA testing environment with up-to-date data?
 That's another technological mouth to feed.
 The time costs of maintaining a separate QA test environment seperate from a developer test environment can be significant.
 So if there isn't dedicated QA people and a test environment how can you test new UI designs?
-Where do we find these necessary human brains and where do we put them?
+Where do we find these necessary human brains?
 
 <div class="picture">
 	<a href="img/igor.jpg"><img src="img/igor.jpg" alt="Igor"/></a>
@@ -48,13 +47,40 @@ What you need is a system that allows adventurous users to test out UI changes b
 What you need is voluntary AB-Testing.
 Let's see what this entails...
 
-### Voluntary AB-Testing Implemented in Rails
+### Ultra-Simple Voluntary AB-Testing Implemented in Rails
 #### Create "B" CSS file and Javascript
 
 	touch public/stylesheets/b_css.css
 	touch public/javascript/b_script.js
 
-#### /views/header.haml
+#### app/controllers/split_testing_controller.rb
+
+Create the controller.
+
+<pre class="ruby">
+class SplitTestingController < ApplicationController
+  def switch
+    if session[:split] == true
+      session[:split] = false
+    else
+      session[:split] = true
+    end
+    redirect_to :back
+  end
+end
+</pre>
+
+#### config/routes.rb
+
+Map the URL to your new controller
+
+<pre class="ruby">
+map.connect 'split_testing/:switch',
+    :controller => 'split_testing',
+    :action => 'switch'
+</pre>
+
+#### app/views/header.haml
 Pull in additional CSS and Javascript in your header or wrapper template. 
 
 <pre class="ruby">
@@ -66,7 +92,7 @@ if session[:split] == true
   = javascript_include_tag 'b_script'
 </pre>
 	
-Create the switch
+Create the switch.
 
 <pre class="ruby">
 #-------------------------------------------------------------
@@ -89,31 +115,4 @@ Display the switch in the upper-right.
   top: 0;
   right: 0;
 }
-</pre>
-
-#### app/controllers/split_testing_controller.rb
-
-Create the controller.
-
-<pre class="ruby">
-class SplitTestingController < ApplicationController
-  def switch
-    if session[:split] == true
-      session[:split] = false
-    else
-      session[:split] = true
-    end
-    redirect_to :back
-  end
-end
-</pre>
-
-#### /config/routes.rb
-
-Map the URL to your new controller
-
-<pre class="ruby">
-map.connect 'split_testing/:switch',
-    :controller => 'split_testing',
-    :action => 'switch'
 </pre>
