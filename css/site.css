@@ -43,6 +43,15 @@ code {
 	background: none;
 	font-weight: normal;
 }
+.caption {
+	margin: 5px 10px;
+	font-style: italic;
+	line-height: 1.3em;
+	font-size: 14px;
+}
+.toon .caption {
+	margin-bottom: 20px;
+}
 #extra-info {
 	width: 100%;
 	text-align: center;
@@ -209,28 +218,29 @@ code {
 	margin: 20px 0;
 	width: 100%;
 }
-.snippet-wrap pre.sh_sourceCode {
+#story ul {
+	list-style-position: inside;
+	padding: 0 20px;
+}
+#story li {
+	margin: 10px 0 20px 0;
+	line-height: 1.1em;
+}
+#story .snippet-wrap pre.sh_sourceCode {
 	-webkit-border-radius: 0;
 	border-radius: 0;
 	box-shadow: none;
 	-moz-box-shadow: none;
 	-webkit-box-shadow: none;
 }
-.snippet-wrap .snippet-no-num li {
+#story .snippet-wrap .snippet-no-num li {
+	margin: 0;
+	line-height: 1.6em;
 	font-size: 12px;
 }
 #story #text .columns > table {
 	margin: 40px auto; 
 	text-align: left;
-}
-.caption {
-	margin: 5px 10px;
-	font-style: italic;
-	line-height: 1.3em;
-	font-size: 14px;
-}
-.toon .caption {
-	margin-bottom: 20px;
 }
 #story #text .picture .credit {
 	padding-right: 5px;
