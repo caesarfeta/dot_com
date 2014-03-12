@@ -1,0 +1,25 @@
+<div class="row">
+	<div class="twelve columns story">
+		<div id="genre">
+		
+			<a href="#code">code</a>
+		
+			<a href="#javascript">javascript</a>
+		
+		</div>
+		<div class="row">
+			<div class="three columns">
+				<a href="code/specierch"><img class="splash" src="code/sierpinski/img/sierpinski.png" /></a>
+			</div>
+			<div class="nine columns">
+				<div id="meta">
+					<a href="code/specierch"><h1 class="title">Specierch</h1></a>
+					<h2 class="subtitle">Species to Genus Search</h2>
+					<h3 class="author">by <span class="name">Adam Tavares</span></h3>
+					<h4 class="date">Published March 12, 2014</h4>
+				</div>
+				<p class="preview">Species to Genus Search</p>
+			</div>
+		</div>
+	</div>
+</div>

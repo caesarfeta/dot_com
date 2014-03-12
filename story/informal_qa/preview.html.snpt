@@ -24,12 +24,10 @@
 					<h3 class="author">by <span class="name">Adam Tavares</span></h3>
 					<h4 class="date">Published February 26, 2014</h4>
 				</div>
-				<p class="preview">Wouldn't we all love to remove humans from testing our software.
-Let's get machines to do this for us... everywhere!
-Well we can't.
-Not everywhere anyway.
-There's one aspect of software testing that requires a human brain, preferably a poorly trained one... user-interfaces.
-You can't take the user out of ...</p>
+				<p class="preview">Testing code or Quality Assurance, aka QA, if you work in the biz, is an interesting subject,
+So let me spout some opinions about it.
+The best way to test the majority of code is with an automated test suite.
+A test suite is simply code that checks ...</p>
 			</div>
 		</div>
 	</div>

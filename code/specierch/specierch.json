@@ -1,0 +1,16 @@
+{
+	"title": "Specierch",
+	"type": "code",
+	"subtitle": "Species to Genus Search",
+	"author": "Adam Tavares",
+	"keywords": [ "code", "javascript"],
+	"publish_date": "March 12, 2014",
+	"page_js": [ "specierch.js" ],
+	"page_css": [ "specierch.css" ],
+	"third_party": [ 
+		"../javascript/lib/jslib/src/js/StringExt.js"
+	],
+	"preview_img": "code/sierpinski/img/sierpinski.png",
+	"bg_color": "#AAA",
+	"preview": "Species to Genus Search"
+}
