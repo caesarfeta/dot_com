@@ -1,9 +1,29 @@
-Wouldn't we all love to remove humans from testing our software.
-Let's get machines to do this for us... everywhere!
+Testing code or Quality Assurance, aka QA, if you work in the biz, is an interesting subject,
+So let me spout some opinions about it.
 
+The best way to test the majority of code is with an automated test suite.
+A test suite is simply code that checks the quality and performance of other code.
+An excellent automated test suite is a beautiful creation, 
+and an absolute necessity if your software is even remotely complex.
+
+# Becoming a "good ____" person
+If you want to become an overall "good ____ " person you must subject yourself to this process:
+
+1. Have ideals, typically ones shared by others, aka define what "good" is. And you must record those ideals somewhere. You know... for reference.
+2. Constantly compare your recent actions to your definition of good.
+3. Develop new strategies for acting closer to your definition of good.
+
+# Writing "good" software
+Action without introspection is what gets you executed or at least driven out of town, puts you in the hospital, and worst of all leaves you with code that once worked but is now a pathetic pile of useless bits.
+
+Complex software requires the collective effort of lots of people who, hopefully, want to spend more time talking to their computers than each other.
+
+So how do we get these kinds of people to cooperate and ensure that they aren't breaking
+
+# Where automated test suites fail.
 Well we can't.
 Not everywhere anyway.
-There's one aspect of software testing that requires a human brain, preferably a poorly trained one... user-interfaces.
+There's one software component that requires a human brain, preferably a poorly trained one, to test it... user-interfaces.
 
 You can't take the user out of user-interface.
 Even if you do all you're left with is "interface".

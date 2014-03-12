@@ -1,13 +1,14 @@
 So the following is a system I use for keeping my CSS styles and Javascript code tidy.
 The biggest problems I've encountered when writing client-side code are the following...
 
-* The file structure that organizes view templates don't resemble the project's URL scheme in the slightest.
-* CSS and Javascript are embedded in the view templates.
-	* This usually is done not out of laziness but fear that they will be applied and run where they shouldn't.
-	This is especially common when you've inherited code or you're working
+* The file structure that organizes view templates do not resemble the project's URL scheme.
+* CSS is embedded in the view templates.
+	* This usually is done not out of laziness but fear that styles will be applied where they shouldn't.
+* What is true for CSS styles is also true for Javascript code.
 
-These problems only get worse over the project's lifetime.
-So below is my solution to this problem.
+Decentralized CSS and Javascript is a problem that will get worse over time if nothing is done.
+What's required is a system for "sandboxing" CSS and Javascript, thereby ensuring that view specific CSS and Javascript is only applied and run where it is needed.
+Here's a system for doing this.
 
 ### No! You can't build that new fancy feature until you clean your room!
 All templates should be wrapped in a tag pair which has a unique id, 
@@ -126,7 +127,8 @@ switch ( page ) {
 }
 </pre>
 
-That's the system.  It's bone-headedly obvious.
+That's the system.
+In summary...
 
 * Every page gets a wrapper-tag which surrounds all other page content.
 * Pages can be grouped together by adding additional group names to the wrapper-tag's class attributes.
