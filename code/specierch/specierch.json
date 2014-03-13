@@ -1,7 +1,6 @@
 {
 	"title": "Specierch",
 	"type": "code",
-	"subtitle": "Species to Genus Search",
 	"author": "Adam Tavares",
 	"keywords": [ "code", "javascript"],
 	"publish_date": "March 12, 2014",
@@ -12,5 +11,5 @@
 	],
 	"preview_img": "code/sierpinski/img/sierpinski.png",
 	"bg_color": "#AAA",
-	"preview": "Species to Genus Search"
+	"preview": "Specierch is an image search tool designed specifically for finding photographs of living organisms catalogued in <a href=\"http://dbpedia.org/About\">DbPedia</a>."
 }

@@ -16,6 +16,10 @@ var html = '\
 	<div class="popup" id="about">\
 		<p><a href="../../story/dbpedia">&lt; Learn more about how Specierch works. &gt;</a></p>\
 	</div>\
+	<div class="popup" id="error">\
+		<p>Sorry... DbPedia must be down.</p>\
+		<p>Please check back later!</p>\
+	</div>\
 	<div class="popup" id="hint">\
 		<h2>Welcome to Specierch.</h2>\
 		<p>Specierch is an image search tool designed specifically for finding photographs of living organisms catalogued in <a href="http://dbpedia.org/About">DbPedia</a>.</p>\
@@ -40,17 +44,17 @@ var html = '\
 	</div>\
 </div>';
 $( 'body' ).append( html );
-
 //------------------------------------------------------------
 //	search
 //------------------------------------------------------------
 $( '#search' ).css({
 	'margin-left': $( '#search' ).outerWidth()/2 * -1
 });
-
 centerId( 'wait' );
 centerId( 'hint' );
 centerId( 'about' );
+centerId( 'error' );
+hideError();
 hideWait();
 hideAbout();
 $( '#aboutClick' ).on( 'touchstart click', function( _e ) {
@@ -59,7 +63,6 @@ $( '#aboutClick' ).on( 'touchstart click', function( _e ) {
 	hideHint();
 	( $('#about').is(':visible') ) ? hideAbout() : showAbout();
 })
-
 //------------------------------------------------------------
 //	imgBox
 //------------------------------------------------------------
@@ -76,8 +79,6 @@ $( '#input' ).keyup( function( _e ){
 $( window ).resize( function( _e ) {
 	imgShellSize();
 });
-
-
 //------------------------------------------------------------
 //	ACTION
 //------------------------------------------------------------
@@ -90,6 +91,9 @@ function centerId( _id ) {
 function nameSearch( _input ) {
 	specierch( _input, '#imgBox' );
 }
+//------------------------------------------------------------
+//  Show and hides... this is kind of stupid but ehhhh.
+//------------------------------------------------------------
 function hideWait() {
 	$( '#wait' ).hide();
 }
@@ -108,13 +112,28 @@ function hideAbout() {
 function showAbout() {
 	$('#about').show();
 }
+function hideError() {
+	$( '#error' ).hide();
+}
+function showError() {
+	$('#error').show();
+}
+//------------------------------------------------------------
+//  Resize the img container to fit the window
+//------------------------------------------------------------
 function imgShellSize() {
 	$('#imgShell').width( $(window).width() );
 	$('#imgShell').height( $(window).height() );
 }
+//------------------------------------------------------------
+//  Mark the search
+//------------------------------------------------------------
 function markSearch( _name ) {
 	$( '#imgBox' ).append( '<div class="search_mark"><span class="faded">\'</span>' + _name + '<span class="faded">\'</span></div>' );
 }
+//------------------------------------------------------------
+//  The heart of the search... query dbpedia...
+//------------------------------------------------------------
 function specierch( _search, _output ) {
 	var url = "http://dbpedia.org/sparql";
 	var query = '\
@@ -141,11 +160,13 @@ function specierch( _search, _output ) {
 				FILTER ( langMatches( lang( ?abstract ), "EN" ))\
 			}\
 		}\
+		LIMIT 50\
 	';
 	var queryUrl = encodeURI( url+"?query="+query+"&format=json" );
 	$.ajax({
 		dataType: "jsonp",	
 		url: queryUrl,
+		timeout: 10*1000,
 		success: function( _data ) {
 			//------------------------------------------------------------
 			//  Grab some info to scroll properly
@@ -166,14 +187,23 @@ function specierch( _search, _output ) {
 			//------------------------------------------------------------
 			displayResults( _data, _output, _search );
 			$( '#imgShell' ).animate({ scrollTop: end }, 2000 );
+		},
+		error: function( _e ) {
+			hideWait();
+			showError();
 		}
 	});
 }
-
+//------------------------------------------------------------
+//  I have to write this...  Sort results by relevancy...
+//  Not sure how I'll do this exactly...
+//------------------------------------------------------------
 function resultSort( _data ) {
 	return _data;
 }
-
+//------------------------------------------------------------
+//  Clean up names
+//------------------------------------------------------------
 function cleanTaxon( _result, _taxon, _replacement ) {
 	var out = _replacement;
 	if ( _result[ _taxon ] != undefined ) {
@@ -181,7 +211,9 @@ function cleanTaxon( _result, _taxon, _replacement ) {
 	}
 	return out
 }
-
+//------------------------------------------------------------
+//  Display the results... 25 at a time.
+//------------------------------------------------------------
 function displayResults( _data, _output, _search ) {
 	var results = _data.results.bindings;
 	//------------------------------------------------------------
@@ -195,12 +227,17 @@ function displayResults( _data, _output, _search ) {
 			continue;
 		}
 		var src = results[i].img.value;
-		var ext = src.split( '.' ).pop().toUpperCase();
-		
-		
+		//------------------------------------------------------------
+		//  Get the name
+		//------------------------------------------------------------
 		var name = cleanTaxon( results[i], 'name', '???');
+		//------------------------------------------------------------
+		//  Highlight the part of the name that matches the search
+		//------------------------------------------------------------
 		name = name.split( _search ).join( '<span class="color">'+_search+'</span>')
-		
+		//------------------------------------------------------------
+		//  Taxonomic info, baby!!
+		//------------------------------------------------------------
 		var kingdom = cleanTaxon( results[i], 'kingdom', '???');
 		var order = cleanTaxon( results[i], 'order', '???');
 		var phylum = cleanTaxon( results[i], 'phylum', '???');
@@ -209,11 +246,14 @@ function displayResults( _data, _output, _search ) {
 		var genus = cleanTaxon( results[i], 'genus', '???');
 		var species = cleanTaxon( results[i], 'species', '???');
 		var subspecies = cleanTaxon( results[i], 'subspecies', '');
+		//------------------------------------------------------------
+		//  Grab a quick little summary.
+		//------------------------------------------------------------
 		var abstract = cleanTaxon( results[i], 'abstract', '' );
-		
 		//------------------------------------------------------------
 		//	Only display jpegs
 		//------------------------------------------------------------
+		var ext = src.split( '.' ).pop().toUpperCase();
 		switch ( ext ) {
 			case 'JPG':
 			case 'JPEG':
@@ -240,7 +280,10 @@ function displayResults( _data, _output, _search ) {
 		}
 	}
 }
-
+/*
+//------------------------------------------------------------
+//  NOTES
+//------------------------------------------------------------
 //------------------------------------------------------------
 //	Retrieve images belonging to a particular genus
 //------------------------------------------------------------
@@ -283,7 +326,6 @@ function genusImgs( _genus, _output ) {
 		}
 	});
 }
-/*
 
 //------------------------------------------------------------
 //	Grab images belonging to genus
