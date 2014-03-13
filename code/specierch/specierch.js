@@ -7,14 +7,15 @@
 var html = '\
 <div id="specierch">\
 	<div id="search">\
-		<input id="input" type="text" placeholder="Organism Name">\
+		<input id="input" type="text" placeholder="search words">\
 	</div>\
 	<div id="imgShell"><div id="imgBox"></div></div>\
 	<div id="options">\
 		<a id="aboutClick" class="bigger" href="about">?</a>\
 	</div>\
 	<div class="popup" id="about">\
-		<p><a href="../../story/dbpedia">&lt; Learn more about how Specierch works. &gt;</a></p>\
+		<p>Specierch was created by <a href="../../about.html">Adam Tavares</a></p>\
+		<p><a href="../../story/dbpedia">Learn more about how Specierch works.</a></p>\
 	</div>\
 	<div class="popup" id="error">\
 		<p>Sorry... DbPedia must be down.</p>\
@@ -24,16 +25,19 @@ var html = '\
 		<h2>Welcome to Specierch.</h2>\
 		<p>Specierch is an image search tool designed specifically for finding photographs of living organisms catalogued in <a href="http://dbpedia.org/About">DbPedia</a>.</p>\
 		<p>\
-			Type a search word into the input field at the bottom of the screen, press Enter,\
+			Type search words into the input field at the bottom of the screen, press Enter,\
 			and wait for the images and text info to come streaming in.\
 		</p>\
 		<p>\
 			Specierch will return a maximum of 25 photographs per search,\
-			so if you can\'t find what you\'re looking for the first time, try again with a more specific search word.\
+			so if you can\'t find what you\'re looking for the first time, try again with more specific search words.\
 		</p>\
 		<p>\
 			Here\'s some example search words to get you started:</br>\
-			<span class="bigger">beest, bee, shroom, cactus, lemon, pine</span>\
+			<span class="bigger">honey, needle, lemon, shroom</span>\
+		</p>\
+		<p>\
+			Enjoy!\
 		</p>\
 	</div>\
 	<div class="popup" id="wait">\
@@ -79,6 +83,7 @@ $( '#input' ).keyup( function( _e ){
 $( window ).resize( function( _e ) {
 	imgShellSize();
 });
+var resultNum = 0;
 //------------------------------------------------------------
 //	ACTION
 //------------------------------------------------------------
@@ -186,7 +191,7 @@ function specierch( _search, _output ) {
 			//  Display the results
 			//------------------------------------------------------------
 			displayResults( _data, _output, _search );
-			$( '#imgShell' ).animate({ scrollTop: end }, 2000 );
+			$( '#imgShell' ).animate({ scrollTop: end }, 500 );
 		},
 		error: function( _e ) {
 			hideWait();
@@ -230,22 +235,24 @@ function displayResults( _data, _output, _search ) {
 		//------------------------------------------------------------
 		//  Get the name
 		//------------------------------------------------------------
-		var name = cleanTaxon( results[i], 'name', '???');
+		var name = cleanTaxon( results[i], 'name', '...');
 		//------------------------------------------------------------
 		//  Highlight the part of the name that matches the search
 		//------------------------------------------------------------
 		name = name.split( _search ).join( '<span class="color">'+_search+'</span>')
+		var caps = _search.capitalize();
+		name = name.split( caps ).join( '<span class="color">'+caps+'</span>')
 		//------------------------------------------------------------
 		//  Taxonomic info, baby!!
 		//------------------------------------------------------------
-		var kingdom = cleanTaxon( results[i], 'kingdom', '???');
-		var order = cleanTaxon( results[i], 'order', '???');
-		var phylum = cleanTaxon( results[i], 'phylum', '???');
-		var clss = cleanTaxon( results[i], 'class', '???');
-		var family = cleanTaxon( results[i], 'family', '???');
-		var genus = cleanTaxon( results[i], 'genus', '???');
-		var species = cleanTaxon( results[i], 'species', '???');
-		var subspecies = cleanTaxon( results[i], 'subspecies', '');
+		var kingdom = cleanTaxon( results[i], 'kingdom', '...');
+		var order = cleanTaxon( results[i], 'order', '...');
+		var phylum = cleanTaxon( results[i], 'phylum', '...');
+		var clss = cleanTaxon( results[i], 'class', '...');
+		var family = cleanTaxon( results[i], 'family', '...');
+		var genus = cleanTaxon( results[i], 'genus', '...');
+		var species = cleanTaxon( results[i], 'species', '...');
+		var subspecies = cleanTaxon( results[i], 'subspecies', '...');
 		//------------------------------------------------------------
 		//  Grab a quick little summary.
 		//------------------------------------------------------------
@@ -258,24 +265,55 @@ function displayResults( _data, _output, _search ) {
 			case 'JPG':
 			case 'JPEG':
 				var result = '\
-					<div class="result">\
+					<div id="result'+resultNum+'" class="result">\
 						<img src="'+src+'"/>\
 						<div class="text">\
-							<h3 class="name">'+ name +'</h3>\
-							<div class="kingdom">'+ kingdom +'</div>\
-							<div class="order">'+ order +'</div>\
-							<div class="phylum">'+ phylum +'</div>\
-							<div class="clss">'+ clss +'</div>\
-							<div class="family">'+ family +'</div>\
-							<div class="genus">'+ genus +'</div>\
-							<div class="species">'+ species +'</div>\
-							<div class="subspecies">'+ subspecies +'</div>\
-							<div class="abstract">'+ abstract + '</div>\
+							<a href=""><h3 class="name">'+ name +'</h3></a>\
+							<div class="extra">\
+								<table>\
+									<tr>\
+										<td>kingdom</td><td>'+ kingdom +'</td>\
+									</tr>\
+									<tr>\
+										<td>phylum</td><td>'+ phylum +'</td>\
+									</tr>\
+									<tr>\
+										<td>class</td><td>'+ clss +'</td>\
+									</tr>\
+									<tr>\
+										<td>order</td><td>'+ order +'</td>\
+									</tr>\
+									<tr>\
+										<td>family</td><td>'+ family +'</td>\
+									</tr>\
+									<tr>\
+										<td>genus</td><td>'+ genus +'</td>\
+									</tr>\
+									<tr>\
+										<td>species</td><td>'+ species +'</td>\
+									</tr>\
+									<tr>\
+										<td>subspecies</td><td>'+ subspecies +'</td>\
+									</tr>\
+								</table>\
+								<div class="abstract">'+ abstract + '</div>\
+							</div>\
 						</div>\
 						<div style="clear:both"></div>\
 					</div>\
 				';
 				$( _output ).append( result );
+				$( '#result'+resultNum+' a' ).on( 'touchstart click', function(_e) {
+					_e.preventDefault();
+					var parent = $( this ).parent();
+					if ( $( '.extra', parent ).is(':visible') ) {
+						$( '.extra', parent ).hide();
+					}
+					else {
+						$( '.extra', parent ).show();
+					}
+				});
+				resultNum++;
 				break;
 		}
 	}

@@ -1,19 +1,68 @@
+#extra-info {
+	display: none;
+}
+body {
+	background-image:url('img/peacock.jpg'); 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+table {
+	background: none;
+	margin: 0 0 18px;
+	border: none;
+	color: #AAA;
+}
+table tbody tr:nth-child(even) {
+	background: none;
+}
+table tbody td:nth-child(odd) {
+	text-align: right;
+	color: #999;
+}
+table tbody tr td {
+	color: #AAA;
+	padding: 3px 5px;
+}
 .popup * > :last-child { 
 	margin-bottom: 0 !important; 
 	margin-right: 0 !important; 
 }
+.popup a:hover {
+	color: #FF7777;
+}
 .faded {
 	opacity: .5;
 }
-.result { 
+.result {
+	display: block;
 	position: relative;
 }
+.result .extra {
+	margin-top: 20px;
+	display: none;
+}
+.result a {
+	display: block;
+	min-width: 300px;
+}
+.result a:hover h3 {
+	color: #EEE;
+}
+.result a:hover h3 .color {
+	color: #FF7777;
+}
 .result .text h3 {
-	font-weight: 300;
-	margin: 0 0 10px 0;
+	font-size: 20px;
+	display: inline-block;
+	margin: 0;
 	color: #BBB;
 }
 .result .text {
+	max-height: 100%;
+	overflow-y: scroll;
+	font-weight: 300;
 	color: #BBB;
 	position: absolute;
 	top: 0;
@@ -22,6 +71,8 @@
 	padding: 20px;
 }
 .result .text .abstract {
+	line-height: 1.25;
+	padding-top: 20px;
 	max-width: 300px;
 }
 #extra-info {
@@ -32,9 +83,10 @@
 	bottom: 0;
 	right: 0;
 	z-index: 2;
-	background-color: rgba( 0,0,0,0.5 );
+	background-color: rgba( 0,0,0,0.75 );
 	padding: 10px;
 }
+.search_mark,
 .color,
 .popup a {
 	color: #FFAAAA;
@@ -66,7 +118,7 @@
 	top: 50%;
 	left: 50%;
 	color: #EFEFEF;
-	background-color: rgba( 0,0,0,0.5 );
+	background-color: rgba( 0,0,0,0.75 );
 	padding: 40px;
 }
 #imgShell {
@@ -80,7 +132,6 @@
 #imgBox .search_mark {
 	font-weight: 300;
 	background-color: #111;
-	color: #AAA;
 	width: 100%;
 	padding: 90px 30px 30px 30px;
 	text-align: right;
