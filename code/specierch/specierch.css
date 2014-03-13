@@ -61,7 +61,7 @@ table tbody tr td {
 }
 .result .text {
 	max-height: 100%;
-	overflow-y: scroll;
+	overflow-y: auto;
 	font-weight: 300;
 	color: #BBB;
 	position: absolute;

@@ -23,7 +23,7 @@ var html = '\
 	</div>\
 	<div class="popup" id="hint">\
 		<h2>Welcome to Specierch.</h2>\
-		<p>Specierch is an image search tool designed specifically for finding photographs of living organisms catalogued in <a href="http://dbpedia.org/About">DbPedia</a>.</p>\
+		<p>Specierch ( pronounced spee-search ) is an image search tool designed specifically for finding photographs of living organisms catalogued in <a href="http://dbpedia.org/About">DbPedia</a>.</p>\
 		<p>\
 			Type search words into the input field at the bottom of the screen, press Enter,\
 			and wait for the images and text info to come streaming in.\
