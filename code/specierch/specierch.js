@@ -110,7 +110,6 @@ function genusImgs( _genus, _output ) {
 		success: function( _data ) {
 			hideWait();
 			var end = $( '#imgBox' ).height();
-			console.log( end );
 			imgShellSize();
 			markSearch( _genus );
 			var results = _data.results.bindings;
@@ -128,7 +127,7 @@ function genusImgs( _genus, _output ) {
 				}
 				
 			}
-			$( '#imgShell' ).scrollTop( end );
+			$( '#imgShell' ).animate({ scrollTop: end }, 2000 );
 		}
 	});
 }
