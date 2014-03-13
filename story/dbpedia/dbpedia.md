@@ -186,6 +186,7 @@ In the output I can display some relevant textual data so users know a bit more 
 
 Yes I decided I'm going to build it!
 Check back soon and see it.
+( <a href="../../code/specierch">Here it is!  It has mutated slightly though.</a> )
 Hope you had fun and you learned something.
 
 PS. I'm fairly confident that graph databases will be replacing relational ones for many applications.
