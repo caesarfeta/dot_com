@@ -1,12 +1,37 @@
+* > :last-child { 
+	margin-bottom: 0 !important; 
+	margin-right: 0 !important; 
+}
+#options {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	z-index: 2;
+	background-color: rgba( 0,0,0,0.5 );
+	padding: 10px;
+}
+#about a,
+#hint a,
+#wait a {
+	color: #FFAAAA;
+}
+#aboutClick {
+	display: inline-block;
+}
 #search {
 	position: absolute;
 	z-index: 2;
 	bottom: 0;
 	left: 50%;
 }
+#search input {
+	width: 90%;
+	display: inline-block;
+}
 .bigger {
 	font-size: 120%;
 }
+#about,
 #hint,
 #wait {
 	max-width: 600px;
@@ -18,6 +43,7 @@
 	background-color: rgba( 0,0,0,0.5 );
 	padding: 40px;
 }
+#about,
 #hint,
 #wait {
 	text-align: center;
