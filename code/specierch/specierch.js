@@ -23,21 +23,27 @@ var html = '\
 	</div>\
 	<div class="popup" id="hint">\
 		<h2>Welcome to Specierch.</h2>\
-		<p>Specierch ( pronounced spee-search ) is an image search tool designed specifically for finding photographs of living organisms catalogued in <a href="http://dbpedia.org/About">DbPedia</a>.</p>\
+		<p>\
+			Specierch ( pronounced spee-sea-urch ) is an image search tool designed specifically for finding photographs of living organisms catalogued in <a href="http://dbpedia.org/About">DbPedia</a>.\
+		</p>\
 		<p>\
 			Type search words into the input field at the bottom of the screen, press Enter,\
-			and wait for the images and text info to come streaming in.\
+			and wait for the images and info to come streaming in.\
 		</p>\
 		<p>\
-			Specierch will return a maximum of 25 photographs per search,\
-			so if you can\'t find what you\'re looking for the first time, try again with more specific search words.\
+			Specierch will return a maximum of 25 organisms per search,\
+			so if you don\'t find what you\'re looking for the first time, try again with more specific search words.\
 		</p>\
 		<p>\
-			Here\'s some example search words to get you started:</br>\
-			<span class="bigger">honey, needle, lemon, shroom</span>\
+			It\'s fun to search for mundane words to see Nature\'s variations of a particular theme.</br>\
+			Here\'s some example search words to get you started:\
 		</p>\
 		<p>\
-			Enjoy!\
+			<span class="bigger">sun, cloud, gold, glass, silver, death, grass, weed, tree, honey, lemon, dark, light, clown, desert, mountain, barn, horn</span>\
+		</p>\
+		<p>\
+			I hope this tool will help you better enjoy Nature\'s structures, patterns, colors!</br>\
+			Thanks for visiting!\
 		</p>\
 	</div>\
 	<div class="popup" id="wait">\
@@ -165,7 +171,7 @@ function specierch( _search, _output ) {
 				FILTER ( langMatches( lang( ?abstract ), "EN" ))\
 			}\
 		}\
-		LIMIT 50\
+		LIMIT 500\
 	';
 	var queryUrl = encodeURI( url+"?query="+query+"&format=json" );
 	$.ajax({
@@ -186,7 +192,8 @@ function specierch( _search, _output ) {
 			//------------------------------------------------------------
 			//  Sort by relevanve and clip to 25 records
 			//------------------------------------------------------------
-			_data = resultSort( _data );
+			_data = _data.results.bindings;
+			_data = resultSort( _data, _search );
 			//------------------------------------------------------------
 			//  Display the results
 			//------------------------------------------------------------
@@ -203,8 +210,82 @@ function specierch( _search, _output ) {
 //  I have to write this...  Sort results by relevancy...
 //  Not sure how I'll do this exactly...
 //------------------------------------------------------------
-function resultSort( _data ) {
-	return _data;
+function resultSort( _data, _search ) {
+	//return _data;
+	//------------------------------------------------------------
+	//  Search string 100% match:
+	//  tiger - Tiger
+	//------------------------------------------------------------
+	var perfect = [];
+	//------------------------------------------------------------
+	//  Search string bounded by space and end: 
+	//  whale - Right Whale
+	//------------------------------------------------------------
+	var spaceAndEnd = [];
+	//------------------------------------------------------------
+	//  Search string at beginning followed by chars:
+	//  blue - Blue Whale
+	//------------------------------------------------------------
+	var begAndSpace = [];
+	//------------------------------------------------------------
+	//  Search string bounded by space
+	//  tailed - Ring Tailed Lemur
+	//------------------------------------------------------------
+	var spaceAndSpace = [];
+	//------------------------------------------------------------
+	//  Search string found anywhere
+	//  ail - Ring Tailed Lemur
+	//------------------------------------------------------------
+	var anywhere = [];
+	//------------------------------------------------------------
+	//  Okay so we have our tiers defined.  Now let's sort!
+	//------------------------------------------------------------
+	var search = _search.alphaSpaceOnly().toUpperCase();
+	for ( var i=0, ii=_data.length; i<ii; i++ ) {
+		var name = _data[i].name.value.toString().alphaSpaceOnly().toUpperCase();
+		//------------------------------------------------------------
+		//  Perfect
+		//------------------------------------------------------------
+		if ( name == search ) {
+			perfect.push( _data[i] );
+			continue;
+		}
+		//------------------------------------------------------------
+		//  Space and End
+		//------------------------------------------------------------
+		var check = name.indexOf( ' '+search ) + search.length + 1;
+		if ( check == name.length ) {
+			spaceAndEnd.push( _data[i] );
+			continue;
+		}
+		//------------------------------------------------------------
+		//  Beginning and Space
+		//------------------------------------------------------------
+		if ( name.indexOf( search+' ' ) == 0 ) {
+			begAndSpace.push( _data[i] );
+			continue;
+		}
+		//------------------------------------------------------------
+		//  Space And Space
+		//------------------------------------------------------------
+		check = name.indexOf( ' '+search+' ' );
+		if ( check != -1 ) {
+			spaceAndSpace.push( _data[i] );
+			continue;
+		}
+		//------------------------------------------------------------
+		//  Anywhere
+		//------------------------------------------------------------
+		anywhere.push( _data[i] );
+	}
+	//------------------------------------------------------------
+	//  Concatenate them all together.
+	//------------------------------------------------------------
+	perfect = perfect.concat( spaceAndEnd );
+	perfect = perfect.concat( begAndSpace );
+	perfect = perfect.concat( spaceAndSpace );
+	perfect = perfect.concat( anywhere );
+	return perfect;
 }
 //------------------------------------------------------------
 //  Clean up names
@@ -220,7 +301,7 @@ function cleanTaxon( _result, _taxon, _replacement ) {
 //  Display the results... 25 at a time.
 //------------------------------------------------------------
 function displayResults( _data, _output, _search ) {
-	var results = _data.results.bindings;
+	var results = _data;
 	//------------------------------------------------------------
 	//  Loop through the results
 	//------------------------------------------------------------
@@ -268,7 +349,7 @@ function displayResults( _data, _output, _search ) {
 					<div id="result'+resultNum+'" class="result">\
 						<img src="'+src+'"/>\
 						<div class="text">\
-							<a href=""><h3 class="name">'+ name +'</h3></a>\
+							<a href=""><h3 class="name">'+ name +'</h3><span class="switch">&#9660;</span></a>\
 							<div class="extra">\
 								<table>\
 									<tr>\
@@ -303,13 +384,18 @@ function displayResults( _data, _output, _search ) {
 					</div>\
 				';
 				$( _output ).append( result );
+				//------------------------------------------------------------
+				//  Text drop down.
+				//------------------------------------------------------------
 				$( '#result'+resultNum+' a' ).on( 'touchstart click', function(_e) {
 					_e.preventDefault();
 					var parent = $( this ).parent();
 					if ( $( '.extra', parent ).is(':visible') ) {
+						$( '.switch', parent ).html( '&#9660;' );
 						$( '.extra', parent ).hide();
 					}
 					else {
+						$( '.switch', parent ).html( '&#9650;' );
 						$( '.extra', parent ).show();
 					}
 				});

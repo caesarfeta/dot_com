@@ -45,7 +45,6 @@ table tbody tr td {
 }
 .result a {
 	display: block;
-	min-width: 300px;
 }
 .result a:hover h3 {
 	color: #EEE;
@@ -58,6 +57,11 @@ table tbody tr td {
 	display: inline-block;
 	margin: 0;
 	color: #BBB;
+}
+.result .text .switch {
+	display: inline-block;
+	padding: 0 10px;
+	color: #777;
 }
 .result .text {
 	max-height: 100%;
