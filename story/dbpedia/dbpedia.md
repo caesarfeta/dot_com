@@ -1,4 +1,4 @@
-I don't know if you've heard of DBPedia.
+I don't know if you've heard of DbPedia.
 Well it's Wikipedia turned into a graph database.
 
 You may be wondering, "What's a graph database and how are they different from your typical database?"
@@ -12,15 +12,15 @@ I'm oversimplifying... greatly... but that's the basic difference.
 And it's a difference so basic that graph databases can't be queried with the same language that relational databases are.
 Most graph databases use a language called SPARQL, pronounced "sparkel".
 
-So let me show you how to explore DBPedia with SPARQL.
+So let me show you how to explore DbPedia with SPARQL.
 
 ## Let's write some SPARQL!
 
-You can use <a href="http://dbpedia.org/snorql">SNORQL</a>, pronounced "snorkel", to run DBPedia SPARQL queries.
+You can use <a href="http://dbpedia.org/snorql">SNORQL</a>, pronounced "snorkel", to run DbPedia SPARQL queries.
 It's easy.
 You can do it even when high on Nyquil.
 
-So a good way to begin your exploration of DBPedia is to find a Wikipedia page you're interested in.
+So a good way to begin your exploration of DbPedia is to find a Wikipedia page you're interested in.
 I'm interested in insects, especially social insects, so I'll start with my favorite social insect of all, the honey bee.
 
 <pre>
@@ -36,7 +36,7 @@ So I'll just run this query in SNORQL.
 	}
 
 The query returns quite a bit of data.
-Now I have my foot in DBPedia's door...
+Now I have my foot in DbPedia's door...
 
 While browsing the data a line in the output catches my eye.
 
@@ -90,7 +90,7 @@ That my friends is a link to an image.
 I love images!
 I want more of them!
 
-I'm thinking it would be really cool if I could query DBPedia and get URLs to images of all the species in the Apis genus, which I can do with this query.
+I'm thinking it would be really cool if I could query DbPedia and get URLs to images of all the species in the Apis genus, which I can do with this query.
 
 	SELECT ?s ?o
 	WHERE {

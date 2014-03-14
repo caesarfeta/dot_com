@@ -66,7 +66,7 @@
 		<section id="text">
 			<div class="row">
 				<div class="twelve columns">
-					<p>I don't know if you've heard of DBPedia.
+					<p>I don't know if you've heard of DbPedia.
 Well it's Wikipedia turned into a graph database.</p>
 <p>You may be wondering, "What's a graph database and how are they different from your typical database?"
 Very briefly, your typical database is a relational database.
@@ -76,12 +76,12 @@ It's a big heap of data, where every individual chunk of data has a universally 
 <p>I'm oversimplifying... greatly... but that's the basic difference.
 And it's a difference so basic that graph databases can't be queried with the same language that relational databases are.
 Most graph databases use a language called SPARQL, pronounced "sparkel".</p>
-<p>So let me show you how to explore DBPedia with SPARQL.</p>
+<p>So let me show you how to explore DbPedia with SPARQL.</p>
 <h2>Let's write some SPARQL!</h2>
-<p>You can use <a href="http://dbpedia.org/snorql">SNORQL</a>, pronounced "snorkel", to run DBPedia SPARQL queries.
+<p>You can use <a href="http://dbpedia.org/snorql">SNORQL</a>, pronounced "snorkel", to run DbPedia SPARQL queries.
 It's easy.
 You can do it even when high on Nyquil.</p>
-<p>So a good way to begin your exploration of DBPedia is to find a Wikipedia page you're interested in.
+<p>So a good way to begin your exploration of DbPedia is to find a Wikipedia page you're interested in.
 I'm interested in insects, especially social insects, so I'll start with my favorite social insect of all, the honey bee.</p>
 <pre>
 http://en.wikipedia.org/wiki/Honey_bee
@@ -95,7 +95,7 @@ WHERE {
 }
 </code></pre>
 <p>The query returns quite a bit of data.
-Now I have my foot in DBPedia's door...</p>
+Now I have my foot in DbPedia's door...</p>
 <p>While browsing the data a line in the output catches my eye.</p>
 <pre><code>dbpedia2:genus [http]   "Apis"@en
 </code></pre>
@@ -142,7 +142,7 @@ WHERE {
 <p>That my friends is a link to an image.
 I love images!
 I want more of them!</p>
-<p>I'm thinking it would be really cool if I could query DBPedia and get URLs to images of all the species in the Apis genus, which I can do with this query.</p>
+<p>I'm thinking it would be really cool if I could query DbPedia and get URLs to images of all the species in the Apis genus, which I can do with this query.</p>
 <pre><code>SELECT ?s ?o
 WHERE {
     ?s dbpedia2:genus "Apis"@en;

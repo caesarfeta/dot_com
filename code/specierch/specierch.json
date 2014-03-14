@@ -9,7 +9,7 @@
 	"third_party": [ 
 		"../javascript/lib/jslib/src/js/StringExt.js"
 	],
-	"preview_img": "code/sierpinski/img/sierpinski.png",
+	"preview_img": "code/specierch/img/peacock_thumb.jpg",
 	"bg_color": "#AAA",
 	"preview": "Specierch is an image search tool designed specifically for finding photographs of living organisms catalogued in <a href=\"http://dbpedia.org/About\">DbPedia</a>."
 }

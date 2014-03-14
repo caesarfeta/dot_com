@@ -24,7 +24,7 @@
 					<h3 class="author">by <span class="name">Adam Tavares</span></h3>
 					<h4 class="date">Published February 25, 2014</h4>
 				</div>
-				<p class="preview">I don't know if you've heard of DBPedia.
+				<p class="preview">I don't know if you've heard of DbPedia.
 Well it's Wikipedia turned into a graph database.
 You may be wondering, "What's a graph database and how are they different from your typical database?"
 Very briefly, your typical database is a relational database.
