@@ -42,7 +42,7 @@ var html = '\
 			<span class="bigger">sun, cloud, gold, glass, silver, death, grass, weed, tree, honey, lemon, dark, light, clown, desert, mountain, barn, horn</span>\
 		</p>\
 		<p>\
-			I hope this tool will help you better enjoy Nature\'s structures, patterns, colors!</br>\
+			I hope this tool will help you better enjoy Nature\'s structures, patterns, and colors!</br>\
 			Thanks for visiting!\
 		</p>\
 	</div>\
@@ -76,10 +76,12 @@ $( '#aboutClick' ).on( 'touchstart click', function( _e ) {
 //------------------------------------------------------------
 //	imgBox
 //------------------------------------------------------------
-$('#input').bind( "enter", function( _e ){
-   nameSearch( $('#input').val() );
-   hideHint();
-   showWait();
+$('#input').bind( 'enter', function( _e ){
+	nameSearch( $('#input').val() );
+	$('#input').addClass( 'faded' );
+	$('#input').blur();
+	hideHint();
+	showWait();
 });
 $( '#input' ).keyup( function( _e ){
 	if ( _e.keyCode == 13 ) {
@@ -393,10 +395,12 @@ function displayResults( _data, _output, _search ) {
 					if ( $( '.extra', parent ).is(':visible') ) {
 						$( '.switch', parent ).html( '&#9660;' );
 						$( '.extra', parent ).hide();
+						$( parent ).removeClass( 'open' );
 					}
 					else {
 						$( '.switch', parent ).html( '&#9650;' );
 						$( '.extra', parent ).show();
+						$( parent ).addClass( 'open' );
 					}
 				});
 				resultNum++;
