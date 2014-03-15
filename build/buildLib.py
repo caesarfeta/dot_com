@@ -5,6 +5,9 @@ import re
 import markdown
 import json
 import os
+import pprint
+
+pp = pprint.PrettyPrinter(indent=4)
 
 def published():
 	f = open( "home.conf", "r" )
@@ -56,6 +59,7 @@ def parseTemplate( _template, _file, _data ):
 	# Double asterisk?
 	# not necessary in Python 2.6.1
 	text = template.render( _data )
+	
 	writeToFile( _file, text )
 
 def stripHtml( _data ):

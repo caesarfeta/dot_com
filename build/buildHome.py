@@ -11,6 +11,10 @@ def build():
 	data = {}
 	data["previews"] = []
 	data["year"] = strftime( "%Y", gmtime() )
+	
+	# Get the analytics tracking code
+	data["tracking"] = buildLib.loadTemplate( "gaTrackingCode" ).encode('utf8')
+	
 	for page in pages:
 		page = "../" + page + "/preview.html.snpt"
 		f = open( page, "r" )
