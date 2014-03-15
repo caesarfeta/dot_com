@@ -35,6 +35,9 @@ def build( _path, _id=-1 ):
 	# Get the id to build the preview
 	data["id"] = _id
 	
+	# Get the analytics tracking code
+	data["tracking"] = buildLib.loadTemplate( "gaTrackingCode" )
+	
 	# Load the appropriate template
 	if data["type"] == "cartoon":
 		# Build the cartoon file
