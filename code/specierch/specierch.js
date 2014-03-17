@@ -100,7 +100,11 @@ var resultNum = 0;
 //	ACTION
 //------------------------------------------------------------
 function startSearch() {
-	nameSearch( $('#input').val() );
+	var search = $('#input').val();
+	if ( search == '' ) {
+		return;
+	}
+	nameSearch( search );
 	$('#input').addClass( 'faded' );
 	$('#input').blur();
 	hideHint();
