@@ -39,7 +39,10 @@ var html = '\
 			Here\'s some example search words to get you started:\
 		</p>\
 		<p>\
-			<span class="bigger">sun, cloud, gold, glass, silver, death, grass, weed, tree, honey, lemon, dark, light, clown, desert, mountain, barn, horn</span>\
+			<span class="bigger">\
+				sun, cloud, gold, glass, silver, death, devil, angel, grass, weed, tree, \
+				honey, lemon, dark, light, clown, desert, mountain, barn, horn \
+			</span>\
 		</p>\
 		<p>\
 			I hope this tool will help you better enjoy Nature\'s structures, patterns, colors!</br>\
