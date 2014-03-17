@@ -8,6 +8,7 @@ var html = '\
 <div id="specierch">\
 	<div id="search">\
 		<input id="input" type="text" placeholder="search words">\
+		<a href="" id="searchClick">Go!</a>\
 	</div>\
 	<div id="imgShell"><div id="imgBox"></div></div>\
 	<div id="options">\
@@ -63,10 +64,10 @@ $( 'body' ).append( html );
 $( '#search' ).css({
 	'margin-left': $( '#search' ).outerWidth()/2 * -1
 });
-centerId( 'wait' );
-centerId( 'hint' );
-centerId( 'about' );
-centerId( 'error' );
+//centerId( 'wait' );
+//centerId( 'hint' );
+//centerId( 'about' );
+//centerId( 'error' );
 hideError();
 hideWait();
 hideAbout();
@@ -80,11 +81,11 @@ $( '#aboutClick' ).on( 'touchstart click', function( _e ) {
 //	imgBox
 //------------------------------------------------------------
 $('#input').bind( 'enter', function( _e ){
-	nameSearch( $('#input').val() );
-	$('#input').addClass( 'faded' );
-	$('#input').blur();
-	hideHint();
-	showWait();
+	startSearch();
+});
+$('#searchClick').on( 'touchstart click', function( _e ) {
+	_e.preventDefault();
+	startSearch();
 });
 $( '#input' ).keyup( function( _e ){
 	if ( _e.keyCode == 13 ) {
@@ -98,6 +99,13 @@ var resultNum = 0;
 //------------------------------------------------------------
 //	ACTION
 //------------------------------------------------------------
+function startSearch() {
+	nameSearch( $('#input').val() );
+	$('#input').addClass( 'faded' );
+	$('#input').blur();
+	hideHint();
+	showWait();
+}
 function centerId( _id ) {
 	$( '#'+_id ).css({
 		'margin-left': $( '#'+_id ).outerWidth()/2 * -1,

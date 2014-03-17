@@ -7,6 +7,9 @@ body {
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+	background-position:center; 
 }
 table {
 	background: none;
@@ -98,9 +101,11 @@ table tbody tr td {
 	right: 0;
 	z-index: 2;
 	background-color: rgba( 0,0,0,0.25 );
-	padding: 10px;
+	padding: 5px;
+	font-size: 10px;
 }
 #options:hover,
+#searchClick:hover,
 #options.on {
 	background-color: rgba( 0,0,0,0.75 );
 }
@@ -119,8 +124,9 @@ table tbody tr td {
 	left: 50%;
 }
 #search input {
-	width: 90%;
 	display: inline-block;
+	box-sizing: border-box;
+	width: 60%;
 }
 #search input:hover,
 #search input:focus {
@@ -135,13 +141,16 @@ table tbody tr td {
 }
 .popup {
 	max-width: 600px;
-	position: absolute;
+	margin-left:auto;
+	margin-right:auto;
 	z-index: 2;
-	top: 50%;
-	left: 50%;
+	position: relative;
+/*	top: 50%;
+	left: 50%; */
 	color: #EFEFEF;
 	background-color: rgba( 0,0,0,0.75 );
 	padding: 40px;
+	margin-bottom: 50px;
 }
 #imgShell {
 	position: absolute;
@@ -158,4 +167,25 @@ table tbody tr td {
 	padding: 90px 30px 30px 30px;
 	text-align: right;
 	font-size: 60px;
+}
+#searchClick {
+	box-sizing: border-box;
+	text-align: center;
+	display: inline-block;
+	background-color: rgba( 0,0,0,0.25 );
+	padding: 10px 0;
+	width: 30%;
+	font-size: 13px;
+}
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+	
+	.result .text {
+		padding: 10px;
+	}
+	.result .text h3 {
+		font-size: 13px;
+	}
 }
