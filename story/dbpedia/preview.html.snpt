@@ -13,18 +13,18 @@
 			<div class="three columns">
 				<a href="story/dbpedia">
 				
-					<img class="splash" src="story/dbpedia/img/honey_bee.jpg" alt="How to play with DBPedia" />
+					<img class="splash" src="story/dbpedia/img/honey_bee.jpg" alt="How to play with DbPedia" />
 				
 				</a>
 			</div>
 			<div class="nine columns">
 				<div id="meta">
-					<a href="story/dbpedia"><h1 class="title">How to play with DBPedia</h1></a>
+					<a href="story/dbpedia"><h1 class="title">How to play with DbPedia</h1></a>
 					<h2 class="subtitle">Bees, SPARQL, graph databases, and a bit of Javascript</h2>
 					<h3 class="author">by <span class="name">Adam Tavares</span></h3>
 					<h4 class="date">Published February 25, 2014</h4>
 				</div>
-				<p class="preview">I don't know if you've heard of DBPedia.
+				<p class="preview">I don't know if you've heard of DbPedia.
 Well it's Wikipedia turned into a graph database.
 You may be wondering, "What's a graph database and how are they different from your typical database?"
 Very briefly, your typical database is a relational database.

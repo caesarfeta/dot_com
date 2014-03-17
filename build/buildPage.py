@@ -5,6 +5,9 @@ import os
 import fnmatch
 import re
 import sys
+#import pprint
+
+#pp = pprint.PrettyPrinter(indent=4)
 
 # Infer certain pieces of data
 def inferData( _data, _file, _root ):
@@ -34,6 +37,11 @@ def build( _path, _id=-1 ):
 	
 	# Get the id to build the preview
 	data["id"] = _id
+	
+	# Get the analytics tracking code
+	data["tracking"] = buildLib.loadTemplate( "gaTrackingCode" ).encode('utf8')
+	
+	#pp.pprint( data )
 	
 	# Load the appropriate template
 	if data["type"] == "cartoon":
