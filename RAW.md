@@ -141,3 +141,15 @@ Hopefully it one day becomes the suprememe visual documention of our world marti
 An image that is joyful, playful, and above all useful to the study of martial-arts.
 It's an exploration of time and space as well.
 I hope to have subregions printed on wallpaper and stuck to the walls of dojos and practice spaces around the world.
+
+Project
+
+Big image.
+Areas contain like symbols.
+Areas are defined creating boundaries like nations on a map.
+Objects contained within those boundaries can be animated.
+Depending on their shape they become.
+	particles in system
+	particle, wave/line/curve pairs.
+Predefined functions can be written.
+Parameters can be set.

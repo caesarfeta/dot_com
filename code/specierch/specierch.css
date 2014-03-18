@@ -66,6 +66,9 @@ table tbody tr td {
 	padding: 0 10px;
 	color: #777;
 }
+.result img {
+	background-image:url('img/no_img.png');
+}
 .result .text {
 	-webkit-transition: all .5s;
 	transition: all .5s;
