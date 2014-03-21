@@ -142,8 +142,11 @@ An image that is joyful, playful, and above all useful to the study of martial-a
 It's an exploration of time and space as well.
 I hope to have subregions printed on wallpaper and stuck to the walls of dojos and practice spaces around the world.
 
-Project
 
+
+
+
+# Image Area / Define Particle Systems / OCR
 Big image.
 Areas contain like symbols.
 Areas are defined creating boundaries like nations on a map.
@@ -153,3 +156,4 @@ Depending on their shape they become.
 	particle, wave/line/curve pairs.
 Predefined functions can be written.
 Parameters can be set.
+

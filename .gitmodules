@@ -25,3 +25,6 @@
 [submodule "javascript/lib/jssh"]
 	path = javascript/lib/jssh
 	url = http://github.com/caesarfeta/jssh
+[submodule "third_party/d3"]
+	path = third_party/d3
+	url = https://github.com/mbostock/d3
