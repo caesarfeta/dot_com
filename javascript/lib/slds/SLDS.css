@@ -16,6 +16,9 @@
 #slideshow .first h2 {
 	text-align: center;
 }
+#slideshow .first h1 {
+	margin-top: 100px;
+}
 #slideshow h1 {
 	margin-bottom: 20px;
 }
