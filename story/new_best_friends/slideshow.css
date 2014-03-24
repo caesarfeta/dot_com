@@ -8,8 +8,53 @@
 	font-family: Helvetica, Arial, sans-serif;
 	padding: 50px 150px;
 }
+#slideshow li,
 #slideshow p {
 	font-size: 20px;
+}
+#slideshow h1 {
+	margin-bottom: 20px;
+}
+#slideshow .columns > div.snippet-container {
+	text-align: left;
+	margin: 20px 0;
+	width: 100%;
+}
+#slideshow ul {
+	list-style-position: inside;
+	padding: 0 20px;
+}
+#slideshow li {
+	margin: 10px 0 20px 0;
+	line-height: 1.1em;
+}
+#slideshow .snippet-wrap pre.sh_sourceCode {
+	-webkit-border-radius: 0;
+	border-radius: 0;
+	box-shadow: none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+}
+#slideshow .snippet-wrap .snippet-no-num li {
+	margin: 0;
+	line-height: 1.6em;
+	font-size: 12px;
+}
+#slideshow .columns > table {
+	margin: 40px auto; 
+	text-align: left;
+}
+#slideshow .picture .credit {
+	padding-right: 5px;
+	text-align: right;
+	font-size: 14px;
+	padding-top: 0;
+	margin-top: 3px;
+	margin-bottom: 0;
+}
+#slideshow .quote {
+	color: #666;
+	font-size: 25px;
 }
 @media only screen and ( max-width: 520px ) {
 	#slideshow {
