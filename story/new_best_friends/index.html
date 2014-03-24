@@ -1,0 +1,281 @@
+<html>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0" />
+
+<head>	
+	<!-- CSS -->
+	<link href="../../third_party/foundation/stylesheets/foundation.min.css" rel="stylesheet" type="text/css" />
+	<link href="../../third_party/jquery_snippet/jquery.snippet.min.css" rel="stylesheet" type="text/css" />
+	<link href="../../css/site.css" rel="stylesheet" type="text/css" />
+	
+			<link href="slideshow.css" rel="stylesheet" type="text/css" />
+	
+	
+	<!-- Page Specific CSS -->
+
+		<style type="text/css">
+			
+			
+			
+			/* Change the quote color for flavor */
+			#story .quote {
+				color: None;
+			}
+			
+			
+			
+		</style>
+	
+	<!-- Title -->
+	<title>New Best Friends -- Humanities Research & Software Development by Adam Tavares</title>
+	
+	<!-- Google Analytics -->
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42372677-1', 'adamtavares.com');
+  ga('send', 'pageview');
+
+</script>
+</head>
+
+<body>
+	<!-- Navigation -->
+	<section id="extra-info">
+		<div id="panel">
+			<a id="home" class="link" href="../..">[ Home ]</a>
+		</div>
+	</section>
+	
+	<div id="story" class="container main">
+		<section id="header">
+		
+			<!-- Keywords -->
+			<div class="row">
+				<div class="twelve columns">
+					<div id="genre">
+					
+						<a href="../../#research">research</a>
+					
+						<a href="../../#presentation">presentation</a>
+					
+					</div>
+				</div>
+			</div>
+			
+			<!-- Title and Author -->
+			<div class="row">
+				<div id="meta" class="twelve columns">
+					<h1 id="title">New Best Friends -- Humanities Research & Software Development</h1>
+					<h2 id="subtitle">Version Control Systems & Open Linked Data</h2>
+					<img id="avatar" src="../../img/avatar_default.jpg" alt="Adam Tavares" />
+					<h3 id="author">by <span class="name">Adam Tavares</span></h3>
+					<h4 id="date">Published March 24, 2014</h4>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Story -->
+		<section id="text">
+			<div class="row">
+				<div class="twelve columns">
+					<p>The following document is an overview of technologies which are becoming popular in Humanities research.
+It talks about version control systems and graph databases primarily, and how they are used in Perseids, software currently being developed by programmers employed by the Perseus Project.</p>
+<h1>Trees and Graphs, Trees and Graphs, Graphs and Trees, Graphs and Trees...</h1>
+<p>Two Technologies
+    version control systems &gt;&gt; Trees
+    graph databases         &gt;&gt; Graphs</p>
+<h1>Version Control Systems</h1>
+<p>version control systems ~ source control systems ~ source control</p>
+<p>code ~ source ~ source code &gt;&gt; Whatever you call it it's still text</p>
+<p>They've been used by software developers for decades.
+They track changes made to a collection of documents.
+So we can answer questions like...</p>
+<ul>
+<li>Which document changed?</li>
+<li>Where was it changed?</li>
+<li>Who changed it?</li>
+<li>When did it change?</li>
+<li>Why did it change?</li>
+</ul>
+<p>Version Control Systems don't just server this reporting functionality.
+They allow us also to restore the state of documents to particular points in time.
+And they also allow two or more people to independently work on the same document separately with no knowledge of what each is doing and then to later merge them into a single document.</p>
+<h1>Born from necessity.</h1>
+<p>Writing complex software requires the collective efforts of lots of people over long periods of time.
+Programmers aren't the most social of humans.
+We have a derogatory term for non-computer mediated social reality, "meatspace".
+That says a lot.
+But paradoxically we have to closely coordinate our activity with one another.
+If we don't, we won't successfully complete our projects... further our careers... fulfill our destinies... etc.</p>
+<p>So, yes, we need other people.
+We can't survive on coffee and computers alone.</p>
+<h1>Big Dreams = Big Problems</h1>
+<p>If we have grand plans and adequate funding we can recruit lots of people to help our cause.
+Lots of people mean lots of problems, people problems ( aka most problems ), which I'll sum up as follows...</p>
+<ul>
+<li>"Why doesn't this code compile anymore?  What did you morons do?"</li>
+<li>"Dave took credit for my idea!"</li>
+<li>"You saved over my work!"</li>
+<li>"What are you talking about?  I've been working like a dog!" * Goes back to reading reddit filth *</li>
+<li>"You're all dead weight.  I'm going to write my own version of this software and it's going to be amazing.  Who's coming with me?"</li>
+</ul>
+<p>So a version control system properly implemented into your workflow can help alleviate interpersonal conflict.
+It helps to track who contributes what.
+It helps to reduce the consequences of making mistakes giving people the ability to take chances, follow instincts, and try new things.
+It helps people take ideas into new directions.
+It aids cooperation, because cooperation that requires less physical and emotional energy is good cooperation.
+To use the most abused words of the last five years... it helps us innovate.</p>
+<h1>Popularity Contest</h1>
+<p>The most popular version control system is Git, and it's also the best.
+It has, in a very short period of time, less than ten years, been adopted by developers and now plays a central part of their development workflow.</p>
+<p>Programmers almost universally love Git.
+So now they're sharing that love by writing interfaces around Git, interfaces that make Git easier to use for people who do things besides build software.
+One such interface is Perseids, which you can think of as a web interface for Git, with tools designed to make the jobs of philologists, linguists, and historians easier, orbiting around it.</p>
+<h1>From Git to Perseids</h1>
+<p>Perseids is built on top of Sosol and Sosol is built on top of Git.
+Sosol ( an acronym for Son of Suda OnLine ) is being developed by Ryan Bauman and Hugh Cayliss at Duke University for papyri.info.
+The Perseids team collaborates with them.</p>
+<p>Sosol Git with a web interface ( Ruby on Rails ) along with some code for interacting with common document formats used by Humanities researchers.</p>
+<p>Perseids takes the core Sosol functionality and adds some extra tools to aid with Treebanking, image and text annotation, translation alignments, and image transcription.</p>
+<h1>Strengths</h1>
+<p>Core functionality.
+User management and document versioning is strong.</p>
+<h1>Weaknesses</h1>
+<p>The interface is ugly.</p>
+<p>Let's talk about another piece of technology.</p>
+<h1>The "Semantic Web", "Web 3.0"</h1>
+<p>You've probably heard this phrase before.
+Let me start by explaining how the World Wide Web works.
+The Web is simply a massive collection of linked documents on Earth's largest computer network, the Internet.
+Most of these documents are created "hot to order" by computer programs that look up information in a database and then spit out that information wrapped up in a language that explains to a web-browser how to display it in a way that is easy for human sensory systems, usually our visual system, to process.*
+That language is actually three languages typically, HTML/XML, CSS, and Javascript/JSON.</p>
+<p>The important thing to realize is the documents are linked and the databases that create them aren't.
+Presentation is linked... content is not.
+Why is this the case?
+Well you can thank Larry Ellison, CEO of Oracle.
+It's not entirely his fault really it's the fault of relational databases, the source of Larry's personal fortune, as a technology.</p>
+<h1>Relational Databases</h1>
+<p>So the most common type of database out there in the wild is the relational database.
+Relational databases store data in tables which are lists of columnar data.
+If you've used a spreadsheet you've basically seen a relational database table... named columns and data in rows.
+Each row in the table has a whole number identifying it.
+That number is just the order in which a row is added to the table.
+This number is the core technological problem, it is a pretty poor method of inventorying data.
+And it makes it VERY hard to connect data between independent relational database systems.</p>
+<h1>Graph Databases</h1>
+<pre><code>"Open Linked Data" = public graph database
+</code></pre>
+<p>Graph databases don't use tables with numbered rows.
+Instead, every chunk of data gets a URL, essentially.
+Smart folks realized that URLs work great at identifying individual files on a global computer network comprised of billions of devices, why not use them to inventory research data?</p>
+<p>Now if all we did was assign URLs to data chunks we'd have data soup, right?
+All the data would be floating around but we wouldn't know how our data is connected.
+Documents on the Web get connected through links inside the document body.
+Graph databases don't use links, they connect data using "triples".
+Triples are simple.</p>
+<p>They're simple declarative sentences.</p>
+<pre><code>[subject] [predicate] [object]
+</code></pre>
+<p>Children create them when they're first learning to write or speak for that matter.</p>
+<pre><code>[baby] [wants] [daddy]
+[dog] [licks] [baby]
+</code></pre>
+<p>Then children grow up, become more sophisticated, and learn more complex triples.</p>
+<pre><code>[energy] [is equivalent to] [mass times the speed of light squared]
+</code></pre>
+<p>So it's important to realize that subject, predicate, and object all have URLs, so when they're reused in other triples they connect like data.
+And that's the beauty of graph databases.
+Connections between data aren't just decided by how data is arranged into preexisting tables and columns.
+Connections are established by adding data.</p>
+<h1>What can you do with a graph database?</h1>
+<p>So once you know one bit of data in a graph database you can explore the connections made to it.
+Data is akin to eating a bowl of nachos. You pull out a piece or two and everything immediately connected comes with them, and you just select the particular connected bits you want and leave what you don't in the pile.</p>
+<h1>Images</h1>
+<h2>EXIF - Exchangeable image file format</h2>
+<p>JEIDA Japan Electronic Industries Development Association developed the Exif standard in 1998
+Digital Cameras are storing metadata.</p>
+<ul>
+<li>author</li>
+<li>time</li>
+<li>location</li>
+<li>camera settings<ul>
+<li>make and model</li>
+<li>aperture</li>
+<li>shutter speed</li>
+<li>focal length</li>
+<li>iso speed</li>
+<li>metering mode</li>
+</ul>
+</li>
+</ul>
+<p>So basically time, location and technology used in creating the image are now being stored by any image capturing device with GPS attached, which given the popularity of "smart phones" is most image capturing devices.</p>
+<p>Which is basically the information museums and archivists gather about images in their collection.</p>
+<ul>
+<li>author</li>
+<li>time</li>
+<li>location</li>
+<li>medium / materials / technology employed</li>
+</ul>
+<h1>Research</h1>
+<p>Gather
+Categorize
+Analyze / Synthesize
+Publish</p>
+<h1>Publication</h1>
+<p>Audiences:
+    Colleagues
+        - Knows context, will struggle to assimilate new knowledge. Why? $$$.
+    Students
+        - Doesn't know context, will struggle to assimilate new knowledge. Hope of $$.
+    The Public
+        - Doesn't know context, will NOT struggle to assimilate new knowledge. No hope of $.</p>
+<p>What audience should we try to reach?</p>
+<p>I don't believe that messages need to be dumbed-down to reach a general audience.
+General audience's need context and guidance.
+That takes an expert's time.
+That takes a Ken Burns.</p>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Copyright -->
+		<section id="footer">
+			<div class="row">
+				<div class="twelve columns">
+					<div id="copyright">&copy; Adam Tavares 2014</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</body>
+
+<!-- Javascript -->
+<!-- 3rd Party -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/modernizr.foundation.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/foundation.min.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/jquery.event.move.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/jquery.event.swipe.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/jquery.foundation.forms.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/jquery.foundation.mediaQueryToggle.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/app.js"></script>
+<script type="text/javascript" src="../../third_party/jquery_snippet/jquery.snippet.js"></script>
+<script type="text/javascript" src="../../third_party/jquery_snippet/sh_sh.js"></script>
+
+<!-- Custom -->
+<script type="text/javascript" src="../../javascript/lib/lib.min.js"></script>
+<script type='text/javascript' src='../../javascript/site.js'></script>
+
+<!-- Page Specific -->
+
+
+
+<script type="text/javascript" src="new_best_friends.js"></script>
+
+
+</html>

@@ -1,0 +1,31 @@
+<div class="row">
+	<div class="twelve columns story">
+		<div id="genre">
+		
+			<a href="#research">research</a>
+		
+			<a href="#presentation">presentation</a>
+		
+		</div>
+		<div class="row">
+			<div class="three columns">
+				<a href="story/new_best_friends">
+				
+					<img class="splash" src="story/client_side/img/watermelon.jpg" alt="New Best Friends -- Humanities Research & Software Development" />
+				
+				</a>
+			</div>
+			<div class="nine columns">
+				<div id="meta">
+					<a href="story/new_best_friends"><h1 class="title">New Best Friends -- Humanities Research & Software Development</h1></a>
+					<h2 class="subtitle">Version Control Systems & Open Linked Data</h2>
+					<h3 class="author">by <span class="name">Adam Tavares</span></h3>
+					<h4 class="date">Published March 24, 2014</h4>
+				</div>
+				<p class="preview">The following document is an overview of technologies which are becoming popular in Humanities research.
+It talks about version control systems and graph databases primarily, and how they are used in Perseids, software currently being developed by programmers employed by the Perseus Project.
+Trees and Graphs, Trees ...</p>
+			</div>
+		</div>
+	</div>
+</div>

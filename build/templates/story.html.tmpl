@@ -8,6 +8,9 @@
 	<link href="../../third_party/foundation/stylesheets/foundation.min.css" rel="stylesheet" type="text/css" />
 	<link href="../../third_party/jquery_snippet/jquery.snippet.min.css" rel="stylesheet" type="text/css" />
 	<link href="../../css/site.css" rel="stylesheet" type="text/css" />
+	{% for css in page_css %}
+			<link href="{{ css }}" rel="stylesheet" type="text/css" />
+	{% endfor %}
 	
 	<!-- Page Specific CSS -->
 
