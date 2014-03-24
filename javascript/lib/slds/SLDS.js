@@ -67,6 +67,7 @@ SLDS.show.prototype.show = function() {
 	$( '#extra-info' ).hide();
 	$( '#header' ).hide();
 	$( '#slideshow' ).show();
+	window.scrollTo( 0,0 );
 }
 SLDS.show.prototype.hide = function() {
 	$( '#extra-info' ).show();
