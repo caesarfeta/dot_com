@@ -6,9 +6,8 @@
 	"keywords": [ "research", "presentation" ],
 	"publish_date": "March 24, 2014",
 	"preview_img": "story/client_side/img/watermelon.jpg",
-	"third_party": [ "../javascript/lib/SLDS.js" ],
-	"page_js": [ "new_best_friends.js" ],
-	"page_css": [ "slideshow.css" ],
+	"page_js": [ "../../javascript/lib/slds/SLDS.js", "new_best_friends.js" ],
+	"page_css": [ "../../javascript/lib/slds/SLDS.css" ],
 	"quote_color": null,
 	"story": "new_best_friends.md"
 }

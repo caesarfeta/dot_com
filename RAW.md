@@ -157,3 +157,54 @@ Depending on their shape they become.
 Predefined functions can be written.
 Parameters can be set.
 
+
+
+
+# Research involving images BIG PICTURE
+## EXIF - Exchangeable image file format
+JEIDA Japan Electronic Industries Development Association developed the Exif standard in 1998
+Digital Cameras are storing metadata.
+
+* author
+* time
+* location
+* camera settings
+	* make and model
+	* aperture
+	* shutter speed
+	* focal length
+	* iso speed
+	* metering mode
+
+So basically time, location and technology used in creating the image are now being stored by any image capturing device with GPS attached, which given the popularity of "smart phones" is most image capturing devices.
+
+Which is basically the information museums and archivists gather about images in their collection.
+
+* author
+* time
+* location
+* medium / materials / technology employed
+
+## Research Fundamentals
+Gather
+Categorize
+Analyze / Synthesize
+Publish
+
+## Publication
+* Audiences:
+	* Colleagues
+		* Knows context, will struggle to assimilate new knowledge. 
+		* Why? $$$.
+	* Students
+		* Doesn't know context, will struggle to assimilate new knowledge.
+		* Why? Hope of $$.
+	* The Public
+		* Doesn't know context, will NOT struggle to assimilate new knowledge.
+		* Why? No hope of $.
+
+What audience are we trying to reach?
+I don't believe that messages need to be dumbed-down to reach a general audience.
+General audience's need context and guidance.
+That takes an expert's time.
+That takes a Ken Burns.

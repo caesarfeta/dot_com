@@ -1,16 +1,21 @@
-The following document is an overview of technologies which are becoming popular in Humanities research.
+The following document is an overview of technologies which are becoming popular as research tools in the Humanities.
 It talks about version control systems and graph databases primarily, and how they are used in Perseids, software currently being developed by programmers employed by the Perseus Project.
 
-# Trees and Graphs, Trees and Graphs, Graphs and Trees, Graphs and Trees...
-Two Technologies
-	version control systems >> Trees
-	graph databases			>> Graphs
+# The story of two data structures.
+Trees & graphs.  Your research friends for life.
+
+* version control systems -- Trees
+* graph databases -- Graphs
+
+# Quick definition of terms
+
+version control systems = source control systems = source control
+
+code = source = source code 
+
+"Source code by another name will still smell like text."
 
 # Version Control Systems
-version control systems ~ source control systems ~ source control
-
-code ~ source ~ source code >> Whatever you call it it's still text
-
 They've been used by software developers for decades.
 They track changes made to a collection of documents.
 So we can answer questions like...
@@ -28,6 +33,7 @@ And they also allow two or more people to independently work on the same documen
 # Born from necessity.
 Writing complex software requires the collective efforts of lots of people over long periods of time.
 Programmers aren't the most social of humans.
+
 We have a derogatory term for non-computer mediated social reality, "meatspace".
 That says a lot.
 But paradoxically we have to closely coordinate our activity with one another.
@@ -51,7 +57,7 @@ It helps to track who contributes what.
 It helps to reduce the consequences of making mistakes giving people the ability to take chances, follow instincts, and try new things.
 It helps people take ideas into new directions.
 It aids cooperation, because cooperation that requires less physical and emotional energy is good cooperation.
-To use the most abused words of the last five years... it helps us innovate.
+It helps us... to use the most abused words of the last five years...  innovate.
 
 # Popularity Contest
 The most popular version control system is Git, and it's also the best.
@@ -66,67 +72,97 @@ Perseids is built on top of Sosol and Sosol is built on top of Git.
 Sosol ( an acronym for Son of Suda OnLine ) is being developed by Ryan Bauman and Hugh Cayliss at Duke University for papyri.info.
 The Perseids team collaborates with them.
 
-Sosol Git with a web interface ( Ruby on Rails ) along with some code for interacting with common document formats used by Humanities researchers.
+Sosol is Git with a web interface ( Ruby on Rails ) along with some code for interacting with common document formats used by Humanities researchers.
 
-Perseids takes the core Sosol functionality and adds some extra tools to aid with Treebanking, image and text annotation, translation alignments, and image transcription.
+Perseids takes the core Sosol functionality and adds some extra tools to for Treebanking, image and text annotation, translation alignments, and image transcription.
 
-# Strengths
+## Strengths
 Core functionality.
 User management and document versioning is strong.
+Interoperability with other tools and services.
 
-# Weaknesses
-The interface is ugly.
+## Weaknesses
+The interface is ugly and sometimes hard to use, but we're working on it.
 
-Let's talk about another piece of technology.
-# The "Semantic Web", "Web 3.0"
-You've probably heard this phrase before.
+# The "Semantic-Web"
+You've probably heard this buzzword before.
+It's actual meaning has been buried under a bunch of techno-babble-edge-u-industry-marketing hype.
+I'll unravel this one.
+
 Let me start by explaining how the World Wide Web works.
 The Web is simply a massive collection of linked documents on Earth's largest computer network, the Internet.
 Most of these documents are created "hot to order" by computer programs that look up information in a database and then spit out that information wrapped up in a language that explains to a web-browser how to display it in a way that is easy for human sensory systems, usually our visual system, to process.*
 That language is actually three languages typically, HTML/XML, CSS, and Javascript/JSON.
 
-The important thing to realize is the documents are linked and the databases that create them aren't.
+The important thing to realize is on the Web documents are linked and the databases that create them aren't.
 Presentation is linked... content is not.
 Why is this the case?
 Well you can thank Larry Ellison, CEO of Oracle.
-It's not entirely his fault really it's the fault of relational databases, the source of Larry's personal fortune, as a technology.
+It's not entirely his fault.
+Really it's the fault of relational databases as a technology.
 
 # Relational Databases
 So the most common type of database out there in the wild is the relational database.
-Relational databases store data in tables which are lists of columnar data.
+Relational databases store data in tables, aka lists of columnar data.
 If you've used a spreadsheet you've basically seen a relational database table... named columns and data in rows.
 Each row in the table has a whole number identifying it.
 That number is just the order in which a row is added to the table.
-This number is the core technological problem, it is a pretty poor method of inventorying data.
-And it makes it VERY hard to connect data between independent relational database systems.
+This number is the core technological problem.
+Turns out this numbering-id system causes all kinds of problems.  Oh things like...
 
-# Graph Databases
+* Data integrity -- How accurately rows in tables are linked up.
+* Scalability -- How well the database grows to accomodate new kinds of data
+* Interoperability -- How well the database connects to other systems outside itself.
 
-	"Open Linked Data" = public graph database
+# Graph Databases.
+"Open Linked Data" = public graph database
 
 Graph databases don't use tables with numbered rows.
-Instead, every chunk of data gets a URL, essentially.
-Smart folks realized that URLs work great at identifying individual files on a global computer network comprised of billions of devices, why not use them to inventory research data?
+Instead it treats data as if every chunk of data inside it was a document on the Web.
+Smart folks realized that URLs work great at identifying trillions of individual files on a global computer network comprised of billions of devices, why not use them to inventory research data?
 
 Now if all we did was assign URLs to data chunks we'd have data soup, right?
 All the data would be floating around but we wouldn't know how our data is connected.
 Documents on the Web get connected through links inside the document body.
 Graph databases don't use links, they connect data using "triples".
-Triples are simple.
 
-They're simple declarative sentences.
+# Triples are simple.
+They're basically simple declarative sentences.
 
 	[subject] [predicate] [object]
 
-Children create them when they're first learning to write or speak for that matter.
+Below is an example SPARQL query.  Sparql is the language used to extract data from a graph database.  This particular query searches dbPedia, which is parts of Wikipedia turned into a public graph database, for images and taxonomic information of living organisms which contain a search string.
 
-	[baby] [wants] [daddy]
-	[dog] [licks] [baby]
+	PREFIX dbpedia2: <http://dbpedia.org/property/>
+	PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+	SELECT	?name, ?kingdom, ?phylum, 
+			?class, ?order, ?family, 
+			?genus, ?species, ?subspecies, 
+			?img, ?abstract
+	WHERE {
+		?s	dbpedia2:regnum ?hasValue;
+			rdfs:label ?name
+			FILTER regex( ?name, "eagle", "i" )
+			FILTER ( langMatches( lang( ?name ), "EN" ))
+		?animal dbpedia2:name ?name;
+			foaf:depiction ?img;
+			dbpedia2:regnum ?kingdom
+			OPTIONAL { ?animal dbpedia2:ordo ?order . }
+			OPTIONAL { ?animal dbpedia2:phylum ?phylum . }
+			OPTIONAL { ?animal dbpedia2:classis ?class . }
+			OPTIONAL { ?animal dbpedia2:familia ?family . }
+			OPTIONAL { ?animal dbpedia2:genus ?genus . }
+			OPTIONAL { ?animal dbpedia2:species ?species . }
+			OPTIONAL { ?animal dbpedia2:subspecies ?subspecies . }
+			OPTIONAL {
+				?animal <http://dbpedia.org/ontology/abstract> ?abstract
+				FILTER ( langMatches( lang( ?abstract ), "EN" ))
+			}
+	}
+	GROUP BY ?name
+	LIMIT 500
 
-Then children grow up, become more sophisticated, and learn more complex triples.
-
-	[energy] [is equivalent to] [mass times the speed of light squared]
-
+# Structure
 So it's important to realize that subject, predicate, and object all have URLs, so when they're reused in other triples they connect like data.
 And that's the beauty of graph databases.
 Connections between data aren't just decided by how data is arranged into preexisting tables and columns.
@@ -134,51 +170,29 @@ Connections are established by adding data.
 
 # What can you do with a graph database?
 So once you know one bit of data in a graph database you can explore the connections made to it.
-Data is akin to eating a bowl of nachos. You pull out a piece or two and everything immediately connected comes with them, and you just select the particular connected bits you want and leave what you don't in the pile.
+Data in a graph database are like a bowl of nachos. You pull out a chip or two and everything immediately connected comes with them, and you just select the particular connected bits you want and leave what you don't in the pile.
 
-# Images
-## EXIF - Exchangeable image file format
-JEIDA Japan Electronic Industries Development Association developed the Exif standard in 1998
-Digital Cameras are storing metadata.
+# See graph database in action.
+dbPedia doesn't have the best uptime, but when it is up and running it works beautifully.
+I'm not complaining.  I love me some dbPedia.
 
-* author
-* time
-* location
-* camera settings
-	* make and model
-	* aperture
-	* shutter speed
-	* focal length
-	* iso speed
-	* metering mode
+<a href="../code/specierch">Specierch</a>
 
-So basically time, location and technology used in creating the image are now being stored by any image capturing device with GPS attached, which given the popularity of "smart phones" is most image capturing devices.
+On the other side of this link is an image search tool which is basically the SPARQL query you just saw with some code to display returned data in a visually pleasing form.
 
-Which is basically the information museums and archivists gather about images in their collection.
+# Plans for the future.
+These are my personal plans for Perseids.
 
-* author
-* time
-* location
-* medium / materials / technology employed
+1. Improve the existing interface.
+2. Create first class tools for...
+	 * building image collections.
+	 * searching image collections.
+	 * transcription and annotation of images.
 
-# Research
-Gather
-Categorize
-Analyze / Synthesize
-Publish
-
-# Publication
-Audiences:
-	Colleagues
-		- Knows context, will struggle to assimilate new knowledge. Why? $$$.
-	Students
-		- Doesn't know context, will struggle to assimilate new knowledge. Hope of $$.
-	The Public
-		- Doesn't know context, will NOT struggle to assimilate new knowledge. No hope of $.
-
-What audience should we try to reach?
-
-I don't believe that messages need to be dumbed-down to reach a general audience.
-General audience's need context and guidance.
-That takes an expert's time.
-That takes a Ken Burns.
+# Links
+* Perseids/Sosol source code
+	* <a href="https://github.com/sosol/sosol">https://github.com/sosol/sosol</a>
+* Imgspect/Imgbit source code
+	* <a href="https://github.com/PerseusDL/imgspect">https://github.com/PerseusDL/imgspect</a>
+* Specierch Demo
+	* <a href="../code/specierch">adamtavares.com/code/specierch</a>

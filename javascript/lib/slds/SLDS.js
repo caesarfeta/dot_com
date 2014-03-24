@@ -4,7 +4,7 @@ SLDS.show = function() {
 	this.html = [];
 	this.current = 0;
 	this.on = false;
-	window.onkeyup = function( _e ) {
+	window.onkeydown = function( _e ) {
 		var key = _e.keyCode ? _e.keyCode : _e.which;
 		switch ( key ) {
 			case 83: // "s" is for "slideshow"
@@ -23,14 +23,23 @@ SLDS.show.prototype.go = function() {
 }
 SLDS.show.prototype.listen = function() {
 	var self = this;
-	window.onkeyup = function( _e ) {
+	window.onkeydown = function( _e ) {
+		if ( $('#slideshow').is( ':visible' ) ) {
+			_e.preventDefault();
+		}
 		var key = _e.keyCode ? _e.keyCode : _e.which;
 		switch ( key ) {
 			case 37: // left arrow
-				self.current = ( self.current < 0 ) ? self.html.length-1 : self.current-1;
+			case 8: // delete aka backspace
+				if ( $('#slideshow').is( ':visible' ) ) {
+					self.current = ( self.current < 0 ) ? self.html.length-1 : self.current-1;
+				}
 				break;
 			case 39: // right arrow
-				self.current = ( self.current > self.html.length-1 ) ? 0 : self.current+1;
+			case 32: // space bar
+				if ( $('#slideshow').is( ':visible' ) ) {
+					self.current = ( self.current > self.html.length-1 ) ? 0 : self.current+1;
+				}
 				break;
 			case 27: // escape
 				self.hide();
@@ -46,7 +55,6 @@ SLDS.show.prototype.update = function() {
 	$( '#slideshow' ).empty();
 	$( '#slideshow' ).html( this.html[ this.current ] );
 }
-
 SLDS.show.prototype.switch = function() {
 	if ( $('#slideshow').is( ':visible' ) ) {
 		this.hide();
@@ -76,13 +84,13 @@ SLDS.show.prototype.start = function() {
 	//------------------------------------------------------------
 	//  Append intro bit
 	//------------------------------------------------------------
-	this.html.unshift( $('#meta').html() );
+	this.html.unshift( '<div class="first">' + $('#meta').html() + '</div>' );
 	this.build();
 	this.listen();
 	this.on = true;
 }
 SLDS.show.prototype.build = function() {
 	$( 'body' ).append( '<div id="slideshow"></div>' )
-	$( '#slideshow' ).html( this.html[ this.current ] );
+	this.update();
 	this.show();
 }

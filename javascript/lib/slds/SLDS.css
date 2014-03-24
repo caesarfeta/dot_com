@@ -12,6 +12,10 @@
 #slideshow p {
 	font-size: 20px;
 }
+#slideshow .first h1,
+#slideshow .first h2 {
+	text-align: center;
+}
 #slideshow h1 {
 	margin-bottom: 20px;
 }
