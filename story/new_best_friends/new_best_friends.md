@@ -190,6 +190,8 @@ These are my personal plans for Perseids.
 	 * transcription and annotation of images.
 
 # Links
+* Perseids
+	* <a href="http://sosol.perseids.org/sosol/">http://sosol.perseids.org/sosol</a>
 * Perseids/Sosol source code
 	* <a href="https://github.com/sosol/sosol">https://github.com/sosol/sosol</a>
 * Imgspect/Imgbit source code

@@ -1,0 +1,12 @@
+{
+	"title": "Waldo",
+	"type": "code",
+	"author": "Adam Tavares",
+	"keywords": [ "code", "javascript"],
+	"publish_date": "The Year 3000",
+	"page_js": [ "../../javascript/lib/imgspect/imgbit.js", "waldo.js" ],
+	"page_css": [ "../../javascript/lib/imgspect/imgbit.css", "waldo.css" ],
+	"preview_img": "code/specierch/img/peacock_thumb.jpg",
+	"bg_color": "#AAA",
+	"preview": "Listen to your computer play a hearty round of \"Where's Waldo\"."
+}

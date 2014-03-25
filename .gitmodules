@@ -28,3 +28,6 @@
 [submodule "third_party/d3"]
 	path = third_party/d3
 	url = https://github.com/mbostock/d3
+[submodule "javascript/lib/imgspect"]
+	path = javascript/lib/imgspect
+	url = https://github.com/PerseusDL/imgspect
