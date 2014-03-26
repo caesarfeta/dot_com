@@ -1,0 +1,302 @@
+<html>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0" />
+
+<head>	
+	<!-- CSS -->
+	<link href="../../third_party/foundation/stylesheets/foundation.min.css" rel="stylesheet" type="text/css" />
+	<link href="../../third_party/jquery_snippet/jquery.snippet.min.css" rel="stylesheet" type="text/css" />
+	<link href="../../css/site.css" rel="stylesheet" type="text/css" />
+	
+			<link href="../../javascript/lib/slds/SLDS.css" rel="stylesheet" type="text/css" />
+	
+	
+	<!-- Page Specific CSS -->
+
+		<style type="text/css">
+			
+			
+			
+			/* Change the quote color for flavor */
+			#story .quote {
+				color: None;
+			}
+			
+			
+			
+		</style>
+	
+	<!-- Title -->
+	<title>Graph Database Modelling by Adam Tavares</title>
+	
+	<!-- Google Analytics -->
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42372677-1', 'adamtavares.com');
+  ga('send', 'pageview');
+
+</script>
+</head>
+
+<body>
+	<!-- Navigation -->
+	<section id="extra-info">
+		<div id="panel">
+			<a id="home" class="link" href="../..">[ Home ]</a>
+		</div>
+	</section>
+	
+	<div id="story" class="container main">
+		<section id="header">
+		
+			<!-- Keywords -->
+			<div class="row">
+				<div class="twelve columns">
+					<div id="genre">
+					
+						<a href="../../#research">research</a>
+					
+						<a href="../../#guide">guide</a>
+					
+						<a href="../../#sparql">sparql</a>
+					
+					</div>
+				</div>
+			</div>
+			
+			<!-- Title and Author -->
+			<div class="row">
+				<div id="meta" class="twelve columns">
+					<h1 id="title">Graph Database Modelling</h1>
+					<h2 id="subtitle">aka 'RDF Ontologies' aka 'Getting In On That Open-Linked Data Action'</h2>
+					<img id="avatar" src="../../img/avatar_default.jpg" alt="Adam Tavares" />
+					<h3 id="author">by <span class="name">Adam Tavares</span></h3>
+					<h4 id="date">Published March 26, 2014</h4>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Story -->
+		<section id="text">
+			<div class="row">
+				<div class="twelve columns">
+					<p>You're a researcher.
+You have gathered lots of data. 
+You want to store that data in a convenient place so it can be easily searched, analyzed, and repurposed by yourself, collaborators, and anonymous people the world over.
+In other words you want to turn "data" into open-linked data.
+The quicker you can start playing with this technology the quicker you'll learn its peculiarities.
+So let's get started.</p>
+<h1>Start Playing</h1>
+<p>There are many different graph database packages out there in the wild.
+The one we'll be playing with is the Apache foundation's, Jena.
+Jena is the database itself.
+You interact with Jena through another bit of software, a server called Fuseki.
+The two come packaged together.
+The names sometimes get used interchangeably.</p>
+<h1>Install Jena-Fuseki</h1>
+<p>I'm assuming you're using some flavor of Unix ( Linux or Mac OSX usually ) as your OS.</p>
+<ul>
+<li><a href="http://jena.apache.org/download/index.cgi">Go to the downloads page</a></li>
+<li>Click the binary distribution link "jena-fuseki-[version]-distribution.zip"</li>
+<li>
+<p>If you know Unix the commands below should make some sense.  If it looks like gibberish find a friend to help.</p>
+<pre><code>mkdir -p /usr/local/fuseki
+cp jena-fuseki-[version]-distribution.zip /usr/local/fuseki/
+unzip jena-fuseki-[version]-distribution.zip
+ln -s jena-fuseki-[version] fuseki
+cd fuseki
+chmod +x fuseki-server s-**
+fuseki-server --update --mem /ds &amp;
+</code></pre>
+</li>
+</ul>
+<p>You now have a fuseki-server running on port 3030.</p>
+<p>Fuseki uses the HTTP protocol to communicate with the outside world just like a webserver,
+which means you can connect to it through your webbrowser.</p>
+<ul>
+<li><a href="http://localhost:3030/">http://localhost:3030/</a></li>
+</ul>
+<h1>Your playground</h1>
+<ul>
+<li>Click 'Control Panel' link</li>
+<li>Click 'Select' button</li>
+</ul>
+<p>So this page is where you can query the database and add new data.
+This is your playground.</p>
+<h1>Adding data</h1>
+<p>Right now your database is empty.
+Let's add some data using SPARQL-Update syntax.
+Copy the text below into the SPARQL Update field and click 'Perform update'</p>
+<pre><code>PREFIX dc: &lt;http://purl.org/dc/elements/1.1/&gt;
+INSERT DATA {
+    &lt;http://example/book1&gt; dc:title    "A new book" ;
+                           dc:creator  "A.N.Other" .
+}
+</code></pre>
+<p>So what's going on here?
+Well we've added a unique identifier of a book <strong>&lt;http://example/book1&gt;</strong>.
+This unique identifier is a URI, a Universal Resource Identifier.</p>
+<p>We attached two bits of data to the book URI, title and creator.
+The concept of "a title" and "a creator" have already been defined in another popular open-linked database 
+so we can reuse them, <strong>&lt;http://purl.org/dc/elements/1.1/title&gt;</strong> <strong>&lt;http://purl.org/dc/elements/1.1/creator&gt;</strong>
+Typing <strong>&lt;http://purl.org/dc/elements/1.1/title&gt;</strong> is cumbersome so we shortened it to dc:title.
+We can only use these kinds of abbreviations if we explicitly declare what they are.
+We do that at the very beginning with <strong>PREFIX dc: &lt;http://purl.org/dc/elements/1.1/&gt;</strong></p>
+<p>Tthe specific title and creator attached to this book are just text not URIs, "A new book" and "A.N.Other".
+Because they are just text they can't be attached to anything else.
+Sometimes that's okay.
+Sometimes it isn't.
+With experience you'll learn when using text or URIs is appropriate.</p>
+<p>There are other nuances to SPARQL-Update syntax displayed here... like, 
+"What is up with the semi-colon and period?",
+I'll explain them later.
+If you're a brave soul and like reading very dry documentation 
+you can <a href="http://www.w3.org/Submission/SPARQL-Update/">read the document defining the syntax</a>.<br />
+Note that this document is still in "Submission" phase. 
+Graph databases are still a relatively new technology.</p>
+<p>Let's add another book for fun before we move on.</p>
+<pre><code>PREFIX dc: &lt;http://purl.org/dc/elements/1.1/&gt;
+INSERT DATA {
+    &lt;http://example/book2&gt; dc:title    "An old book" ;
+                           dc:creator  "S.K.Eleton" .
+}
+</code></pre>
+<h1>Querying data</h1>
+<p>So now you have some data in your database!
+Now let's get it out of there.
+We do that with the SPARQL Query Language.
+Copy the text below into the SPARQL Query field and click 'Get Results'</p>
+<pre><code>SELECT ?s ?p ?o 
+WHERE {
+    ?s ?p ?o
+}
+</code></pre>
+<p>This query will return all data in your database.
+Luckily our total dataset is very small, so it runs quickly.
+You should get output that looks like this...</p>
+<pre><code>--------------------------------------------------------------------------------------
+| s                      | p                                         | o             |
+======================================================================================
+| &lt;http://example/book2&gt; | &lt;http://purl.org/dc/elements/1.1/creator&gt; | "S.K.Eleton"  |
+| &lt;http://example/book2&gt; | &lt;http://purl.org/dc/elements/1.1/title&gt;   | "An old book" |
+| &lt;http://example/book1&gt; | &lt;http://purl.org/dc/elements/1.1/creator&gt; | "A.N.Other"   |
+| &lt;http://example/book1&gt; | &lt;http://purl.org/dc/elements/1.1/title&gt;   | "A new book"  |
+--------------------------------------------------------------------------------------
+</code></pre>
+<p>Queries can use PREFIX just like update statements so you could issue a query like this one:</p>
+<pre><code>PREFIX dc: &lt;http://purl.org/dc/elements/1.1/&gt;
+SELECT ?s ?p ?o 
+WHERE {
+    ?s ?p ?o
+}
+</code></pre>
+<p>The output changes as you'd expect.</p>
+<pre><code>-------------------------------------------------------
+| s                      | p          | o             |
+=======================================================
+| &lt;http://example/book2&gt; | dc:creator | "S.K.Eleton"  |
+| &lt;http://example/book2&gt; | dc:title   | "An old book" |
+| &lt;http://example/book1&gt; | dc:creator | "A.N.Other"   |
+| &lt;http://example/book1&gt; | dc:title   | "A new book"  |
+-------------------------------------------------------
+</code></pre>
+<p>So how does the query work?
+Data relationships in graph databases are defined by triples.
+Triples are basically declarative sentences with one subject, one predicate, and one object.</p>
+<p>You specify what bits of data you want to extract with this line.</p>
+<pre><code>SELECT ?s ?p ?o
+</code></pre>
+<p>If you only wanted the predicate and the object of a triple, because say you know exactly which book you want.
+You could run a query without <strong>?s</strong> like this one.</p>
+<pre><code>PREFIX dc: &lt;http://purl.org/dc/elements/1.1/&gt;
+SELECT ?p ?o 
+WHERE {
+    &lt;http://example/book1&gt; ?p ?o
+}
+</code></pre>
+<p>Here's the output of that query</p>
+<pre><code>-----------------------------
+| p          | o            |
+=============================
+| dc:creator | "A.N.Other"  |
+| dc:title   | "A new book" |
+-----------------------------
+</code></pre>
+<p>Now what if you only wanted the title of all books?
+You could run this query...</p>
+<pre><code>PREFIX dc: &lt;http://purl.org/dc/elements/1.1/&gt;
+SELECT ?s ?o 
+WHERE {
+    ?s dc:title ?o
+}
+</code></pre>
+<p>...and get these results.</p>
+<pre><code>------------------------------------------
+| s                      | o             |
+==========================================
+| &lt;http://example/book2&gt; | "An old book" |
+| &lt;http://example/book1&gt; | "A new book"  |
+------------------------------------------
+</code></pre>
+<p>If you're a legendary hero amongst mediocrities or a masochist ( depends on how you look at it ) you can <a href="http://www.w3.org/TR/sparql11-query/">read the document defining the query syntax</a>.</p>
+<h1>If you want to delete ALL your test data</h1>
+<p>Copy the text below into the SPARQL Update field and click 'Perform update'</p>
+<pre><code>DELETE WHERE { ?s ?p ?o }
+</code></pre>
+<h1>'Conceptual map' aka 'categorical structure' aka 'ontology'</h1>
+<p>Now begins the fun part.
+Modelling YOUR data.</p>
+<p>Maybe you have a lot of data already,
+maybe you have a small sample of representative data, 
+maybe you just have an idea of the kinds of data you'll be gathering.
+In any case, building a conceptual map of your data will help you turn your data into the form required by graph databases.
+It is through this process that we define the databases categorical structure, aka its ontology.</p>
+<p>Developing an ontology is as much art as it is science.
+So I'm going to develop an ontology and document the most important parts of my process to guide you along.</p>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Copyright -->
+		<section id="footer">
+			<div class="row">
+				<div class="twelve columns">
+					<div id="copyright">&copy; Adam Tavares 2014</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</body>
+
+<!-- Javascript -->
+<!-- 3rd Party -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/modernizr.foundation.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/foundation.min.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/jquery.event.move.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/jquery.event.swipe.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/jquery.foundation.forms.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/jquery.foundation.mediaQueryToggle.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/app.js"></script>
+<script type="text/javascript" src="../../third_party/jquery_snippet/jquery.snippet.js"></script>
+<script type="text/javascript" src="../../third_party/jquery_snippet/sh_sh.js"></script>
+
+<!-- Custom -->
+<script type="text/javascript" src="../../javascript/lib/lib.min.js"></script>
+<script type='text/javascript' src='../../javascript/site.js'></script>
+
+<!-- Page Specific -->
+
+
+
+<script type="text/javascript" src="../../javascript/lib/slds/SLDS.js"></script>
+
+<script type="text/javascript" src="gdb_modelling.js"></script>
+
+
+</html>

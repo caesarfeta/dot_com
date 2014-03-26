@@ -83,8 +83,7 @@
 		<section id="text">
 			<div class="row">
 				<div class="twelve columns">
-					<p>The following document is an overview of technologies which are becoming popular as research tools in the Humanities.
-It talks about version control systems and graph databases primarily, and how they are used in Perseids, software currently being developed by programmers employed by the Perseus Project.</p>
+					<p>The following document is an overview of technologies which are becoming popular as research tools in fields who's research focus in analyzing large amounts of text like what is done in many fields in the Humanities.</p>
 <h1>The story of two data structures.</h1>
 <p>Trees &amp; graphs.  Your research friends for life.</p>
 <ul>
@@ -92,9 +91,9 @@ It talks about version control systems and graph databases primarily, and how th
 <li>graph databases -- Graphs</li>
 </ul>
 <h1>Quick definition of terms</h1>
-<p>version control systems = source control systems = source control</p>
-<p>code = source = source code </p>
-<p>"Source code by another name will still smell like text."</p>
+<p>version control systems = source control systems = source control
+code = source = source code 
+"Source code by another name will still smell like text."</p>
 <h1>Version Control Systems</h1>
 <p>They've been used by software developers for decades.
 They track changes made to a collection of documents.
@@ -112,14 +111,12 @@ And they also allow two or more people to independently work on the same documen
 <h1>Born from necessity.</h1>
 <p>Writing complex software requires the collective efforts of lots of people over long periods of time.
 Programmers aren't the most social of humans.</p>
-<p>We have a derogatory term for non-computer mediated social reality, "meatspace".
+<p>Programmers coined a term for non-computer mediated social reality, "meatspace".
 That says a lot.
 But paradoxically we have to closely coordinate our activity with one another.
 If we don't, we won't successfully complete our projects... further our careers... fulfill our destinies... etc.</p>
-<p>So, yes, we need other people.
-We can't survive on coffee and computers alone.</p>
 <h1>Big Dreams = Big Problems</h1>
-<p>If we have grand plans and adequate funding we can recruit lots of people to help our cause.
+<p>If we have grand plans and adequate funding we can recruit lots of people to help fulfill our software dreams.
 Lots of people mean lots of problems, people problems ( aka most problems ), which I'll sum up as follows...</p>
 <ul>
 <li>"Why doesn't this code compile anymore?  What did you morons do?"</li>
@@ -138,20 +135,7 @@ It helps us... to use the most abused words of the last five years...  innovate.
 <p>The most popular version control system is Git, and it's also the best.
 It has, in a very short period of time, less than ten years, been adopted by developers and now plays a central part of their development workflow.</p>
 <p>Programmers almost universally love Git.
-So now they're sharing that love by writing interfaces around Git, interfaces that make Git easier to use for people who do things besides build software.
-One such interface is Perseids, which you can think of as a web interface for Git, with tools designed to make the jobs of philologists, linguists, and historians easier, orbiting around it.</p>
-<h1>From Git to Perseids</h1>
-<p>Perseids is built on top of Sosol and Sosol is built on top of Git.
-Sosol ( an acronym for Son of Suda OnLine ) is being developed by Ryan Bauman and Hugh Cayliss at Duke University for papyri.info.
-The Perseids team collaborates with them.</p>
-<p>Sosol is Git with a web interface ( Ruby on Rails ) along with some code for interacting with common document formats used by Humanities researchers.</p>
-<p>Perseids takes the core Sosol functionality and adds some extra tools to for Treebanking, image and text annotation, translation alignments, and image transcription.</p>
-<h2>Strengths</h2>
-<p>Core functionality.
-User management and document versioning is strong.
-Interoperability with other tools and services.</p>
-<h2>Weaknesses</h2>
-<p>The interface is ugly and sometimes hard to use, but we're working on it.</p>
+So now they're sharing that love by writing interfaces around Git, interfaces that make Git easier to use for people who do things besides build software.</p>
 <h1>The "Semantic-Web"</h1>
 <p>You've probably heard this buzzword before.
 It's actual meaning has been buried under a bunch of techno-babble-edge-u-industry-marketing hype.
@@ -168,7 +152,7 @@ It's not entirely his fault.
 Really it's the fault of relational databases as a technology.</p>
 <h1>Relational Databases</h1>
 <p>So the most common type of database out there in the wild is the relational database.
-Relational databases store data in tables, aka lists of columnar data.
+Relational databases store data in tables, which are lists of columnar data.
 If you've used a spreadsheet you've basically seen a relational database table... named columns and data in rows.
 Each row in the table has a whole number identifying it.
 That number is just the order in which a row is added to the table.
@@ -180,14 +164,18 @@ Turns out this numbering-id system causes all kinds of problems.  Oh things like
 <li>Interoperability -- How well the database connects to other systems outside itself.</li>
 </ul>
 <h1>Graph Databases.</h1>
-<p>"Open Linked Data" = public graph database</p>
+<p>"Open Linked Data" = public graph database
+"Triplestore" = graph database
+"RDF Database" = graph database
+"Semantic Web" = all the public graph databases</p>
 <p>Graph databases don't use tables with numbered rows.
 Instead it treats data as if every chunk of data inside it was a document on the Web.
 Smart folks realized that URLs work great at identifying trillions of individual files on a global computer network comprised of billions of devices, why not use them to inventory research data?</p>
 <p>Now if all we did was assign URLs to data chunks we'd have data soup, right?
 All the data would be floating around but we wouldn't know how our data is connected.
 Documents on the Web get connected through links inside the document body.
-Graph databases don't use links, they connect data using "triples".</p>
+Graph databases don't use hyperlinks.
+Different graph database have different implementations of how connections between data are defined, the most common way is by using "triples".</p>
 <h1>Triples are simple.</h1>
 <p>They're basically simple declarative sentences.</p>
 <pre><code>[subject] [predicate] [object]
@@ -226,7 +214,7 @@ LIMIT 500
 <p>So it's important to realize that subject, predicate, and object all have URLs, so when they're reused in other triples they connect like data.
 And that's the beauty of graph databases.
 Connections between data aren't just decided by how data is arranged into preexisting tables and columns.
-Connections are established by adding data.</p>
+Connections are established simply by adding more data.</p>
 <h1>What can you do with a graph database?</h1>
 <p>So once you know one bit of data in a graph database you can explore the connections made to it.
 Data in a graph database are like a bowl of nachos. You pull out a chip or two and everything immediately connected comes with them, and you just select the particular connected bits you want and leave what you don't in the pile.</p>
@@ -235,27 +223,8 @@ Data in a graph database are like a bowl of nachos. You pull out a chip or two a
 I'm not complaining.  I love me some dbPedia.</p>
 <p><a href="../code/specierch">Specierch</a></p>
 <p>On the other side of this link is an image search tool which is basically the SPARQL query you just saw with some code to display returned data in a visually pleasing form.</p>
-<h1>Plans for the future.</h1>
-<p>These are my personal plans for Perseids.</p>
-<ol>
-<li>Improve the existing interface.</li>
-<li>Create first class tools for...<ul>
-<li>building image collections.</li>
-<li>searching image collections.</li>
-<li>transcription and annotation of images.</li>
-</ul>
-</li>
-</ol>
 <h1>Links</h1>
 <ul>
-<li>Perseids/Sosol source code<ul>
-<li><a href="https://github.com/sosol/sosol">https://github.com/sosol/sosol</a></li>
-</ul>
-</li>
-<li>Imgspect/Imgbit source code<ul>
-<li><a href="https://github.com/PerseusDL/imgspect">https://github.com/PerseusDL/imgspect</a></li>
-</ul>
-</li>
 <li>Specierch Demo<ul>
 <li><a href="../code/specierch">adamtavares.com/code/specierch</a></li>
 </ul>

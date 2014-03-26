@@ -1,5 +1,4 @@
-The following document is an overview of technologies which are becoming popular as research tools in the Humanities.
-It talks about version control systems and graph databases primarily, and how they are used in Perseids, software currently being developed by programmers employed by the Perseus Project.
+The following document is an overview of technologies which are becoming popular as research tools in fields who's research focus in analyzing large amounts of text like what is done in many fields in the Humanities.
 
 # The story of two data structures.
 Trees & graphs.  Your research friends for life.
@@ -8,11 +7,8 @@ Trees & graphs.  Your research friends for life.
 * graph databases -- Graphs
 
 # Quick definition of terms
-
 version control systems = source control systems = source control
-
 code = source = source code 
-
 "Source code by another name will still smell like text."
 
 # Version Control Systems
@@ -34,16 +30,13 @@ And they also allow two or more people to independently work on the same documen
 Writing complex software requires the collective efforts of lots of people over long periods of time.
 Programmers aren't the most social of humans.
 
-We have a derogatory term for non-computer mediated social reality, "meatspace".
+Programmers coined a term for non-computer mediated social reality, "meatspace".
 That says a lot.
 But paradoxically we have to closely coordinate our activity with one another.
 If we don't, we won't successfully complete our projects... further our careers... fulfill our destinies... etc.
 
-So, yes, we need other people.
-We can't survive on coffee and computers alone.
-
 # Big Dreams = Big Problems
-If we have grand plans and adequate funding we can recruit lots of people to help our cause.
+If we have grand plans and adequate funding we can recruit lots of people to help fulfill our software dreams.
 Lots of people mean lots of problems, people problems ( aka most problems ), which I'll sum up as follows...
 
 * "Why doesn't this code compile anymore?  What did you morons do?"
@@ -65,24 +58,6 @@ It has, in a very short period of time, less than ten years, been adopted by dev
 
 Programmers almost universally love Git.
 So now they're sharing that love by writing interfaces around Git, interfaces that make Git easier to use for people who do things besides build software.
-One such interface is Perseids, which you can think of as a web interface for Git, with tools designed to make the jobs of philologists, linguists, and historians easier, orbiting around it.
-
-# From Git to Perseids
-Perseids is built on top of Sosol and Sosol is built on top of Git.
-Sosol ( an acronym for Son of Suda OnLine ) is being developed by Ryan Bauman and Hugh Cayliss at Duke University for papyri.info.
-The Perseids team collaborates with them.
-
-Sosol is Git with a web interface ( Ruby on Rails ) along with some code for interacting with common document formats used by Humanities researchers.
-
-Perseids takes the core Sosol functionality and adds some extra tools to for Treebanking, image and text annotation, translation alignments, and image transcription.
-
-## Strengths
-Core functionality.
-User management and document versioning is strong.
-Interoperability with other tools and services.
-
-## Weaknesses
-The interface is ugly and sometimes hard to use, but we're working on it.
 
 # The "Semantic-Web"
 You've probably heard this buzzword before.
@@ -103,12 +78,12 @@ Really it's the fault of relational databases as a technology.
 
 # Relational Databases
 So the most common type of database out there in the wild is the relational database.
-Relational databases store data in tables, aka lists of columnar data.
+Relational databases store data in tables, which are lists of columnar data.
 If you've used a spreadsheet you've basically seen a relational database table... named columns and data in rows.
 Each row in the table has a whole number identifying it.
 That number is just the order in which a row is added to the table.
 This number is the core technological problem.
-Turns out this numbering-id system causes all kinds of problems.  Oh things like...
+Turns out this row-number-id system causes all kinds of problems.  Things like...
 
 * Data integrity -- How accurately rows in tables are linked up.
 * Scalability -- How well the database grows to accomodate new kinds of data
@@ -116,6 +91,9 @@ Turns out this numbering-id system causes all kinds of problems.  Oh things like
 
 # Graph Databases.
 "Open Linked Data" = public graph database
+"Triplestore" = graph database
+"RDF Database" = graph database
+"Semantic Web" = all the public graph databases
 
 Graph databases don't use tables with numbered rows.
 Instead it treats data as if every chunk of data inside it was a document on the Web.
@@ -124,7 +102,8 @@ Smart folks realized that URLs work great at identifying trillions of individual
 Now if all we did was assign URLs to data chunks we'd have data soup, right?
 All the data would be floating around but we wouldn't know how our data is connected.
 Documents on the Web get connected through links inside the document body.
-Graph databases don't use links, they connect data using "triples".
+Graph databases don't use hyperlinks.
+Different graph database have different implementations of how connections between data are defined, the most common way is by using "triples".
 
 # Triples are simple.
 They're basically simple declarative sentences.
@@ -166,7 +145,7 @@ Below is an example SPARQL query.  Sparql is the language used to extract data f
 So it's important to realize that subject, predicate, and object all have URLs, so when they're reused in other triples they connect like data.
 And that's the beauty of graph databases.
 Connections between data aren't just decided by how data is arranged into preexisting tables and columns.
-Connections are established by adding data.
+Connections are established simply by adding more data.
 
 # What can you do with a graph database?
 So once you know one bit of data in a graph database you can explore the connections made to it.
@@ -180,21 +159,6 @@ I'm not complaining.  I love me some dbPedia.
 
 On the other side of this link is an image search tool which is basically the SPARQL query you just saw with some code to display returned data in a visually pleasing form.
 
-# Plans for the future.
-These are my personal plans for Perseids.
-
-1. Improve the existing interface.
-2. Create first class tools for...
-	 * building image collections.
-	 * searching image collections.
-	 * transcription and annotation of images.
-
 # Links
-* Perseids
-	* <a href="http://sosol.perseids.org/sosol/">http://sosol.perseids.org/sosol</a>
-* Perseids/Sosol source code
-	* <a href="https://github.com/sosol/sosol">https://github.com/sosol/sosol</a>
-* Imgspect/Imgbit source code
-	* <a href="https://github.com/PerseusDL/imgspect">https://github.com/PerseusDL/imgspect</a>
 * Specierch Demo
 	* <a href="../code/specierch">adamtavares.com/code/specierch</a>

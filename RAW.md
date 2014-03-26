@@ -160,6 +160,48 @@ Parameters can be set.
 
 
 
+
+# What is Perseids?
+One such interface is Perseids, which you can think of as a web interface for Git, with tools designed to make the jobs of philologists, linguists, and historians easier, orbiting around it.
+
+# From Git to Perseids
+Perseids is built on top of Sosol and Sosol is built on top of Git.
+Sosol ( an acronym for Son of Suda OnLine ) is being developed by Ryan Bauman and Hugh Cayliss at Duke University for papyri.info.
+The Perseids team collaborates with them.
+
+Sosol is Git with a web interface ( Ruby on Rails ) along with some code for interacting with common document formats used by Humanities researchers.
+
+Perseids takes the core Sosol functionality and adds some extra tools to for Treebanking, image and text annotation, translation alignments, and image transcription.
+
+## Strengths
+Core functionality.
+User management and document versioning is strong.
+Interoperability with other tools and services.
+
+## Weaknesses
+The interface is ugly and sometimes hard to use, but we're working on it.
+
+* Perseids
+	* <a href="http://sosol.perseids.org/sosol/">http://sosol.perseids.org/sosol</a>
+* Perseids/Sosol source code
+	* <a href="https://github.com/sosol/sosol">https://github.com/sosol/sosol</a>
+* Imgspect/Imgbit source code
+	* <a href="https://github.com/PerseusDL/imgspect">https://github.com/PerseusDL/imgspect</a>
+
+# Plans for the future.
+These are my personal plans for Perseids.
+
+1. Improve the existing interface.
+2. Create first class tools for...
+	 * building image collections.
+	 * searching image collections.
+	 * transcription and annotation of images.
+	 
+It talks about version control systems and graph databases primarily, and how they are used in Perseids, software currently being developed by programmers employed by the Perseus Project.
+
+
+
+
 # Research involving images BIG PICTURE
 ## EXIF - Exchangeable image file format
 JEIDA Japan Electronic Industries Development Association developed the Exif standard in 1998
@@ -185,7 +227,11 @@ Which is basically the information museums and archivists gather about images in
 * location
 * medium / materials / technology employed
 
-## Research Fundamentals
+
+
+
+
+# Research Fundamentals
 Gather
 Categorize
 Analyze / Synthesize
@@ -208,3 +254,8 @@ I don't believe that messages need to be dumbed-down to reach a general audience
 General audience's need context and guidance.
 That takes an expert's time.
 That takes a Ken Burns.
+
+
+
+
+

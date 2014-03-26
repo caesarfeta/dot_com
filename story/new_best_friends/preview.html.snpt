@@ -22,9 +22,9 @@
 					<h3 class="author">by <span class="name">Adam Tavares</span></h3>
 					<h4 class="date">Published March 24, 2014</h4>
 				</div>
-				<p class="preview">The following document is an overview of technologies which are becoming popular as research tools in the Humanities.
-It talks about version control systems and graph databases primarily, and how they are used in Perseids, software currently being developed by programmers employed by the Perseus Project.
-The ...</p>
+				<p class="preview">The following document is an overview of technologies which are becoming popular as research tools in fields who's research focus in analyzing large amounts of text like what is done in many fields in the Humanities.
+The story of two data structures.
+Trees &amp; graphs.  Your ...</p>
 			</div>
 		</div>
 	</div>

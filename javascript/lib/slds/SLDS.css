@@ -41,6 +41,7 @@
 	box-shadow: none;
 	-moz-box-shadow: none;
 	-webkit-box-shadow: none;
+	margin-bottom: 30px;
 }
 #slideshow .snippet-wrap .snippet-no-num li {
 	margin: 0;
