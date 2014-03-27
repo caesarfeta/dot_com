@@ -64,6 +64,22 @@
 	color: #666;
 	font-size: 25px;
 }
+#slideshow .columns > ul {
+	padding: 20px 30px;
+}
+#slideshow ul {
+	background-color: #FFF;
+	list-style-position: inside;
+	padding: 5px 10px 10px 10px;
+}
+#slideshow li {
+	margin: 5px 0;
+	line-height: 1.1em;
+}
+#slideshow li > p{
+	margin: 0;
+	padding: 0;
+}
 @media only screen and ( max-width: 520px ) {
 	#slideshow {
 		padding: 50px 25px;

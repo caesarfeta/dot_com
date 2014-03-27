@@ -7,18 +7,19 @@ So let's get started.
 
 # Start Playing
 There are many different graph database packages out there in the wild.
-The one we'll be playing with is the Apache foundation's, Jena.
+The one we'll be playing with is the Apache Foundation's, Jena.
 Jena is the database itself.
-You interact with Jena through another bit of software, a server called Fuseki.
+It employs the RDF XML standard.
+You interact with Jena through, a server called Fuseki.
 The two come packaged together.
-The names sometimes get used interchangeably.
+The names sometimes sometimes are interchanged.
 
 # Install Jena-Fuseki
 I'm assuming you're using some flavor of Unix ( Linux or Mac OSX usually ) as your OS.
 
 * <a href="http://jena.apache.org/download/index.cgi">Go to the downloads page</a>
 * Click the binary distribution link "jena-fuseki-[version]-distribution.zip"
-* If you know Unix the commands below should make some sense.  If it looks like gibberish find a friend to help.
+* If you know Unix the commands below should make sense.  If it looks like gibberish find a friend to help.
  
 		mkdir -p /usr/local/fuseki
 		cp jena-fuseki-[version]-distribution.zip /usr/local/fuseki/
@@ -35,14 +36,14 @@ which means you can connect to it through your webbrowser.
 
 * <a href="http://localhost:3030/">http://localhost:3030/</a>
 
-# Your playground
+# Your Playground
 * Click 'Control Panel' link
 * Click 'Select' button
 
 So this page is where you can query the database and add new data.
 This is your playground.
 
-# Adding data
+# Adding Data
 Right now your database is empty.
 Let's add some data using SPARQL-Update syntax.
 Copy the text below into the SPARQL Update field and click 'Perform update'
@@ -64,7 +65,7 @@ Typing **&lt;http://purl.org/dc/elements/1.1/title&gt;** is cumbersome so we sho
 We can only use these kinds of abbreviations if we explicitly declare what they are.
 We do that at the very beginning with **PREFIX dc: &lt;http://purl.org/dc/elements/1.1/&gt;**
 
-Tthe specific title and creator attached to this book are just text not URIs, "A new book" and "A.N.Other".
+The specific title and creator attached to this book are just text not URIs, "A new book" and "A.N.Other".
 Because they are just text they can't be attached to anything else.
 Sometimes that's okay.
 Sometimes it isn't.
@@ -75,10 +76,8 @@ There are other nuances to SPARQL-Update syntax displayed here... like,
 I'll explain them later.
 If you're a brave soul and like reading very dry documentation 
 you can <a href="http://www.w3.org/Submission/SPARQL-Update/">read the document defining the syntax</a>.  
-Note that this document is still in "Submission" phase. 
-Graph databases are still a relatively new technology.
 
-Let's add another book for fun before we move on.
+Let's add another book before we move on.
 
 	PREFIX dc: <http://purl.org/dc/elements/1.1/>
 	INSERT DATA {
@@ -86,8 +85,8 @@ Let's add another book for fun before we move on.
 							   dc:creator  "S.K.Eleton" .
 	}
 
-# Querying data
-So now you have some data in your database!
+# Querying Data
+So now you have some data in your database.
 Now let's get it out of there.
 We do that with the SPARQL Query Language.
 Copy the text below into the SPARQL Query field and click 'Get Results'
@@ -128,7 +127,6 @@ The output changes as you'd expect.
 	| <http://example/book1> | dc:creator | "A.N.Other"   |
 	| <http://example/book1> | dc:title   | "A new book"  |
 	-------------------------------------------------------
-
 
 So how does the query work?
 Data relationships in graph databases are defined by triples.
@@ -174,22 +172,23 @@ You could run this query...
 	| <http://example/book1> | "A new book"  |
 	------------------------------------------
 
-If you're a legendary hero amongst mediocrities or a masochist ( depends on how you look at it ) you can <a href="http://www.w3.org/TR/sparql11-query/">read the document defining the query syntax</a>.
+<a href="http://www.w3.org/TR/sparql11-query/">Here's the document defining the query syntax.</a>
 
-# If you want to delete ALL your test data
-Copy the text below into the SPARQL Update field and click 'Perform update'
+# If You Want To Delete ALL Of Your Test Data
+Copy the text below into the SPARQL Update field and click 'Perform update'.
 
 	DELETE WHERE { ?s ?p ?o }
 
-# 'Conceptual map' aka 'categorical structure' aka 'ontology'
+# WARNING: The Text Below Is A Work In Progress...
+# 'Conceptual Map' aka 'Categorical Structure' aka 'Ontology'
 Now begins the fun part.
 Modelling YOUR data.
 
 Maybe you have a lot of data already,
 maybe you have a small sample of representative data, 
 maybe you just have an idea of the kinds of data you'll be gathering.
-In any case, building a conceptual map of your data will help you turn your data into the form required by graph databases.
-It is through this process that we define the databases categorical structure, aka its ontology.
+
+In any case a database's categorical structure, its ontology, needs to be defined.
 
 Developing an ontology is as much art as it is science.
 So I'm going to develop an ontology and document the most important parts of my process to guide you along.
@@ -222,48 +221,174 @@ I'll list them to start.
 * person who made image
 * what's depicted in the image?
 
-I now have something to work with.
-My next step is to start grouping like elements together and notating the type of data of each element.
-I'll add items along the way if I realize I forgot something.
+I now have a starting point.
 
-int = integer
-float = floating point number = real number
+# Research Preexisting Ontologies
+Also it's worth researching whether there are existing ontologies devised to describe portions of your data already.
+The less you recreate the wheel and the more you use existing ontologies the more 'linked' your data will become.
 
-* image
-	* ids
-		* URL to the image ( text )
+	Hint: PREFIX statement URLs will often lead to a definition of the ontology.
+	Put PREFIX URLs into your webbrowser and see where they lead.
+
+# Grouping and Typing
+My next step is to group like elements together and note the type of data of each element.
+I will add items along the way if I realize I forgot something.
+
+Right now I'm still exploring the relationships between the data and
+I'm thinking about the values that I'll be storing.
+
+# Notation
+So once you know what bits of data you'll be storing you have to map the relationships between those bits.
+The best notation system I know of for exploring relationships in an ontology is the ball and stick system.
+
+<div class="picture">
+	<img src="img/ball_stick.png" />
+	<p class="caption">A classic conceptual modelling tool</p>
+</div>
+
+<div class="picture">
+	<img src="img/ball_stick_labels.png" />
+	<p class="caption">Label your nodes and connections</p>
+</div>
+
+# A Quick Grouping And Typing In Outline Format
+Once you have a clear idea of the relationships between your data you'll want to think about data types.
+So now I'll represent the relationships between my nodes in a more abstract outline form with data-types.
+
+* &lt;image&gt;
+	* id
+		* URL ( text )
 		* name ( text )
+	* user
+		* &lt;user&gt;
 	* storage
-		* mime-type ( text )
-		* size in megabytes ( float )
+		* &lt;file-type&gt;
+		* size [ megabytes ] ( float )
 	* interpretation
-		* photograph or graphic? ( text )
-		* what's depicted in the image? ( text )
-		* caption ( text )
+		* &lt;image-type&gt;
+		* &lt;caption&gt;
 	* resolution
-		* width in pixels ( int )
-		* height in pixel ( int )
-		* dpi ( dots per inch ) ( int )
+		* width [ pixels ] ( int )
+		* height in [ pixels ] ( int )
+		* dpi ( int )
 	* time
-		* date created ( date )
-		* time of day taken ( time )
+		* created ( time )
 	* location
 		* latitude ( float )
 		* longitude ( float )
 	* technology
-		* model of camera used ( text )
-		* shutter speed ( float )
-		* aperture size ( float )
-		* exposure time ( float )
-		* digital or film? ( text )
-	* user
-		* username ( text )
+		* &lt;camera-model&gt;
+		* shutter ( float )
+		* aperture ( float )
+		* exposure ( float )
 	* permssions
-		* copyright ( text )
+		* &lt;copyright&gt;
 	* grouping
-		* collections of images it belongs to ( text )
+		* &lt;collection&gt;
+	
+* &lt;user&gt;
+	* id ( int )
+	* name ( text )
+	
+* &lt;copyright&gt;
+	* shortname ( text )
+	* fullname ( text )
+	* legalese ( text )
+	
+* &lt;caption&gt;
+	* created ( time )
+	* text ( text )
+	* &lt;user&gt;
 
+* &lt;camera-model&gt;
+	* name ( text )
+	* digital ( bool )
 
-# Notation
-The best notation system I know of for mapping relationships in an ontology is the good ol' ball and stick system.
-Think of your data as a one massive molecule with the ball 
+* &lt;image-type&gt;
+	* name ( text )
+	
+* &lt;collection&gt;
+	* name ( text )
+	* created ( date )
+	* summary ( text )
+
+* &lt;sub-img&gt;
+	* coords ( sequence of floats )
+	* &lt;img&gt;
+	* &lt;caption&gt;
+
+# TODO: RDF datatypes
+
+# Convert Your "Paper Ontology" To "RDF"
+So there's a couple of ways to do this.
+As you're exploring it's probably best to write INSERT DATA statements.
+Below are some examples.
+
+## Insert Image Record
+	PREFIX ex: <http://example/>
+	INSERT DATA {
+		ex:img1 ex:url "http://127.0.0.1/imgs/Aerial01.jpg";
+				ex:name "Aerial Photograph".
+	}
+
+## Add A Collection
+	PREFIX ex: <http://example/>
+	INSERT DATA {
+		ex:collection1 ex:name "Aerial Photographs";
+					   ex:summary "A collection of Aerial Photographs".
+	}
+
+## Add Images To A Collection
+	PREFIX ex: <http://example/>
+	INSERT DATA {
+		ex:collection1 ex:possesses ex:img1.
+	}
+
+Eventually you'll want to create a .ttl document to store all of your triples.
+
+# TODO: .ttl Document Upload
+
+# Putting Your Database To The Test
+So your data needs to be put to the test early on in the process.
+Define what subsets of data you need and what formats you'll need it in.
+Start writing the queries sooner rather than later.
+Do not wait until the ontology is "finalized".
+The ontology and the necessary queries should be developed in tandem, 
+because if your queries become extremely complicated or query performance is poor 
+this may be a sign that your ontology needs revision.
+
+## Revise, Revise, Revise
+Keep revising your ontology and queries and keep track of these revisions.
+Source control is your friend in this case.
+I highly recommend learning how to use Git or some other source control system.
+
+## Document As You Go
+To have a truly useful database it needs to be documented.
+And you need documentation in two flavors.
+
+* Developer documentation.
+* User documentation.
+
+Important aspects to document are...
+
+* The ontology itself ( OWL format )
+* Systems for acquiring new data and vetting it
+* The technical infrastructure of your hosting environment
+
+It's all about eliminating barriers of entry to people who want to use your data and the people who will maintain and extend your systems.
+
+# The final stretch
+Once the ontology is defined a "production system" of the database needs to be created.
+The production system should be load tested.
+A security audit should be performed.
+Then promote your database.
+Get people using it.
+Get feedback.
+Revise, Revise, Revise...
+
+# Reference materials
+* Language Codes
+	* <http://www.loc.gov/standards/iso639-2/php/code_list.php>
+		* SPARQL uses the W3C standard 'ISO 639-1 Code'
+* Popular Existing Ontologies
+	* <http://www.w3.org/TR/owl-time/> : Time
