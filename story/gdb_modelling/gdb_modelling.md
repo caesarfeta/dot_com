@@ -8,12 +8,10 @@ So let's get started.
 # Start Playing
 There are many different graph database packages out there in the wild.
 The one we'll be playing with is the Apache Foundation's, Jena.
-Jena is the database itself.
-It employs the RDF XML standard.
+Jena is the database itself, an implementation of the RDF standard.
 You interact with Jena through, a server called Fuseki.
 The two come packaged together.
-The names sometimes sometimes are interchanged.
-
+The names sometimes are used interchangably.
 # Install Jena-Fuseki
 I'm assuming you're using some flavor of Unix ( Linux or Mac OSX usually ) as your OS.
 
@@ -73,9 +71,8 @@ With experience you'll learn when using text or URIs is appropriate.
 
 There are other nuances to SPARQL-Update syntax displayed here... like, 
 "What is up with the semi-colon and period?",
-I'll explain them later.
-If you're a brave soul and like reading very dry documentation 
-you can <a href="http://www.w3.org/Submission/SPARQL-Update/">read the document defining the syntax</a>.  
+I'll explain them later. 
+<a href="http://www.w3.org/Submission/SPARQL-Update/">Here's the document defining SPARQL Update syntax</a>.  
 
 Let's add another book before we move on.
 
@@ -172,7 +169,7 @@ You could run this query...
 	| <http://example/book1> | "A new book"  |
 	------------------------------------------
 
-<a href="http://www.w3.org/TR/sparql11-query/">Here's the document defining the query syntax.</a>
+<a href="http://www.w3.org/TR/sparql11-query/">Here's the document defining SPARQL query syntax.</a>
 
 # If You Want To Delete ALL Of Your Test Data
 Copy the text below into the SPARQL Update field and click 'Perform update'.

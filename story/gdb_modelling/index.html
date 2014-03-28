@@ -73,7 +73,7 @@
 			<div class="row">
 				<div id="meta" class="twelve columns">
 					<h1 id="title">Graph Database Modelling</h1>
-					<h2 id="subtitle">aka 'RDF Ontologies' aka 'Getting In On That Open-Linked Data Action'</h2>
+					<h2 id="subtitle">'Getting In On That Open-Linked Data Action'</h2>
 					<img id="avatar" src="../../img/avatar_default.jpg" alt="Adam Tavares" />
 					<h3 id="author">by <span class="name">Adam Tavares</span></h3>
 					<h4 id="date">Published March 26, 2014</h4>
@@ -94,11 +94,10 @@ So let's get started.</p>
 <h1>Start Playing</h1>
 <p>There are many different graph database packages out there in the wild.
 The one we'll be playing with is the Apache Foundation's, Jena.
-Jena is the database itself.
-It employs the RDF XML standard.
+Jena is the database itself, an implementation of the RDF standard.
 You interact with Jena through, a server called Fuseki.
 The two come packaged together.
-The names sometimes sometimes are interchanged.</p>
+The names sometimes are used interchangably.</p>
 <h1>Install Jena-Fuseki</h1>
 <p>I'm assuming you're using some flavor of Unix ( Linux or Mac OSX usually ) as your OS.</p>
 <ul>
@@ -155,9 +154,8 @@ Sometimes it isn't.
 With experience you'll learn when using text or URIs is appropriate.</p>
 <p>There are other nuances to SPARQL-Update syntax displayed here... like, 
 "What is up with the semi-colon and period?",
-I'll explain them later.
-If you're a brave soul and like reading very dry documentation 
-you can <a href="http://www.w3.org/Submission/SPARQL-Update/">read the document defining the syntax</a>.  </p>
+I'll explain them later. 
+<a href="http://www.w3.org/Submission/SPARQL-Update/">Here's the document defining SPARQL Update syntax</a>.  </p>
 <p>Let's add another book before we move on.</p>
 <pre><code>PREFIX dc: &lt;http://purl.org/dc/elements/1.1/&gt;
 INSERT DATA {
@@ -242,7 +240,7 @@ WHERE {
 | &lt;http://example/book1&gt; | "A new book"  |
 ------------------------------------------
 </code></pre>
-<p><a href="http://www.w3.org/TR/sparql11-query/">Here's the document defining the query syntax.</a></p>
+<p><a href="http://www.w3.org/TR/sparql11-query/">Here's the document defining SPARQL query syntax.</a></p>
 <h1>If You Want To Delete ALL Of Your Test Data</h1>
 <p>Copy the text below into the SPARQL Update field and click 'Perform update'.</p>
 <pre><code>DELETE WHERE { ?s ?p ?o }
