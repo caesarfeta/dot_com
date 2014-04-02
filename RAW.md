@@ -177,6 +177,7 @@ Perseids takes the core Sosol functionality and adds some extra tools to for Tre
 Core functionality.
 User management and document versioning is strong.
 Interoperability with other tools and services.
+	Alpheios Treebanking Editor
 
 ## Weaknesses
 The interface is ugly and sometimes hard to use, but we're working on it.
@@ -198,6 +199,7 @@ These are my personal plans for Perseids.
 	 * transcription and annotation of images.
 	 
 It talks about version control systems and graph databases primarily, and how they are used in Perseids, software currently being developed by programmers employed by the Perseus Project.
+
 
 
 

@@ -88,13 +88,14 @@
 					<p>You're a researcher.
 You have gathered lots of data. 
 You want to store that data in a convenient place so it can be easily searched, analyzed, and repurposed by yourself, collaborators, and anonymous people the world over.
-In other words you want to turn "data" into open-linked data.
-The quicker you can start playing with this technology the quicker you'll learn its peculiarities.
-So let's get started.</p>
+In other words you want to turn "data" into "open-linked data."
+Great!  But there are some things you'll have to learn about the underlying technologies that have made open-linked data possible in the first place, graph databases in particular.
+I believe the quicker you start playing with your own graph database the quicker you'll get a useful database out into the world.
+So let's just jump in.</p>
 <h1>Start Playing</h1>
 <p>There are many different graph database packages out there in the wild.
 The one we'll be playing with is the Apache Foundation's, Jena.
-Jena is the database itself, an implementation of the RDF standard.
+Jena is the database itself, an implementation of the W3C's RDF ( Resource Description Framework) standard.
 You interact with Jena through, a server called Fuseki.
 The two come packaged together.
 The names sometimes are used interchangably.</p>
@@ -106,9 +107,10 @@ The names sometimes are used interchangably.</p>
 <li>
 <p>If you know Unix the commands below should make sense.  If it looks like gibberish find a friend to help.</p>
 <pre><code>mkdir -p /usr/local/fuseki
-cp jena-fuseki-[version]-distribution.zip /usr/local/fuseki/
-unzip jena-fuseki-[version]-distribution.zip
-ln -s jena-fuseki-[version] fuseki
+cp jena-fuseki-1.0.1-distribution.zip /usr/local
+cd /usr/local
+unzip jena-fuseki-1.0.1-distribution.zip
+ln -s jena-fuseki-1.0.1 fuseki
 cd fuseki
 chmod +x fuseki-server s-**
 fuseki-server --update --mem /ds &amp;
@@ -245,7 +247,6 @@ WHERE {
 <p>Copy the text below into the SPARQL Update field and click 'Perform update'.</p>
 <pre><code>DELETE WHERE { ?s ?p ?o }
 </code></pre>
-<h1>WARNING: The Text Below Is A Work In Progress...</h1>
 <h1>'Conceptual Map' aka 'Categorical Structure' aka 'Ontology'</h1>
 <p>Now begins the fun part.
 Modelling YOUR data.</p>
@@ -418,7 +419,24 @@ So now I'll represent the relationships between my nodes in a more abstract outl
 </ul>
 </li>
 </ul>
-<h1>TODO: RDF datatypes</h1>
+<h1>RDF datatypes -- "typed literals"</h1>
+<p>Here's some links for more details on RDF datatyping.</p>
+<ul>
+<li><a href="https://jena.apache.org/documentation/notes/typed-literals.html">https://jena.apache.org/documentation/notes/typed-literals.html</a></li>
+<li><a href="http://www.w3.org/TR/swbp-xsch-datatypes/">http://www.w3.org/TR/swbp-xsch-datatypes/</a></li>
+</ul>
+<h2>Available datatypes</h2>
+<p>The most commonly used:</p>
+<ul>
+<li>string</li>
+<li>int</li>
+<li>unsignedInt</li>
+<li>float </li>
+<li>Boolean</li>
+<li>dateTime</li>
+</ul>
+<p>And the rest:</p>
+<p>long short byte double unsignedByte unsignedShort unsignedLong decimal integer nonPositiveInteger nonNegativeInteger positiveInteger negativeInteger normalizedString anyURI token Name QName language NMTOKEN ENTITIES NMTOKENS ENTITY ID NCName IDREF IDREFS NOTATION hexBinary base64Binary date time duration gDay gMonth gYear gYearMonth gMonthDay</p>
 <h1>Convert Your "Paper Ontology" To "RDF"</h1>
 <p>So there's a couple of ways to do this.
 As you're exploring it's probably best to write INSERT DATA statements.
@@ -444,7 +462,37 @@ INSERT DATA {
 }
 </code></pre>
 <p>Eventually you'll want to create a .ttl document to store all of your triples.</p>
-<h1>TODO: .ttl Document Upload</h1>
+<h1>.ttl ( Turtle ) Documents</h1>
+<ul>
+<li><a href="http://www.w3.org/TeamSubmission/turtle/">http://www.w3.org/TeamSubmission/turtle/</a></li>
+</ul>
+<p>Turtle format allows you to write RDF triples as a compact plain-text file.
+It's probably the easiest way to migrate your data to your Fuseki instance.
+Here's an example.  It should look somewhat familiar.</p>
+<pre><code>@base &lt;http://example.org/&gt; .
+@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
+@prefix foaf: &lt;http://xmlns.com/foaf/0.1/&gt; .
+@prefix rel: &lt;http://www.perceive.net/schemas/relationship/&gt; .
+
+&lt;#green-goblin&gt;
+    rel:enemyOf &lt;#spiderman&gt; ;
+    a foaf:Person ;    # in the context of the Marvel universe
+    foaf:name "Green Goblin" .
+
+&lt;#spiderman&gt;
+    rel:enemyOf &lt;#green-goblin&gt; ;
+    a foaf:Person ;
+    foaf:name "Spiderman" .
+</code></pre>
+<p>Lots more examples here.</p>
+<ul>
+<li><a href="http://www.w3.org/TR/2014/REC-turtle-20140225/">http://www.w3.org/TR/2014/REC-turtle-20140225/</a></li>
+</ul>
+<h1>Loading a .ttl Document Into Your Database</h1>
+<pre><code>cd /usr/local/fuseki
+s-put http://localhost:3030/ds/data default /path/to/your/ttl/file.ttl
+</code></pre>
 <h1>Putting Your Database To The Test</h1>
 <p>So your data needs to be put to the test early on in the process.
 Define what subsets of data you need and what formats you'll need it in.
@@ -475,10 +523,10 @@ And you need documentation in two flavors.</p>
 <p>Once the ontology is defined a "production system" of the database needs to be created.
 The production system should be load tested.
 A security audit should be performed.
-Then promote your database.
-Get people using it.
+Then promote your database.</p>
+<p>Get people using it.
 Get feedback.
-Revise, Revise, Revise...</p>
+Revise, revise, and revise...</p>
 <h1>Reference materials</h1>
 <ul>
 <li>Language Codes<ul>
