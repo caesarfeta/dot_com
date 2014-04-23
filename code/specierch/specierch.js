@@ -107,6 +107,7 @@ function startSearch() {
 	nameSearch( search );
 	$('#input').addClass( 'faded' );
 	$('#input').blur();
+	hideError();
 	hideHint();
 	showWait();
 }

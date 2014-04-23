@@ -255,7 +255,7 @@ What audience are we trying to reach?
 I don't believe that messages need to be dumbed-down to reach a general audience.
 General audience's need context and guidance.
 That takes an expert's time.
-That takes a Ken Burns.
+That takes a Ken Burns nix that... that takes a Carl Sagan.
 
 
 
