@@ -253,11 +253,30 @@ Publish
 
 What audience are we trying to reach?
 I don't believe that messages need to be dumbed-down to reach a general audience.
-General audience's need context and guidance.
+General audiences need context and guidance.
 That takes an expert's time.
-That takes a Ken Burns nix that... that takes a Carl Sagan.
+That takes a Carl Sagan or a Neil Degrasse Tyson type.
+A scientific media-whore and I mean that lovingly and with respect.
 
 
 
 
 
+# Software Engineering
+Put the puzzle pieces together.
+One big jigsaw puzzle.
+Put the edge together, because those pieces are the most visible.
+
+First thing you should ask yourself is what's the easiest way for people to use this.
+Occham's razor... always.
+APIs must be well defined and documented.
+
+When naming things think context.
+Keep names short and relevant and context specific.
+You know many Johns.
+That doesn't mean John is a terrible name and needs to be lengthened to John-From-The-South-Side-Of-Chicago.
+You know which John based on context.
+This is true for your code.
+
+Human or machine?  Human or machine?
+Your audience is both. 

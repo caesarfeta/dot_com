@@ -7,13 +7,8 @@
 	"publish_date": "February 24, 2014",
 	"page_js": [ "l_systems.js" ],
 	"third_party": [ 
-		"../javascript/lib/jslib/src/js/AutoCanvas.js",
-		"../javascript/lib/jslib/src/js/TimeStamp.js", 
-		"../javascript/lib/lsys_js/src/js/LSYS.js", 
-		"../javascript/lib/jslib/src/js/jQueryPlus.js",
-		"../javascript/lib/jslib/src/js/ObjectExt.js",
-		"../javascript/lib/jslib/src/js/StringExt.js"
-		],
+		"../javascript/lib/lsys_js/lsys.js"
+	],
 	"preview_img": "code/l_systems/img/dragon_curve.png",
 	"bg_color": "#AAA",
 	"preview": "A beautiful dragon curve drawn right before your eyes... Etch-a-Sketch Style.<br/>  Drawn with <a href=\"https://github.com/caesarfeta/lsys_js\">lsys_js</a>."
