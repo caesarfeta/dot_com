@@ -1,8 +1,6 @@
 # Haml and cheese.
-So recently I've begun working with a team of web-developers on a Rails based application.
-It has been my first exposure to Rails and Ruby for that matter, so I'm coming to this project as a bit of an outsider.
+So recently I've begun working with a team of web-developers on an application built on Rails.  It's been my first exposure to Rails and Haml.
 
-## What is it?
 For those who don't know Haml is a meta-HTML markup language.
 It's creators see it as HTML shorthand.
 Here's the intro paragraph of the Haml homepage.
@@ -12,47 +10,32 @@ markup should be beautiful.
 It’s not just beauty for beauty’s sake either;
 Haml accelerates and simplifies template creation down to veritable haiku."
 
-## HTML isn't beautiful.
-So HTML and it's big-brother XML have problems.
-They're tag based which means all of your content gets wrapped in opening and closing tag pairs.
-If somebody isn't careful they can easily make a mess for themselves by carelessly omitting a closing tag.
-Haml tries to remedy this situation by replacing tag-pairs with strictly enforced whitespace rules.
-
-## See for yourself.
-Take a look at the haml project's homepage http://haml.info/
-
-You're back... Excellent.
 So you noticed all of the references to haiku.
 Kind of obnoxious right?
 Well I think so.
 Web page mark-up is not poetry and it never will be.
-Mark-up holds content.
+Mark-up describes content structure.
 Poetry IS content.
-Whenever a new technology is marketed to you by coopting a somewhat exotic centuries old creative art get your guard up.
+Whenever a new technology is marketed to you by coopting a somewhat exotic centuries old artform get your guard up.
 Usually you're being fed a big ol' heaping spoon of marketing bullshit.
 
-I understand what the people marketing Haml are trying to do, and they're not alone in this.
-They're trying to convince you that their language is elegant,
-and it will increase your expressive power.
-With just a small smattering of expertly sequenced letters you will build templates, which used to take you hours, in only a few minutes.
-But sorry to say... nah... that's probably not going to happen.
-
-Not to get too side-tracked but I have to get this off of my chest... web-developers, I'm talking to you... the majority of our work is the digital equivalent of setting-type and making sure the printing presses are running smoothly.
+I have to get this off of my chest, web-developers, the majority of our work is the digital equivalent of setting-type and making sure the printing presses are running smoothly.
 We aren't Lao-Tzu meditating on how to live harmoniously with the rest of the universe.
-Take pride in your work, certainly, but learn some humility.
-Your career will thank you, and I'll thank you because I won't have the tools of my trade sold to me by incessantly stroking my ego.
-I want practical tools not "creative feel-goodery".
+Take pride in your work, certainly, but learn some humility please.  Just because some guys got to the game early and made a lot of money doesn't mean we're intellectual gods
+I want practical, reliable tools.  Sell me on your code with numbers, units, and realistic examples.
+Your career will thank you, and I'll thank you because I won't have the tools of my trade sold to me by appealing to my inner failed artist.
+
 
 ## Marketing bullshit aside...
 Here's why Haml is ridiculous fundamentally.
 Web browsers render HTML.
 They don't render HAML.
 
-The time you save typing is negligible when you realize developers don't spend the majority of their time typing.
+The time it will save you typing is negligible once you realize developers don't spend the majority of their time typing.
 The majority of our time is spent asking this question, 
 "Why is the computer doing this?"
 
-A front-end developer/designer's primary question is a bit more specific, "Why is the browser rendering this page like this?"
+A front-end web developer's primary question is a bit more specific, "Why is the browser making my code look this way?"
 Answering that question becomes much more complex with Haml.
 Why? 
 Because Haml has to be turned into HTML before it can be rendered by a browser.
@@ -61,18 +44,16 @@ Sometimes...
 But what happens when it doesn't?
 
 Well this happens.
-The developer looks at the page and its source in his browser, then he looks at the template in his text-editor and tries to figure out where things have gone wrong.
+The developer looks at the page and its source in his browser, then he looks at the template in his text-editor and tries to figure out where things have gone wrong.  The more layers of abstraction you add the harder that process becomes.
 
-Ever find yourself in a doctor's waiting room and you pick up a Hi-Lites magazine?
-I know they're for children I don't care.
-Well they have these pages where two drawings are shown side-by-side and it's your job to figure out what's "wrong" in one of them.
-You find the man with the mustache and the fish missing a fin and you feel good that you have such finely honed observational powers.
 
-Well that's not that different than troubleshooting template bugs.
-Instead of two cartoon images, you're visually comparing two texts.
+## HTML isn't beautiful.
+So HTML and it's big-brother XML have problems.
+They're tag based which means all of your content gets wrapped in opening and closing tag pairs.
+If somebody isn't careful they can easily make a mess for themselves by carelessly omitting a tag.
+Haml tries to remedy this situation by replacing tag-pairs with strictly enforced whitespace rules. This has precendence, Ruby and Python, for example. The problem with whitespace determining structure is mark-up languages and scripting languages serve very different purposes and are used by different people.
 
-## HAML is a solution looking for a problem
-I want to see HAML abandoned.  It's 
+HTML, unfortunately, has a very complex relationship with two other languages, CSS and Javascript.  It's so complex that the lines between these languages frequently blur.  Good developers are like a TV dinner tray and know how to keep each in its proper container but 
 
 ## HTML is here to stay.
 Until there is an alternative mark-up language rendered by the majority of web-browsers we have to live with HTML.
@@ -234,42 +215,46 @@ Which is basically the information museums and archivists gather about images in
 
 
 # Research Fundamentals
-Gather
+Collect
+Analyze
 Categorize
-Analyze / Synthesize
+Synthesize
 Publish
 
 ## Publication
+## Who are you talking to?
 * Audiences:
 	* Colleagues
 		* Knows context, will struggle to assimilate new knowledge. 
-		* Why? $$$.
+		* Why? $$$ or ;D for doing so.
+		* Do the work to make it accurate.
 	* Students
 		* Doesn't know context, will struggle to assimilate new knowledge.
-		* Why? Hope of $$.
+		* Why? Hope of $$ or ;) for doing so.
+		* Do the work to make it accessible.
 	* The Public
 		* Doesn't know context, will NOT struggle to assimilate new knowledge.
-		* Why? No hope of $.
+		* Why? No hope of $ or :) for doing so.
+		* Do the work to make it entertaining.
 
 What audience are we trying to reach?
 I don't believe that messages need to be dumbed-down to reach a general audience.
-General audiences need context and guidance.
-That takes an expert's time.
-That takes a Carl Sagan or a Neil Degrasse Tyson type.
-A scientific media-whore and I mean that lovingly and with respect.
+They just need context, guidance, and a sense of wonder.
+That takes a charismatic content expert.
+That takes a Carl Sagan or a Neil Degrasse Tyson, a scientific media-whore, and I mean that lovingly and with respect.
 
 
 
 
 
-# Software Engineering
+# Software Engineering Wisdom
 Put the puzzle pieces together.
 One big jigsaw puzzle.
-Put the edge together, because those pieces are the most visible.
+Put the edges together first, because those pieces are the most visible.
+APIs must be well defined and documented.
 
 First thing you should ask yourself is what's the easiest way for people to use this.
 Occham's razor... always.
-APIs must be well defined and documented.
 
 When naming things think context.
 Keep names short and relevant and context specific.
@@ -280,3 +265,79 @@ This is true for your code.
 
 Human or machine?  Human or machine?
 Your audience is both. 
+
+Don't abuse "else if" and "else".
+If you are nesting lots of elses know that you could be creating a maintenance nightmare for yourself.
+Sure the logic makes sense now when the problem is fresh in your head, but will it make sense weeks from now?
+
+
+
+
+
+# Practice
+Practice slowly and thoughtfully.
+Always building on what you already know.
+This is how you get better at things.
+
+
+
+
+
+# Jokes
+It is unwise to half-ass a project just so you can start another project, which you will also half-ass.  
+Be patient and use all of your ass.
+
+Civilians. Stop using the word "taskforce".
+We already have the word committee.
+Discussing dress-code policy is not the same as invading an enemy base.
+
+Why do you hate rich old white guys who run the world solely for their own benefit?  They're people too you know.  Learn some empathy.
+
+Who likes men's sneakers more... young black guys... or cats in heat?  You decide.
+
+Russian dressing is just French dressing with extra mayonnaise and corruption.
+
+Commute to compute!  The battle cry of a generation.
+
+Some people swim for their health. Others for fun. Me? I swim for the used band-aids.
+
+You know you're old when going to a dance club and watching a nature documentary feel like the same activity.
+
+I like algebra because you can think about y's and x's without the painful memories.
+
+A dog is not a human child and should not be dressed like one.
+
+
+
+
+
+# Victimhood
+Welcome to the victimhood, neighbor!  I'd invite you over to my house but it's a mess.  Why is it a mess?  The government.
+Welcome to the victimhood, neighbor!  I'd invite you over to my house but it's a mess.  Why is it a mess?  Big business.
+Welcome to the victimhood, neighbor!  I'd invite you over to my house but it's a mess.  Why is it a mess?  Men.
+Welcome to the victimhood, neighbor!  I'd invite you over to my house but it's a mess.  Why is it a mess?  Gold-digging women.
+Yeah it's kind of ridiculous how people will blame everybody else but themselves.
+Ehhhh I'm guilty of this.
+
+Seeing yourself as the hapless victim of invisible social forces can make you seem like an insufferable asshole to people who don't share your situation.
+Maybe they're right.
+Maybe you're right.
+It doesn't matter.
+So when explaining your position it's best to stay detached and unemotional.
+Unshared feelings will only drive people away from your message.
+
+
+
+
+
+# Periodic Table of Elements
+6			-- Atomic Number # equal to the number of protons in nucleus
+C			-- Symbol
+Carbon		-- Name
+12.011		-- Atomic Mass  Weighted average of the masses of all the element's isotopes.
+
+Element -- Stores the information above
+Cell	-- Displays the information
+Grid	-- WxH Grid
+View	-- Arrangement of grids
+Canvas	-- XYZ

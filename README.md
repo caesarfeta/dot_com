@@ -1,4 +1,4 @@
-# dot com
+# dot_com
 
 ### Requirements
 * Python 2.6+
@@ -9,14 +9,13 @@
 ### Installation
 	./install.sh
 
-### GIT Submodules
+### Git Submodules
 * To see Submodules
 	* cat .gitmodules
 * To update Submodules
-	* git submodule init
-	* git submodule update
+	* git submodule update --init
 * To add a Submodule
-	* git submodule add git@host:project /path/to/project
+	* git submodule add git@host:project /path/you/choose
 
 ### What it does.
 This project is my personal website.
