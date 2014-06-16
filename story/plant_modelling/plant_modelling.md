@@ -1,17 +1,56 @@
-##L-Systems
+I've always been fascinated by the shape of plants.
+Growing up in Massachusetts meant I basically grew-up in a big forest.
+A good chunk of my childhood summers was spent walking wooded trails on the outskirts of my hometown and in the neighboring suburbs.
+Actually a good chunk of my adulthood is spent walking among trees and marvelling at their structures.
 
-Full name Lindenmayer system.
-Named after a Hungarian theoretical biologist and botanist named Aristid Lindenmayer.
+So I've seen a lot of plants is what I'm saying.
+Also, my mother was very religious and I was told that a powerful being which resembled a wise old man designed everything I could see.
+I gave up believing God exists at age 16, but I never lost the desire to have god-like powers of creation.
+That's why I got into programming.
+I figured if I couldn't be God of reality I'd settle for being a god on a microchip.
+Let's build some imaginary plants with some clever programming.
+Let's get godly...  
+
+## L-Systems
+
+So the first thing I want to explore with you are L-Systems.
+
+The L in L-Systems is short for Lindenmayer.
+Aristid Lindenmayer was a Hungarian theoretical biologist and botanist.
+Now that we have that out of the way we have to answer this question...
 
 ### What are they?
 
-They're a way of modelling natural patterns using sequences of symbols.
+They're a way of succinctly describing self-similar shapes.
+Self-similar shapes are also known as fractals.
+
+Self-similarity is when a shape is composed of smaller versions of itself.
+If you've ever played Nintendo's "Legend of Zelda" you probably remember the Triforce.
+The Triforce is an equilateral triangle composed of equilateral triangles.
+It's a fractal.
+
+It turns out that self-similar patterns can be found all over Nature, the plant kingdom included.
+If you were to make a small shoebox diorama of a forest you could snip off twigs from trees and they would look pretty convincing as miniature trees.
+
+This property isn't as common with man made objects.
+If you break off a bunch of car door handles and put them in a shoebox you'll probably get an F for your parking lot diorama.
+
+So it turns out self-similarity is so common in Nature because the easiest way to build something large and seemingly complex is to just repeat what you already know maybe changing something slightly along the way.
+
+### Okay what are they really...
+
+So, I repeat, L-Systems are a way of succinctly describing self-similar shapes.
+Here's how the really work.  You need three things.
+
+1. An initial state.
+2. Change rules.
+3. The number of times the change rules are applied.
+
+
 These symbols define shapes which are drawn a specified number of times in a way that model growth patterns and therefore shapes and textures found in nature.
 
 The traditional L-System algorithm requires three parameters.
-1. an initial state
-2. change rules
-3. number of times the change rules are applied
+
 
 So let's look at an example first and then I'll explain what's happening.
 
@@ -79,13 +118,11 @@ The drive to acquire the materials and energy necessary for individual growth an
 
 Vines cannot exist without trees or other well anchored plants.
 	
-Every structure in Nature has a purpose... a reason.
+Every structure in Nature has a purpose... a reason for being.
+Nothing has to exist, but things that do exist, exist in a very particular way.
+
 It is in our best interest as a species and as individuals to understand these structures.
 	Their reason for being.
 	Their applications in manufacturing our own living environments.
 	
 Their inherent mathematical and aesthetic beauty has been an inspiration for the greatest works of art and the most practical tools of day-to-day living.
-	Antonio Gaudi.
-	The textile industry.
-	
-Most  digital modelling of plants is done using L-Systems.  L-Systems

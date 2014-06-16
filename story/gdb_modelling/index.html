@@ -89,20 +89,21 @@
 You have gathered lots of data. 
 You want to store that data in a convenient place so it can be easily searched, analyzed, and repurposed by yourself, collaborators, and anonymous people the world over.
 In other words you want to turn "data" into "open-linked data."
-Great!  But there are some things you'll have to learn about the underlying technologies that have made open-linked data possible in the first place, graph databases in particular.
-I believe the quicker you start playing with your own graph database the quicker you'll get a useful database out into the world.
+Great!  But there are some things you'll have to learn about the underlying technologies that have made open-linked data possible in the first place, graph-databases in particular.
+I believe the quicker you start playing with your own graph-database the quicker you'll get a useful database out into the world.
 So let's just jump in.</p>
 <h1>Start Playing</h1>
-<p>There are many different graph database packages out there in the wild.
+<p>There are many different graph-database packages out there in the wild.
 The one we'll be playing with is the Apache Foundation's, Jena.
+Jena is a type of graph-database called a triple-store.
 Jena is the database itself, an implementation of the W3C's RDF ( Resource Description Framework) standard.
-You interact with Jena through, a server called Fuseki.
+You interact with Jena through a server called Fuseki.
 The two come packaged together.
 The names sometimes are used interchangably.</p>
 <h1>Install Jena-Fuseki</h1>
 <p>I'm assuming you're using some flavor of Unix ( Linux or Mac OSX usually ) as your OS.</p>
 <ul>
-<li><a href="http://jena.apache.org/download/index.cgi">Go to the downloads page</a></li>
+<li><a href="http://jena.apache.org/download/index.cgi"> Go to the downloads page </a></li>
 <li>Click the binary distribution link "jena-fuseki-[version]-distribution.zip"</li>
 <li>
 <p>If you know Unix the commands below should make sense.  If it looks like gibberish find a friend to help.</p>
@@ -120,9 +121,7 @@ fuseki-server --update --mem /ds &amp;
 <p>You now have a fuseki-server running on port 3030.</p>
 <p>Fuseki uses the HTTP protocol to communicate with the outside world just like a webserver,
 which means you can connect to it through your webbrowser.</p>
-<ul>
-<li><a href="http://localhost:3030/">http://localhost:3030/</a></li>
-</ul>
+<p><a href="http://localhost:3030/"> http://localhost:3030/ </a></p>
 <h1>Your Playground</h1>
 <ul>
 <li>Click 'Control Panel' link</li>
@@ -157,7 +156,7 @@ With experience you'll learn when using text or URIs is appropriate.</p>
 <p>There are other nuances to SPARQL-Update syntax displayed here... like, 
 "What is up with the semi-colon and period?",
 I'll explain them later. 
-<a href="http://www.w3.org/Submission/SPARQL-Update/">Here's the document defining SPARQL Update syntax</a>.  </p>
+<a href="http://www.w3.org/Submission/SPARQL-Update/"> Here's the document defining SPARQL Update syntax </a></p>
 <p>Let's add another book before we move on.</p>
 <pre><code>PREFIX dc: &lt;http://purl.org/dc/elements/1.1/&gt;
 INSERT DATA {
@@ -205,7 +204,7 @@ WHERE {
 -------------------------------------------------------
 </code></pre>
 <p>So how does the query work?
-Data relationships in graph databases are defined by triples.
+Data relationships in Jena are defined by triples.
 Triples are basically declarative sentences with one subject, one predicate, and one object.</p>
 <p>You specify what bits of data you want to extract with this line.</p>
 <pre><code>SELECT ?s ?p ?o
@@ -242,7 +241,7 @@ WHERE {
 | &lt;http://example/book1&gt; | "A new book"  |
 ------------------------------------------
 </code></pre>
-<p><a href="http://www.w3.org/TR/sparql11-query/">Here's the document defining SPARQL query syntax.</a></p>
+<p><a href="http://www.w3.org/TR/sparql11-query/"> Here's the document defining SPARQL query syntax </a></p>
 <h1>If You Want To Delete ALL Of Your Test Data</h1>
 <p>Copy the text below into the SPARQL Update field and click 'Perform update'.</p>
 <pre><code>DELETE WHERE { ?s ?p ?o }
@@ -283,7 +282,6 @@ I'll list them to start.</p>
 <li>person who made image</li>
 <li>what's depicted in the image?</li>
 </ul>
-<p>I now have a starting point.</p>
 <h1>Research Preexisting Ontologies</h1>
 <p>Also it's worth researching whether there are existing ontologies devised to describe portions of your data already.
 The less you recreate the wheel and the more you use existing ontologies the more 'linked' your data will become.</p>
@@ -326,7 +324,7 @@ So now I'll represent the relationships between my nodes in a more abstract outl
 </li>
 <li>storage<ul>
 <li>&lt;file-type&gt;</li>
-<li>size [ megabytes ] ( float )</li>
+<li>size [ megabytes ] - ( float )</li>
 </ul>
 </li>
 <li>interpretation<ul>
@@ -335,8 +333,8 @@ So now I'll represent the relationships between my nodes in a more abstract outl
 </ul>
 </li>
 <li>resolution<ul>
-<li>width [ pixels ] ( int )</li>
-<li>height in [ pixels ] ( int )</li>
+<li>width [ pixels ] - ( int )</li>
+<li>height in [ pixels ] - ( int )</li>
 <li>dpi ( int )</li>
 </ul>
 </li>

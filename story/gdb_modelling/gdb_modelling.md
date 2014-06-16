@@ -2,22 +2,23 @@ You're a researcher.
 You have gathered lots of data. 
 You want to store that data in a convenient place so it can be easily searched, analyzed, and repurposed by yourself, collaborators, and anonymous people the world over.
 In other words you want to turn "data" into "open-linked data."
-Great!  But there are some things you'll have to learn about the underlying technologies that have made open-linked data possible in the first place, graph databases in particular.
-I believe the quicker you start playing with your own graph database the quicker you'll get a useful database out into the world.
+Great!  But there are some things you'll have to learn about the underlying technologies that have made open-linked data possible in the first place, graph-databases in particular.
+I believe the quicker you start playing with your own graph-database the quicker you'll get a useful database out into the world.
 So let's just jump in.
 
 # Start Playing
-There are many different graph database packages out there in the wild.
+There are many different graph-database packages out there in the wild.
 The one we'll be playing with is the Apache Foundation's, Jena.
+Jena is a type of graph-database called a triple-store.
 Jena is the database itself, an implementation of the W3C's RDF ( Resource Description Framework) standard.
-You interact with Jena through, a server called Fuseki.
+You interact with Jena through a server called Fuseki.
 The two come packaged together.
 The names sometimes are used interchangably.
 
 # Install Jena-Fuseki
 I'm assuming you're using some flavor of Unix ( Linux or Mac OSX usually ) as your OS.
 
-* <a href="http://jena.apache.org/download/index.cgi">Go to the downloads page</a>
+* [ Go to the downloads page ]( http://jena.apache.org/download/index.cgi )
 * Click the binary distribution link "jena-fuseki-[version]-distribution.zip"
 * If you know Unix the commands below should make sense.  If it looks like gibberish find a friend to help.
  
@@ -35,7 +36,7 @@ You now have a fuseki-server running on port 3030.
 Fuseki uses the HTTP protocol to communicate with the outside world just like a webserver,
 which means you can connect to it through your webbrowser.
 
-* <a href="http://localhost:3030/">http://localhost:3030/</a>
+[ http://localhost:3030/ ]( http://localhost:3030/ )
 
 # Your Playground
 * Click 'Control Panel' link
@@ -75,7 +76,7 @@ With experience you'll learn when using text or URIs is appropriate.
 There are other nuances to SPARQL-Update syntax displayed here... like, 
 "What is up with the semi-colon and period?",
 I'll explain them later. 
-<a href="http://www.w3.org/Submission/SPARQL-Update/">Here's the document defining SPARQL Update syntax</a>.  
+[ Here's the document defining SPARQL Update syntax ](http://www.w3.org/Submission/SPARQL-Update/)
 
 Let's add another book before we move on.
 
@@ -129,7 +130,7 @@ The output changes as you'd expect.
 	-------------------------------------------------------
 
 So how does the query work?
-Data relationships in graph databases are defined by triples.
+Data relationships in Jena are defined by triples.
 Triples are basically declarative sentences with one subject, one predicate, and one object.
 
 You specify what bits of data you want to extract with this line.
@@ -172,7 +173,7 @@ You could run this query...
 	| <http://example/book1> | "A new book"  |
 	------------------------------------------
 
-<a href="http://www.w3.org/TR/sparql11-query/">Here's the document defining SPARQL query syntax.</a>
+[ Here's the document defining SPARQL query syntax ](http://www.w3.org/TR/sparql11-query/)
 
 # If You Want To Delete ALL Of Your Test Data
 Copy the text below into the SPARQL Update field and click 'Perform update'.
@@ -220,8 +221,6 @@ I'll list them to start.
 * person who made image
 * what's depicted in the image?
 
-I now have a starting point.
-
 # Research Preexisting Ontologies
 Also it's worth researching whether there are existing ontologies devised to describe portions of your data already.
 The less you recreate the wheel and the more you use existing ontologies the more 'linked' your data will become.
@@ -262,13 +261,13 @@ So now I'll represent the relationships between my nodes in a more abstract outl
 		* &lt;user&gt;
 	* storage
 		* &lt;file-type&gt;
-		* size [ megabytes ] ( float )
+		* size [ megabytes ] - ( float )
 	* interpretation
 		* &lt;image-type&gt;
 		* &lt;caption&gt;
 	* resolution
-		* width [ pixels ] ( int )
-		* height in [ pixels ] ( int )
+		* width [ pixels ] - ( int )
+		* height in [ pixels ] - ( int )
 		* dpi ( int )
 	* time
 		* created ( time )

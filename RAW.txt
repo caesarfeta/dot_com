@@ -277,7 +277,7 @@ Sure the logic makes sense now when the problem is fresh in your head, but will 
 # Practice
 Practice slowly and thoughtfully.
 Always building on what you already know.
-This is how you get better at things.
+This is how you improve.
 
 
 
@@ -346,7 +346,7 @@ Canvas	-- XYZ
 
 
 
-## Capoeira Lyrics
+# Capoeira Lyrics
 
 http://capoeiralyrics.info/Songs/ByArtist/6
 http://capoeiralyrics.info/Songs/Details/420#audio
@@ -355,7 +355,7 @@ http://capoeiralyrics.info/Songs/Details/420#audio
 
 
 
-##  Zumbi - Jorge Ben
+#  Zumbi - Jorge Ben
 
 Angola, Congo, Benguela
 Monjolo, Cabinda, Mina
@@ -435,7 +435,7 @@ Eu quero ver
 
 
 
-##  Os alquimistas estão chegando -- Jorge Ben
+#  Os alquimistas estão chegando -- Jorge Ben
 
 Os alquimistas estão chegando
 >> Alchemists are coming
@@ -492,7 +492,7 @@ Pessoas de temperamento sórdido
 
 
 
-##  Magnolia -- Jorge Ben
+#  Magnolia -- Jorge Ben
 
 Que eu quero mais?
 >> What more do I want?
@@ -550,7 +550,7 @@ Rosa
 
 
 
-##  Menina mulher da pele preta -- Jorge Ben
+#  Menina mulher da pele preta -- Jorge Ben
 
 Essa menina mulher da pele preta,
 >> This girl-woman with black skin.
@@ -689,3 +689,173 @@ Não está deixando me...
 
 Dormir sossegado...
 >> to sleep peacefully...
+
+
+
+
+
+# Attitude shift
+
+What is a plant?
+It's a green thing that grows in dirt.
+It's food.
+It's a living thing.
+It's a living thing with cell walls made out of cellulose.
+It's a living thing that is built the way it is because of billions of years of evolutionary history.
+Over that time it has developed certain unique structures and abilities through its constant interaction with surrounding organisms and the overall environment it finds itself.
+Contained within its seeds is DNA which is simultaneously a blueprint and a history book.
+The two are inseperable.
+
+It's up to me to decide which story I want to tell myself.  The deeper story is the better one to explore.  It makes for a more interesting life for everybody.
+
+If I ever find myself in a job where I'm not allowed to explore the deeper story I'd better leave.
+It would be a dead-end.
+When curiosity is not driving enterprise and it's individual ambition or greed it's time to boldly hand in a resignation letter and find something else.
+
+
+
+
+
+# Project Management -- Meeting with Gernot and crew
+
+## Git issue tracking.
+Issues are tracked in the issue tracker.
+Lots of "micro-commits".
+Features should have their own branch.
+Feature branches should be rolled into master using pull requests.
+When issues are closed they should reference the commit SHA of the pull request merge.
+
+## Documentation.
+Function parameters and return values should be documented.
+Test suites should be written whenever possible.
+
+
+
+
+
+# Blue Hills Towing
+
+I had a horrible experience with this company.
+They're scammers.
+Here's the run-down of their operation.
+
+First of all if you're an individual and not a business you will have to pay for their services in cash.
+Demanding payment in cash would be fine if they were selling hot dogs out of a cart on the street, but they aren't.
+
+Their office is in a remote part of Quincy.
+Their car storage lot is in Weymouth.
+You will have to drive to their office in Quincy to drop off your cash.
+Then you will have to drive to Weymouth to get to your car.
+They can't accept your cash at the Weymouth lot.
+Apparently they can't 'process the payment' of an envelope filled with hundred dollar bills at the Weymouth 'facility'.
+How will you do all of this driving when you have no car?
+Well you'll have to find a ride or rent one, and you'll have to get this ride on the weekend or during business hours during the week when the office is open.
+Chances are this is going to be difficult.
+You and maybe your friend will have to take time off work or sacrifice a good chunk of your weekend(s) to deal with them.
+They don't care.
+They're making 35 dollars every day your car sits in their lot.
+
+Oh yes, if you ask them how much you owe them over the phone they'll give you a number.
+When you get to the office that number will be increased a couple of hundred dollars.
+Mysterious fees will be added.
+When you ask why these fees weren't mentioned over the phone you'll be made to feel like an idiot for not already knowing they exist.
+Yes, towing fees apparently exist the same way trees and water exist, and not knowing about them means you're a moron.
+"Oh you didn't know there's a ninety dollar pull-out fee.  Sorry it's industry standard."
+You'll be fed that line.
+
+If you decide to junk your car with their business partners, Insurance Auto Auctions, you will be told that the process of getting IAA your car will be easy.  They send IAA regular shipments so all you have to do is wait and any additional storage fees will be deducted from what you will be paid for your junked car.  It will be a lie.  They will not take responibility for giving you misinformation and will demand that the storage fees will have to be paid in person before the car can be removed once and for all.  Yes that's right... Paying them with cash in person once isn't good enough.  They will extract MORE money from you by being the business equivalent of an infected cut that won't heal.
+
+If you have to deal with this company it's not going to be by choice.
+It's because your car was towed for a parking violation or was in an accident.
+You are powerless to pay them without transportation.
+They know you probably don't have it, and they capitalize on this.
+
+They're not working for you.
+They will hold your car ransom and make it as unpleasant as possible to get it back.
+They're basically opportunistic criminals working on the edge of legality, and their operation needs to be shut down.
+
+
+
+
+
+# More Software Development Wisdom
+
+The wheel most reinvented...
+	User Identity Management
+	Login credentials
+		Facebook and Google provide this service.
+		Any "community" needs this.
+
+Data Models
+"The heart of any application."
+	Back-end
+		relational database
+		triple-store
+		file-system
+			versioned files -> GIT
+			files
+	Middle layer
+		API
+
+Always ask yourself...
+What is the fundamental unit needed to be stored and manipulated by the data model?
+
+
+
+
+
+# imgcollect
+
+ActiveRecord for triple-store.
+When a parameter is set the triple-store needs to update.
+
+Triplestore | Ruby Class
+predicates  |  attribute
+
+Ruby Class becomes the one point of entry...
+
+Collection < ActiveTriple < SPARQL:Client
+
+EXIF data.
+Image conversion.
+
+
+
+
+
+# Bodin stuff
+
+Review and commentary of their work
+A way to see own individual work all together.
+
+To ask Stella: "What is all their work?"
+What the user interface needs to look like?
+
+
+
+
+
+# -isms
+
+Communism, socialism, liberalism, convervativism, feudalism...
+It's all the same.
+"There are pimps and there are hoes."
+The socially well-connected sell natural resources, technology, and the bodies, minds, and time of the socially isolated.
+This is the game that has been played for millenia now.
+This has probably been happening pre-agriculture.
+The players of the game get new titles and uniforms but little else changes.
+
+
+People organize into groups which require individuals to specialize tasks.
+Some tasks are mental, others are physical.
+Similar tasks are grouped together.
+Regular performance of a task-group is a role.
+Role necessity and role-performance quality constitutes an individual's status.
+Most social systems create incentives for individuals to increase their status.
+Money, uniforms, medals, badges, belts.
+
+
+
+
+
+# How many projects can you actually juggle at one time?

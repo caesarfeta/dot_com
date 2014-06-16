@@ -106,7 +106,7 @@ Chinese food containers and the rich white person equivalent are exceptions.
 
 Gift bags have become popular these days.
 Ever see a gift bag that looks like an amorphous sac?
-I don't.  I see flimsy boxes with one side cut off.
+I don't.  I see boxes with the top cut off.
 
 The exchanging of right angles marks the exchange of property.
 Imagine signing a mortgage contract on a circular piece of paper.
