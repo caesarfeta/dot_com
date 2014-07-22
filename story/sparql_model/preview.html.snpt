@@ -1,0 +1,34 @@
+<div class="row">
+	<div class="twelve columns story">
+		<div id="genre">
+		
+			<a href="#code">code</a>
+		
+			<a href="#ruby">ruby</a>
+		
+			<a href="#sparql">sparql</a>
+		
+		</div>
+		<div class="row">
+			<div class="three columns">
+				<a href="story/sparql_model">
+				
+					<img class="splash" src="" alt="How to use sparql_model" />
+				
+				</a>
+			</div>
+			<div class="nine columns">
+				<div id="meta">
+					<a href="story/sparql_model"><h1 class="title">How to use sparql_model</h1></a>
+					<h2 class="subtitle"></h2>
+					<h3 class="author">by <span class="name">Adam Tavares</span></h3>
+					<h4 class="date">Published July 22, 2014</h4>
+				</div>
+				<p class="preview">I've been working with triplestores and Ruby lately.
+I've written some code which makes manipulating data triples with Ruby a little easier.  This guide will show you how to build a triplestore backend Ruby on Rails app.
+SparqlModel
+If you've used Rails you've probably written model classes ...</p>
+			</div>
+		</div>
+	</div>
+</div>

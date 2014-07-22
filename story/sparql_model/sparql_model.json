@@ -1,0 +1,12 @@
+{
+	"title": "How to use sparql_model",
+	"type": "story",
+	"author": "Adam Tavares",
+	"keywords": [ "code", "ruby", "sparql" ],
+	"publish_date": "July 22, 2014",
+	"preview_img": "",
+	"page_js": [ "../../javascript/lib/slds/SLDS.js", "sparql_model.js" ],
+	"page_css": [ "../../javascript/lib/slds/SLDS.css" ],
+	"quote_color": null,
+	"story": "sparql_model.md"
+}

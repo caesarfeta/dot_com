@@ -1,0 +1,230 @@
+<html>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0" />
+
+<head>	
+	<!-- CSS -->
+	<link href="../../third_party/foundation/stylesheets/foundation.min.css" rel="stylesheet" type="text/css" />
+	<link href="../../third_party/jquery_snippet/jquery.snippet.min.css" rel="stylesheet" type="text/css" />
+	<link href="../../css/site.css" rel="stylesheet" type="text/css" />
+	
+			<link href="../../javascript/lib/slds/SLDS.css" rel="stylesheet" type="text/css" />
+	
+	
+	<!-- Page Specific CSS -->
+
+		<style type="text/css">
+			
+			
+			
+			/* Change the quote color for flavor */
+			#story .quote {
+				color: None;
+			}
+			
+			
+			
+		</style>
+	
+	<!-- Title -->
+	<title>How to use sparql_model by Adam Tavares</title>
+	
+	<!-- Google Analytics -->
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42372677-1', 'adamtavares.com');
+  ga('send', 'pageview');
+
+</script>
+</head>
+
+<body>
+	<!-- Navigation -->
+	<section id="extra-info">
+		<div id="panel">
+			<a id="home" class="link" href="../..">[ Home ]</a>
+		</div>
+	</section>
+	
+	<div id="story" class="container main">
+		<section id="header">
+		
+			<!-- Keywords -->
+			<div class="row">
+				<div class="twelve columns">
+					<div id="genre">
+					
+						<a href="../../#code">code</a>
+					
+						<a href="../../#ruby">ruby</a>
+					
+						<a href="../../#sparql">sparql</a>
+					
+					</div>
+				</div>
+			</div>
+			
+			<!-- Title and Author -->
+			<div class="row">
+				<div id="meta" class="twelve columns">
+					<h1 id="title">How to use sparql_model</h1>
+					<h2 id="subtitle"></h2>
+					<img id="avatar" src="../../img/avatar_default.jpg" alt="Adam Tavares" />
+					<h3 id="author">by <span class="name">Adam Tavares</span></h3>
+					<h4 id="date">Published July 22, 2014</h4>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Story -->
+		<section id="text">
+			<div class="row">
+				<div class="twelve columns">
+					<p>I've been working with triplestores and Ruby lately.
+I've written some code which makes manipulating data triples with Ruby a little easier.  This guide will show you how to build a triplestore backend Ruby on Rails app.</p>
+<h1>SparqlModel</h1>
+<p>If you've used Rails you've probably written model classes which use ActiveRecord.  SparqlModel is essentially code which replicates a lot of ActiveRecords functionality but instead of interacting with a relational database using SQL it interacts with a triplestore using SPARQL.</p>
+<h1>Background</h1>
+<p>If you are unfamiliar with triplestores, graph-databases, SPARQL, RDF, you may want to read the following articles.</p>
+<p><a href="http://127.0.0.1/dot_com/story/gdb_modelling"> Graph Database Modelling </a></p>
+<p><a href="http://127.0.0.1/dot_com/story/dbpedia"> DBpedia </a></p>
+<h1>Get ready</h1>
+<ol>
+<li>Install Ruby</li>
+<li>Install Rails</li>
+<li>Install Apache Fuseki</li>
+<li>Install the sparql_model gem.</li>
+</ol>
+<p><a href="https://github.com/caesarfeta/sparql_model"> Grab SparqlModel here... </a></p>
+<h1>Define your model</h1>
+<p>Here's a sample sparql_model class.</p>
+<pre><code>class Image &lt; SparqlModel
+  def initialize( _key=nil )
+    @endpoint = 'http://127.0.0.1:8080/ds'
+    @prefixes = {
+      :exif =&gt; "&lt;http://www.kanzaki.com/ns/exif#&gt;",
+    }
+    @attributes = {
+      #-------------------------------------------------------------
+      #  Image paths
+      #-------------------------------------------------------------
+      :path =&gt; [ "this:path", ::String, SINGLE, REQUIRED, UNIQUE, KEY ],
+      :original =&gt; [ "this:original", ::String, SINGLE, REQUIRED ],
+      :thumb =&gt; [ "this:thumb", ::String, SINGLE, REQUIRED, UNIQUE ],
+      :basic =&gt; [ "this:basic", ::String, SINGLE, REQUIRED, UNIQUE ],
+      :advanced =&gt; [ "this:advanced", ::String, SINGLE, REQUIRED, UNIQUE ],
+      #-------------------------------------------------------------
+      #  Name
+      #-------------------------------------------------------------
+      :name =&gt; [ "this:name", ::String, SINGLE ],
+      #-------------------------------------------------------------
+      #  Keywords
+      #-------------------------------------------------------------
+      :keywords =&gt; [ "this:keywords", ::String, MULTI ],
+      #-------------------------------------------------------------
+      #  Exif Metadata
+      #-------------------------------------------------------------
+      :brightness_value =&gt; [ "exif:brightnessValue", ::String, SINGLE ],
+      :color_space =&gt; [ "exif:colorSpace", ::String, SINGLE ],
+      :compressed_bits_per_pixel =&gt; [ "exif:compressedBitsPerPixel", ::String, SINGLE ],
+      :contrast =&gt; [ "exif:contrast", ::String, SINGLE ],
+      :custom_rendered =&gt; [ "exif:customRendered", ::String, SINGLE ],
+      :date_time =&gt; [ "exif:dateTime", ::Fixnum, SINGLE ],
+      :exposure_bias_value =&gt; [ "exif:exposureBiasValue", ::String, SINGLE ],
+      :exposure_mode =&gt; [ "exif:exposureMode", ::String, SINGLE ],
+      :exposure_program =&gt; [ "exif:exposureProgram", ::Fixnum, SINGLE ],
+      :exposure_time =&gt; [ "exif:exposureTime", ::Rational, SINGLE ],
+      :flash =&gt; [ "exif:flash", ::String, SINGLE ],
+      :focal_length =&gt; [ "exif:focalLength", ::String, SINGLE ],
+      :focal_length_in_35mm_film =&gt; [ "exif:focalLengthIn35mmFilm", ::String, SINGLE ],
+      :f_number =&gt; [ "exif:fNumber", ::Rational, SINGLE ],
+      :height =&gt; [ "this:height", ::Fixnum, SINGLE ],
+      :image_description =&gt; [ "exif:imageDescription",  ::String, SINGLE ],
+      :image_unique_id =&gt; [ "exif:imageUniqueId", ::String, SINGLE ],
+      :iso_speed_ratings =&gt; [ "exif:isoSpeedRatings", ::Fixnum, SINGLE ],
+      :light_source =&gt; [ "exif:lightSource", ::String, SINGLE ],
+      :make =&gt; [ "exif:make",  ::String, SINGLE ],
+      :max_aperture_value =&gt; [ "exif:maxApertureValue", ::String, SINGLE ],
+      :metering_mode =&gt; [ "exif:meteringMode", ::String, SINGLE ],
+      :model =&gt; [ "exif:model", ::String, SINGLE ],
+      :orientation =&gt; [ "exif:orientation", ::String, SINGLE ],
+      :pixel_x_dimension =&gt; [ "exif:pixelXDimension", ::String, SINGLE ],
+      :pixel_y_dimension =&gt; [ "exif:pixelYDimension", ::String, SINGLE ],
+      :resolution_unit =&gt; [ "exif:resolutionUnit", ::Fixnum, SINGLE ],
+      :saturation =&gt; [ "exif:saturation", ::String, SINGLE ],
+      :scene_capture_type =&gt; [ "exif:sceneCaptureType", ::String, SINGLE ],
+      :sharpness =&gt; [ "exif:sharpness", ::String, SINGLE ],
+      :software =&gt; [ "exif:software", ::String, SINGLE ],
+      :user_comment =&gt; [ "exif:userComment", ::String, SINGLE ],
+      :white_balance =&gt; [ "exif:whiteBalance", ::String, SINGLE ],
+      :width =&gt; [ "this:width", ::Fixnum, SINGLE ],
+      :x_resolution =&gt; [ "exif:xResolution", ::Rational, SINGLE ],
+      :ycb_cr_positioning =&gt; [ "exif:ycbCrPositioning", ::String, SINGLE ],
+      :y_resolution =&gt; [ "exif:yResolution", ::Rational, SINGLE ],
+    }
+    super( _key )
+  end
+end
+</code></pre>
+<p>Here's some points I'd like to make.</p>
+<pre><code>@endpoint
+
+@prefixes
+
+@attributes
+</code></pre>
+<h1>Use your model</h1>
+<p>Using your model is simple at this point.</p>
+<h1>Controller methods</h1>
+<p>So your controller methods are the front-line of your web application.  So let's set one up.</p>
+<h1>Ruby HTTP client</h1>
+<p>I like using a Ruby HTTP client when testing my controller methods rather than a browser.  The reason for that is you can create tests with commands.  The reason is testing with code will give you a record of your testing.  You can keep that around for regression testing.</p>
+<h1>Javascript API</h1>
+<p>The beauty of SPARQL is that interaction with the triplestore is done over HTTP.  Updates should be restricted.  Queries should be accessible.</p>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Copyright -->
+		<section id="footer">
+			<div class="row">
+				<div class="twelve columns">
+					<div id="copyright">&copy; Adam Tavares 2014</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</body>
+
+<!-- Javascript -->
+<!-- 3rd Party -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/modernizr.foundation.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/foundation.min.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/jquery.event.move.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/jquery.event.swipe.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/jquery.foundation.forms.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/jquery.foundation.mediaQueryToggle.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/app.js"></script>
+<script type="text/javascript" src="../../third_party/jquery_snippet/jquery.snippet.js"></script>
+<script type="text/javascript" src="../../third_party/jquery_snippet/sh_sh.js"></script>
+
+<!-- Custom -->
+<script type="text/javascript" src="../../javascript/lib/lib.min.js"></script>
+<script type='text/javascript' src='../../javascript/site.js'></script>
+
+<!-- Page Specific -->
+
+
+
+<script type="text/javascript" src="../../javascript/lib/slds/SLDS.js"></script>
+
+<script type="text/javascript" src="sparql_model.js"></script>
+
+
+</html>
