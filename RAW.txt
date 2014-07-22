@@ -839,23 +839,437 @@ What the user interface needs to look like?
 
 Communism, socialism, liberalism, convervativism, feudalism...
 It's all the same.
-"There are pimps and there are hoes."
-The socially well-connected sell natural resources, technology, and the bodies, minds, and time of the socially isolated.
+"There are pimps and there are hoes." Ice T.
+The socially well-connected sell natural resources and the bodies, minds, and time of the less connected.
+This is primarily the concern of bankers, brokers, lawyers, and politicians.
 This is the game that has been played for millenia now.
 This has probably been happening pre-agriculture.
-The players of the game get new titles and uniforms but little else changes.
+The players of the game get new titles and uniforms.
+These titles and uniforms transfer across generations.
+Hopefully knowlege that is difficult to acquire is transferred and deepened with each pass.
 
 
 People organize into groups which require individuals to specialize tasks.
 Some tasks are mental, others are physical.
 Similar tasks are grouped together.
 Regular performance of a task-group is a role.
-Role necessity and role-performance quality constitutes an individual's status.
-Most social systems create incentives for individuals to increase their status.
+Role necessity and role-performance quality determines one's status.
+Most social-systems create incentives for individuals to increase their status.
 Money, uniforms, medals, badges, belts.
+	The military
+	The boyscouts
+	Martial Arts groups
+	Academia
+It's the foundation of professionalism.
+It's our occupations.
+
+I would like to better know how people organize into small social groups.
+What's the difference between a cult and a tribe?
+When do they become harmful?
+When do small social groups become toxic?
+How does language factor into the creation of a cult.
+Group identity... and motivation.
+
+
+
+She moved to the big city.
+First time ever really alone.
+Running away
+Living close to the bone.
+
+Zero to offer
+but a body
+that knows how to party
+La dee doddy
+
+Lost Doctor Daddy at sixteen
+Momma was a beauty queen
+Can't think just dreams
+Of a fantasy future
+Filled with shoes babies purses
+Maid nanny nurses
+And a man who never curses
+who'll hide her from the hearses
+
+Her fantasy man makes lots of cheddar
+and brings home the bacon
+and never complains 'bout his back achin'
+
+But in reality see.
+She'll always be an airhead
+that shares her bed with gorillas
+one who knows how to thrill her.
+
+Her new guy is
+A meat-eating mommy needer,
+a cock-swinging pussy-pleaser,
+a hair-fussing window-gazer,
+who wears jeans with a blazer.
+Pffffft.
+
+She says they'll find a place 
+where the heat is dryer
+The clothes are flyer
+Maybe LA or Honolulu
+Where everybody's chill
+And splits the bill fifty-fifty
+Will she miss me?
+
+I may be a hater
+and a chronic masturbator
+
+Fuck it.
+She can rot beach-side
+and get swept away at high-tide
+From a flower to a raisin
+twenty-five til she dies
+I'm not buying.
+Hell I'm not even trying.
+
+But daddy told me
+Life gets hectic
+And can makes a man domestic
+Your mother, she's the cook
+and I keep the books
+Our lives aren't exciting truth be told
+but if we play it right
+we won't starve when we're old.
+
+
+
+But uncle
+Sorry boss.
+You should've played Lacrosse.
+You'd be waist deep in pussy.
+And never never have to worry 'bout money
+
+
+
 
 
 
 
 
 # How many projects can you actually juggle at one time?
+
+
+
+
+
+# Shared Canvas
+
+Here's a video where Shared Canvas is demoed by the project's leader, Rob Sanderson.
+https://www.youtube.com/watch?v=Rp-hdYk7Gsg
+
+It's basically an image collection viewer with an annotation interface.
+It reminds me of Acrobat Reader a bit.
+
+Its real-life counterpart of would be stacks of photographs placed into a row and covered in cut-up post it notes.
+You can move back and forth in the row, pick up a stack, and shuffle through it.
+
+There are annotation tools.
+You select areas of interest and then add a title and text comment.
+There are three tools for selecting areas... rectangle, ellipse, polygon.
+There's a drop-down that let's you decide whether your annotation is a transcription or commentary.
+The annotations are at the "stack" level, so if you shuffle throught a photo stack the annotations remain constant.
+
+This makes sense if the photos are all of the same artifact taken under different lighting conditions, which is what I saw in the implementation examples.
+	
+I found the interface to be really buggy and it has some fundamentally bad design decisions.
+
+	* Menu items jump around and stick around when they're not needed.
+	* There's image overlap on multi folio views.
+	* Annotation menu appears and disappears if the Window options are changed.
+	* Annotation area selector is too opaque to read through easily.
+
+Transcription text is overlayed over the corresponding image areas.
+This is actually a feature that is very hard to implement well, which I don't think is really worth it.
+	* The benefit is it shows transcribed text in context.
+		* There are other ways to do this.
+	* The drawback is that it obscures the original image.
+		* You can't see the original and the transcription simultaneously.
+		 * Hopefully things are correct the first time.
+	* I'm not sure how font-size and style are set because I couldn't find any tools for text formatting in the Annotation interface.
+		* Computer display fonts are very regular. Fonts etched into stone or written on papyrus aren't, so it's difficult to spatially align things.
+
+So in short it does a lot of things well, but it's buggy.  And unfortunately simple things are buggy which kind of shakes my faith in the project.
+
+Also, I think overlayed transcriptions are fundamentally a poor design choice.  I think the best way to display transcriptions is to show the original area of interest isolated with the transcribed text adjacent to it, and maybe the area of interest highlighted on a scaled down version of the original image nearby.  It's easier to iteratively improve transcriptions when the original is not obscured, and isn't that the whole point of having a "shared canvas" in the first place?
+
+There's a lot of overlap with imgspect, it does some things better and has features I'd like to include with imgspect, but it's buggier.  It's architecture also seems more monolithic.
+
+It seems like the developers are focusing their attention on defining the datamodel.  The latest content I found on the official site were RFC style documents about the datamodel and presentation slides.  Code actually implementing the datamodel is hard to find.  Although there is this...
+
+http://www.shared-canvas.org/tools/#code
+
+There doesn't seem to be a code repository for Shared Canvas.  I can download demo code, but there doesn't seem to be a way to track progress or contribute code back to the project.
+
+The demo code at first glance looks okay.  It's not beautiful but it's not terrible.
+
+Having said all that, some of the content in the example implementations is really really cool.  If you wanted to read Dirac's hand-written dissertation on Quantum Mechanics you can.
+
+
+## Example implementations
+http://www.shared-canvas.org/impl/
+
+## Archimedes text
+http://www.shared-canvas.org/impl/demo5/arch.html#!s=0&n=1
+
+	- Shows the photo stack feature
+
+## Paul Dirac example.  
+http://www.shared-canvas.org/impl/demo3/#!s=0
+
+## Newspaper
+http://www.shared-canvas.org/impl/demo8/1914-01-27.html#!s=0
+Overlayed transcriptions.
+
+
+
+
+
+
+
+#  Code Review Notes -- 2014-06-18
+
+## Datatypes
+
+"But back to that method, maybe I am misunderstanding you (and RDF for that matter), but just from a Ruby perspective Fixnum.superclass #=> Integer (Bignum is the other subclass of Integer), so making a distinction between Fixnum and Integer is not really useful. to_f produces a Float, so the terminology you use could be a bit misleading (or, as I said, I am misunderstanding this entirely)."
+
+I misunderstood.
+I WAS trying to differentiate between an integer and a float.
+
+Fixnum and Bignum inherit from Integer but I thought it was the reverse.
+
+I thought Fixnum was Ruby's float, and that Integer inherited from Fixnum.
+Like the way integers are a subset of the real numbers.
+
+I guess this is what I thought...
+	Math: Real( Integer( Whole ) )
+	Ruby: Fixnum( Integer( Integer.abs ) )
+Naive :)
+
+Oh by the way...
+I had to know.  
+"Smallest Bignum" == 4611686018427387904 == 2^62
+
+This method was my attempt to map Ruby variable types to RDF datatypes.
+It's a fundamental problem I need to solve.
+If I can't ensure what goes in comes back out unchanged then this code isn't usable in a production system.
+I have to give this problem much more of my attention.
+I'm thinking perhaps I should break this functionality out into its own class.
+
+
+
+## Case statements and the tripleequals operator
+
+You made this recommendation:
+
+	def data_value(_key, _value)
+	  case type?(_key)
+	  when ::String  then _value.to_i
+	  when ::Integer then _value.to_s
+	  when ::Fixnum  then _value.to_f
+	  end
+	end
+
+I wanted to use a case statement but was running into problems because of ==='s behavior.
+=== has some strange behavior when checking class types.
+
+	::String == ::String => true
+	::String == String => true
+	String == String => true
+	
+	but 
+	
+	::String === ::String => false
+	::String === String => false
+	String === String => false
+
+So I'd have to do a conversion to an actual string or something to use "case" in this instance.
+Maybe I'll do that because case statements are so damn readable.
+
+
+
+## next_index method
+
+Whoa, thanks for taking apart my next_index method!
+
+"Mind though that this code might contain a lurking bug, I am not sure, haven't tried it out so far. You take only the last char of a string and convert it to an integer (string[-1,1]) What if the index is 10?"
+
+That was a bug.
+I guess I was having a bad day.
+A completely ridiculous oversight.
+
+I really enjoyed this section of the review.
+Seeing someone else refactor your code in stages is extremely helpful.
+
+"This helps me think about reusing code - it's much easier for me to see common abstractions when they are basically already there. Seeing all these small methods from the start also helps me to come up with better design ideas in the end, things I wouldn't have seen otherwise as easily."
+
+I agree with you there.  We have these brains which will find patterns automatically.  All you have to do is give them some input.  Even if that input is there own creation.  The human mind is a strange thing.
+
+
+Thanks for the style review and for finding that bug.  I learned a lot.  I look forward to the second half :)
+
+
+
+
+
+# Clitics
+
+enclitics -- a clitic after its host.
+proclitic -- a clitic before its host.
+mesoclitic
+endoclitic
+
+difference between a clitic and an affix
+clitic -- a morpheme that has syntactic characteristics of a word but depends phonologically on another word or phrase.
+	English possessive 's
+		the king of England's horse
+	commonly pronouns, determiners, or adpositions
+
+
+
+
+# Tokens
+
+Working on the Bodin project I've had to use CTS subreferences as token ids.
+I've come to realize that they're awful as ids.
+I've also come to realize that token ids are of the highest importance in our work.
+They're like our fundamental particles.
+
+What are CTS subreferences?
+    They're the combination of a word and its nth occurence.
+    
+What are the problems with using them as ids?
+    They require static texts
+        Typos cannot be corrected without effectively destroying them.
+        They're case sensitive.
+        New tokens cannot be inserted between existing tokens without potentially destroying their accuracy.
+    
+What's the solution?
+    Forget the text.
+    It does not matter.
+    Position matters.
+    More than that, position in time matters.
+    Once the focus is on position we can leverage the power of mathematics to solve some of our identification problems.
+
+Edges of the text are defined as follows
+    0 to infinity
+    
+    "This is a text"
+    "[Here] [is] [a] [text]"
+    "[1]    [2]  [3] [4]"
+    
+    "This is a text I changed"
+    "[This] [is] [a] [text] [I] [changed]"
+    "[1]    [2]  [3] [4]    [5] [6]"
+    
+    "This is a text I changed"
+    "[This] [is] [a] [text] [I] [changed]"
+    "[1]    [2]  [3] [4]    [5] [6]"
+    
+    "This here  is  a   text I    changed"
+     [1]  [1.5] [2] [3] [4]  [5]  [6]
+     
+     "So    this here   is   a      text    I       changed"
+     [0.5]  [1]  [1.5]  [2]  [3]    [4]     [5]     [6]
+     
+     "So    is        this here   a     text    I       changed"
+     [0.5]  [2-0.75]  [1]  [1.5]  [3]   [4]     [5]     [6]
+     
+     "So    --is--      this changed  here   a      text    I"
+     [0.5]  [2-0.75-D]  [1]  [6-1.25] [1.5]  [3]    [4]     [5]
+     
+     "So    --is--      changed  	  this  here   a      text    I"
+     [0.5]  [2-0.75-D]  [6-1.25-0.75] [1]   [1.5]  [3]    [4]     [5]
+	 
+     "So    --is--      --changed--  	this  here   a      text    I"
+     [0.5]  [2-0.75-D]  [6-1.25-0.75-D] [1]   [1.5]  [3]    [4]     [5]
+	 
+     "So    this  here   a      text    I"
+     [0.5]  [1]   [1.5]  [3]    [4]     [5]
+	 
+     "So    this  here   a      text    I"
+     [0.5]  [1]   [1.5]  [3]    [4]     [5]
+     
+	 This might be overkill.
+
+
+
+# PotLucky Promo Video Script
+
+Characters
+	Gruff-guy : Gruf
+	Friendly-host : Host
+	Clueless-noob : Noob
+	Quiet-guy : Quie
+
+Scene
+PokerTable
+	Gruf: Buy-in is 20 bucks.
+	Noob: Cool cool.
+	( Reaches into wallet has no cash )
+	Noob: Ummm sorry guys.  Guess I'll have to run to the ATM.
+	Gruf: Who comes to a poker game without any cash?  What kind of 
+
+
+
+# bitcoind
+blockchain
+30 GB of data
+bitcoind nodes.
+	joins the network.
+	waits for transactions
+	transactions are submitted
+		addresses wallets
+
+https://coinbase.com/home
+Webapp
+	Advantages
+		Familiar
+	Disadvantages
+		Camera
+		Authentication
+
+Someone opens up the app
+Ante-in
+Private key generation
+QR code
+Workflow questions
+
+Android development Java
+Multisync
+Multisig
+Through the lens of poker
+
+
+
+
+# Snobbery
+Exclusionary.
+Feining superiority is a weakness.
+	Rooted in fear and insecurity.
+Being inclusive is harder than being exclusive.
+	Requires deeper understanding of human condition.
+	
+Other side though...
+	Some stupid people can have large personalities which dominate a social group,
+	dragging everyone else down.
+
+
+
+
+# Hammon Organ notes
+Identify your organ: http://www.organservicecompany.com/idorgan.html
+Type of organ: Romance Series
+	ROMANCE SERIES Organs (122100, 122300,123100, 123200, 123300 (XL), 123400, 124100, 124200, 	
+	124300(XL), 124400, 125100, 125200, 125300(XL), 125400, 126100, 126200, 126300
+
+
+
+
+# I built a website for the capoeira group I train with. Capoeira Angola Quintal Boston is a wonderful group of people practicing a beautiful art. Check us out.
+
+caqboston.com
+
