@@ -19,9 +19,15 @@ They explain the core concepts of triplestores, SPARQL, and graph databases in m
 1. Install Ruby
 2. Install Rails
 3. Install Apache Fuseki
-4. Install the sparql_model gem.
+4. Install the 'sparql', 'rdf', and 'sparql_model' gems
  
 [ Grab SparqlModel here... ]( https://github.com/caesarfeta/sparql_model )
+
+Added the following to your Rails Gemfile
+
+	gem 'rdf'
+	gem 'sparql'
+	gem 'sparql_model'
 
 # The application
 Let's make the periodic table of elements!
@@ -48,17 +54,17 @@ Here's a sample sparql_model class.
 	  def initialize( _key=nil )
 	    @endpoint = 'http://127.0.0.1:8080/ds'
 	    @attributes = {
-		  :symbol => [ "this:symbol", ::String, SINGLE, REQUIRED, UNIQUE, KEY ],
-		  :name => [ "this:name", ::String, SINGLE, REQUIRED, UNIQUE ],
-		  :number => [ "this:number", ::Integer, SINGLE, OPTIONAL, UNIQUE ],
-		  :mass => [ "this:masss", ::Float, SINGLE, OPTIONAL ]
+	      :symbol => [ "this:symbol", ::String, SINGLE, REQUIRED, UNIQUE, KEY ],
+	      :name => [ "this:name", ::String, SINGLE, REQUIRED, UNIQUE ],
+	      :number => [ "this:number", ::Integer, SINGLE, OPTIONAL, UNIQUE ],
+	      :mass => [ "this:masss", ::Float, SINGLE, OPTIONAL ]
 	    }
 	    super( _key )
 	  end
 	end
 
 # Your attention please!
-So what's all this mean.
+What does all this mean?
 
 * @endpoint
 	* The url to your sparql endpoint.
@@ -81,7 +87,7 @@ The items in this array are as follows.
 * [5] --Optional-- marks the predicate as the KEY used by the get method.  KEY's must be UNIQUE.
 
 You may be wondering what "this:" in "this:something" is all about.
-I'll explain that in a bit.
+I haven't mentioned @prefixes. I'll explain those later.
 
 # Use your model
 Using your model is simple at this point.
@@ -145,7 +151,7 @@ Let's work on Silicon again.  We're getting Carbon distracted.
 
 I can do that because I defined :symbol as my KEY attribute.
 
-# Use your model some more... more...
+# Use your model some more... some more...
 So what info do I have on Silicon?
 
 	elem.all
@@ -162,9 +168,9 @@ So what info do I have on Silicon?
 
 I have a :urn.  
 That was created automatically.  
-It's an internal unique identifier used by SparqlModel.  
-It doesn't have to be the only one though.  
-I'm using :symbol as a unique identifier right now.  
+It's an internal unique identifier used by SparqlModel.
+It doesn't have to be the only unique identifier though.
+I'm using :symbol as a unique identifier right now.
 I could use :name too or create another attribute for storing a different URN and make that that the unique identifier if I wanted to. 
 All I need is to set that attribute's UNIQUE and KEY configuration options.
 
@@ -192,23 +198,80 @@ Ahhh that's better.
 		:created=>1406129133
 	}
 
-# Using the model wrap-up
+Nothing is stopping us from creating another instance of SparqlModel.
+We only have two elements defined so far, so let's get Carbon, and get it right away when we instantiate.
+
+	carbon = Element.new("C")
+	carbon.mass = 12.0107
+
+Now we can do fun stuff like.
+
+	if carbon.mass > elem.mass
+		puts 'Whoa! Who rewrote the rules of the Universe?'
+	end
+
+# Using the model wrap-up...
 So that's basically the gist of using SparqlModel.
 I find it easy to work with.
 Hopefully you do too.
 
 If you want to see what an element looks like in Fuseki, peep this...
-
 [ Oh my God!  What have I done!! ]( http://127.0.0.1:8080/ds/query?query=select+%3Fs+%3Fp+%3Fo%0D%0Awhere+%7B+%3Fs+%3Fp+%3Fo+%7D&output=text&stylesheet=)
 
-If that URL doesn't resolve correctly just tweak it to the host and port of your Fuseki server.
+If that URL doesn't resolve correctly just change the host and port to point to your Fuseki server.  Ahhhh... Look at those triples!
 
-Look at all them triples!
+# The API
+Now we want to build an API so other people can create and edit elements from a place other than the Rails development console on our host.
 
-# Controller methods
-( TODO )
-So your controller methods are the front-line of your web application.  
-So let's set one up.
+Let's figure out the basics of what our API should do, keeping things very basic to start. The API should allow us to...
+
+* Create a new element
+* Retrieve element data in an easily usable form
+* Update an existing element's data
+
+Let's create some URLs for these.  Here they are...
+
+* element/create
+* element/data/*id
+* element/update
+
+# Set it up
+Okay.  Now we have to create an element controller and tweak our routes file so we can map some code to these URLs.  You know, Rails stuff.
+
+Save this to *app/controllers/element_controller.rb*
+
+	class ElementController < ActionController::Base
+		
+		# Create a new element
+		def create
+			render :text => "create"
+		end
+		
+		# Retreive element data
+		def data
+			render :text => "data"
+		end
+		
+		# Update element data
+		def update
+			render :text => "update"
+		end
+		
+	end
+
+Update *config/routes.rb*
+
+    #-------------------------------------------------------------
+    #  Element
+    #-------------------------------------------------------------
+    match 'element/create' => 'element#create'
+    match 'element/data/*id' => 'element#data'
+    match 'element/update' => 'element#update'
+
+Check the URLs to see if they run the controller methods like they should.
+
+# Flesh out the API
+
 
 # Ruby HTTP client
 ( TODO )

@@ -28,7 +28,7 @@
 		</style>
 	
 	<!-- Title -->
-	<title>How to use sparql_model by Adam Tavares</title>
+	<title>How to use SparqlModel by Adam Tavares</title>
 	
 	<!-- Google Analytics -->
 	<script>
@@ -72,7 +72,7 @@
 			<!-- Title and Author -->
 			<div class="row">
 				<div id="meta" class="twelve columns">
-					<h1 id="title">How to use sparql_model</h1>
+					<h1 id="title">How to use SparqlModel</h1>
 					<h2 id="subtitle"></h2>
 					<img id="avatar" src="../../img/avatar_default.jpg" alt="Adam Tavares" />
 					<h3 id="author">by <span class="name">Adam Tavares</span></h3>
@@ -86,11 +86,14 @@
 			<div class="row">
 				<div class="twelve columns">
 					<p>I've been working with triplestores and Ruby lately.
-I've written some code which makes manipulating data triples with Ruby a little easier.  This guide will show you how to build a triplestore backend Ruby on Rails app.</p>
+I've written some code which makes manipulating data triples with Ruby easy.
+I want to share with you what I've learned, 
+showing you the basics of building a Rails application with a triplestore backend.</p>
 <h1>SparqlModel</h1>
-<p>If you've used Rails you've probably written model classes which use ActiveRecord.  SparqlModel is essentially code which replicates a lot of ActiveRecords functionality but instead of interacting with a relational database using SQL it interacts with a triplestore using SPARQL.</p>
+<p>If you've used Rails you've probably written model classes which use ActiveRecord.  SparqlModel is essentially code which replicates a lot of ActiveRecord's functionality but instead of interacting with a relational database using SQL it interacts with a triplestore using SPARQL.</p>
 <h1>Background</h1>
-<p>If you are unfamiliar with triplestores, graph-databases, SPARQL, RDF, you may want to read the following articles.</p>
+<p>If you are unfamiliar with triplestores, graph-databases, SPARQL, or RDF, you may want to read the following articles I've written.<br />
+They explain the core concepts of triplestores, SPARQL, and graph databases in more detail than what I'll include here.</p>
 <p><a href="http://127.0.0.1/dot_com/story/gdb_modelling"> Graph Database Modelling </a></p>
 <p><a href="http://127.0.0.1/dot_com/story/dbpedia"> DBpedia </a></p>
 <h1>Get ready</h1>
@@ -101,91 +104,171 @@ I've written some code which makes manipulating data triples with Ruby a little 
 <li>Install the sparql_model gem.</li>
 </ol>
 <p><a href="https://github.com/caesarfeta/sparql_model"> Grab SparqlModel here... </a></p>
+<h1>The application</h1>
+<p>Let's make the periodic table of elements!</p>
+<div class="picture">
+    <img src="img/periodic_table.jpg" />
+    <p class="caption">Nature's Pantry &amp; Refridgerator</p>
+</div>
+
 <h1>Define your model</h1>
+<p>We'll begin by defining a SparqlModel Element class.
+Here's a close up of an element.</p>
+<div class="picture">
+    <img src="img/silicon.jpg" />
+    <p class="caption">My vote for "Element of the Century!"</p>
+</div>
+
+<p>So here's a SparqlModel class where I define what kinds of data I need to model an element.</p>
 <p>Here's a sample sparql_model class.</p>
-<pre><code>class Image &lt; SparqlModel
+<pre><code>class Element &lt; SparqlModel
   def initialize( _key=nil )
     @endpoint = 'http://127.0.0.1:8080/ds'
-    @prefixes = {
-      :exif =&gt; "&lt;http://www.kanzaki.com/ns/exif#&gt;",
-    }
     @attributes = {
-      #-------------------------------------------------------------
-      #  Image paths
-      #-------------------------------------------------------------
-      :path =&gt; [ "this:path", ::String, SINGLE, REQUIRED, UNIQUE, KEY ],
-      :original =&gt; [ "this:original", ::String, SINGLE, REQUIRED ],
-      :thumb =&gt; [ "this:thumb", ::String, SINGLE, REQUIRED, UNIQUE ],
-      :basic =&gt; [ "this:basic", ::String, SINGLE, REQUIRED, UNIQUE ],
-      :advanced =&gt; [ "this:advanced", ::String, SINGLE, REQUIRED, UNIQUE ],
-      #-------------------------------------------------------------
-      #  Name
-      #-------------------------------------------------------------
-      :name =&gt; [ "this:name", ::String, SINGLE ],
-      #-------------------------------------------------------------
-      #  Keywords
-      #-------------------------------------------------------------
-      :keywords =&gt; [ "this:keywords", ::String, MULTI ],
-      #-------------------------------------------------------------
-      #  Exif Metadata
-      #-------------------------------------------------------------
-      :brightness_value =&gt; [ "exif:brightnessValue", ::String, SINGLE ],
-      :color_space =&gt; [ "exif:colorSpace", ::String, SINGLE ],
-      :compressed_bits_per_pixel =&gt; [ "exif:compressedBitsPerPixel", ::String, SINGLE ],
-      :contrast =&gt; [ "exif:contrast", ::String, SINGLE ],
-      :custom_rendered =&gt; [ "exif:customRendered", ::String, SINGLE ],
-      :date_time =&gt; [ "exif:dateTime", ::Fixnum, SINGLE ],
-      :exposure_bias_value =&gt; [ "exif:exposureBiasValue", ::String, SINGLE ],
-      :exposure_mode =&gt; [ "exif:exposureMode", ::String, SINGLE ],
-      :exposure_program =&gt; [ "exif:exposureProgram", ::Fixnum, SINGLE ],
-      :exposure_time =&gt; [ "exif:exposureTime", ::Rational, SINGLE ],
-      :flash =&gt; [ "exif:flash", ::String, SINGLE ],
-      :focal_length =&gt; [ "exif:focalLength", ::String, SINGLE ],
-      :focal_length_in_35mm_film =&gt; [ "exif:focalLengthIn35mmFilm", ::String, SINGLE ],
-      :f_number =&gt; [ "exif:fNumber", ::Rational, SINGLE ],
-      :height =&gt; [ "this:height", ::Fixnum, SINGLE ],
-      :image_description =&gt; [ "exif:imageDescription",  ::String, SINGLE ],
-      :image_unique_id =&gt; [ "exif:imageUniqueId", ::String, SINGLE ],
-      :iso_speed_ratings =&gt; [ "exif:isoSpeedRatings", ::Fixnum, SINGLE ],
-      :light_source =&gt; [ "exif:lightSource", ::String, SINGLE ],
-      :make =&gt; [ "exif:make",  ::String, SINGLE ],
-      :max_aperture_value =&gt; [ "exif:maxApertureValue", ::String, SINGLE ],
-      :metering_mode =&gt; [ "exif:meteringMode", ::String, SINGLE ],
-      :model =&gt; [ "exif:model", ::String, SINGLE ],
-      :orientation =&gt; [ "exif:orientation", ::String, SINGLE ],
-      :pixel_x_dimension =&gt; [ "exif:pixelXDimension", ::String, SINGLE ],
-      :pixel_y_dimension =&gt; [ "exif:pixelYDimension", ::String, SINGLE ],
-      :resolution_unit =&gt; [ "exif:resolutionUnit", ::Fixnum, SINGLE ],
-      :saturation =&gt; [ "exif:saturation", ::String, SINGLE ],
-      :scene_capture_type =&gt; [ "exif:sceneCaptureType", ::String, SINGLE ],
-      :sharpness =&gt; [ "exif:sharpness", ::String, SINGLE ],
-      :software =&gt; [ "exif:software", ::String, SINGLE ],
-      :user_comment =&gt; [ "exif:userComment", ::String, SINGLE ],
-      :white_balance =&gt; [ "exif:whiteBalance", ::String, SINGLE ],
-      :width =&gt; [ "this:width", ::Fixnum, SINGLE ],
-      :x_resolution =&gt; [ "exif:xResolution", ::Rational, SINGLE ],
-      :ycb_cr_positioning =&gt; [ "exif:ycbCrPositioning", ::String, SINGLE ],
-      :y_resolution =&gt; [ "exif:yResolution", ::Rational, SINGLE ],
+      :symbol =&gt; [ "this:symbol", ::String, SINGLE, REQUIRED, UNIQUE, KEY ],
+      :name =&gt; [ "this:name", ::String, SINGLE, REQUIRED, UNIQUE ],
+      :number =&gt; [ "this:number", ::Integer, SINGLE, OPTIONAL, UNIQUE ],
+      :mass =&gt; [ "this:masss", ::Float, SINGLE, OPTIONAL ]
     }
     super( _key )
   end
 end
 </code></pre>
-<p>Here's some points I'd like to make.</p>
-<pre><code>@endpoint
-
-@prefixes
-
-@attributes
-</code></pre>
+<h1>Your attention please!</h1>
+<p>What does all this mean?</p>
+<ul>
+<li>@endpoint<ul>
+<li>The url to your sparql endpoint.</li>
+</ul>
+</li>
+<li>@attributes<ul>
+<li>This is where you define your models attributes.<br />
+These correspond to "edges" in your graph-database, 
+or "predicates" in your RDF style triplestore.
+Toe-may-toe Toe-mah-toe, as far as SparqlModel is concerned.</li>
+</ul>
+</li>
+</ul>
+<p>Each item in @attributes is a key-value pair.<br />
+The key has to be a symbol.<br />
+The value has to be an array.
+The items in this array are as follows.</p>
+<ul>
+<li>[0] is the RDF-triple predicate value ( :p )</li>
+<li>[1] is the data-type of the RDF-triple object value ( :o )</li>
+<li>[2] some RDF predicates should have only a SINGLE value, others should have MULTI values</li>
+<li>[3] --Optional-- some values are REQUIRED for a new instance to be created</li>
+<li>[4] --Optional-- some SINGLE values must be UNIQUE</li>
+<li>[5] --Optional-- marks the predicate as the KEY used by the get method.  KEY's must be UNIQUE.</li>
+</ul>
+<p>You may be wondering what "this:" in "this:something" is all about.
+I haven't mentioned @prefixes. I'll explain those later.</p>
 <h1>Use your model</h1>
-<p>Using your model is simple at this point.</p>
+<p>Using your model is simple at this point.
+Save it in the models directory of your Rails app.</p>
+<pre><code>/path/to/rails/app/models/element.rb
+</code></pre>
+<p>Then fire up the Rails developer console and we can start messing around.</p>
+<pre><code>cd /path/to/rails
+rails console development
+</code></pre>
+<p>Get an instance of Element.</p>
+<pre><code>elem = Element.new
+</code></pre>
+<p>Create a new element.</p>
+<pre><code>elem.create({ :name =&gt; "Silicon" })
+</code></pre>
+<p>Whoops that threw an error.</p>
+<pre><code>RuntimeError: Required values missing ( symbol )
+</code></pre>
+<p>Looks like we have to pass the symbol value when we create an element.
+Must be that REQUIRED attribute option.
+Let's try this instead.</p>
+<pre><code> elem.create({ :name =&gt; "Silicon", :symbol=&gt; "SI" })
+</code></pre>
+<p>Ahhh that works.</p>
+<h1>Use your model some more...</h1>
+<p>What was the name of this element?  I forgot.</p>
+<pre><code>elem.name
+</code></pre>
+<p>That's right, "Silicon".</p>
+<p>Let's create a new element, Carbon.</p>
+<pre><code>elem.create({ :name =&gt; "Crbon", :symbol =&gt; "C" })
+</code></pre>
+<p>Whoops... mispelled that.</p>
+<pre><code>elem.name = "Carbon"
+</code></pre>
+<p>Ok fixed.  Carbon's atomic number is six.  So let's add that.</p>
+<pre><code>elem.number = "six"
+</code></pre>
+<p>Another error... Oh of course I defined the :number attribute to use an ::Integer!  Duh!</p>
+<pre><code>elem.number = 6
+</code></pre>
+<p>Interesting how Carbon's atomic number is six and it creates so many hexagonal shaped structures!  Benzene-rings and bucky-balls and all that.</p>
+<p>Let's work on Silicon again.  We're getting Carbon distracted.</p>
+<pre><code>elem.get("SI")
+</code></pre>
+<p>I can do that because I defined :symbol as my KEY attribute.</p>
+<h1>Use your model some more... more...</h1>
+<p>So what info do I have on Silicon?</p>
+<pre><code>elem.all
+
+{
+    :urn=&gt;"&lt;urn:sparql_model:element.1&gt;", 
+    :edited=&gt;1406129133, 
+    :symbol=&gt;"SI", 
+    :name=&gt;"Silicon", 
+    :created=&gt;1406129133, 
+    :number=&gt;"", 
+    :mass=&gt;""
+}
+</code></pre>
+<p>I have a :urn.<br />
+That was created automatically.<br />
+It's an internal unique identifier used by SparqlModel.<br />
+It doesn't have to be the only one though.<br />
+I'm using :symbol as a unique identifier right now.<br />
+I could use :name too or create another attribute for storing a different URN and make that that the unique identifier if I wanted to. 
+All I need is to set that attribute's UNIQUE and KEY configuration options.</p>
+<p>I have :symbol and :name which I know about...</p>
+<p>:edited and :created are timestamps which are created automatically.
+:created is set when .create() is run.
+:edited is set anytime a value is changed.</p>
+<p>I haven't added filled out :number or :mass yet.  Let's do that in one shot.</p>
+<pre><code>elem.change({ :number =&gt; 14, :mass =&gt; 28.086 })
+</code></pre>
+<p>Ahhh that's better.</p>
+<pre><code>elem.all
+
+{
+    :urn=&gt;"&lt;urn:sparql_model:element.1&gt;", 
+    :edited=&gt;1406130770, 
+    :mass=&gt;28.086, 
+    :number=&gt;14, 
+    :symbol=&gt;"SI", 
+    :name=&gt;"Silicon", 
+    :created=&gt;1406129133
+}
+</code></pre>
+<h1>Using the model wrap-up</h1>
+<p>So that's basically the gist of using SparqlModel.
+I find it easy to work with.
+Hopefully you do too.</p>
+<p>If you want to see what an element looks like in Fuseki, peep this...
+<a href="http://127.0.0.1:8080/ds/query?query=select+%3Fs+%3Fp+%3Fo%0D%0Awhere+%7B+%3Fs+%3Fp+%3Fo+%7D&amp;output=text&amp;stylesheet="> Oh my God!  What have I done!! </a></p>
+<p>If that URL doesn't resolve correctly just tweak it to the host and port of your Fuseki server.  Look at those triples!</p>
 <h1>Controller methods</h1>
-<p>So your controller methods are the front-line of your web application.  So let's set one up.</p>
+<p>( TODO )
+So your controller methods are the front-line of your web application.<br />
+So let's set one up.</p>
 <h1>Ruby HTTP client</h1>
-<p>I like using a Ruby HTTP client when testing my controller methods rather than a browser.  The reason for that is you can create tests with commands.  The reason is testing with code will give you a record of your testing.  You can keep that around for regression testing.</p>
+<p>( TODO )
+I like using a Ruby HTTP client when testing my controller methods rather than a browser.  The reason for that is you can create tests with commands.  The reason is testing with code will give you a record of your testing.  You can keep that around for regression testing.</p>
 <h1>Javascript API</h1>
-<p>The beauty of SPARQL is that interaction with the triplestore is done over HTTP.  Updates should be restricted.  Queries should be accessible.</p>
+<p>( TODO )
+The beauty of SPARQL is that interaction with the triplestore is done over HTTP.<br />
+Updates should be restricted. 
+Queries should be accessible.</p>
 				</div>
 			</div>
 		</section>
