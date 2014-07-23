@@ -1,5 +1,6 @@
 {
 	"title": "How to use SparqlModel",
+	"subtitle": "Build a Rails app backed by SparqlModel",
 	"type": "story",
 	"author": "Adam Tavares",
 	"keywords": [ "code", "ruby", "sparql" ],

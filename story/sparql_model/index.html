@@ -73,7 +73,7 @@
 			<div class="row">
 				<div id="meta" class="twelve columns">
 					<h1 id="title">How to use SparqlModel</h1>
-					<h2 id="subtitle"></h2>
+					<h2 id="subtitle">Build a Rails app backed by SparqlModel</h2>
 					<img id="avatar" src="../../img/avatar_default.jpg" alt="Adam Tavares" />
 					<h3 id="author">by <span class="name">Adam Tavares</span></h3>
 					<h4 id="date">Published July 22, 2014</h4>
@@ -94,16 +94,30 @@ showing you the basics of building a Rails application with a triplestore backen
 <h1>Background</h1>
 <p>If you are unfamiliar with triplestores, graph-databases, SPARQL, or RDF, you may want to read the following articles I've written.<br />
 They explain the core concepts of triplestores, SPARQL, and graph databases in more detail than what I'll include here.</p>
-<p><a href="http://127.0.0.1/dot_com/story/gdb_modelling"> Graph Database Modelling </a></p>
-<p><a href="http://127.0.0.1/dot_com/story/dbpedia"> DBpedia </a></p>
+<ul>
+<li><a href="/story/gdb_modelling"> Graph Database Modelling </a></li>
+<li><a href="/story/dbpedia"> How to play with DbPedia </a></li>
+</ul>
 <h1>Get ready</h1>
 <ol>
 <li>Install Ruby</li>
 <li>Install Rails</li>
 <li>Install Apache Fuseki</li>
-<li>Install the sparql_model gem.</li>
+<li>Install the 'sparql', 'rdf', and 'sparql_model' gems<ul>
+<li><a href="https://github.com/caesarfeta/sparql_model"> Grab SparqlModel here... </a></li>
+</ul>
+</li>
 </ol>
-<p><a href="https://github.com/caesarfeta/sparql_model"> Grab SparqlModel here... </a></p>
+<p>Added the following to your Rails Gemfile</p>
+<pre><code>gem 'rdf'
+gem 'sparql'
+gem 'sparql_model'
+gem 'rest_client'
+</code></pre>
+<p>Start up fuseki...</p>
+<p>Start up rails</p>
+<pre><code>bundle exec rails server -e development
+</code></pre>
 <h1>The application</h1>
 <p>Let's make the periodic table of elements!</p>
 <div class="picture">
@@ -209,7 +223,7 @@ Let's try this instead.</p>
 <pre><code>elem.get("SI")
 </code></pre>
 <p>I can do that because I defined :symbol as my KEY attribute.</p>
-<h1>Use your model some more... more...</h1>
+<h1>Use your model some more... some more...</h1>
 <p>So what info do I have on Silicon?</p>
 <pre><code>elem.all
 
@@ -225,9 +239,9 @@ Let's try this instead.</p>
 </code></pre>
 <p>I have a :urn.<br />
 That was created automatically.<br />
-It's an internal unique identifier used by SparqlModel.<br />
-It doesn't have to be the only one though.<br />
-I'm using :symbol as a unique identifier right now.<br />
+It's an internal unique identifier used by SparqlModel.
+It doesn't have to be the only unique identifier though.
+I'm using :symbol as a unique identifier right now.
 I could use :name too or create another attribute for storing a different URN and make that that the unique identifier if I wanted to. 
 All I need is to set that attribute's UNIQUE and KEY configuration options.</p>
 <p>I have :symbol and :name which I know about...</p>
@@ -250,23 +264,264 @@ All I need is to set that attribute's UNIQUE and KEY configuration options.</p>
     :created=&gt;1406129133
 }
 </code></pre>
-<h1>Using the model wrap-up</h1>
+<p>Nothing is stopping us from creating another instance of SparqlModel.
+We only have two elements defined so far, so let's get Carbon, and get it right away when we instantiate.</p>
+<pre><code>carbon = Element.new("C")
+carbon.mass = 12.0107
+</code></pre>
+<p>Now we can do fun stuff like.</p>
+<pre><code>if carbon.mass &gt; elem.mass
+    puts 'Whoa! Who rewrote the rules of the Universe?'
+end
+</code></pre>
+<h1>Using the model wrap-up...</h1>
 <p>So that's basically the gist of using SparqlModel.
 I find it easy to work with.
 Hopefully you do too.</p>
 <p>If you want to see what an element looks like in Fuseki, peep this...
 <a href="http://127.0.0.1:8080/ds/query?query=select+%3Fs+%3Fp+%3Fo%0D%0Awhere+%7B+%3Fs+%3Fp+%3Fo+%7D&amp;output=text&amp;stylesheet="> Oh my God!  What have I done!! </a></p>
-<p>If that URL doesn't resolve correctly just tweak it to the host and port of your Fuseki server.  Look at those triples!</p>
-<h1>Controller methods</h1>
+<p>If that URL doesn't resolve correctly just change the host and port to point to your Fuseki server.  Ahhhh... Look at those triples!</p>
+<h1>The API</h1>
+<p>Now we want to build an API so other people can create and edit elements from a place other than the Rails development console on our host.</p>
+<p>Let's figure out the basics of what our API should do, keeping things very basic to start. The API should allow us to...</p>
+<ul>
+<li>Create a new element</li>
+<li>Retrieve element data in an easily usable form</li>
+<li>Update an existing element's data</li>
+</ul>
+<p>Let's create some URLs for these.  Here they are...</p>
+<ul>
+<li>element/create</li>
+<li>element/data/*id</li>
+<li>element/update</li>
+</ul>
+<h1>Set it up</h1>
+<p>Okay.  Now we have to create an element controller and tweak our routes file so we can map some code to these URLs.  You know, Rails stuff.</p>
+<p>Save this to <strong>app/controllers/element_controller.rb</strong></p>
+<pre><code>class ElementController &lt; ActionController::Base
+
+    # Create a new element
+    def create
+        render :text =&gt; "create"
+    end
+
+    # Retreive element data
+    def data
+        render :text =&gt; "data"
+    end
+
+    # Update element data
+    def update
+        render :text =&gt; "update"
+    end
+
+end
+</code></pre>
+<p>Update <strong>config/routes.rb</strong></p>
+<pre><code>#-------------------------------------------------------------
+#  Element
+#-------------------------------------------------------------
+match 'element/create' =&gt; 'element#create'
+match 'element/data/*symbol' =&gt; 'element#data'
+match 'element/update' =&gt; 'element#update'
+</code></pre>
+<p>Check the URLs to see if they run the controller methods like they should.</p>
+<h1>Use a Ruby HTTP client</h1>
+<p>I like using a Ruby HTTP client to interact with my controllers rather than a browser when developing.
+That way I can save and run the HTTP requests later as proper tests.
+I have a class that I wrote for doing this that simplifies using Ruby's rest_client gem.</p>
+<p>Here it is.  Save this in <strong>app/helpers/rest_test.rb</strong></p>
+<pre><code>require 'rest_client'
+class RestTest
+
+  # Basic Use
+  #   load 'rest_test.rb'
+  #   rest = RestTest.new( 'http://localhost:3000' )
+  #   report = rest.post( 'collection/add/keyword', { :collection_id =&gt; 1, :keyword =&gt; 'blue' } )
+
+  #-------------------------------------------------------------
+  #  Getters &amp; Setters
+  #-------------------------------------------------------------
+  attr_accessor :base
+
+  # _base { String } Base URL
+  def initialize( _base='' )
+    @base = _base
+  end
+
+  # _url { String } URL
+  # _params { Hash } Parameter
+  def post( _url, _params )
+    url = File.join( @base, _url )
+    response = RestClient.post( url, _params )
+    report( response )
+  end
+
+  # _url { String } URL
+  # _params { Hash } Parameter
+  def get( _url )
+    url = File.join( @base, _url )
+    response = RestClient.get( url )
+    report( response )
+  end
+
+  # _response { RestClient } RestClient response object
+  def report( _response )
+    if _response.code &gt; 399
+      raise "Error: #{ _response.code }: #{ status( _response.code ) } #{ _response.to_str }"
+    end
+    return {
+      :code =&gt; _response.code,
+      :status =&gt; status( _response.code ),
+      :content =&gt; _response.to_str
+    }
+  end
+
+  # _code { Integer } HTTP Response Code
+  def status( _code )
+    status = {
+      100 =&gt; 'Continue',
+      101 =&gt; 'Switching Protocols',
+      102 =&gt; 'Processing', #WebDAV
+
+      200 =&gt; 'OK',
+      201 =&gt; 'Created',
+      202 =&gt; 'Accepted',
+      203 =&gt; 'Non-Authoritative Information', # http/1.1
+      204 =&gt; 'No Content',
+      205 =&gt; 'Reset Content',
+      206 =&gt; 'Partial Content',
+      207 =&gt; 'Multi-Status', #WebDAV
+
+      300 =&gt; 'Multiple Choices',
+      301 =&gt; 'Moved Permanently',
+      302 =&gt; 'Found',
+      303 =&gt; 'See Other', # http/1.1
+      304 =&gt; 'Not Modified',
+      305 =&gt; 'Use Proxy', # http/1.1
+      306 =&gt; 'Switch Proxy', # no longer used
+      307 =&gt; 'Temporary Redirect', # http/1.1
+
+      400 =&gt; 'Bad Request',
+      401 =&gt; 'Unauthorized',
+      402 =&gt; 'Payment Required',
+      403 =&gt; 'Forbidden',
+      404 =&gt; 'Resource Not Found',
+      405 =&gt; 'Method Not Allowed',
+      406 =&gt; 'Not Acceptable',
+      407 =&gt; 'Proxy Authentication Required',
+      408 =&gt; 'Request Timeout',
+      409 =&gt; 'Conflict',
+      410 =&gt; 'Gone',
+      411 =&gt; 'Length Required',
+      412 =&gt; 'Precondition Failed',
+      413 =&gt; 'Request Entity Too Large',
+      414 =&gt; 'Request-URI Too Long',
+      415 =&gt; 'Unsupported Media Type',
+      416 =&gt; 'Requested Range Not Satisfiable',
+      417 =&gt; 'Expectation Failed',
+      418 =&gt; 'I\'m A Teapot',
+      421 =&gt; 'Too Many Connections From This IP',
+      422 =&gt; 'Unprocessable Entity', #WebDAV
+      423 =&gt; 'Locked', #WebDAV
+      424 =&gt; 'Failed Dependency', #WebDAV
+      425 =&gt; 'Unordered Collection', #WebDAV
+      426 =&gt; 'Upgrade Required', 
+      449 =&gt; 'Retry With', #Microsoft
+      450 =&gt; 'Blocked By Windows Parental Controls', #Microsoft
+
+      500 =&gt; 'Internal Server Error',
+      501 =&gt; 'Not Implemented',
+      502 =&gt; 'Bad Gateway',
+      503 =&gt; 'Service Unavailable',
+      504 =&gt; 'Gateway Timeout',
+      505 =&gt; 'HTTP Version Not Supported',
+      506 =&gt; 'Variant Also Negotiates',
+      507 =&gt; 'Insufficient Storage', #WebDAV
+      509 =&gt; 'Bandwidth Limit Exceeded', #Apache
+      510 =&gt; 'Not Extended'
+    }
+    status[ _code ]
+  end
+
+end
+</code></pre>
+<h1>How to use RestTest</h1>
+<p>Start the development console.</p>
+<pre><code>cd /path/to/rails
+rails console development
+</code></pre>
+<p>Here's how you use RestTest.</p>
+<pre><code>http = RestTest.new( 'http://localhost:3000' )
+</code></pre>
+<p>Here's how you make a POST request.</p>
+<pre><code>http.post( 'element/create', { :symbol =&gt; "B", :name =&gt; "Boron" })
+</code></pre>
+<p>Here's how you make a GET request.</p>
+<pre><code>http.get( 'element/data/b' )
+</code></pre>
+<p>Armed with this knowledge we can start building our API.</p>
+<h1>Flesh out the API</h1>
+<p>Save the following to <strong>app/helpers/controller_helper.rb</strong></p>
+<pre><code>module ControllerHelper
+
+  # Remove unnecessary stuff from controller method parameters
+  def self.cleanParams( _params )
+    ignore = [ 'id', 'controller', 'action' ]
+    clean = {}
+    _params.each do |key,val|
+      if ignore.include?( key ) == false
+        clean[ key.to_sym ] = val
+      end
+    end
+    clean
+  end
+
+end
+</code></pre>
+<p>This will let you pass POST parameters directly to SparqlModel instances.</p>
+<p>Now we'll flesh out the create method.</p>
+<pre><code># Create a new element
+def create
+  elem = Element.new
+  elem.create( ControllerHelper.cleanParams( params ) )
+  render :json =&gt; elem.all.to_json
+end
+</code></pre>
+<p>Let's test this code out.
+Go back to the development console, and run.</p>
+<pre><code>http.post( 'element/create', { :symbol =&gt; "B", :name =&gt; "Boron" })
+</code></pre>
+<p>Here's the data method.</p>
+<pre><code># Retreive element data
+def data
+  elem = Element.new( params[:symbol] )
+  render :json =&gt; elem.all.to_json
+end
+</code></pre>
+<p>Does it work?</p>
+<pre><code>http.get( 'element/data/B' )
+</code></pre>
+<p>Now finally here's the update method.</p>
+<pre><code># Update element data
+def update
+  vals = ControllerHelper.cleanParams( params )
+  elem = Element.new( vals[:symbol] )
+  elem.change( vals.except(:symbol) )
+  render :json =&gt; elem.all.to_json
+end
+</code></pre>
+<p>Does it work?</p>
+<pre><code>http.post( 'element/update', { :symbol =&gt; "B", :number =&gt; 5 } )
+</code></pre>
+<h1>Few things about this API</h1>
+<p>So with very little work we know have a web API, and the ability to test it.
+Not bad right?
+We'll want to secure this API before we open it up to the world, but that's a lesson for another day.</p>
+<h1>Javascript version of RestTest</h1>
 <p>( TODO )
-So your controller methods are the front-line of your web application.<br />
-So let's set one up.</p>
-<h1>Ruby HTTP client</h1>
-<p>( TODO )
-I like using a Ruby HTTP client when testing my controller methods rather than a browser.  The reason for that is you can create tests with commands.  The reason is testing with code will give you a record of your testing.  You can keep that around for regression testing.</p>
-<h1>Javascript API</h1>
-<p>( TODO )
-The beauty of SPARQL is that interaction with the triplestore is done over HTTP.<br />
+You have to decide when to query the SPARQL database from the client and when to use Rails as an intermediary.</p>
+<p>The beauty of SPARQL is that interaction with the triplestore is done over HTTP.<br />
 Updates should be restricted. 
 Queries should be accessible.</p>
 				</div>
