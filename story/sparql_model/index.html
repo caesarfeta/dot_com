@@ -315,6 +315,11 @@ Hopefully you do too.</p>
         render :text =&gt; "update"
     end
 
+    # Delete an element
+    def delete
+        render :text =&gt; "update"
+    end
+
 end
 </code></pre>
 <p>Update <strong>config/routes.rb</strong></p>
@@ -324,11 +329,12 @@ end
 match 'element/create' =&gt; 'element#create'
 match 'element/data/*symbol' =&gt; 'element#data'
 match 'element/update' =&gt; 'element#update'
+match 'element/delete' =&gt; 'element#delete'
 </code></pre>
 <p>Check the URLs to see if they run the controller methods like they should.</p>
-<h1>Use a Ruby HTTP client</h1>
+<h1>RestTest, a Ruby HTTP client</h1>
 <p>I like using a Ruby HTTP client to interact with my controllers rather than a browser when developing.
-That way I can save and run the HTTP requests later as proper tests.
+That way I can save my requests and run them later as proper tests.
 I have a class that I wrote for doing this that simplifies using Ruby's rest_client gem.</p>
 <p>Here it is.  Save this in <strong>app/helpers/rest_test.rb</strong></p>
 <pre><code>require 'rest_client'
@@ -502,7 +508,7 @@ end
 <p>Does it work?</p>
 <pre><code>http.get( 'element/data/B' )
 </code></pre>
-<p>Now finally here's the update method.</p>
+<p>Here's the update method.</p>
 <pre><code># Update element data
 def update
   vals = ControllerHelper.cleanParams( params )
@@ -514,16 +520,18 @@ end
 <p>Does it work?</p>
 <pre><code>http.post( 'element/update', { :symbol =&gt; "B", :number =&gt; 5 } )
 </code></pre>
-<h1>Few things about this API</h1>
-<p>So with very little work we know have a web API, and the ability to test it.
-Not bad right?
-We'll want to secure this API before we open it up to the world, but that's a lesson for another day.</p>
+<h1>A few things about this API</h1>
+<p>So with very little work we know have a working web API, and the ability to test it.
+Not bad right?</p>
+<p>We'll want to secure this API before we open it up to the world, but that's a lesson for another day.</p>
 <h1>Javascript version of RestTest</h1>
-<p>( TODO )
+<h2>More coming SOON!</h2>
+<p>&lt;!--
 You have to decide when to query the SPARQL database from the client and when to use Rails as an intermediary.</p>
 <p>The beauty of SPARQL is that interaction with the triplestore is done over HTTP.<br />
 Updates should be restricted. 
-Queries should be accessible.</p>
+Queries should be accessible.
+--&gt;</p>
 				</div>
 			</div>
 		</section>

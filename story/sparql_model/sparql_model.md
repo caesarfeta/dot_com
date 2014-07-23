@@ -262,6 +262,11 @@ Save this to **app/controllers/element_controller.rb**
 			render :text => "update"
 		end
 		
+		# Delete an element
+		def delete
+			render :text => "update"
+		end
+		
 	end
 
 Update **config/routes.rb**
@@ -272,12 +277,13 @@ Update **config/routes.rb**
     match 'element/create' => 'element#create'
     match 'element/data/*symbol' => 'element#data'
     match 'element/update' => 'element#update'
+    match 'element/delete' => 'element#delete'
 
 Check the URLs to see if they run the controller methods like they should.
 
-# Use a Ruby HTTP client
+# RestTest, a Ruby HTTP client
 I like using a Ruby HTTP client to interact with my controllers rather than a browser when developing.
-That way I can save and run the HTTP requests later as proper tests.
+That way I can save my requests and run them later as proper tests.
 I have a class that I wrote for doing this that simplifies using Ruby's rest_client gem.
 
 Here it is.  Save this in **app/helpers/rest_test.rb**
@@ -464,7 +470,7 @@ Does it work?
 
 	http.get( 'element/data/B' )
 
-Now finally here's the update method.
+Here's the update method.
 
 	# Update element data
 	def update
@@ -478,15 +484,18 @@ Does it work?
 
 	http.post( 'element/update', { :symbol => "B", :number => 5 } )
 
-# Few things about this API
-So with very little work we know have a web API, and the ability to test it.
+# A few things about this API
+So with very little work we know have a working web API, and the ability to test it.
 Not bad right?
+
 We'll want to secure this API before we open it up to the world, but that's a lesson for another day.
 
 #  Javascript version of RestTest
-( TODO )
+## More coming SOON!
+<!--
 You have to decide when to query the SPARQL database from the client and when to use Rails as an intermediary.
 
 The beauty of SPARQL is that interaction with the triplestore is done over HTTP.  
 Updates should be restricted. 
 Queries should be accessible.
+-->

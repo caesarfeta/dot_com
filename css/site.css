@@ -4,7 +4,7 @@ html {
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-	background: url( "../img/sierpinski_pyramid.png" ) no-repeat center center fixed;
+	background: url( "../img/squairy_light.png" ) repeat center center fixed;
 }
 #footer #copyright {
 	padding: 20px 0;
