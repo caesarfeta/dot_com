@@ -1,0 +1,29 @@
+<div class="row">
+	<div class="twelve columns story">
+		<div id="genre">
+		
+			<a href="#circle">circle</a>
+		
+			<a href="#hexagon">hexagon</a>
+		
+			<a href="#animation">animation</a>
+		
+			<a href="#gif">gif</a>
+		
+		</div>
+		<div class="row">
+			<div class="twelve columns toon text-center">
+				<a href="cartoon/hexagoner">
+				
+					<img id="cartoon" src="cartoon/hexagoner/hexagoner.gif" alt="Pulsating grid of circles produces phantom hexagon." />
+				
+				</a>
+				<p class="caption">Pulsating grid of circles produces phantom hexagon.</p>
+				<div id="meta" href="cartoon/hexagoner">
+					<h3 class="author">by <span class="name">Adam Tavares</span></h3>
+					<h4 class="date">Published August 6, 2014</h4>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

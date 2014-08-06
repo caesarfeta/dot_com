@@ -490,9 +490,10 @@ Not bad right?
 
 We'll want to secure this API before we open it up to the world, but that's a lesson for another day.
 
+<!---
 #  Javascript version of RestTest
 ## More coming SOON!
-<!--
+
 You have to decide when to query the SPARQL database from the client and when to use Rails as an intermediary.
 
 The beauty of SPARQL is that interaction with the triplestore is done over HTTP.  

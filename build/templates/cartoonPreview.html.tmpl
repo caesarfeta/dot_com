@@ -6,12 +6,12 @@
 		{% endfor %}
 		</div>
 		<div class="row">
-			<div class="twelve columns toon">
+			<div class="twelve columns toon text-center">
 				<a href="{{ path }}">
 				{% if id < 10 %}
-					<img id="cartoon" src="{{ src }}" alt="{{ caption }}" />
+					<img id="cartoon" src="{{ path }}/{{ src }}" alt="{{ caption }}" />
 				{% else %}
-					<a id="cartoon" class="inf_img" href="{{ src }}" rel="{{ caption }}"></a>
+					<a id="cartoon" class="inf_img" href="{{ path }}/{{ src }}" rel="{{ caption }}"></a>
 				{% endif %}
 				</a>
 				<p class="caption">{{ caption }}</p>

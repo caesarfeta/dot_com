@@ -4,6 +4,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0" />
 
 <head>
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="/favicon.ico" type="image/x-icon">
 	<!-- CSS -->
 	<link href="../../third_party/foundation/stylesheets/foundation.min.css" rel="stylesheet" type="text/css" />
 	<link href="../../css/site.css" rel="stylesheet" type="text/css" />
@@ -53,7 +55,7 @@
 			
 			<!-- Cartoon -->
 			<div class="row">
-				<div id="meta" class="twelve columns">
+				<div id="meta" class="twelve columns text-center">
 					<img id="cartoon" src="{{ src }}" alt="{{ alt }}" />
 					<p class="caption">{{ caption }}</p>
 					<img id="avatar" src="{% if avatar is defined %}{{ avatar }}{% else %}../../img/avatar_default.jpg{% endif %}" alt="{{ author }}" />
