@@ -352,6 +352,10 @@ code {
 #home #list .story.selected {
 	display: block;
 }
+#about strong {
+	font-weight: normal;
+	color: #AAA;
+}
 #about #ego .top.columns {
 	padding-top: 80px;
 	padding-bottom: 20px;

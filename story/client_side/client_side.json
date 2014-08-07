@@ -3,7 +3,7 @@
 	"type": "story",
 	"subtitle": "How to structure your templates, CSS, and Javascript so you don't make a huge mess.",
 	"author": "Adam Tavares",
-	"keywords": [ "best-practices", "css", "javascript" ],
+	"keywords": [ "best-practices", "css", "guide", "javascript" ],
 	"publish_date": "February 26, 2014",
 	"preview_img": "story/client_side/img/watermelon.jpg",
 	"quote_color": null,
