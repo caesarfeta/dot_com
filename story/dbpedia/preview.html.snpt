@@ -13,7 +13,7 @@
 			<div class="three columns">
 				<a href="story/dbpedia">
 				
-					<img class="splash" src="story/dbpedia/img/honey_bee.jpg" alt="How to play with DbPedia" />
+					<a class="inf_img splash" href="story/dbpedia/img/honey_bee.jpg" rel="How to play with DbPedia"></a>
 				
 				</a>
 			</div>
