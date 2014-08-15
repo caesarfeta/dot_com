@@ -15,7 +15,7 @@
 			<div class="three columns">
 				<a href="story/client_side">
 				
-					<img class="splash" src="story/client_side/img/watermelon.jpg" alt="Client-Side Web Development Best Practices" />
+					<a class="inf_img splash" href="story/client_side/img/watermelon.jpg" rel="Client-Side Web Development Best Practices"></a>
 				
 				</a>
 			</div>

@@ -11,7 +11,7 @@
 			<div class="twelve columns toon text-center">
 				<a href="cartoon/infinity_wrapper">
 				
-					<img id="cartoon" src="cartoon/infinity_wrapper/22.gif" alt="Pull infinity wrapper all you want. It will never give up its hard candy." />
+					<a id="cartoon" class="inf_img" href="cartoon/infinity_wrapper/22.gif" rel="Pull infinity wrapper all you want. It will never give up its hard candy."></a>
 				
 				</a>
 				<p class="caption">Pull infinity wrapper all you want. It will never give up its hard candy.</p>

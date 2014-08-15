@@ -15,7 +15,7 @@
 			<div class="twelve columns toon text-center">
 				<a href="cartoon/hexagoner">
 				
-					<img id="cartoon" src="cartoon/hexagoner/15.gif" alt="Pulsating grid of circles produces phantom hexagon." />
+					<a id="cartoon" class="inf_img" href="cartoon/hexagoner/15.gif" rel="Pulsating grid of circles produces phantom hexagon."></a>
 				
 				</a>
 				<p class="caption">Pulsating grid of circles produces phantom hexagon.</p>
