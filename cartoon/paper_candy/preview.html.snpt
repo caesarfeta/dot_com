@@ -11,7 +11,7 @@
 			<div class="twelve columns toon text-center">
 				<a href="cartoon/paper_candy">
 				
-					<img id="cartoon" src="cartoon/paper_candy/28.gif" alt="A paper candy wobble that you can never gobble." />
+					<a id="cartoon" class="inf_img" href="cartoon/paper_candy/28.gif" rel="A paper candy wobble that you can never gobble."></a>
 				
 				</a>
 				<p class="caption">A paper candy wobble that you can never gobble.</p>
