@@ -11,7 +11,7 @@
 			<div class="twelve columns toon text-center">
 				<a href="cartoon/cosmic_plaid">
 				
-					<img id="cartoon" src="cartoon/cosmic_plaid/43.gif" alt="Cosmic Plaid ( pronounced "plad" )" />
+					<a id="cartoon" class="inf_img" href="cartoon/cosmic_plaid/43.gif" rel="Cosmic Plaid ( pronounced "plad" )"></a>
 				
 				</a>
 				<p class="caption">Cosmic Plaid ( pronounced "plad" )</p>

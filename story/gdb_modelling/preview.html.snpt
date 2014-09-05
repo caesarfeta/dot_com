@@ -11,7 +11,7 @@
 			<div class="three columns">
 				<a href="story/gdb_modelling">
 				
-					<img class="splash" src="story/gdb_modelling/img/preview.png" alt="Graph Database Modelling" />
+					<a class="inf_img splash" href="story/gdb_modelling/img/preview.png" rel="Graph Database Modelling"></a>
 				
 				</a>
 			</div>

@@ -1,0 +1,25 @@
+<div class="row">
+	<div class="twelve columns story">
+		<div id="genre">
+		
+			<a href="#animation">animation</a>
+		
+			<a href="#gif">gif</a>
+		
+		</div>
+		<div class="row">
+			<div class="twelve columns toon text-center">
+				<a href="cartoon/super_yahtzee">
+				
+					<img id="cartoon" src="cartoon/super_yahtzee/62.gif" alt="Try super Yahtzee!  More dice equals more fun!" />
+				
+				</a>
+				<p class="caption">Try super Yahtzee!  More dice equals more fun!</p>
+				<div id="meta" href="cartoon/super_yahtzee">
+					<h3 class="author">by <span class="name">Adam Tavares</span></h3>
+					<h4 class="date">Published September 5, 2014</h4>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

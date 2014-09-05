@@ -11,7 +11,7 @@
 			<div class="twelve columns toon text-center">
 				<a href="cartoon/hammer_whack">
 				
-					<img id="cartoon" src="cartoon/hammer_whack/40.gif" alt="Whacked with a cartoon hammer" />
+					<a id="cartoon" class="inf_img" href="cartoon/hammer_whack/40.gif" rel="Whacked with a cartoon hammer"></a>
 				
 				</a>
 				<p class="caption">Whacked with a cartoon hammer</p>
