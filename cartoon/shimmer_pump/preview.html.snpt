@@ -10,9 +10,7 @@
 		<div class="row">
 			<div class="twelve columns toon text-center">
 				<a href="cartoon/shimmer_pump">
-				
 					<img id="cartoon" src="cartoon/shimmer_pump/49.gif" alt="Beats like a shimmering checkerboard heart." />
-				
 				</a>
 				<p class="caption">Beats like a shimmering checkerboard heart.</p>
 				<div id="meta" href="cartoon/shimmer_pump">

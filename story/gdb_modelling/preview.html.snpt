@@ -10,9 +10,7 @@
 		<div class="row">
 			<div class="three columns">
 				<a href="story/gdb_modelling">
-				
-					<a class="inf_img splash" href="story/gdb_modelling/img/preview.png" rel="Graph Database Modelling"></a>
-				
+					<img class="splash" src="story/gdb_modelling/img/preview.png" alt="Graph Database Modelling" />
 				</a>
 			</div>
 			<div class="nine columns">

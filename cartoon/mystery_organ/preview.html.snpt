@@ -10,9 +10,7 @@
 		<div class="row">
 			<div class="twelve columns toon text-center">
 				<a href="cartoon/mystery_organ">
-				
 					<img id="cartoon" src="cartoon/mystery_organ/57.gif" alt="What is it?  Well it's a glanduloid.  It's part of the endocritory system.  It regulates dopamax levels." />
-				
 				</a>
 				<p class="caption">What is it?  Well it's a glanduloid.  It's part of the endocritory system.  It regulates dopamax levels.</p>
 				<div id="meta" href="cartoon/mystery_organ">

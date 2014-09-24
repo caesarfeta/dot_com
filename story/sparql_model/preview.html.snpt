@@ -12,9 +12,7 @@
 		<div class="row">
 			<div class="three columns">
 				<a href="story/sparql_model">
-				
-					<a class="inf_img splash" href="story/sparql_model/img/preview.jpg" rel="How to use SparqlModel"></a>
-				
+					<img class="splash" src="story/sparql_model/img/preview.jpg" alt="How to use SparqlModel" />
 				</a>
 			</div>
 			<div class="nine columns">
