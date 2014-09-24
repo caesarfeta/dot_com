@@ -6,9 +6,9 @@
 <head>
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <!-- CSS -->
-	<link href="third_party/foundation/stylesheets/foundation.min.css" rel="stylesheet" type="text/css" />
-	<link href="css/site.css" rel="stylesheet" type="text/css" />
+	<!-- CSS -->
+	<link href="{{ dots }}third_party/foundation/stylesheets/foundation.min.css" rel="stylesheet" type="text/css" />
+	<link href="{{ dots }}css/site.css" rel="stylesheet" type="text/css" />
 	
 	<!-- Title -->
 	<title>Adam Tavares dot com</title>
@@ -22,14 +22,16 @@
 		
 		<section id="extra-info">
 			<div id="panel">
+				{{ less }}
 				<div class="link">Adam Tavares dot com</div>
 				<a id="contact" class="link" href="about.html">[ About ]</a>
+				{{ more }}
 			</div>
 		</section>
 		
 		<!-- Preview -->
 		<section id="list">
-        {% for preview in previews %}{{ preview }}{% endfor %}
+		{% for preview in previews %}{{ preview }}{% endfor %}
 		</section>
 		
 		<section id="footer">
@@ -45,15 +47,15 @@
 <!-- Javascript -->
 <!-- 3rd Party -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-<script type="text/javascript" src="third_party/foundation/javascripts/modernizr.foundation.js"></script>
-<script type="text/javascript" src="third_party/foundation/javascripts/foundation.min.js"></script>
-<script type="text/javascript" src="third_party/foundation/javascripts/jquery.event.move.js"></script>
-<script type="text/javascript" src="third_party/foundation/javascripts/jquery.event.swipe.js"></script>
-<script type="text/javascript" src="third_party/foundation/javascripts/jquery.foundation.forms.js"></script>
-<script type="text/javascript" src="third_party/foundation/javascripts/jquery.foundation.mediaQueryToggle.js"></script>
-<script type="text/javascript" src="third_party/foundation/javascripts/app.js"></script>
+<script type="text/javascript" src="{{ dots }}third_party/foundation/javascripts/modernizr.foundation.js"></script>
+<script type="text/javascript" src="{{ dots }}third_party/foundation/javascripts/foundation.min.js"></script>
+<script type="text/javascript" src="{{ dots }}third_party/foundation/javascripts/jquery.event.move.js"></script>
+<script type="text/javascript" src="{{ dots }}third_party/foundation/javascripts/jquery.event.swipe.js"></script>
+<script type="text/javascript" src="{{ dots }}third_party/foundation/javascripts/jquery.foundation.forms.js"></script>
+<script type="text/javascript" src="{{ dots }}third_party/foundation/javascripts/jquery.foundation.mediaQueryToggle.js"></script>
+<script type="text/javascript" src="{{ dots }}third_party/foundation/javascripts/app.js"></script>
 
 <!-- Custom -->
-<script type="text/javascript" src="javascript/lib/lib.min.js"></script>
-<script type='text/javascript' src='javascript/site.js'></script>
+<script type="text/javascript" src="{{ dots }}javascript/lib/lib.min.js"></script>
+<script type='text/javascript' src='{{ dots }}javascript/site.js'></script>
 </html>
