@@ -6,6 +6,22 @@ html {
 	background-size: cover;
 	background: url( "../img/squairy_light.png" ) repeat center center fixed;
 }
+#footer .more {
+	position: fixed;
+	right:0;
+	bottom:50%;
+	padding:10px;
+	font-size:2em;
+	background-color: rgba(255,255,255,.5);
+}
+#footer .less {
+	position: fixed;
+	left:0;
+	bottom:50%;
+	padding:10px;
+	font-size:2em;
+	background-color: rgba(255,255,255,.5);
+}
 #footer #copyright {
 	padding: 20px 0;
 	color: #CCC;
@@ -406,5 +422,9 @@ code {
 	}
 	#home .preview {
 		padding-right: 30px;
+	}
+	#footer .more,
+	#footer .less {
+		display:none;
 	}
 }

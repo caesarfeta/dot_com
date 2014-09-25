@@ -1,0 +1,13 @@
+{
+	"title": "Building Web Applications For Scientific Research",
+	"subtitle": "nuff said",
+	"type": "story",
+	"author": "Adam Tavares",
+	"keywords": [ "theory", "development", "science" ],
+	"publish_date": "July 22, 2016",
+	"preview_img": "story/sparql_model/img/preview.jpg",
+	"page_js": [ "../../javascript/lib/slds/SLDS.js" ],
+	"page_css": [ "../../javascript/lib/slds/SLDS.css" ],
+	"quote_color": null,
+	"story": "research.md"
+}

@@ -85,6 +85,7 @@ function drawLink( _url, _navData, _pop ) {
 
 function homeKeyWordClick() {
 	$( '#genre a' ).click( function( _e ) {
+		return _e.preventDefault();
 		var clickWord = $( this ).text();
 		homeKeyWordFilter( clickWord );
 	});

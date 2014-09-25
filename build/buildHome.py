@@ -21,7 +21,7 @@ def build():
 	file = "../index.html";
 	
 	# More button
-	data["more"] = '<a href="index2.html">++</a>'
+	data["more"] = '<a class="more" href="index1.html">++</a>'
 	data["less"] = ""
 	for page in pages:
 		page = "../" + page + "/preview.html.snpt"
@@ -32,18 +32,18 @@ def build():
 			# Build the homepages
 			if pn > 0:
 				file="../index"+str(pn)+".html"
-				if pn > 1:
-					data["less"] = '<a href="index'+str(pn-1)+'.html">--</a>'
+				if pn == 1:
+					data["less"] = '<a class="less" href="index.html">--</a>'
 				else:
-					data["less"] = '<a href="index.html">--</a>'
-				data["more"] = '<a href="index'+str(pn+1)+'.html">++</a>'
+					data["less"] = '<a class="less" href="index'+str(pn-1)+'.html">--</a>'
+				data["more"] = '<a class="more" href="index'+str(pn+1)+'.html">++</a>'
 			buildLib.parseTemplate( "index", file, data )
 			data["previews"] = []
 			pn += 1
 		ind += 1
 		if ind == len(pages)+1:
 			file="../index"+str(pn)+".html"
-			data["less"] = '<a href="index'+str(pn-1)+'.html">--</a>'
+			data["less"] = '<a class="less" href="index'+str(pn-1)+'.html">--</a>'
 			data["more"] = ''
 			buildLib.parseTemplate( "index", file, data )
 build()
