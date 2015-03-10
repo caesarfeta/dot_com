@@ -1,0 +1,580 @@
+<html>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0" />
+
+<head>
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="/favicon.ico" type="image/x-icon">
+	<!-- CSS -->
+	<link href="../../third_party/foundation/stylesheets/foundation.min.css" rel="stylesheet" type="text/css" />
+	<link href="../../third_party/jquery_snippet/jquery.snippet.min.css" rel="stylesheet" type="text/css" />
+	<link href="../../css/site.css" rel="stylesheet" type="text/css" />
+	
+			<link href="../../javascript/lib/slds/SLDS.css" rel="stylesheet" type="text/css" />
+	
+	
+	<!-- Page Specific CSS -->
+
+		<style type="text/css">
+			
+			
+			
+			/* Change the quote color for flavor */
+			#story .quote {
+				color: None;
+			}
+			
+			
+			
+		</style>
+	
+	<!-- Title -->
+	<title>How to use SparqlModel by Adam Tavares</title>
+	
+	<!-- Google Analytics -->
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-42372677-1', 'adamtavares.com');
+  ga('send', 'pageview');
+
+</script>
+</head>
+
+<body>
+	<!-- Navigation -->
+	<section id="extra-info">
+		<div id="panel">
+			<a id="home" class="link" href="../..">[ Home ]</a>
+		</div>
+	</section>
+	
+	<div id="story" class="container main">
+		<section id="header">
+		
+			<!-- Keywords -->
+			<div class="row">
+				<div class="twelve columns">
+					<div id="genre">
+					
+						<a href="../../#guide">guide</a>
+					
+						<a href="../../#ruby">ruby</a>
+					
+						<a href="../../#sparql">sparql</a>
+					
+					</div>
+				</div>
+			</div>
+			
+			<!-- Title and Author -->
+			<div class="row">
+				<div id="meta" class="twelve columns">
+					<h1 id="title">How to use SparqlModel</h1>
+					<h2 id="subtitle">Build a Rails app backed by SparqlModel</h2>
+					<img id="avatar" src="../../img/avatar_default.jpg" alt="Adam Tavares" />
+					<h3 id="author">by <span class="name">Adam Tavares</span></h3>
+					<h4 id="date">Published July 22, 2014</h4>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Story -->
+		<section id="text">
+			<div class="row">
+				<div class="twelve columns">
+					<p>I've been working with triplestores and Ruby lately.
+I've written some code which makes manipulating data triples with Ruby easy.
+I want to share with you what I've learned, 
+showing you the basics of building a Rails application with a triplestore backend.</p>
+<h1>SparqlModel</h1>
+<p>If you've used Rails you've probably written model classes which use ActiveRecord.  SparqlModel is essentially code which replicates a lot of ActiveRecord's functionality but instead of interacting with a relational database using SQL it interacts with a triplestore using SPARQL.</p>
+<h1>Background</h1>
+<p>If you are unfamiliar with triplestores, graph-databases, SPARQL, or RDF, you may want to read the following articles I've written.<br />
+They explain the core concepts of triplestores, SPARQL, and graph databases in more detail than what I'll include here.</p>
+<ul>
+<li><a href="/story/gdb_modelling"> Graph Database Modelling </a></li>
+<li><a href="/story/dbpedia"> How to play with DbPedia </a></li>
+</ul>
+<h1>Get ready</h1>
+<ol>
+<li>Install Ruby</li>
+<li>Install Rails</li>
+<li>Install Apache Fuseki</li>
+<li>Install the 'sparql', 'rdf', and 'sparql_model' gems<ul>
+<li><a href="https://github.com/caesarfeta/sparql_model"> Grab SparqlModel here... </a></li>
+</ul>
+</li>
+</ol>
+<p>Added the following to your Rails Gemfile</p>
+<pre><code>gem 'rdf'
+gem 'sparql'
+gem 'sparql_model'
+gem 'rest_client'
+</code></pre>
+<p>Start up fuseki...</p>
+<p>Start up rails</p>
+<pre><code>bundle exec rails server -e development
+</code></pre>
+<h1>The application</h1>
+<p>Let's make the periodic table of elements!</p>
+<div class="picture">
+    <img src="img/periodic_table.jpg" />
+    <p class="caption">Nature's Pantry &amp; Refridgerator</p>
+</div>
+
+<h1>Define your model</h1>
+<p>We'll begin by defining a SparqlModel Element class.
+Here's a close up of an element.</p>
+<div class="picture">
+    <img src="img/silicon.jpg" />
+    <p class="caption">My vote for "Element of the Century!"</p>
+</div>
+
+<p>So here's a SparqlModel class where I define what kinds of data I need to model an element.</p>
+<p>Here's a sample sparql_model class.</p>
+<pre><code>class Element &lt; SparqlModel
+  def initialize( _key=nil )
+    @endpoint = 'http://127.0.0.1:8080/ds'
+    @attributes = {
+      :symbol =&gt; [ "this:symbol", ::String, SINGLE, REQUIRED, UNIQUE, KEY ],
+      :name =&gt; [ "this:name", ::String, SINGLE, REQUIRED, UNIQUE ],
+      :number =&gt; [ "this:number", ::Integer, SINGLE, OPTIONAL, UNIQUE ],
+      :mass =&gt; [ "this:masss", ::Float, SINGLE, OPTIONAL ]
+    }
+    super( _key )
+  end
+end
+</code></pre>
+<h1>Your attention please!</h1>
+<p>What does all this mean?</p>
+<ul>
+<li>@endpoint<ul>
+<li>The url to your sparql endpoint.</li>
+</ul>
+</li>
+<li>@attributes<ul>
+<li>This is where you define your models attributes.<br />
+These correspond to "edges" in your graph-database, 
+or "predicates" in your RDF style triplestore.
+Toe-may-toe Toe-mah-toe, as far as SparqlModel is concerned.</li>
+</ul>
+</li>
+</ul>
+<p>Each item in @attributes is a key-value pair.<br />
+The key has to be a symbol.<br />
+The value has to be an array.
+The items in this array are as follows.</p>
+<ul>
+<li>[0] is the RDF-triple predicate value ( :p )</li>
+<li>[1] is the data-type of the RDF-triple object value ( :o )</li>
+<li>[2] some RDF predicates should have only a SINGLE value, others should have MULTI values</li>
+<li>[3] --Optional-- some values are REQUIRED for a new instance to be created</li>
+<li>[4] --Optional-- some SINGLE values must be UNIQUE</li>
+<li>[5] --Optional-- marks the predicate as the KEY used by the get method.  KEY's must be UNIQUE.</li>
+</ul>
+<p>You may be wondering what "this:" in "this:something" is all about.
+I haven't mentioned @prefixes. I'll explain those later.</p>
+<h1>Use your model</h1>
+<p>Using your model is simple at this point.
+Save it in the models directory of your Rails app.</p>
+<pre><code>/path/to/rails/app/models/element.rb
+</code></pre>
+<p>Then fire up the Rails developer console and we can start messing around.</p>
+<pre><code>cd /path/to/rails
+rails console development
+</code></pre>
+<p>Get an instance of Element.</p>
+<pre><code>elem = Element.new
+</code></pre>
+<p>Create a new element.</p>
+<pre><code>elem.create({ :name =&gt; "Silicon" })
+</code></pre>
+<p>Whoops that threw an error.</p>
+<pre><code>RuntimeError: Required values missing ( symbol )
+</code></pre>
+<p>Looks like we have to pass the symbol value when we create an element.
+Must be that REQUIRED attribute option.
+Let's try this instead.</p>
+<pre><code> elem.create({ :name =&gt; "Silicon", :symbol=&gt; "SI" })
+</code></pre>
+<p>Ahhh that works.</p>
+<h1>Use your model some more...</h1>
+<p>What was the name of this element?  I forgot.</p>
+<pre><code>elem.name
+</code></pre>
+<p>That's right, "Silicon".</p>
+<p>Let's create a new element, Carbon.</p>
+<pre><code>elem.create({ :name =&gt; "Crbon", :symbol =&gt; "C" })
+</code></pre>
+<p>Whoops... mispelled that.</p>
+<pre><code>elem.name = "Carbon"
+</code></pre>
+<p>Ok fixed.  Carbon's atomic number is six.  So let's add that.</p>
+<pre><code>elem.number = "six"
+</code></pre>
+<p>Another error... Oh of course I defined the :number attribute to use an ::Integer!  Duh!</p>
+<pre><code>elem.number = 6
+</code></pre>
+<p>Interesting how Carbon's atomic number is six and it creates so many hexagonal shaped structures!  Benzene-rings and bucky-balls and all that.</p>
+<p>Let's work on Silicon again.  We're getting Carbon distracted.</p>
+<pre><code>elem.get("SI")
+</code></pre>
+<p>I can do that because I defined :symbol as my KEY attribute.</p>
+<h1>Use your model some more... some more...</h1>
+<p>So what info do I have on Silicon?</p>
+<pre><code>elem.all
+
+{
+    :urn=&gt;"&lt;urn:sparql_model:element.1&gt;", 
+    :edited=&gt;1406129133, 
+    :symbol=&gt;"SI", 
+    :name=&gt;"Silicon", 
+    :created=&gt;1406129133, 
+    :number=&gt;"", 
+    :mass=&gt;""
+}
+</code></pre>
+<p>I have a :urn.<br />
+That was created automatically.<br />
+It's an internal unique identifier used by SparqlModel.
+It doesn't have to be the only unique identifier though.
+I'm using :symbol as a unique identifier right now.
+I could use :name too or create another attribute for storing a different URN and make that that the unique identifier if I wanted to. 
+All I need is to set that attribute's UNIQUE and KEY configuration options.</p>
+<p>I have :symbol and :name which I know about...</p>
+<p>:edited and :created are timestamps which are created automatically.
+:created is set when .create() is run.
+:edited is set anytime a value is changed.</p>
+<p>I haven't added filled out :number or :mass yet.  Let's do that in one shot.</p>
+<pre><code>elem.change({ :number =&gt; 14, :mass =&gt; 28.086 })
+</code></pre>
+<p>Ahhh that's better.</p>
+<pre><code>elem.all
+
+{
+    :urn=&gt;"&lt;urn:sparql_model:element.1&gt;", 
+    :edited=&gt;1406130770, 
+    :mass=&gt;28.086, 
+    :number=&gt;14, 
+    :symbol=&gt;"SI", 
+    :name=&gt;"Silicon", 
+    :created=&gt;1406129133
+}
+</code></pre>
+<p>Nothing is stopping us from creating another instance of SparqlModel.
+We only have two elements defined so far, so let's get Carbon, and get it right away when we instantiate.</p>
+<pre><code>carbon = Element.new("C")
+carbon.mass = 12.0107
+</code></pre>
+<p>Now we can do fun stuff like.</p>
+<pre><code>if carbon.mass &gt; elem.mass
+    puts 'Whoa! Who rewrote the rules of the Universe?'
+end
+</code></pre>
+<h1>Using the model wrap-up...</h1>
+<p>So that's basically the gist of using SparqlModel.
+I find it easy to work with.
+Hopefully you do too.</p>
+<p>If you want to see what an element looks like in Fuseki, peep this...
+<a href="http://127.0.0.1:8080/ds/query?query=select+%3Fs+%3Fp+%3Fo%0D%0Awhere+%7B+%3Fs+%3Fp+%3Fo+%7D&amp;output=text&amp;stylesheet="> Oh my God!  What have I done!! </a></p>
+<p>If that URL doesn't resolve correctly just change the host and port to point to your Fuseki server.  Ahhhh... Look at those triples!</p>
+<h1>The API</h1>
+<p>Now we want to build an API so other people can create and edit elements from a place other than the Rails development console on our host.</p>
+<p>Let's figure out the basics of what our API should do, keeping things very basic to start. The API should allow us to...</p>
+<ul>
+<li>Create a new element</li>
+<li>Retrieve element data in an easily usable form</li>
+<li>Update an existing element's data</li>
+</ul>
+<p>Let's create some URLs for these.  Here they are...</p>
+<ul>
+<li>element/create</li>
+<li>element/data/*id</li>
+<li>element/update</li>
+</ul>
+<h1>Set it up</h1>
+<p>Okay.  Now we have to create an element controller and tweak our routes file so we can map some code to these URLs.  You know, Rails stuff.</p>
+<p>Save this to <strong>app/controllers/element_controller.rb</strong></p>
+<pre><code>class ElementController &lt; ActionController::Base
+
+    # Create a new element
+    def create
+        render :text =&gt; "create"
+    end
+
+    # Retreive element data
+    def data
+        render :text =&gt; "data"
+    end
+
+    # Update element data
+    def update
+        render :text =&gt; "update"
+    end
+
+    # Delete an element
+    def delete
+        render :text =&gt; "update"
+    end
+
+end
+</code></pre>
+<p>Update <strong>config/routes.rb</strong></p>
+<pre><code>#-------------------------------------------------------------
+#  Element
+#-------------------------------------------------------------
+match 'element/create' =&gt; 'element#create'
+match 'element/data/*symbol' =&gt; 'element#data'
+match 'element/update' =&gt; 'element#update'
+match 'element/delete' =&gt; 'element#delete'
+</code></pre>
+<p>Check the URLs to see if they run the controller methods like they should.</p>
+<h1>RestTest, a Ruby HTTP client</h1>
+<p>I like using a Ruby HTTP client to interact with my controllers rather than a browser when developing.
+That way I can save my requests and run them later as proper tests.
+I have a class that I wrote for doing this that simplifies using Ruby's rest_client gem.</p>
+<p>Here it is.  Save this in <strong>app/helpers/rest_test.rb</strong></p>
+<pre><code>require 'rest_client'
+class RestTest
+
+  # Basic Use
+  #   load 'rest_test.rb'
+  #   rest = RestTest.new( 'http://localhost:3000' )
+  #   report = rest.post( 'collection/add/keyword', { :collection_id =&gt; 1, :keyword =&gt; 'blue' } )
+
+  #-------------------------------------------------------------
+  #  Getters &amp; Setters
+  #-------------------------------------------------------------
+  attr_accessor :base
+
+  # _base { String } Base URL
+  def initialize( _base='' )
+    @base = _base
+  end
+
+  # _url { String } URL
+  # _params { Hash } Parameter
+  def post( _url, _params )
+    url = File.join( @base, _url )
+    response = RestClient.post( url, _params )
+    report( response )
+  end
+
+  # _url { String } URL
+  # _params { Hash } Parameter
+  def get( _url )
+    url = File.join( @base, _url )
+    response = RestClient.get( url )
+    report( response )
+  end
+
+  # _response { RestClient } RestClient response object
+  def report( _response )
+    if _response.code &gt; 399
+      raise "Error: #{ _response.code }: #{ status( _response.code ) } #{ _response.to_str }"
+    end
+    return {
+      :code =&gt; _response.code,
+      :status =&gt; status( _response.code ),
+      :content =&gt; _response.to_str
+    }
+  end
+
+  # _code { Integer } HTTP Response Code
+  def status( _code )
+    status = {
+      100 =&gt; 'Continue',
+      101 =&gt; 'Switching Protocols',
+      102 =&gt; 'Processing', #WebDAV
+
+      200 =&gt; 'OK',
+      201 =&gt; 'Created',
+      202 =&gt; 'Accepted',
+      203 =&gt; 'Non-Authoritative Information', # http/1.1
+      204 =&gt; 'No Content',
+      205 =&gt; 'Reset Content',
+      206 =&gt; 'Partial Content',
+      207 =&gt; 'Multi-Status', #WebDAV
+
+      300 =&gt; 'Multiple Choices',
+      301 =&gt; 'Moved Permanently',
+      302 =&gt; 'Found',
+      303 =&gt; 'See Other', # http/1.1
+      304 =&gt; 'Not Modified',
+      305 =&gt; 'Use Proxy', # http/1.1
+      306 =&gt; 'Switch Proxy', # no longer used
+      307 =&gt; 'Temporary Redirect', # http/1.1
+
+      400 =&gt; 'Bad Request',
+      401 =&gt; 'Unauthorized',
+      402 =&gt; 'Payment Required',
+      403 =&gt; 'Forbidden',
+      404 =&gt; 'Resource Not Found',
+      405 =&gt; 'Method Not Allowed',
+      406 =&gt; 'Not Acceptable',
+      407 =&gt; 'Proxy Authentication Required',
+      408 =&gt; 'Request Timeout',
+      409 =&gt; 'Conflict',
+      410 =&gt; 'Gone',
+      411 =&gt; 'Length Required',
+      412 =&gt; 'Precondition Failed',
+      413 =&gt; 'Request Entity Too Large',
+      414 =&gt; 'Request-URI Too Long',
+      415 =&gt; 'Unsupported Media Type',
+      416 =&gt; 'Requested Range Not Satisfiable',
+      417 =&gt; 'Expectation Failed',
+      418 =&gt; 'I\'m A Teapot',
+      421 =&gt; 'Too Many Connections From This IP',
+      422 =&gt; 'Unprocessable Entity', #WebDAV
+      423 =&gt; 'Locked', #WebDAV
+      424 =&gt; 'Failed Dependency', #WebDAV
+      425 =&gt; 'Unordered Collection', #WebDAV
+      426 =&gt; 'Upgrade Required', 
+      449 =&gt; 'Retry With', #Microsoft
+      450 =&gt; 'Blocked By Windows Parental Controls', #Microsoft
+
+      500 =&gt; 'Internal Server Error',
+      501 =&gt; 'Not Implemented',
+      502 =&gt; 'Bad Gateway',
+      503 =&gt; 'Service Unavailable',
+      504 =&gt; 'Gateway Timeout',
+      505 =&gt; 'HTTP Version Not Supported',
+      506 =&gt; 'Variant Also Negotiates',
+      507 =&gt; 'Insufficient Storage', #WebDAV
+      509 =&gt; 'Bandwidth Limit Exceeded', #Apache
+      510 =&gt; 'Not Extended'
+    }
+    status[ _code ]
+  end
+
+end
+</code></pre>
+<h1>How to use RestTest</h1>
+<p>Start the development console.</p>
+<pre><code>cd /path/to/rails
+rails console development
+</code></pre>
+<p>Here's how you use RestTest.</p>
+<pre><code>http = RestTest.new( 'http://localhost:3000' )
+</code></pre>
+<p>Here's how you make a POST request.</p>
+<pre><code>http.post( 'element/create', { :symbol =&gt; "B", :name =&gt; "Boron" })
+</code></pre>
+<p>Here's how you make a GET request.</p>
+<pre><code>http.get( 'element/data/b' )
+</code></pre>
+<p>Armed with this knowledge we can start building our API.</p>
+<h1>Flesh out the API</h1>
+<p>Save the following to <strong>app/helpers/controller_helper.rb</strong></p>
+<pre><code>module ControllerHelper
+
+  # Remove unnecessary stuff from controller method parameters
+  def self.cleanParams( _params )
+    ignore = [ 'id', 'controller', 'action' ]
+    clean = {}
+    _params.each do |key,val|
+      if ignore.include?( key ) == false
+        clean[ key.to_sym ] = val
+      end
+    end
+    clean
+  end
+
+end
+</code></pre>
+<p>This will let you pass POST parameters directly to SparqlModel instances.</p>
+<p>Now we'll flesh out the create method.</p>
+<pre><code># Create a new element
+def create
+  elem = Element.new
+  elem.create( ControllerHelper.cleanParams( params ) )
+  render :json =&gt; elem.all.to_json
+end
+</code></pre>
+<p>Let's test this code out.
+Go back to the development console, and run.</p>
+<pre><code>http.post( 'element/create', { :symbol =&gt; "B", :name =&gt; "Boron" })
+</code></pre>
+<p>Here's the data method.</p>
+<pre><code># Retreive element data
+def data
+  elem = Element.new( params[:symbol] )
+  render :json =&gt; elem.all.to_json
+end
+</code></pre>
+<p>Does it work?</p>
+<pre><code>http.get( 'element/data/B' )
+</code></pre>
+<p>Here's the update method.</p>
+<pre><code># Update element data
+def update
+  vals = ControllerHelper.cleanParams( params )
+  elem = Element.new( vals[:symbol] )
+  elem.change( vals.except(:symbol) )
+  render :json =&gt; elem.all.to_json
+end
+</code></pre>
+<p>Does it work?</p>
+<pre><code>http.post( 'element/update', { :symbol =&gt; "B", :number =&gt; 5 } )
+</code></pre>
+<h1>A few things about this API</h1>
+<p>So with very little work we know have a working web API, and the ability to test it.
+Not bad right?</p>
+<p>We'll want to secure this API before we open it up to the world, but that's a lesson for another day.</p>
+<!---
+#  Javascript version of RestTest
+## More coming SOON!
+
+You have to decide when to query the SPARQL database from the client and when to use Rails as an intermediary.
+
+The beauty of SPARQL is that interaction with the triplestore is done over HTTP.  
+Updates should be restricted. 
+Queries should be accessible.
+-->
+				</div>
+			</div>
+		</section>
+		
+		<!-- Copyright -->
+		<section id="footer">
+			<div class="row">
+				<div class="twelve columns">
+					<div id="copyright">&copy; Adam Tavares 2014</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</body>
+
+<!-- Javascript -->
+<!-- 3rd Party -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/modernizr.foundation.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/foundation.min.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/jquery.event.move.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/jquery.event.swipe.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/jquery.foundation.forms.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/jquery.foundation.mediaQueryToggle.js"></script>
+<script type="text/javascript" src="../../third_party/foundation/javascripts/app.js"></script>
+<script type="text/javascript" src="../../third_party/jquery_snippet/jquery.snippet.js"></script>
+<script type="text/javascript" src="../../third_party/jquery_snippet/sh_sh.js"></script>
+
+<!-- Custom -->
+<script type="text/javascript" src="../../javascript/lib/lib.min.js"></script>
+<script type='text/javascript' src='../../javascript/site.js'></script>
+
+<!-- Page Specific -->
+
+
+
+<script type="text/javascript" src="../../javascript/lib/slds/SLDS.js"></script>
+
+<script type="text/javascript" src="sparql_model.js"></script>
+
+
+</html>

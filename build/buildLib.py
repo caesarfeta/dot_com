@@ -1,6 +1,7 @@
 #buildLib.py
 
 from jinja2 import Template
+import codecs
 import re
 import markdown
 import json
@@ -10,18 +11,18 @@ import pprint
 pp = pprint.PrettyPrinter(indent=4)
 
 def published():
-	f = open( "home.conf", "r" )
+	f = codecs.open( "home.conf", "r", "utf-8" )
 	stories = f.read().splitlines()
 	f.close()
 	return stories
 
 def writeToFile( _file, _text ):
-	f = open( _file, "w" )
+	f = codecs.open( _file, "w", "utf-8" )
 	f.write( _text )
 	f.close()
 
 def loadTemplate( _temp ):
-	f = open( "templates/" + _temp + ".html.tmpl" )
+	f = codecs.open( "templates/" + _temp + ".html.tmpl", "r", "utf-8" )
 	text = f.read()
 	f.close()
 	return text
@@ -34,14 +35,14 @@ def getFilePrefix( _path ):
 
 def mdFileToHtml( _file ):
     # Load markdown file and turn it into HTML
-	f = open( _file, "r" )
+	f = codecs.open( _file, "r", "utf-8" )
 	text = f.read()
 	f.close()
 	return markdown.markdown( text )
 	
 def jsonFileToPython( _file ):
     # Turn a json file into a python object
-	f = open( _file, "r" )
+	f = codecs.open( _file, "r", "utf-8" )
 	data = json.load( f )
 	f.close();
 	return data

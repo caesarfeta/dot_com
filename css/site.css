@@ -4,7 +4,7 @@ html {
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-	background: url( "../img/squairy_light.png" ) repeat center center fixed;
+	background: url( "../img/soap_bubble.jpg" ) repeat center center fixed;
 }
 #footer .more {
 	position: absolute;
@@ -12,7 +12,7 @@ html {
 	bottom:0;
 	padding:10px;
 	font-size:4em;
-	background-color: rgba(255,255,255,.5);
+	background-color: rgba(255,255,255,.75);
 }
 #footer .less {
 	position: absolute;
@@ -20,7 +20,7 @@ html {
 	bottom:0;
 	padding:10px;
 	font-size:4em;
-	background-color: rgba(255,255,255,.5);
+	background-color: rgba(255,255,255,.75);
 }
 #footer #copyright {
 	padding: 20px 0;
@@ -44,10 +44,10 @@ body {
 }
 a {
 	text-decoration: none;
-	color: #FF4444;
+	color: #716DDB;
 }
 a:hover {
-	color: #FF1111;
+	color: #716DAB;
 }
 h1,h2,h3,h4,h5 {
 	font-family: Georgia;
@@ -60,7 +60,7 @@ code {
 	font-weight: normal;
 }
 .caption {
-	margin: 5px 10px;
+	margin: 20px 10px;
 	font-style: italic;
 	line-height: 1.3em;
 	font-size: 14px;
@@ -328,11 +328,11 @@ code {
 	text-align: center;
 }
 #home #meta .title {
-	color: #FF4444;
+	color: #716DDB;
 	font-size: 25px;
 }
 #home #meta:hover .title {
-	color: #FF1111;
+	color: #716DAB;
 }
 #home #meta .subtitle {
 	font-size: 20px;

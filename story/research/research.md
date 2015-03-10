@@ -1,6 +1,5 @@
 # Scientific research in the Internet age
 * The Internet has changed a lot in my lifetime.
-	* I was born in 1983 FYI.
 * HTTP protocol was originally designed for transmission of documents in a mesh network.
 	* aka sharing prepared documents among networked computers.
 	* It's still used primarily for that purpose, but few people anticipated, at HTTPs birth, that it would become the preferred way for gathering and linking raw data.
@@ -25,6 +24,7 @@
 * Promote your work not your "self."
 * Collaborate with people you respect.
 * If you find yourself big-fish in a little pond... find a bigger pond.
+* Challenge is external.  Frustration is internal.
 * Making money is secondary to building elegant life-enhancing systems.
 * "Walled-gardens" are created by selfish ass-hats.
 * Share your source code.
